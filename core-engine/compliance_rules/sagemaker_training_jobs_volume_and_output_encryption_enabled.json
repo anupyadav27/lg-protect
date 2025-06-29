@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "sc-13",
+  "Name": "SageMaker Training Jobs Volume and Output Encryption Enabled",
+  "Description": "The information system implements FIPS-validated or NSA-approved cryptography in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+  "Function Name": "sagemaker_training_jobs_volume_and_output_encryption_enabled",
+  "clients": ["sagemaker"],
+  "functions": {
+    "sagemaker": {
+      "method": "describe_training_job",
+      "field_path": "OutputDataConfig.KmsKeyId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "sagemaker",
+    "field": "KmsKeyId"
+  }
+}

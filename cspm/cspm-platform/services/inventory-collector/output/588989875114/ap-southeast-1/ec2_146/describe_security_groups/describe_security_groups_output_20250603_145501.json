@@ -1,0 +1,318 @@
+{
+  "SecurityGroups": [
+    {
+      "GroupId": "sg-0adef598bc7ef829b",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-0796a51fd6cb81118",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-1:588989875114:security-group/sg-0adef598bc7ef829b",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-2",
+      "Description": "launch-wizard-2 created 2024-04-13T14:25:40.047Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 80,
+          "ToPort": 80,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 443,
+          "ToPort": 443,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0fddc246d4c288fa6",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 0,
+          "ToPort": 65535,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "cloud-security-sg"
+        },
+        {
+          "Key": "Environment",
+          "Value": "dev"
+        }
+      ],
+      "VpcId": "vpc-055c56205d4dc49ad",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-1:588989875114:security-group/sg-0fddc246d4c288fa6",
+      "OwnerId": "588989875114",
+      "GroupName": "terraform-20240901112820834200000001",
+      "Description": "Managed by Terraform",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 0,
+          "ToPort": 65535,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0495f041e402a7b10",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-0796a51fd6cb81118",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-1:588989875114:security-group/sg-0495f041e402a7b10",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-0495f041e402a7b10"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0d6640171949529a0",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-0796a51fd6cb81118",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-1:588989875114:security-group/sg-0d6640171949529a0",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-1",
+      "Description": "launch-wizard-1 created 2023-07-11T12:24:16.560Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-016bcc94acbc9150b",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-081bceb99e38de4fa",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-1:588989875114:security-group/sg-016bcc94acbc9150b",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-016bcc94acbc9150b"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-09cc3804658bbc995",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 0,
+          "ToPort": 65535,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Environment",
+          "Value": "dev"
+        },
+        {
+          "Key": "Name",
+          "Value": "cloud-security-sg"
+        }
+      ],
+      "VpcId": "vpc-081bceb99e38de4fa",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-1:588989875114:security-group/sg-09cc3804658bbc995",
+      "OwnerId": "588989875114",
+      "GroupName": "terraform-20240901110931760400000001",
+      "Description": "Managed by Terraform",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 0,
+          "ToPort": 65535,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-091f523e76a6b4b93",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-055c56205d4dc49ad",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-1:588989875114:security-group/sg-091f523e76a6b4b93",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-091f523e76a6b4b93"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "cc5245c5-6685-4672-b29e-66527e57ec9a",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "cc5245c5-6685-4672-b29e-66527e57ec9a",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "6085",
+      "date": "Tue, 03 Jun 2025 14:55:14 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

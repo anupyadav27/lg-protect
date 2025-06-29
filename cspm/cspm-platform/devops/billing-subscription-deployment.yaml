@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: billing-subscription
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: billing-subscription
+  template:
+    metadata:
+      labels:
+        app: billing-subscription
+    spec:
+      containers:
+      - name: billing-subscription
+        image: billing-subscription:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: billing-subscription
+spec:
+  selector:
+    app: billing-subscription
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP

@@ -1,0 +1,19 @@
+{
+  "TableNames": [
+    "test"
+  ],
+  "ResponseMetadata": {
+    "RequestId": "82EUKVMB92MFR6148RUFU3GOTFVV4KQNSO5AEMVJF66Q9ASUAAJG",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "server": "Server",
+      "date": "Tue, 03 Jun 2025 14:55:11 GMT",
+      "content-type": "application/x-amz-json-1.0",
+      "content-length": "23",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "82EUKVMB92MFR6148RUFU3GOTFVV4KQNSO5AEMVJF66Q9ASUAAJG",
+      "x-amz-crc32": "1149906437"
+    },
+    "RetryAttempts": 0
+  }
+}

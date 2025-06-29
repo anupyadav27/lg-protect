@@ -1,0 +1,223 @@
+{
+  "LaunchTemplates": [
+    {
+      "LaunchTemplateId": "lt-0e03510357af0330c",
+      "LaunchTemplateName": "master-eu-central-1a.masters.dev.yourdomain.com",
+      "CreateTime": "2022-03-09T17:14:06+00:00",
+      "CreatedBy": "arn:aws:iam::588989875114:user/administrator",
+      "DefaultVersionNumber": 1,
+      "LatestVersionNumber": 1,
+      "Tags": [
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node.kubernetes.io/exclude-from-external-load-balancers",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/instancegroup",
+          "Value": "master-eu-central-1a"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node-role.kubernetes.io/control-plane",
+          "Value": ""
+        },
+        {
+          "Key": "kubernetes.io/cluster/dev.yourdomain.com",
+          "Value": "owned"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/kops-controller-pki",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/role",
+          "Value": "master"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node-role.kubernetes.io/master",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/role/master",
+          "Value": "1"
+        },
+        {
+          "Key": "KubernetesCluster",
+          "Value": "dev.yourdomain.com"
+        },
+        {
+          "Key": "Name",
+          "Value": "master-eu-central-1a.masters.dev.yourdomain.com"
+        },
+        {
+          "Key": "kops.k8s.io/instancegroup",
+          "Value": "master-eu-central-1a"
+        }
+      ],
+      "Operator": {
+        "Managed": false
+      }
+    },
+    {
+      "LaunchTemplateId": "lt-0c7a8e4f19082e2f9",
+      "LaunchTemplateName": "nodes-eu-central-1b.cluster.kubernetes-aws.io",
+      "CreateTime": "2021-08-09T14:33:11+00:00",
+      "CreatedBy": "arn:aws:iam::588989875114:user/administrator",
+      "DefaultVersionNumber": 1,
+      "LatestVersionNumber": 1,
+      "Tags": [
+        {
+          "Key": "kubernetes.io/cluster/cluster.kubernetes-aws.io",
+          "Value": "owned"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/instancegroup",
+          "Value": "nodes-eu-central-1b"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node-role.kubernetes.io/node",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/role",
+          "Value": "node"
+        },
+        {
+          "Key": "KubernetesCluster",
+          "Value": "cluster.kubernetes-aws.io"
+        },
+        {
+          "Key": "k8s.io/role/node",
+          "Value": "1"
+        },
+        {
+          "Key": "Name",
+          "Value": "nodes-eu-central-1b.cluster.kubernetes-aws.io"
+        },
+        {
+          "Key": "kops.k8s.io/instancegroup",
+          "Value": "nodes-eu-central-1b"
+        }
+      ],
+      "Operator": {
+        "Managed": false
+      }
+    },
+    {
+      "LaunchTemplateId": "lt-0702310c47c22df66",
+      "LaunchTemplateName": "master-eu-central-1b.masters.cluster.kubernetes-aws.io",
+      "CreateTime": "2021-08-09T14:33:11+00:00",
+      "CreatedBy": "arn:aws:iam::588989875114:user/administrator",
+      "DefaultVersionNumber": 1,
+      "LatestVersionNumber": 1,
+      "Tags": [
+        {
+          "Key": "kubernetes.io/cluster/cluster.kubernetes-aws.io",
+          "Value": "owned"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node.kubernetes.io/exclude-from-external-load-balancers",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/instancegroup",
+          "Value": "master-eu-central-1b"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node-role.kubernetes.io/control-plane",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/kops-controller-pki",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/role",
+          "Value": "master"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node-role.kubernetes.io/master",
+          "Value": ""
+        },
+        {
+          "Key": "k8s.io/role/master",
+          "Value": "1"
+        },
+        {
+          "Key": "KubernetesCluster",
+          "Value": "cluster.kubernetes-aws.io"
+        },
+        {
+          "Key": "Name",
+          "Value": "master-eu-central-1b.masters.cluster.kubernetes-aws.io"
+        },
+        {
+          "Key": "kops.k8s.io/instancegroup",
+          "Value": "master-eu-central-1b"
+        }
+      ],
+      "Operator": {
+        "Managed": false
+      }
+    },
+    {
+      "LaunchTemplateId": "lt-00695951ffdec7759",
+      "LaunchTemplateName": "nodes-eu-central-1a.dev.yourdomain.com",
+      "CreateTime": "2022-03-09T17:14:06+00:00",
+      "CreatedBy": "arn:aws:iam::588989875114:user/administrator",
+      "DefaultVersionNumber": 1,
+      "LatestVersionNumber": 1,
+      "Tags": [
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/instancegroup",
+          "Value": "nodes-eu-central-1a"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/node-role.kubernetes.io/node",
+          "Value": ""
+        },
+        {
+          "Key": "kubernetes.io/cluster/dev.yourdomain.com",
+          "Value": "owned"
+        },
+        {
+          "Key": "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/role",
+          "Value": "node"
+        },
+        {
+          "Key": "KubernetesCluster",
+          "Value": "dev.yourdomain.com"
+        },
+        {
+          "Key": "k8s.io/role/node",
+          "Value": "1"
+        },
+        {
+          "Key": "Name",
+          "Value": "nodes-eu-central-1a.dev.yourdomain.com"
+        },
+        {
+          "Key": "kops.k8s.io/instancegroup",
+          "Value": "nodes-eu-central-1a"
+        }
+      ],
+      "Operator": {
+        "Managed": false
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "9e182e9e-3487-4b43-8edb-f8649c95b615",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "9e182e9e-3487-4b43-8edb-f8649c95b615",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "date": "Tue, 03 Jun 2025 14:55:04 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

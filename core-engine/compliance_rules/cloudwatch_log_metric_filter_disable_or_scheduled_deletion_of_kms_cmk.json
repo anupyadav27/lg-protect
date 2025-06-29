@@ -1,0 +1,27 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "4.7",
+  "Name": "",
+  "Description": "Ensure disabling or scheduled deletion of customer created CMKs is monitored",
+  "Function Name": "cloudwatch_log_metric_filter_disable_or_scheduled_deletion_of_kms_cmk",
+  "clients": ["kms", "cloudwatch"],
+  "functions": {
+    "kms": {
+      "method": "list_keys",
+      "field_path": "Keys[].KeyId"
+    },
+    "cloudwatch": {
+      "method": "describe_metric_filters",
+      "field_path": "metricFilters[].filterPattern"
+    },
+    "cloudwatch": {
+      "method": "describe_alarms",
+      "field_path": "MetricAlarms[].AlarmName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudwatch",
+    "field": "AlarmName"
+  }
+}

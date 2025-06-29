@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.2",
+  "Name": "Ensure MFA is enabled for all IAM users that have a console password",
+  "Description": "Multi-Factor Authentication (MFA) adds an extra layer of protection on top of a user name and password.",
+  "Function Name": "iam_user_mfa_enabled_console_access",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "get_login_profile",
+      "field_path": "LoginProfile.CreateDate"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "iam",
+    "field": "CreateDate"
+  }
+}

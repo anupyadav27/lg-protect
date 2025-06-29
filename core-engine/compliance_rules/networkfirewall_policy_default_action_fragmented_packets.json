@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "A1.1.3.22",
+  "Name": "Network Firewall Policy Default Action for Fragmented Packets",
+  "Description": "Checks if an AWS Network Firewall policy is configured with a user defined stateless default action for fragmented packets",
+  "Function Name": "networkfirewall_policy_default_action_fragmented_packets",
+  "clients": ["networkfirewall"],
+  "functions": {
+    "networkfirewall": {
+      "method": "describe_firewall_policy",
+      "field_path": "FirewallPolicy.StatelessDefaultActions"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "networkfirewall",
+    "field": "StatelessDefaultActions"
+  }
+}

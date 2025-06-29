@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_account_security_onboarding_aws",
+  "ID": "Scan images for vulnerability on upload to ECR",
+  "Name": "ECR Registry Scan Images on Push Enabled",
+  "Description": "Check uploaded images for vulnerabilities when adding them to the ECR (Elastic Container Registry).",
+  "Function Name": "ecr_registry_scan_images_on_push_enabled",
+  "clients": ["ecr"],
+  "functions": {
+    "ecr": {
+      "method": "describe_registry",
+      "field_path": "ScanningConfiguration.ScanOnPush"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "ecr",
+    "field": "ScanOnPush",
+    "expected_value": true
+  }
+}

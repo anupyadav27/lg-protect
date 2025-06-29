@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "waf",
+  "function": "get_web_acl",
+  "timestamp": "2025-06-03T14:37:55.838623",
+  "error": "Missing required parameter: 'WebACLId'"
+}

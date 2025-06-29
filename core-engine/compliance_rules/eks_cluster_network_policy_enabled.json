@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "EKS Cluster Network Policy Enabled",
+  "Description": "Ensure EKS clusters have network policies enabled to enforce security rules.",
+  "Function Name": "eks_cluster_network_policy_enabled",
+  "clients": ["eks"],
+  "functions": {
+    "eks": {
+      "method": "describe_clusters",
+      "field_path": "clusters[].networkPolicyEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "eks",
+    "field": "networkPolicyEnabled",
+    "expected_value": true
+  }
+}

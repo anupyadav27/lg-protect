@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Redshift.3",
+  "Name": "Redshift clusters should have automatic snapshots enabled",
+  "Description": "This control checks whether Amazon Redshift clusters have automated snapshots enabled.",
+  "Function Name": "redshift_cluster_encrypted_at_rest",
+  "clients": ["redshift"],
+  "functions": {
+    "redshift": {
+      "method": "describe_clusters",
+      "field_path": "Clusters[].Encrypted"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "redshift",
+    "field": "Encrypted",
+    "value": true
+  }
+}

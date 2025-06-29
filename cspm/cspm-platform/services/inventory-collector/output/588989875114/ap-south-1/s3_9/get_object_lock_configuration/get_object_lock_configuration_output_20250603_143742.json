@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "s3",
+  "function": "get_object_lock_configuration",
+  "timestamp": "2025-06-03T14:37:42.595321",
+  "error": "Missing required parameter: 'Bucket'"
+}

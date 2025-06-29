@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ECR.1",
+  "Name": "ECR private repositories should have image scanning configured",
+  "Description": "This control checks whether a private ECR repository has image scanning configured.",
+  "Function Name": "ecr_repositories_not_publicly_accessible",
+  "clients": ["ecr"],
+  "functions": {
+    "ecr": {
+      "method": "get_repository_policy",
+      "field_path": "policyText"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "ecr",
+    "field": "policyText"
+  }
+}

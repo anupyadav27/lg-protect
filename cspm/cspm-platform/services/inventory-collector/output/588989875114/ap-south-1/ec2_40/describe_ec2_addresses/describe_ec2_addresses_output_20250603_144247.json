@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ec2",
+  "function": "describe_ec2_addresses",
+  "timestamp": "2025-06-03T14:42:40.788055",
+  "error": "Function describe_ec2_addresses not found on boto3 client"
+}

@@ -1,0 +1,14 @@
+{
+  "RuleGroups": [],
+  "ResponseMetadata": {
+    "RequestId": "be7199ab-1ef6-4415-8de0-e6fcb0ec3c69",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "be7199ab-1ef6-4415-8de0-e6fcb0ec3c69",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "17",
+      "date": "Tue, 03 Jun 2025 14:38:43 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

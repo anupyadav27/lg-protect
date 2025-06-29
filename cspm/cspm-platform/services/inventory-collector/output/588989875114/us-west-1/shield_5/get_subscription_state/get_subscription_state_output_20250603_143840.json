@@ -1,0 +1,14 @@
+{
+  "SubscriptionState": "INACTIVE",
+  "ResponseMetadata": {
+    "RequestId": "d0f71f65-d8ab-47ae-a2cd-26b4a57c4ece",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "d0f71f65-d8ab-47ae-a2cd-26b4a57c4ece",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "32",
+      "date": "Tue, 03 Jun 2025 14:38:53 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

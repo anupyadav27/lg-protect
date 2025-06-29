@@ -1,0 +1,40 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.9.4",
+  "Name": "\ub85c\uadf8 \ubc0f \uc811\uc18d\uae30\ub85d \uad00\ub9ac",
+  "Description": "\uc11c\ubc84, \uc751\uc6a9\ud504\ub85c\uadf8\ub7a8, \ubcf4\uc548\uc2dc\uc2a4\ud15c, \ub124\ud2b8\uc6cc\ud06c\uc2dc\uc2a4\ud15c \ub4f1 \uc815\ubcf4\uc2dc\uc2a4\ud15c\uc5d0 \ub300\ud55c \uc0ac\uc6a9\uc790 \uc811\uc18d\uae30\ub85d, \uc2dc\uc2a4\ud15c\ub85c\uadf8, \uad8c\ud55c\ubd80\uc5ec \ub0b4\uc5ed \ub4f1\uc758 \ub85c\uadf8\uc720\ud615, \ubcf4\uc874\uae30\uac04, \ubcf4\uc874\ubc29\ubc95 \ub4f1\uc744 \uc815\ud558\uace0 \uc704\u00b7\ubcc0\uc870, \ub3c4\ub09c, \ubd84\uc2e4\ub418\uc9c0 \uc54a\ub3c4\ub85d \uc548\uc804\ud558\uac8c \ubcf4\uc874\u00b7\uad00\ub9ac\ud558\uc5ec\uc57c \ud55c\ub2e4.",
+  "Function Name": "iam_inline_policy_no_full_access_to_cloudtrail",
+  "clients": ["iam"],
+  "functions": {
+    "iam_users": {
+      "method": "list_users",
+      "field_path": "Users[].UserName"
+    },
+    "iam_user_policies": {
+      "method": "list_user_policies",
+      "field_path": "PolicyNames[]"
+    },
+    "iam_roles": {
+      "method": "list_roles",
+      "field_path": "Roles[].RoleName"
+    },
+    "iam_role_policies": {
+      "method": "list_role_policies",
+      "field_path": "PolicyNames[]"
+    },
+    "iam_groups": {
+      "method": "list_groups",
+      "field_path": "Groups[].GroupName"
+    },
+    "iam_group_policies": {
+      "method": "list_group_policies",
+      "field_path": "PolicyNames[]"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "PolicyDocument",
+    "value": "cloudtrail:*"
+  }
+}

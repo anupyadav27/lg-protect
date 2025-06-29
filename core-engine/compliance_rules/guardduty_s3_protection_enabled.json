@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "GuardDuty.1",
+  "Name": "GuardDuty should be enabled",
+  "Description": "This control checks whether Amazon GuardDuty is enabled in your AWS account and region.",
+  "Function Name": "guardduty_s3_protection_enabled",
+  "clients": ["guardduty"],
+  "functions": {
+    "guardduty": {
+      "method": "get_detector",
+      "field_path": "DataSources.S3Logs.Status"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "guardduty",
+    "field": "Status",
+    "value": "ENABLED"
+  }
+}

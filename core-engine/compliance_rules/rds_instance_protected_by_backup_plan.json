@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.7",
+  "Name": "RDS clusters should have deletion protection enabled",
+  "Description": "This control checks whether RDS clusters have deletion protection enabled.",
+  "Function Name": "rds_instance_protected_by_backup_plan",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].DbInstancePort"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "DbInstancePort"
+  }
+}

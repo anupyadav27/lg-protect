@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.22",
+  "Name": "EC2 Security Group No Ingress from Internet to Oracle Ports",
+  "Description": "Security mechanisms, service levels and service requirements of network services should be identified, implemented and monitored.",
+  "Function Name": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_oracle_1521_2483",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].IpPermissions[].FromPort"
+    }
+  },
+  "evaluation": {
+    "type": "not_in_range",
+    "source_client": "ec2",
+    "field": "FromPort",
+    "forbidden_values": [1521, 2483]
+  }
+}

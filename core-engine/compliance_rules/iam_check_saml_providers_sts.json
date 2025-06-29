@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.21",
+  "Name": "IAM SAML Providers Configured",
+  "Description": "Ensure IAM users are managed centrally via identity federation or AWS Organizations for multi-account environments",
+  "Function Name": "iam_check_saml_providers_sts",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_saml_providers",
+      "field_path": "SAMLProviderList[].Arn"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "iam",
+    "field": "Arn"
+  }
+}

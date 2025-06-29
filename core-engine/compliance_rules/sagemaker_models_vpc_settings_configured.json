@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "SageMaker.3",
+  "Name": "SageMaker models should have network isolation enabled",
+  "Description": "This control checks whether Amazon SageMaker models have network isolation enabled.",
+  "Function Name": "sagemaker_models_vpc_settings_configured",
+  "clients": ["sagemaker"],
+  "functions": {
+    "sagemaker": {
+      "method": "describe_model",
+      "field_path": "VpcConfig.VpcId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "sagemaker",
+    "field": "VpcId"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "Field-Level Encryption",
+  "Description": "Ensure field-level encryption is enabled for CloudFront distributions.",
+  "Function Name": "cloudfront_distributions_field_level_encryption_enabled",
+  "clients": ["cloudfront"],
+  "functions": {
+    "cloudfront": {
+      "method": "get_distribution_config",
+      "field_path": "DistributionConfig.FieldLevelEncryptionId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudfront",
+    "field": "FieldLevelEncryptionId"
+  }
+}

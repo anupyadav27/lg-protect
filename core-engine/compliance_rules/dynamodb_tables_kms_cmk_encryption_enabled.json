@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "Use of Cryptography",
+  "Description": "Rules for the effective use of cryptography, including cryptographic key management, should be defined and implemented.",
+  "Function Name": "dynamodb_tables_kms_cmk_encryption_enabled",
+  "clients": ["dynamodb"],
+  "functions": {
+    "dynamodb": {
+      "method": "describe_table",
+      "field_path": "Table.TableName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",  // other possible values: subset, equal, find, not exists
+    "source_client": "dynamodb",
+    "field": "TableName"
+  }
+}

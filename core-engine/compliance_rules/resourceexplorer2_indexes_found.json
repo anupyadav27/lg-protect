@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ResourceExplorer.1",
+  "Name": "Resource Explorer should have at least one index configured",
+  "Description": "This control checks whether AWS Resource Explorer has at least one index configured in each region.",
+  "Function Name": "resourceexplorer2_indexes_found",
+  "clients": ["resource-explorer-2"],
+  "functions": {
+    "resource-explorer-2": {
+      "method": "list_indexes",
+      "field_path": "Indexes[].Arn"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "resource-explorer-2",
+    "field": "Arn"
+  }
+}

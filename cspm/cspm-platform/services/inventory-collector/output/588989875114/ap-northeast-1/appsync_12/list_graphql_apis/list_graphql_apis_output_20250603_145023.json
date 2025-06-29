@@ -1,0 +1,25 @@
+{
+  "ResponseMetadata": {
+    "RequestId": "e426b20f-5fc9-4c16-812d-9d94db9756cf",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "content-type": "application/json",
+      "content-length": "47",
+      "connection": "keep-alive",
+      "date": "Tue, 03 Jun 2025 14:50:37 GMT",
+      "x-amzn-trace-id": "Root=1-683f0bbd-4a27ea8247b3726b74525931;Parent=6456df23757c41ba;Sampled=0;Lineage=1:b600e30b:0",
+      "x-amzn-requestid": "e426b20f-5fc9-4c16-812d-9d94db9756cf",
+      "access-control-allow-origin": "*",
+      "access-control-allow-headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+      "x-amz-apigw-id": "Ll7FmG46NjMEmug=",
+      "access-control-allow-methods": "GET,OPTIONS,POST",
+      "access-control-expose-headers": "x-amzn-RequestId,x-amzn-ErrorType",
+      "x-cache": "Miss from cloudfront",
+      "via": "1.1 62d3246c0f76fde2b19b62c841c73d66.cloudfront.net (CloudFront)",
+      "x-amz-cf-pop": "MAA51-C2",
+      "x-amz-cf-id": "Aq9bbYQ-CyepGrtxntty7bkBX2598CGxQ6VgPYh2-c-FmV_JuCAnIg=="
+    },
+    "RetryAttempts": 0
+  },
+  "graphqlApis": []
+}

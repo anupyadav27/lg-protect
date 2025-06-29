@@ -1,0 +1,17 @@
+{
+  "Reservations": [],
+  "ResponseMetadata": {
+    "RequestId": "7f1e6691-8c4f-4019-9e24-f067b0b2eac3",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "7f1e6691-8c4f-4019-9e24-f067b0b2eac3",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "219",
+      "date": "Tue, 03 Jun 2025 14:40:11 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

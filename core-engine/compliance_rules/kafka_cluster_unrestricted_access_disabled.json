@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "MSK.1",
+  "Name": "MSK clusters should not allow unrestricted access on port 9092",
+  "Description": "This control checks whether Amazon MSK clusters allow unrestricted access on port 9092.",
+  "Function Name": "kafka_cluster_unrestricted_access_disabled",
+  "clients": ["kafka"],
+  "functions": {
+    "kafka": {
+      "method": "describe_cluster",
+      "field_path": "ClusterInfo.ClientAuthentication.Sasl.Scram.Enabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "kafka",
+    "field": "Enabled",
+    "value": true
+  }
+}

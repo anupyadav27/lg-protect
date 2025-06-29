@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.14",
+  "Name": "Redundancy",
+  "Description": "Ensure capacity rebalance is enabled for Auto Scaling groups.",
+  "Function Name": "autoscaling_group_capacity_rebalance_enabled",
+  "clients": ["autoscaling"],
+  "functions": {
+    "autoscaling": {
+      "method": "describe_auto_scaling_groups",
+      "field_path": "AutoScalingGroups[].CapacityRebalance"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "autoscaling",
+    "field": "CapacityRebalance"
+  }
+}

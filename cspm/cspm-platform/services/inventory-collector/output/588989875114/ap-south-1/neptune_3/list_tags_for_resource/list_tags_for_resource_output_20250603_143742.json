@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "neptune",
+  "function": "list_tags_for_resource",
+  "timestamp": "2025-06-03T14:37:42.517125",
+  "error": "Missing required parameter: 'ResourceName'"
+}

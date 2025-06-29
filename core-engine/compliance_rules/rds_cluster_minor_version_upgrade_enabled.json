@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.13",
+  "Name": "RDS automatic minor version upgrades should be enabled",
+  "Description": "This control checks whether automatic minor version upgrades are enabled for RDS database clusters.",
+  "Function Name": "rds_cluster_minor_version_upgrade_enabled",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_clusters",
+      "field_path": "DBClusters[].AutoMinorVersionUpgrade"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "AutoMinorVersionUpgrade",
+    "value": true
+  }
+}

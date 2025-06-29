@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "DirectConnect.1",
+  "Name": "Direct Connect connections should have redundancy",
+  "Description": "This control checks whether AWS Direct Connect connections have redundancy configured.",
+  "Function Name": "directconnect_connection_redundancy",
+  "clients": ["directconnect"],
+  "functions": {
+    "directconnect": {
+      "method": "describe_connections",
+      "field_path": "connections[].connectionState"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "directconnect",
+    "field": "connectionState",
+    "value": "available"
+  }
+}

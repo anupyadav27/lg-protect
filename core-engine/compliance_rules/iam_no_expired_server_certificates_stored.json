@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.19",
+  "Name": "IAM No Expired Server Certificates Stored",
+  "Description": "Ensure that all the expired SSL/TLS certificates stored in AWS IAM are removed",
+  "Function Name": "iam_no_expired_server_certificates_stored",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_server_certificates",
+      "field_path": "ServerCertificateMetadataList[].Expiration"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "Expiration"
+  }
+}

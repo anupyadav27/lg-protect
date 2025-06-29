@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "backup",
+  "function": "list_backup_selections",
+  "timestamp": "2025-06-03T14:37:43.590076",
+  "error": "Missing required parameter: 'BackupPlanId'"
+}

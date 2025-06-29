@@ -1,0 +1,17 @@
+{
+  "NetworkInterfaces": [],
+  "ResponseMetadata": {
+    "RequestId": "c95bb46c-d2b8-443f-b019-4a85bdd1fee3",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "c95bb46c-d2b8-443f-b019-4a85bdd1fee3",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "240",
+      "date": "Tue, 03 Jun 2025 14:42:49 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

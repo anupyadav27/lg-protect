@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.22",
+  "Name": "Segregation of Networks",
+  "Description": "Ensure AWS Lambda functions are configured in VPCs spanning multiple availability zones.",
+  "Function Name": "awslambda_function_vpc_multi_az",
+  "clients": ["lambda", "ec2"],
+  "functions": {
+    "lambda": {
+      "method": "list_functions",
+      "field_path": "Functions[].VpcConfig.SubnetIds"
+    },
+    "ec2": {
+      "method": "describe_subnets",
+      "field_path": "Subnets[].AvailabilityZone"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "ec2",
+    "field": "AvailabilityZone"
+  }
+}

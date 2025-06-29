@@ -1,0 +1,73 @@
+{
+  "ResponseMetadata": {
+    "RequestId": "4SBXTYZ070PT2Q3B",
+    "HostId": "M0ha3kSlDpzA8N7rqJ7kP+Mw9+AyRamZgtmtE2grqddm3ec68IXNCAECUH2Y+VDNYFUc6aWoMhc=",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amz-id-2": "M0ha3kSlDpzA8N7rqJ7kP+Mw9+AyRamZgtmtE2grqddm3ec68IXNCAECUH2Y+VDNYFUc6aWoMhc=",
+      "x-amz-request-id": "4SBXTYZ070PT2Q3B",
+      "date": "Tue, 03 Jun 2025 14:45:17 GMT",
+      "content-type": "application/xml",
+      "transfer-encoding": "chunked",
+      "server": "AmazonS3"
+    },
+    "RetryAttempts": 0
+  },
+  "Buckets": [
+    {
+      "Name": "anup-backup",
+      "CreationDate": "2025-02-21T05:07:39+00:00"
+    },
+    {
+      "Name": "aws-codestar-us-east-1-588989875114-codestar-pipe",
+      "CreationDate": "2025-02-21T05:07:40+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-ap-south-1-588989875114",
+      "CreationDate": "2025-02-21T05:07:42+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-ap-southeast-1-588989875114",
+      "CreationDate": "2025-02-21T05:07:44+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-us-east-1-588989875114",
+      "CreationDate": "2025-02-21T05:07:46+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-us-west-2-588989875114",
+      "CreationDate": "2025-02-21T05:07:50+00:00"
+    },
+    {
+      "Name": "lgtech-website",
+      "CreationDate": "2025-02-21T05:07:53+00:00"
+    },
+    {
+      "Name": "my-bucket-x2nc4n2t",
+      "CreationDate": "2024-11-13T11:15:27+00:00"
+    },
+    {
+      "Name": "nmbackupanup",
+      "CreationDate": "2024-11-08T02:58:30+00:00"
+    },
+    {
+      "Name": "sytestspeechtotext",
+      "CreationDate": "2024-11-10T10:31:16+00:00"
+    },
+    {
+      "Name": "textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00",
+      "CreationDate": "2024-09-19T13:47:29+00:00"
+    },
+    {
+      "Name": "www.c-and-c.in",
+      "CreationDate": "2025-02-21T05:08:09+00:00"
+    },
+    {
+      "Name": "www.lgtech.in",
+      "CreationDate": "2025-02-21T05:08:12+00:00"
+    }
+  ],
+  "Owner": {
+    "ID": "4bd91a63d87f2e3c1873469bf5b05c26b53b462b7e66af6f366d45010344644f"
+  }
+}

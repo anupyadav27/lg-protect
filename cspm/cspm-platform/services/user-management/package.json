@@ -1,0 +1,21 @@
+{
+  "name": "user-management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "description": "The User Management service handles user-related operations, including authentication, role-based access control (RBAC), and user management.",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

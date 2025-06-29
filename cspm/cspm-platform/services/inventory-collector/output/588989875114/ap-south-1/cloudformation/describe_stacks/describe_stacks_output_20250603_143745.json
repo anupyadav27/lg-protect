@@ -1,0 +1,39 @@
+{
+  "Stacks": [
+    {
+      "StackId": "arn:aws:cloudformation:ap-south-1:588989875114:stack/aws-cloud9-test-6fb4667529e04c7d848977e640987df5/bae844e0-da38-11eb-acd6-02ed63f242ec",
+      "StackName": "aws-cloud9-test-6fb4667529e04c7d848977e640987df5",
+      "CreationTime": "2021-07-01T06:51:15.415000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [],
+      "Tags": [
+        {
+          "Key": "aws:cloud9:environment",
+          "Value": "6fb4667529e04c7d848977e640987df5"
+        },
+        {
+          "Key": "aws:cloud9:owner",
+          "Value": "AIDAYSIUIIOVDIOIEG2ZJ"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "6b36f4c6-a840-4e3b-b679-856e748157b4",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "6b36f4c6-a840-4e3b-b679-856e748157b4",
+      "date": "Tue, 03 Jun 2025 14:37:58 GMT",
+      "content-type": "text/xml",
+      "content-length": "1287",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

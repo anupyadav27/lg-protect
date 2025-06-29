@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.5.6",
+  "Name": "Contact With Special Interest Groups",
+  "Description": "The organisation should establish and maintain contact with special interest groups or other specialist security forums and professional associations.",
+  "Function Name": "account_maintain_different_contact_details_to_security_billing_and_operations",
+  "clients": ["organizations", "support"],
+  "functions": {
+    "organizations": {
+      "method": "describe_account",
+      "field_path": "Account[].Id"
+    },
+    "support": {
+      "method": "describe_contact",
+      "field_path": "Contact[].email"
+    }
+  },
+  "evaluation": {
+    "type": "equal",
+    "source_client": "organizations",
+    "target_client": "support",
+    "field": "email"
+  }
+}

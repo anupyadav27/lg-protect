@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.16",
+  "Name": "Monitoring Activities",
+  "Description": "Networks, systems and applications should be monitored for anomalous behaviour and appropriate actions taken to evaluate potential information security incidents.",
+  "Function Name": "cloudtrail_multi_region_enabled_logging_management_events",
+  "clients": ["cloudtrail"],
+  "functions": {
+    "cloudtrail": {
+      "method": "get_event_selectors",
+      "field_path": "EventSelectors[].ManagementEvent"
+    }
+  },
+  "evaluation": {
+    "type": "equal",
+    "source_client": "cloudtrail",
+    "field": "ManagementEvent",
+    "value": true
+  }
+}

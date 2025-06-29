@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.1",
+  "Name": "SNS Topics Accessibility",
+  "Description": "Ensure SNS topics are not publicly accessible.",
+  "Function Name": "sns_topics_not_publicly_accessible",
+  "clients": ["sns"],
+  "functions": {
+    "sns": {
+      "method": "get_topic_attributes",
+      "field_path": "Attributes.Policy"
+    }
+  },
+  "evaluation": {
+    "type": "not exists",
+    "source_client": "sns",
+    "field": "Policy"
+  }
+}

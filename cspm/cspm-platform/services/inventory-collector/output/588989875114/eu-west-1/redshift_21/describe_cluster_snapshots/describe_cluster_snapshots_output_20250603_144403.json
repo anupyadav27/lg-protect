@@ -1,0 +1,14 @@
+{
+  "Snapshots": [],
+  "ResponseMetadata": {
+    "RequestId": "1ed358af-60ef-4485-9010-8be2b95dc69f",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "1ed358af-60ef-4485-9010-8be2b95dc69f",
+      "content-type": "text/xml",
+      "content-length": "320",
+      "date": "Tue, 03 Jun 2025 14:44:16 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

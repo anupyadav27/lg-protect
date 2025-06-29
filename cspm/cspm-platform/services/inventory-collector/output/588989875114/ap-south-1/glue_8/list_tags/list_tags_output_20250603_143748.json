@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "glue",
+  "function": "list_tags",
+  "timestamp": "2025-06-03T14:37:48.294107",
+  "error": "Function list_tags not found on boto3 client"
+}

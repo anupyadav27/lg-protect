@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.20",
+  "Name": "RDS DB instances should be configured to copy tags to snapshots",
+  "Description": "This control checks whether RDS DB instances are configured to copy all tags to snapshots when the snapshots are created.",
+  "Function Name": "rds_instance_event_subscription_security_groups",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_event_subscriptions",
+      "field_path": "EventSubscriptionsList[].EventCategoriesList[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "EventCategoriesList",
+    "value": "security group"
+  }
+}

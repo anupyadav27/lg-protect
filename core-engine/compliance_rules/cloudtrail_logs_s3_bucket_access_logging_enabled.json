@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "3.4",
+  "Name": "",
+  "Description": "Ensure that server access logging is enabled on the CloudTrail S3 bucket",
+  "Function Name": "cloudtrail_logs_s3_bucket_access_logging_enabled",
+  "clients": ["cloudtrail", "s3"],
+  "functions": {
+    "cloudtrail": {
+      "method": "describe_trails",
+      "field_path": "trailList[].S3BucketName"
+    },
+    "s3": {
+      "method": "get_bucket_logging",
+      "field_path": "LoggingEnabled.TargetBucket"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "s3",
+    "field": "TargetBucket"
+  }
+}

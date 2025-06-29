@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ecr",
+  "function": "is_artifact_scannable",
+  "timestamp": "2025-06-03T14:37:42.581920",
+  "error": "Function is_artifact_scannable not found on boto3 client"
+}

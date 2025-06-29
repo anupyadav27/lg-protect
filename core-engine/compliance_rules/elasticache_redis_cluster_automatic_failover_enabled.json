@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ElastiCache.3",
+  "Name": "ElastiCache for Redis replication groups should have automatic failover enabled",
+  "Description": "This control checks whether ElastiCache for Redis replication groups have automatic failover enabled.",
+  "Function Name": "elasticache_redis_cluster_automatic_failover_enabled",
+  "clients": ["elasticache"],
+  "functions": {
+    "elasticache": {
+      "method": "describe_replication_groups",
+      "field_path": "ReplicationGroups[].AutomaticFailover"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elasticache",
+    "field": "AutomaticFailover",
+    "value": "enabled"
+  }
+}

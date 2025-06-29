@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Neptune.4",
+  "Name": "Neptune DB cluster snapshots should be encrypted",
+  "Description": "This control checks whether Neptune DB cluster snapshots are encrypted.",
+  "Function Name": "neptune_cluster_snapshot_encrypted",
+  "clients": ["neptune"],
+  "functions": {
+    "neptune": {
+      "method": "describe_db_cluster_snapshots",
+      "field_path": "DBClusterSnapshots[].StorageEncrypted"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "neptune",
+    "field": "StorageEncrypted",
+    "value": true
+  }
+}

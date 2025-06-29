@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "codebuild",
+  "function": "batch_get_projects",
+  "timestamp": "2025-06-03T14:37:49.200533",
+  "error": "Missing required parameter: 'names'"
+}

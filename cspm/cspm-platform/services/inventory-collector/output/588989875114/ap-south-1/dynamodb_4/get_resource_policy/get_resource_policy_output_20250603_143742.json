@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "dynamodb",
+  "function": "get_resource_policy",
+  "timestamp": "2025-06-03T14:37:41.935848",
+  "error": "Missing required parameter: 'ResourceArn'"
+}

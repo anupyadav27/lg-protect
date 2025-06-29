@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "ELBv2 Deletion Protection",
+  "Description": "Ensure ELBv2 deletion protection is enabled to prevent accidental deletion.",
+  "Function Name": "elbv2_deletion_protection",
+  "clients": ["elbv2"],
+  "functions": {
+    "elbv2": {
+      "method": "describe_load_balancers",
+      "field_path": "LoadBalancers[].DeletionProtectionEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "elbv2",
+    "field": "DeletionProtectionEnabled",
+    "expected_value": true
+  }
+}

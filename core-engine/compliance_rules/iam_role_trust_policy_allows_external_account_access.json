@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.28",
+  "Name": "IAM Role Trust Policy Allows External Account Access",
+  "Description": "Ensure IAM role trust policies do not allow access from external accounts to maintain security.",
+  "Function Name": "iam_role_trust_policy_allows_external_account_access",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "get_role",
+      "field_path": "Role.AssumeRolePolicyDocument.Statement[].Principal.AWS"
+    }
+  },
+  "evaluation": {
+    "type": "find",
+    "source_client": "iam",
+    "field": "Principal.AWS",
+    "expected_value": "arn:aws:iam::123456789012:root"
+  }
+}

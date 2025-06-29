@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.10.8",
+  "Name": "Patch Management",
+  "Description": "Ensure AWS Lambda functions use supported runtimes.",
+  "Function Name": "awslambda_function_using_supported_runtimes",
+  "clients": ["lambda"],
+  "functions": {
+    "lambda": {
+      "method": "list_functions",
+      "field_path": "Functions[].Runtime"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "lambda",
+    "field": "Runtime"
+  }
+}

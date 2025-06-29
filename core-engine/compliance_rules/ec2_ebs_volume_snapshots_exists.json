@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EC2.25",
+  "Name": "Amazon EC2 instances should use IMDSv2",
+  "Description": "This control checks whether your EC2 instances require the use of Instance Metadata Service Version 2 (IMDSv2).",
+  "Function Name": "ec2_ebs_volume_snapshots_exists",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_snapshots",
+      "field_path": "Snapshots[].VolumeId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "ec2",
+    "field": "VolumeId"
+  }
+}

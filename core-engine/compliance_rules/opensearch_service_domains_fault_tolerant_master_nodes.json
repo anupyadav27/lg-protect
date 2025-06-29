@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "OpenSearch.3",
+  "Name": "OpenSearch domains should have at least three data nodes",
+  "Description": "This control checks whether OpenSearch domains are configured with at least three data nodes and zoneAwarenessEnabled is true.",
+  "Function Name": "opensearch_service_domains_fault_tolerant_master_nodes",
+  "clients": ["opensearch"],
+  "functions": {
+    "opensearch": {
+      "method": "describe_domains",
+      "field_path": "DomainStatusList[].ClusterConfig.MasterNodeCount"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "opensearch",
+    "field": "MasterNodeCount",
+    "value": 3
+  }
+}

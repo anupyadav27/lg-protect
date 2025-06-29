@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudtrail",
+  "function": "get_event_selectors",
+  "timestamp": "2025-06-03T14:37:44.637011",
+  "error": "Missing required parameter: 'TrailName'"
+}

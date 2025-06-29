@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EKS.2",
+  "Name": "EKS cluster endpoint should not be publicly accessible",
+  "Description": "This control checks whether Amazon EKS cluster endpoints are publicly accessible.",
+  "Function Name": "eks_cluster_private_nodes_enabled",
+  "clients": ["eks"],
+  "functions": {
+    "eks": {
+      "method": "describe_cluster",
+      "field_path": "cluster.resourcesVpcConfig.endpointPrivateAccess"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "eks",
+    "field": "endpointPrivateAccess",
+    "value": true
+  }
+}

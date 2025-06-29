@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "guardduty",
+  "function": "list_findings",
+  "timestamp": "2025-06-03T14:37:47.506645",
+  "error": "Missing required parameter: 'DetectorId'"
+}

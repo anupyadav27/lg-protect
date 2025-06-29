@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "3.7.1.2",
+  "Name": "acm",
+  "Description": "Checks if RSA certificates managed by AWS Certificate Manager (ACM) have a key length of at least '2048' bits",
+  "Function Name": "acm_certificates_with_secure_key_algorithms",
+  "clients": ["acm"],
+  "functions": {
+    "acm": {
+      "method": "list_certificates",
+      "field_path": "CertificateSummaryList[].CertificateArn"
+    },
+    "acm": {
+      "method": "describe_certificate",
+      "field_path": "Certificate[].KeyAlgorithm"
+    }
+  },
+  "evaluation": {
+    "type": "equal",
+    "source_client": "acm",
+    "field": "KeyAlgorithm",
+    "value": "RSA_2048"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "cm-8",
+  "Name": "SSM Managed Compliant Patching",
+  "Description": "The organization develops and documents an inventory of information system components that accurately reflects the current information system, includes all components within the authorization boundary of the information system, is at the level of granularity deemed necessary for tracking and reporting and reviews and updates the information system component inventory.",
+  "Function Name": "ssm_managed_compliant_patching",
+  "clients": ["ssm"],
+  "functions": {
+    "ssm": {
+      "method": "describe_instance_patch_states",
+      "field_path": "InstancePatchStates[].Operation"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "ssm",
+    "field": "Operation",
+    "expected_value": "Install"
+  }
+}

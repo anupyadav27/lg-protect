@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudtrail",
+  "function": "get_insight_selectors",
+  "timestamp": "2025-06-03T14:37:46.403131",
+  "error": "An error occurred (InvalidParameterCombinationException) when calling the GetInsightSelectors operation: You must specify either a trail or an event data store."
+}

@@ -1,0 +1,56 @@
+{
+  "data": {
+    "ResponseMetadata": {
+      "RequestId": "656ddad7-76af-4e73-ae95-6b142676f562",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "date": "Fri, 27 Jun 2025 12:20:14 GMT",
+        "content-type": "application/json",
+        "content-length": "205",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "656ddad7-76af-4e73-ae95-6b142676f562",
+        "access-control-allow-origin": "*",
+        "x-amz-apigw-id": "M0rjvEGIIAMEc5g=",
+        "x-amzn-trace-id": "Root=1-685e8c7d-31f84b5f2ddf64743fe5b8cc"
+      },
+      "RetryAttempts": 0
+    },
+    "ContactInformation": {
+      "AddressLine1": "cyber park",
+      "City": "Gurgaon",
+      "CompanyName": "LG Tech",
+      "CountryCode": "IN",
+      "FullName": "Anup",
+      "PhoneNumber": "9871585677",
+      "PostalCode": "201301",
+      "StateOrRegion": "Haryana"
+    }
+  },
+  "policy": {
+    "details": {
+      "Compliance Name": "cis_4.0_aws",
+      "ID": "1.2",
+      "Name": "",
+      "Description": "Ensure security contact information is registered",
+      "Function Name": "account_security_contact_information_is_registered",
+      "clients": [
+        "support"
+      ],
+      "functions": {
+        "support": {
+          "method": "describe_cases",
+          "field_path": "cases[].contact"
+        }
+      }
+    },
+    "evaluation": {
+      "type": "exists",
+      "source_client": "support",
+      "field_path": "cases[].contact",
+      "expected_value": null,
+      "allowed_values": [],
+      "min_value": null,
+      "threshold": null
+    }
+  }
+}

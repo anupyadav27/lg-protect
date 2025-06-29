@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.5",
+  "Name": "IAM Root MFA Enabled",
+  "Description": "Ensure MFA is enabled for the root account",
+  "Function Name": "iam_root_mfa_enabled",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "get_account_summary",
+      "field_path": "SummaryMap.AccountMFAEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "iam",
+    "field": "AccountMFAEnabled",
+    "value": 1
+  }
+}

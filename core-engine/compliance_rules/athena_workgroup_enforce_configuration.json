@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.7.1",
+  "Name": "Encryption Policy Enforcement",
+  "Description": "Ensure encryption policies are enforced for Athena workgroups.",
+  "Function Name": "athena_workgroup_enforce_configuration",
+  "clients": ["athena"],
+  "functions": {
+    "athena": {
+      "method": "list_work_groups",
+      "field_path": "WorkGroups[].Name"
+    },
+    "athena": {
+      "method": "get_work_group",
+      "field_path": "WorkGroup.Configuration.EnforceWorkGroupConfiguration"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "athena",
+    "field": "EnforceWorkGroupConfiguration"
+  }
+}

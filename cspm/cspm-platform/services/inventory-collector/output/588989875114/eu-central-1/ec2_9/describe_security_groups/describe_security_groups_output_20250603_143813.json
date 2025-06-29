@@ -1,0 +1,452 @@
+{
+  "SecurityGroups": [
+    {
+      "GroupId": "sg-06a780f3d08849adf",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Created by Amazon WorkSpaces",
+          "Value": "Amazon WorkSpaces"
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-06a780f3d08849adf",
+      "OwnerId": "588989875114",
+      "GroupName": "d-9967277cff_workspacesMembers",
+      "Description": "Amazon WorkSpaces Security Group",
+      "IpPermissions": []
+    },
+    {
+      "GroupId": "sg-04f81f46c61eff06f",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-04f81f46c61eff06f",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-1",
+      "Description": "launch-wizard-1 created 2020-10-01T16:29:16.616+05:30",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0c9c275a642a91538",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [
+            {
+              "CidrIpv6": "::/0"
+            }
+          ],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-01517fd0d3dd860e6",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-0c9c275a642a91538",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-0c9c275a642a91538"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0ffccee4b04eab5e4",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-0ffccee4b04eab5e4",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-3",
+      "Description": "launch-wizard-3 created 2021-03-08T22:17:30.712+05:30",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 3389,
+          "ToPort": 3389,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "Description": "",
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-08f86a638f375afa5",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-08f86a638f375afa5",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-6",
+      "Description": "launch-wizard-6 created 2022-01-20T22:21:01.175+05:30",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-09ea356f51e4294bc",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-09ea356f51e4294bc",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-4",
+      "Description": "launch-wizard-4 created 2021-08-08T22:04:07.296+05:30",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0e8deafcf7d84f5db",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-0e8deafcf7d84f5db",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-2",
+      "Description": "launch-wizard-2 created 2021-02-20T22:22:50.141+05:30",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 80,
+          "ToPort": 80,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 3389,
+          "ToPort": 3389,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 443,
+          "ToPort": 443,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-94d22cfd",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-94d22cfd",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 80,
+          "ToPort": 80,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "Description": "",
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [
+            {
+              "Description": "",
+              "CidrIpv6": "::/0"
+            }
+          ],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-94d22cfd"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0963a4ed664d409a8",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-0963a4ed664d409a8",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-5",
+      "Description": "launch-wizard-5 created 2021-08-11T21:56:16.269+05:30",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0d73cc82ef3721d99",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-ef37c686",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-0d73cc82ef3721d99",
+      "OwnerId": "588989875114",
+      "GroupName": "web-se-1766",
+      "Description": "2019-06-13T15:06:02.706Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 80,
+          "ToPort": 80,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-04a42ee868d58ee7d",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-037fe3f3f972c1c70",
+      "SecurityGroupArn": "arn:aws:ec2:eu-central-1:588989875114:security-group/sg-04a42ee868d58ee7d",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-04a42ee868d58ee7d"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "019eced6-f1d1-49de-93dd-906bb8d87b41",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "019eced6-f1d1-49de-93dd-906bb8d87b41",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "date": "Tue, 03 Jun 2025 14:38:26 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

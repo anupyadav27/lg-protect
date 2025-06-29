@@ -1,0 +1,27 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.1",
+  "Name": "API Gateway Public Access",
+  "Description": "Ensure API Gateway public access is properly secured to protect information accessible via user endpoint devices.",
+  "Function Name": "apigateway_restapi_public",
+  "clients": ["apigateway"],
+  "functions": {
+    "apigateway": {
+      "method": "get_rest_apis",
+      "field_path": "items[].id"
+    },
+    "apigateway": {
+      "method": "get_resources",
+      "field_path": "item[].path"
+    },
+    "apigateway": {
+      "method": "get_method",
+      "field_path": "item[].authorizationType"
+    }
+  },
+  "evaluation": {
+    "type": "not exists",
+    "source_client": "apigateway",
+    "field": "authorizationType"
+  }
+}

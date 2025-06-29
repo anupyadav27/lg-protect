@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "MSK.3",
+  "Name": "MSK clusters should have mutual TLS authentication enabled",
+  "Description": "This control checks whether Amazon MSK clusters have mutual TLS authentication enabled.",
+  "Function Name": "kafka_cluster_mutual_tls_authentication_enabled",
+  "clients": ["kafka"],
+  "functions": {
+    "kafka": {
+      "method": "describe_cluster",
+      "field_path": "ClusterInfo.ClientAuthentication.Tls.CertificateAuthorityArnList[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "kafka",
+    "field": "CertificateAuthorityArnList"
+  }
+}

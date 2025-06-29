@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "S3.11",
+  "Name": "S3 buckets should have event notifications enabled",
+  "Description": "This control checks whether S3 Event Notifications are enabled on an S3 bucket.",
+  "Function Name": "s3_bucket_object_versioning",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_versioning",
+      "field_path": "Status"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "s3",
+    "field": "Status",
+    "value": "Enabled"
+  }
+}

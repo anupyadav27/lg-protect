@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Backup Plan Protection for DynamoDB Table",
+  "Description": "Ensure DynamoDB tables are protected by a backup plan to prevent data loss.",
+  "Function Name": "dynamodb_table_protected_by_backup_plan",
+  "clients": ["dynamodb", "backup"],
+  "functions": {
+    "dynamodb": {
+      "method": "describe_table",
+      "field_path": "Table[].TableName"
+    },
+    "backup": {
+      "method": "list_backup_plans",
+      "field_path": "BackupPlans[].ResourceTypes"
+    }
+  },
+  "evaluation": {
+    "type": "subset",
+    "source_client": "dynamodb",
+    "target_client": "backup",
+    "field": "TableName"
+  }
+}

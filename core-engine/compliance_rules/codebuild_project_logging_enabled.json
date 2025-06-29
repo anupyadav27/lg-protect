@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Logging",
+  "Description": "Logs that record activities, exceptions, faults and other relevant events should be produced, stored, protected and analysed.",
+  "Function Name": "codebuild_project_logging_enabled",
+  "clients": ["codebuild"],
+  "functions": {
+    "codebuild": {
+      "method": "list_projects",
+      "field_path": "projects[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "codebuild",
+    "field": "projects"
+  }
+}

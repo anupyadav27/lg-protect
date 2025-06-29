@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "Kafka Cluster Encryption at Rest Uses CMK",
+  "Description": "Rules for the effective use of cryptography, including cryptographic key management, should be defined and implemented.",
+  "Function Name": "kafka_cluster_encryption_at_rest_uses_cmk",
+  "clients": ["kafka"],
+  "functions": {
+    "kafka": {
+      "method": "describe_cluster",
+      "field_path": "ClusterInfo.EncryptionInfo.EncryptionAtRest.DataVolumeKMSKeyId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "kafka",
+    "field": "DataVolumeKMSKeyId"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ec2",
+  "function": "add_network_interfaces_to_security_groups",
+  "timestamp": "2025-06-03T14:38:34.268235",
+  "error": "Function add_network_interfaces_to_security_groups not found on boto3 client"
+}

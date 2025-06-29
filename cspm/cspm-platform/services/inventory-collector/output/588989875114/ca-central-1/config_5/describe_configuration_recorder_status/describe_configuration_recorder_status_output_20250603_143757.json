@@ -1,0 +1,15 @@
+{
+  "ConfigurationRecordersStatus": [],
+  "ResponseMetadata": {
+    "RequestId": "39dd957d-3cad-4802-9c43-bd6115287425",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "39dd957d-3cad-4802-9c43-bd6115287425",
+      "strict-transport-security": "max-age=86400",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "35",
+      "date": "Tue, 03 Jun 2025 14:38:10 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

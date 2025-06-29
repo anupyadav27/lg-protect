@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EC2.6",
+  "Name": "VPC flow logging should be enabled in all VPCs",
+  "Description": "This control checks whether Amazon Virtual Private Cloud flow logging is enabled in VPCs.",
+  "Function Name": "ec2_instance_profile_attached",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_instances",
+      "field_path": "Reservations[].Instances[].IamInstanceProfile.Arn"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "ec2",
+    "field": "Arn"
+  }
+}

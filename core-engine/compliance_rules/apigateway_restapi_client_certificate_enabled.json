@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "fedramp_moderate_revision_4_aws",
+  "ID": "sc-23",
+  "Name": "API Gateway Client Certificate Enabled",
+  "Description": "Ensure API Gateway client certificates are enabled to protect session authenticity.",
+  "Function Name": "apigateway_restapi_client_certificate_enabled",
+  "clients": ["apigateway"],
+  "functions": {
+    "apigateway": {
+      "method": "get_rest_apis",
+      "field_path": "items[].id"
+    },
+    "apigateway": {
+      "method": "get_stage",
+      "field_path": "item[].clientCertificateId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "apigateway",
+    "field": "clientCertificateId"
+  }
+}

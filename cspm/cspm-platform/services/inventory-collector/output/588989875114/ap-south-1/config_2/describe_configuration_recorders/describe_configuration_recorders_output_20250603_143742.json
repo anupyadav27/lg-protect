@@ -1,0 +1,33 @@
+{
+  "ConfigurationRecorders": [
+    {
+      "arn": "arn:aws:config:ap-south-1:588989875114:configuration-recorder/default/r8wyaznqvgabsc7x",
+      "name": "default",
+      "roleARN": "arn:aws:iam::588989875114:role/aws-service-role/config.amazonaws.com/AWSServiceRoleForConfig",
+      "recordingGroup": {
+        "allSupported": true,
+        "includeGlobalResourceTypes": false,
+        "resourceTypes": [],
+        "exclusionByResourceTypes": {
+          "resourceTypes": []
+        },
+        "recordingStrategy": {
+          "useOnly": "ALL_SUPPORTED_RESOURCE_TYPES"
+        }
+      },
+      "recordingScope": "PAID"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "008d9f38-e6d9-4671-89d9-0e41934b1c5e",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "008d9f38-e6d9-4671-89d9-0e41934b1c5e",
+      "strict-transport-security": "max-age=86400",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "475",
+      "date": "Tue, 03 Jun 2025 14:37:55 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

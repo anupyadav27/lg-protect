@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.1",
+  "Name": "RDS snapshots should be private",
+  "Description": "This control checks whether Amazon RDS DB snapshots are public. This control is intended for RDS DB instances. It can also return findings for snapshots of Aurora DB instances, Neptune DB instances, and Amazon DocumentDB instances.",
+  "Function Name": "rds_snapshots_public_access",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_snapshots",
+      "field_path": "DBSnapshots[].AttributeValues[]"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "rds",
+    "field": "AttributeValues",
+    "value": "all"
+  }
+}

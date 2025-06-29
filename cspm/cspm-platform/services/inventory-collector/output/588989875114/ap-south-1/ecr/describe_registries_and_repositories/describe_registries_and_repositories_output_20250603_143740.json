@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ecr",
+  "function": "describe_registries_and_repositories",
+  "timestamp": "2025-06-03T14:37:40.015883",
+  "error": "Function describe_registries_and_repositories not found on boto3 client"
+}

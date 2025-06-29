@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "ens_rd2022_aws",
+  "ID": "op.exp.8.r4.aws.ct.3",
+  "Name": "",
+  "Description": "Control de acceso",
+  "Function Name": "cloudtrail_bucket_requires_mfa_delete",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_versioning",
+      "field_path": "VersioningConfiguration.MFADelete"
+    }
+  },
+  "evaluation": {
+    "type": "equal",
+    "source_client": "s3",
+    "field": "MFADelete",
+    "value": "Enabled"
+  }
+}

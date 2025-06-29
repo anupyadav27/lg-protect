@@ -1,0 +1,24 @@
+{
+  "ConfigurationRecordersStatus": [
+    {
+      "arn": "arn:aws:config:ap-south-1:588989875114:configuration-recorder/default/r8wyaznqvgabsc7x",
+      "name": "default",
+      "lastStartTime": "2019-08-18T09:23:52.486000+05:30",
+      "recording": true,
+      "lastStatus": "SUCCESS",
+      "lastStatusChangeTime": "2025-06-03T19:24:03.079000+05:30"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "83116072-a3fb-4a91-af92-bed5b3414fed",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "83116072-a3fb-4a91-af92-bed5b3414fed",
+      "strict-transport-security": "max-age=86400",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "261",
+      "date": "Tue, 03 Jun 2025 14:37:57 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "WebACLs": [],
+  "ResponseMetadata": {
+    "RequestId": "6a473b68-523e-41b3-8f2c-107e5f991f0a",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "6a473b68-523e-41b3-8f2c-107e5f991f0a",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "14",
+      "date": "Tue, 03 Jun 2025 14:55:34 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

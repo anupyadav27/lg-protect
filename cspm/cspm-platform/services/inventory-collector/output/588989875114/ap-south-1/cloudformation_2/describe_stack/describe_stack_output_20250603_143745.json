@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudformation",
+  "function": "describe_stack",
+  "timestamp": "2025-06-03T14:37:45.295709",
+  "error": "Function describe_stack not found on boto3 client"
+}

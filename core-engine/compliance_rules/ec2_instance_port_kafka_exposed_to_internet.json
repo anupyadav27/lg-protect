@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EC2.19",
+  "Name": "Security groups should not allow unrestricted access to ports with high risk",
+  "Description": "This control checks whether unrestricted incoming traffic for the security groups is accessible to the specified ports that have the highest risk.",
+  "Function Name": "ec2_instance_port_kafka_exposed_to_internet",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].IpPermissions[].FromPort"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "ec2",
+    "field": "FromPort",
+    "value": 9092
+  }
+}

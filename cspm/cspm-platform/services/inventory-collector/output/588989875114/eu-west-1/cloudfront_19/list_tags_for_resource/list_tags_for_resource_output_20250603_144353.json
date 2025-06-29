@@ -1,0 +1,29 @@
+{
+  "ResponseMetadata": {
+    "RequestId": "7fa615bf-0401-468a-988c-310653560d1a",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "7fa615bf-0401-468a-988c-310653560d1a",
+      "content-type": "text/xml",
+      "content-length": "276",
+      "date": "Tue, 03 Jun 2025 14:44:06 GMT"
+    },
+    "RetryAttempts": 0
+  },
+  "Tags": {
+    "Items": [
+      {
+        "Key": "Environment",
+        "Value": "prod"
+      },
+      {
+        "Key": "Name",
+        "Value": "noproject-prod-lgtech.in"
+      },
+      {
+        "Key": "Project",
+        "Value": "noproject"
+      }
+    ]
+  }
+}

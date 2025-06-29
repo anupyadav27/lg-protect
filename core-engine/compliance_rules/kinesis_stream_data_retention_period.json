@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.25",
+  "Name": "Kinesis Stream Data Retention Period",
+  "Description": "Ensure Kinesis streams have a data retention period configured to meet compliance requirements.",
+  "Function Name": "kinesis_stream_data_retention_period",
+  "clients": ["kinesis"],
+  "functions": {
+    "kinesis": {
+      "method": "describe_stream",
+      "field_path": "StreamDescription.RetentionPeriodHours"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "kinesis",
+    "field": "RetentionPeriodHours",
+    "expected_value": 24
+  }
+}

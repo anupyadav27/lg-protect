@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "organizations",
+  "function": "list_policies",
+  "timestamp": "2025-06-03T14:37:47.351190",
+  "error": "Missing required parameter: 'Filter'"
+}

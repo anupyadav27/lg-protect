@@ -1,0 +1,46 @@
+{
+  "CompositeAlarms": [],
+  "MetricAlarms": [
+    {
+      "AlarmName": "test_alarm",
+      "AlarmArn": "arn:aws:cloudwatch:ap-south-1:588989875114:alarm:test_alarm",
+      "AlarmConfigurationUpdatedTimestamp": "2018-08-15T11:35:22.019000+00:00",
+      "ActionsEnabled": true,
+      "OKActions": [
+        "arn:aws:sns:ap-south-1:588989875114:test_sns"
+      ],
+      "AlarmActions": [],
+      "InsufficientDataActions": [],
+      "StateValue": "INSUFFICIENT_DATA",
+      "StateReason": "Unchecked: Initial alarm creation",
+      "StateUpdatedTimestamp": "2018-08-15T11:35:22.019000+00:00",
+      "MetricName": "CPUCreditBalance",
+      "Namespace": "AWS/EC2",
+      "Statistic": "Average",
+      "Dimensions": [
+        {
+          "Name": "InstanceId",
+          "Value": "i-0435ad895e50d3f6c"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "DatapointsToAlarm": 1,
+      "Threshold": 50.0,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "TreatMissingData": "missing",
+      "StateTransitionedTimestamp": "2018-08-15T11:35:22.019000+00:00"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "8f7afba9-845f-43d1-a8ed-8a2cc10bcaa0",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "8f7afba9-845f-43d1-a8ed-8a2cc10bcaa0",
+      "content-type": "text/xml",
+      "content-length": "1738",
+      "date": "Tue, 03 Jun 2025 14:37:55 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

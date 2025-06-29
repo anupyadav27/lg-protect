@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.9.3",
+  "Name": "RDS Instance Copy Tags to Snapshots",
+  "Description": "정보시스템의 가용성과 데이터 무결성을 유지하기 위하여 백업 대상, 주기, 방법, 보관장소, 보관기간, 소산 등의 절차를 수립·이행하여야 한다. 아울러 사고 발생 시 적시에 복구할 수 있도록 관리하여야 한다.",
+  "Function Name": "rds_instance_copy_tags_to_snapshots",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].CopyTagsToSnapshot"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "rds",
+    "field": "CopyTagsToSnapshot",
+    "expected_value": true
+  }
+}

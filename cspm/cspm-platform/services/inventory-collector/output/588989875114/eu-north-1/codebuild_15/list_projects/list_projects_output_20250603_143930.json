@@ -1,0 +1,14 @@
+{
+  "projects": [],
+  "ResponseMetadata": {
+    "RequestId": "2f23c142-92c3-46dc-bea0-b9f801f5f039",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "2f23c142-92c3-46dc-bea0-b9f801f5f039",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "15",
+      "date": "Tue, 03 Jun 2025 14:39:44 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

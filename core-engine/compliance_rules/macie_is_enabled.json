@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Macie.1",
+  "Name": "Amazon Macie should be enabled",
+  "Description": "This control checks whether Amazon Macie is enabled in your AWS account.",
+  "Function Name": "macie_is_enabled",
+  "clients": ["macie2"],
+  "functions": {
+    "macie2": {
+      "method": "get_macie_session",
+      "field_path": "status"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "macie2",
+    "field": "status",
+    "value": "ENABLED"
+  }
+}

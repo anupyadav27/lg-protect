@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "s3",
+  "function": "get_bucket_policy",
+  "timestamp": "2025-06-03T14:37:42.555037",
+  "error": "Missing required parameter: 'Bucket'"
+}

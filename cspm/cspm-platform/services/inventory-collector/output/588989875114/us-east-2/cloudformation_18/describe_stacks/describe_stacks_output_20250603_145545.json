@@ -1,0 +1,65 @@
+{
+  "Stacks": [
+    {
+      "StackId": "arn:aws:cloudformation:us-east-2:588989875114:stack/ansible/0b3a10b0-8bbc-11ec-b6c1-0a5977010daa",
+      "StackName": "ansible",
+      "Parameters": [
+        {
+          "ParameterKey": "KeyName",
+          "ParameterValue": "ansible_test_ohio"
+        },
+        {
+          "ParameterKey": "NameOfService",
+          "ParameterValue": "ansible_inventory"
+        }
+      ],
+      "CreationTime": "2022-02-12T04:27:10.554000+00:00",
+      "RollbackConfiguration": {
+        "RollbackTriggers": []
+      },
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [],
+      "Outputs": [
+        {
+          "OutputKey": "LnPublicIpAddressInstance1",
+          "OutputValue": "3.17.171.200",
+          "Description": "The Public IP address for EC2 instances"
+        },
+        {
+          "OutputKey": "LnPublicIpAddressInstance2",
+          "OutputValue": "3.137.6.222",
+          "Description": "The Public IP address for EC2 instances"
+        },
+        {
+          "OutputKey": "LnPublicIpAddressLoadBalancer",
+          "OutputValue": "3.133.234.242",
+          "Description": "The Public IP address for EC2 instances"
+        },
+        {
+          "OutputKey": "WebsiteLink",
+          "OutputValue": "http://ec2-3-133-234-242.us-east-2.compute.amazonaws.com",
+          "Description": "The Public DNS for the EC2 Instance"
+        }
+      ],
+      "RoleARN": "arn:aws:iam::588989875114:role/ansible_cf_admin_role",
+      "Tags": [],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "46c2f95d-cbec-4ec3-b7f6-7b21f87b61bf",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "46c2f95d-cbec-4ec3-b7f6-7b21f87b61bf",
+      "date": "Tue, 03 Jun 2025 14:55:59 GMT",
+      "content-type": "text/xml",
+      "content-length": "2402",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

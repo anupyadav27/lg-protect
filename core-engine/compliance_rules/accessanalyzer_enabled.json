@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.2",
+  "Name": "Access Analyzer Enabled",
+  "Description": "Ensure IAM Access Analyzer is enabled for all regions.",
+  "Function Name": "accessanalyzer_enabled",
+  "clients": ["accessanalyzer"],
+  "functions": {
+    "accessanalyzer": {
+      "method": "list_analyzers",
+      "field_path": "analyzers[].name"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "accessanalyzer",
+    "field": "name"
+  }
+}

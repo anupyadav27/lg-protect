@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "neptune",
+  "function": "describe_db_cluster_snapshot_attributes",
+  "timestamp": "2025-06-03T14:37:44.371588",
+  "error": "Missing required parameter: 'DBClusterSnapshotIdentifier'"
+}

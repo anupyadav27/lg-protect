@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EventBridge.3",
+  "Name": "EventBridge custom event buses should not be publicly accessible",
+  "Description": "This control checks whether Amazon EventBridge custom event buses have a resource-based policy that prevents access from everyone.",
+  "Function Name": "eventbridge_bus_exposed",
+  "clients": ["events"],
+  "functions": {
+    "events": {
+      "method": "describe_event_bus",
+      "field_path": "Policy"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "events",
+    "field": "Policy",
+    "value": "*"
+  }
+}

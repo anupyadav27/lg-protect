@@ -1,0 +1,14 @@
+{
+  "ReplicationGroups": [],
+  "ResponseMetadata": {
+    "RequestId": "1777bc3a-d7c4-4759-b19b-8a25640d25a5",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "1777bc3a-d7c4-4759-b19b-8a25640d25a5",
+      "content-type": "text/xml",
+      "content-length": "335",
+      "date": "Tue, 03 Jun 2025 14:55:23 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

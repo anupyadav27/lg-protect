@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.15",
+  "Name": "Ensure IAM Users Receive Permissions Only Through Groups",
+  "Description": "IAM users are granted access permissions by attaching IAM policies to them.",
+  "Function Name": "iam_role_administratoraccess_policy",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_attached_role_policies",
+      "field_path": "AttachedPolicies[].PolicyName"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "PolicyName",
+    "value": "AdministratorAccess"
+  }
+}

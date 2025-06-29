@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "KMS.2",
+  "Name": "IAM principals should not have IAM inline policies that allow decryption actions on all KMS keys",
+  "Description": "This control checks whether the inline policies that are embedded in your IAM identities have Allow statements that use the AWS KMS decryption actions on all resources.",
+  "Function Name": "kms_cmk_not_multi_region",
+  "clients": ["kms"],
+  "functions": {
+    "kms": {
+      "method": "describe_key",
+      "field_path": "KeyMetadata.MultiRegion"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "kms",
+    "field": "MultiRegion",
+    "value": true
+  }
+}

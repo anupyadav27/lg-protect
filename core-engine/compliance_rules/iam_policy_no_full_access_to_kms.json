@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.9.4",
+  "Name": "로그 및 접속기록 관리",
+  "Description": "서버, 응용프로그램, 보안시스템, 네트워크시스템 등 정보시스템에 대한 사용자 접속기록, 시스템로그, 권한부여 내역 등의 로그유형, 보존기간, 보존방법 등을 정하고 위·변조, 도난, 분실되지 않도록 안전하게 보존·관리하여야 한다.",
+  "Function Name": "iam_policy_no_full_access_to_kms",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_policies",
+      "field_path": "Policies[].PolicyDocument"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "PolicyDocument",
+    "value": "kms:*"
+  }
+}

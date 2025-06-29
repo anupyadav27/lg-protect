@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Snapshot Limit for Directory Service",
+  "Description": "Ensure the number of snapshots for Directory Service does not exceed the defined limit to prevent resource exhaustion.",
+  "Function Name": "directoryservice_directory_snapshots_limit",
+  "clients": ["directoryservice"],
+  "functions": {
+    "directoryservice": {
+      "method": "describe_snapshots",
+      "field_path": "Snapshots[].SnapshotId"
+    }
+  },
+  "evaluation": {
+    "type": "count_limit",
+    "source_client": "directoryservice",
+    "field": "SnapshotId",
+    "limit": 100
+  }
+}

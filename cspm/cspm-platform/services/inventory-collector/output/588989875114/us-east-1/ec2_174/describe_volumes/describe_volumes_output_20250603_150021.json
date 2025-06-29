@@ -1,0 +1,44 @@
+{
+  "Volumes": [
+    {
+      "Iops": 3000,
+      "VolumeType": "gp3",
+      "MultiAttachEnabled": false,
+      "Throughput": 125,
+      "Operator": {
+        "Managed": false
+      },
+      "VolumeId": "vol-09744f2cb863fef44",
+      "Size": 10,
+      "SnapshotId": "snap-06b86ca4cf117a7c8",
+      "AvailabilityZone": "us-east-1a",
+      "State": "in-use",
+      "CreateTime": "2025-01-26T12:22:19.930000+00:00",
+      "Attachments": [
+        {
+          "DeleteOnTermination": true,
+          "VolumeId": "vol-09744f2cb863fef44",
+          "InstanceId": "i-010ba84c1f5730805",
+          "Device": "/dev/xvda",
+          "State": "attached",
+          "AttachTime": "2025-01-26T12:22:19+00:00"
+        }
+      ],
+      "Encrypted": false
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "6c6bbc2b-59eb-4b29-9155-9dd4537f3a3f",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "6c6bbc2b-59eb-4b29-9155-9dd4537f3a3f",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "926",
+      "date": "Tue, 03 Jun 2025 15:00:34 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

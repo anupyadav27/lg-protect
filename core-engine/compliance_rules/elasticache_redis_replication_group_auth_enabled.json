@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ElastiCache.6",
+  "Name": "ElastiCache for Redis replication groups should have Redis AUTH enabled",
+  "Description": "This control checks whether ElastiCache for Redis replication groups have Redis AUTH enabled.",
+  "Function Name": "elasticache_redis_replication_group_auth_enabled",
+  "clients": ["elasticache"],
+  "functions": {
+    "elasticache": {
+      "method": "describe_replication_groups",
+      "field_path": "ReplicationGroups[].AuthTokenEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elasticache",
+    "field": "AuthTokenEnabled",
+    "value": true
+  }
+}

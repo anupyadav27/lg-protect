@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "aws_well_architected_framework_security_pillar_aws",
+  "ID": "SEC05-BP02",
+  "Name": "API Gateway v2 Authorizers Enabled",
+  "Description": "Ensure authorizers are enabled for API Gateway v2 APIs to secure network topology and traffic.",
+  "Function Name": "apigatewayv2_api_authorizers_enabled",
+  "clients": ["apigateway"],
+  "functions": {
+    "apigateway": {
+      "method": "get_apis",
+      "field_path": "items[].id"
+    },
+    "apigateway": {
+      "method": "get_routes",
+      "field_path": "item[].authorizationType"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "apigateway",
+    "field": "authorizationType"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "analyzers": [
+    {
+      "arn": "arn:aws:access-analyzer:us-east-1:123456789012:analyzer/example-analyzer",
+      "name": "example-analyzer",
+      "type": "ACCOUNT",
+      "createdAt": "2023-10-01T12:00:00Z",
+      "lastResourceAnalyzed": "arn:aws:s3:::example-bucket",
+      "lastResourceAnalyzedAt": "2023-10-01T12:00:00Z",
+      "tags": {
+        "Environment": "Production",
+        "Owner": "TeamA"
+      },
+      "status": "ACTIVE",
+      "statusReason": {
+        "code": "AWS_SERVICE_ACCESS_DISABLED"
+      },
+      "configuration": {
+        "unusedAccess": {
+          "unusedAccessAge": 30,
+          "analysisRule": {
+            "exclusions": [
+              {
+                "accountIds": [
+                  "123456789012"
+                ],
+                "resourceTags": [
+                  {
+                    "Environment": "Development"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "internalAccess": {
+          "analysisRule": {
+            "inclusions": [
+              {
+                "accountIds": [
+                  "123456789012"
+                ],
+                "resourceTypes": [
+                  "AWS::S3::Bucket",
+                  "AWS::IAM::Role"
+                ],
+                "resourceArns": [
+                  "arn:aws:s3:::example-bucket",
+                  "arn:aws:iam::123456789012:role/example-role"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "nextToken": "exampleNextToken"
+}

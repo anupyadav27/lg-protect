@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: misconfiguration-checker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: misconfiguration-checker
+  template:
+    metadata:
+      labels:
+        app: misconfiguration-checker
+    spec:
+      containers:
+      - name: misconfiguration-checker
+        image: misconfiguration-checker:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: misconfiguration-checker
+spec:
+  selector:
+    app: misconfiguration-checker
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "codeartifact",
+  "function": "list_packages",
+  "timestamp": "2025-06-03T14:37:55.054978",
+  "error": "Function execution failed: An error occurred (ResourceNotFoundException) when calling the ListPackages operation: Repository not found. Repository 'example-repository' in domain 'default-compliance-domain' owned by account '588989875114' does not exist."
+}

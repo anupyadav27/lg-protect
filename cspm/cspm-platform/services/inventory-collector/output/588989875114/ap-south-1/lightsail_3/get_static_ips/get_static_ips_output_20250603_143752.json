@@ -1,0 +1,14 @@
+{
+  "staticIps": [],
+  "ResponseMetadata": {
+    "RequestId": "8cd207f6-3d03-434e-b31d-43070e04d9c1",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "8cd207f6-3d03-434e-b31d-43070e04d9c1",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "16",
+      "date": "Tue, 03 Jun 2025 14:38:05 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

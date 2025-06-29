@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "MQ.5",
+  "Name": "ActiveMQ brokers should use active/standby deployment for high availability",
+  "Description": "This control checks whether an Amazon MQ broker is configured to use active/standby deployment mode for high availability.",
+  "Function Name": "mq_broker_logging_enabled",
+  "clients": ["mq"],
+  "functions": {
+    "mq": {
+      "method": "describe_broker",
+      "field_path": "Logs.General"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "mq",
+    "field": "General",
+    "value": true
+  }
+}

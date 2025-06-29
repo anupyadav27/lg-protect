@@ -1,0 +1,585 @@
+{
+  "Events": [
+    {
+      "EventId": "c884455b-fabc-4c18-9bfa-51c68b3e8045",
+      "EventName": "DescribeImages",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:58:20+05:30",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.10\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:28:20Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeImages\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"executableBySet\":{},\"imagesSet\":{},\"ownersSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"726078f0-ba84-4c44-a998-237599eca39c\",\"eventID\":\"c884455b-fabc-4c18-9bfa-51c68b3e8045\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "62085332-aab5-4b5b-93bd-d0ae39d095ed",
+      "EventName": "DescribeNetworkInterfaces",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:58:02+05:30",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.10\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:28:02Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeNetworkInterfaces\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"networkInterfaceIdSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"f6843019-13a3-4ad2-b932-a7a28f563a28\",\"eventID\":\"62085332-aab5-4b5b-93bd-d0ae39d095ed\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "aa323ffe-fe2e-4d8f-b4f1-1ef8d92b64e1",
+      "EventName": "DescribeSnapshots",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:47+05:30",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.10\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:47Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeSnapshots\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"snapshotSet\":{},\"ownersSet\":{},\"sharedUsersSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"050ca058-d65d-44ff-af36-423ae6039484\",\"eventID\":\"aa323ffe-fe2e-4d8f-b4f1-1ef8d92b64e1\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "231231a4-0889-4d21-ad7d-8f9553d59965",
+      "EventName": "ListReportGroups",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:39+05:30",
+      "EventSource": "codebuild.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:39Z\",\"eventSource\":\"codebuild.amazonaws.com\",\"eventName\":\"ListReportGroups\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"df9de24b-0dfc-46b2-a07f-e6a07e057302\",\"eventID\":\"231231a4-0889-4d21-ad7d-8f9553d59965\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"codebuild.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "7165cad5-d25e-4785-a28d-eff46c617b7e",
+      "EventName": "DescribeClusterSnapshots",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:39+05:30",
+      "EventSource": "redshift.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:39Z\",\"eventSource\":\"redshift.amazonaws.com\",\"eventName\":\"DescribeClusterSnapshots\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"5eaecacb-94bb-4a25-9bf5-5ab28efc97b7\",\"eventID\":\"7165cad5-d25e-4785-a28d-eff46c617b7e\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"redshift.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "0adfa021-114d-4602-8b83-9991326a17ed",
+      "EventName": "ListProjects",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:37+05:30",
+      "EventSource": "codebuild.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:37Z\",\"eventSource\":\"codebuild.amazonaws.com\",\"eventName\":\"ListProjects\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"d2769ff6-73bf-44f0-a4fc-5757be71a47f\",\"eventID\":\"0adfa021-114d-4602-8b83-9991326a17ed\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"codebuild.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "7f8fdb56-d6dc-4ed3-87fe-5249077194dd",
+      "EventName": "DescribeClusters",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:37+05:30",
+      "EventSource": "redshift.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:37Z\",\"eventSource\":\"redshift.amazonaws.com\",\"eventName\":\"DescribeClusters\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"3fd516fc-d544-4984-be00-1523fcf7c592\",\"eventID\":\"7f8fdb56-d6dc-4ed3-87fe-5249077194dd\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"redshift.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "da887d54-b8b9-4398-8a2f-197ae72154c1",
+      "EventName": "ListGraphqlApis",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:37+05:30",
+      "EventSource": "appsync.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:37Z\",\"eventSource\":\"appsync.amazonaws.com\",\"eventName\":\"ListGraphqlApis\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"66a70d5c-9937-4fd6-a66b-7d43f7172bc4\",\"eventID\":\"da887d54-b8b9-4398-8a2f-197ae72154c1\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\"}"
+    },
+    {
+      "EventId": "50c2789a-80b1-4615-8219-4ce137dd2445",
+      "EventName": "ListBuckets",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:36+05:30",
+      "EventSource": "s3.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:36Z\",\"eventSource\":\"s3.amazonaws.com\",\"eventName\":\"ListBuckets\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"[Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21]\",\"requestParameters\":{\"Host\":\"s3.eu-central-1.amazonaws.com\"},\"responseElements\":null,\"additionalEventData\":{\"SignatureVersion\":\"SigV4\",\"CipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"bytesTransferredIn\":0,\"AuthenticationMethod\":\"AuthHeader\",\"x-amz-id-2\":\"GbNIkvVl815ju4srYWvAXfziiNcs2HJzDPTadiwx/RUVgOu8Hl0RQtCkwvTjiEmtTrXfp7Vnor6S0nyMsuZwjmFOGCKGn0dCNMpsxL9Euqo=\",\"bytesTransferredOut\":1696},\"requestID\":\"R64AHX2ZS9AWJTN7\",\"eventID\":\"50c2789a-80b1-4615-8219-4ce137dd2445\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"s3.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "777169cd-cd0a-420f-a448-7656f4048220",
+      "EventName": "GetMLTransforms",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:36+05:30",
+      "EventSource": "glue.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:36Z\",\"eventSource\":\"glue.amazonaws.com\",\"eventName\":\"GetMLTransforms\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"6295c4ae-d934-482f-b311-089b00ccbcb9\",\"eventID\":\"777169cd-cd0a-420f-a448-7656f4048220\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"glue.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "44e19367-efbc-4818-a521-8995404a92d2",
+      "EventName": "DescribeNetworkAcls",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:35+05:30",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.10\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:35Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeNetworkAcls\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"networkAclIdSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"c2a88dd2-9228-4fcb-bea8-79ba2726c0f7\",\"eventID\":\"44e19367-efbc-4818-a521-8995404a92d2\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "659b166b-f91c-4055-aeb4-4fa6a4b282ea",
+      "EventName": "DescribeWorkspaces",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:35+05:30",
+      "EventSource": "workspaces.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:35Z\",\"eventSource\":\"workspaces.amazonaws.com\",\"eventName\":\"DescribeWorkspaces\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"requestContext\":{\"awsAccountId\":\"588989875114\"}},\"responseElements\":null,\"requestID\":\"db64960f-e9bc-4141-abeb-8137d07beba2\",\"eventID\":\"659b166b-f91c-4055-aeb4-4fa6a4b282ea\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"workspaces.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "75811912-1602-4a1c-8e6a-7ec0a0418f69",
+      "EventName": "ListQueryExecutions",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:35+05:30",
+      "EventSource": "athena.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:35Z\",\"eventSource\":\"athena.amazonaws.com\",\"eventName\":\"ListQueryExecutions\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"68775c25-6bbb-4ff3-a21b-22d55b44f301\",\"eventID\":\"75811912-1602-4a1c-8e6a-7ec0a0418f69\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"athena.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "cdbb3897-f58b-4a5d-8d5e-7c0cfed4e980",
+      "EventName": "SearchTables",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:35+05:30",
+      "EventSource": "glue.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:35Z\",\"eventSource\":\"glue.amazonaws.com\",\"eventName\":\"SearchTables\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"additionalEventData\":{\"lakeFormationPrincipal\":\"arn:aws:iam::588989875114:user/ajay\"},\"requestID\":\"c66243a6-77b1-4782-a734-26645cf11b21\",\"eventID\":\"cdbb3897-f58b-4a5d-8d5e-7c0cfed4e980\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"glue.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "5fc7e715-0aca-477c-9de4-51a4fb4bf5d2",
+      "EventName": "DescribeReplicationGroups",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:34+05:30",
+      "EventSource": "elasticache.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:34Z\",\"eventSource\":\"elasticache.amazonaws.com\",\"eventName\":\"DescribeReplicationGroups\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"maxRecords\":100},\"responseElements\":null,\"requestID\":\"e27f24fe-c232-49e3-891b-97cc7b204f09\",\"eventID\":\"5fc7e715-0aca-477c-9de4-51a4fb4bf5d2\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"elasticache.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "600ea2ee-696b-4726-ab7e-76f502bbdc96",
+      "EventName": "ListBackupPlans",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:33+05:30",
+      "EventSource": "backup.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:33Z\",\"eventSource\":\"backup.amazonaws.com\",\"eventName\":\"ListBackupPlans\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"2f038589-d115-43be-a726-d0915e7cd2ec\",\"eventID\":\"600ea2ee-696b-4726-ab7e-76f502bbdc96\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"backup.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "702d6af6-957d-4942-bf39-ec4981f3de92",
+      "EventName": "ListTables",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:33+05:30",
+      "EventSource": "dynamodb.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:33Z\",\"eventSource\":\"dynamodb.amazonaws.com\",\"eventName\":\"ListTables\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"6AM74IUVL3PKHPMBSPQEJ05KVVVV4KQNSO5AEMVJF66Q9ASUAAJG\",\"eventID\":\"702d6af6-957d-4942-bf39-ec4981f3de92\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"apiVersion\":\"2012-08-10\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_256_GCM_SHA384\",\"clientProvidedHostHeader\":\"dynamodb.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "86fe53fa-01ae-4a67-b354-92ddec6a0eb2",
+      "EventName": "ListBrokers",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:33+05:30",
+      "EventSource": "amazonmq.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:33Z\",\"eventSource\":\"amazonmq.amazonaws.com\",\"eventName\":\"ListBrokers\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"a581faa6-ffe8-418b-a330-4d742d761dfc\",\"eventID\":\"86fe53fa-01ae-4a67-b354-92ddec6a0eb2\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\"}"
+    },
+    {
+      "EventId": "94f31896-fd8d-47d4-938e-3261136bfbbe",
+      "EventName": "DescribeSecurityGroups",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:33+05:30",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.10\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:33Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeSecurityGroups\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"securityGroupSet\":{},\"securityGroupIdSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"dd73f163-b177-4b9e-92e1-474753a234fc\",\"eventID\":\"94f31896-fd8d-47d4-938e-3261136bfbbe\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "ec5a9f6d-7e08-4c07-9b9f-7cf5c92faa2f",
+      "EventName": "GetSecurityConfigurations",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:33+05:30",
+      "EventSource": "glue.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:33Z\",\"eventSource\":\"glue.amazonaws.com\",\"eventName\":\"GetSecurityConfigurations\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"f4b46c39-9df0-4e28-8d8e-768f9c7e50fb\",\"eventID\":\"ec5a9f6d-7e08-4c07-9b9f-7cf5c92faa2f\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"glue.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "f37c638f-5bcb-4311-90c1-61cf07a3f57a",
+      "EventName": "DescribeCacheSubnetGroups",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:32+05:30",
+      "EventSource": "elasticache.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:32Z\",\"eventSource\":\"elasticache.amazonaws.com\",\"eventName\":\"DescribeCacheSubnetGroups\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"f8845539-6fe0-4e66-b6bd-56d732cba14a\",\"eventID\":\"f37c638f-5bcb-4311-90c1-61cf07a3f57a\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"elasticache.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "00cc47d1-7bd2-4cdd-9488-fd7bb6da50db",
+      "EventName": "GetJobs",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:31+05:30",
+      "EventSource": "glue.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:31Z\",\"eventSource\":\"glue.amazonaws.com\",\"eventName\":\"GetJobs\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"168ec3d8-f37c-4275-bd55-577f5bbe4353\",\"eventID\":\"00cc47d1-7bd2-4cdd-9488-fd7bb6da50db\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"glue.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "347a7ce5-9656-472a-9ae7-dc86000db257",
+      "EventName": "ListBackupVaults",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:31+05:30",
+      "EventSource": "backup.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:31Z\",\"eventSource\":\"backup.amazonaws.com\",\"eventName\":\"ListBackupVaults\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"byShared\":false},\"responseElements\":null,\"requestID\":\"5beb09e5-a783-4646-b53c-dd8cdcec3b94\",\"eventID\":\"347a7ce5-9656-472a-9ae7-dc86000db257\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"backup.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "ae468943-33da-471e-ae8a-7d5d03969e7e",
+      "EventName": "DescribeInstances",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:31+05:30",
+      "EventSource": "ec2.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.10\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:31Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeInstances\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"instancesSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"320e1f4c-e320-45d7-a93e-335b66a65ae3\",\"eventID\":\"ae468943-33da-471e-ae8a-7d5d03969e7e\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "d79bc199-1ed9-403e-be4d-da3781dfea08",
+      "EventName": "LookupEvents",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:31+05:30",
+      "EventSource": "cloudtrail.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:31Z\",\"eventSource\":\"cloudtrail.amazonaws.com\",\"eventName\":\"LookupEvents\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"b424fff0-2272-4b4c-838a-7a4cd8c6df6f\",\"eventID\":\"d79bc199-1ed9-403e-be4d-da3781dfea08\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"cloudtrail.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "a128f2e9-3d3e-4fb5-b002-11e17ef2161a",
+      "EventName": "DescribeCacheClusters",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:30+05:30",
+      "EventSource": "elasticache.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:30Z\",\"eventSource\":\"elasticache.amazonaws.com\",\"eventName\":\"DescribeCacheClusters\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"maxRecords\":100},\"responseElements\":null,\"requestID\":\"a88e1e4f-b720-4807-ba41-8941e40a2e3c\",\"eventID\":\"a128f2e9-3d3e-4fb5-b002-11e17ef2161a\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"elasticache.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "695a1f8f-ccfa-4aad-b6c8-6d679425da55",
+      "EventName": "GetDevEndpoints",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:29+05:30",
+      "EventSource": "glue.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:29Z\",\"eventSource\":\"glue.amazonaws.com\",\"eventName\":\"GetDevEndpoints\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"017bd4b4-7baf-4513-a8fa-fec204012030\",\"eventID\":\"695a1f8f-ccfa-4aad-b6c8-6d679425da55\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"glue.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "b4f2dbc2-9189-4c4b-a492-bb62ac44f0e5",
+      "EventName": "DescribeAlarms",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:29+05:30",
+      "EventSource": "monitoring.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:29Z\",\"eventSource\":\"monitoring.amazonaws.com\",\"eventName\":\"DescribeAlarms\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"9788da6e-5b33-44aa-930e-7e62ff901a69\",\"eventID\":\"b4f2dbc2-9189-4c4b-a492-bb62ac44f0e5\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"monitoring.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "fb248cf9-491d-4176-9bd9-09a91f1d04b8",
+      "EventName": "ListGuardrails",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:29+05:30",
+      "EventSource": "bedrock.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:29Z\",\"eventSource\":\"bedrock.amazonaws.com\",\"eventName\":\"ListGuardrails\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"85d0aacc-d67a-47c0-b637-46fa9c446a13\",\"eventID\":\"fb248cf9-491d-4176-9bd9-09a91f1d04b8\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"bedrock.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "4733b8b5-3400-4407-a100-5a5b4cc24539",
+      "EventName": "DescribeStacks",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:28+05:30",
+      "EventSource": "cloudformation.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:28Z\",\"eventSource\":\"cloudformation.amazonaws.com\",\"eventName\":\"DescribeStacks\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"bdad5ad5-f4f9-4e8b-97b3-6d89b731e1bb\",\"eventID\":\"4733b8b5-3400-4407-a100-5a5b4cc24539\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"cloudformation.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "771d9a6a-84b9-4d7b-8eac-78c1d2c8e5f5",
+      "EventName": "ListCertificates",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:28+05:30",
+      "EventSource": "acm.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:28Z\",\"eventSource\":\"acm.amazonaws.com\",\"eventName\":\"ListCertificates\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"de74d946-1e0b-4084-8ced-304b275b3ca9\",\"eventID\":\"771d9a6a-84b9-4d7b-8eac-78c1d2c8e5f5\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"acm.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "d8839db2-48e9-4f42-9625-d713829f10e3",
+      "EventName": "ListRepositories",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:28+05:30",
+      "EventSource": "codeartifact.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:28Z\",\"eventSource\":\"codeartifact.amazonaws.com\",\"eventName\":\"ListRepositories\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"23a33c76-15d2-428a-b5da-cef5cd668757\",\"eventID\":\"d8839db2-48e9-4f42-9625-d713829f10e3\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"codeartifact.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "157d2744-3005-4c3a-87da-5e569d711128",
+      "EventName": "ListDetectors",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:27+05:30",
+      "EventSource": "guardduty.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:27Z\",\"eventSource\":\"guardduty.amazonaws.com\",\"eventName\":\"ListDetectors\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"7f002d75-b404-4972-a5c3-a008e395f66c\",\"eventID\":\"157d2744-3005-4c3a-87da-5e569d711128\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\"}"
+    },
+    {
+      "EventId": "8a4c006c-b229-49e8-b077-8055366bb4a5",
+      "EventName": "DescribeFileSystems",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:27+05:30",
+      "EventSource": "fsx.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:27Z\",\"eventSource\":\"fsx.amazonaws.com\",\"eventName\":\"DescribeFileSystems\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"fabb5af3-88d8-40c9-bc13-26dfa434f004\",\"eventID\":\"8a4c006c-b229-49e8-b077-8055366bb4a5\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"apiVersion\":\"2018-03-01\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"fsx.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "cebc29f8-05c6-4047-aec6-1ce580dd9e7e",
+      "EventName": "GetConnections",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:27+05:30",
+      "EventSource": "glue.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:27Z\",\"eventSource\":\"glue.amazonaws.com\",\"eventName\":\"GetConnections\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"f0f3dfbb-1c61-4cf5-9e2e-1ccde2e12e34\",\"eventID\":\"cebc29f8-05c6-4047-aec6-1ce580dd9e7e\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"glue.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "d7fce7ea-e63f-4596-bc9d-e40d74f4bfc8",
+      "EventName": "GetModelInvocationLoggingConfiguration",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:27+05:30",
+      "EventSource": "bedrock.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:27Z\",\"eventSource\":\"bedrock.amazonaws.com\",\"eventName\":\"GetModelInvocationLoggingConfiguration\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"e22efe79-b017-4738-9c9d-65b2ec455812\",\"eventID\":\"d7fce7ea-e63f-4596-bc9d-e40d74f4bfc8\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"bedrock.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "880e2ed7-c4f0-45ae-a826-70e6fc2e8878",
+      "EventName": "DescribeClusters",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:26+05:30",
+      "EventSource": "memorydb.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:26Z\",\"eventSource\":\"memorydb.amazonaws.com\",\"eventName\":\"DescribeClusters\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"maxResults\":100},\"responseElements\":null,\"requestID\":\"d4e31c6d-b9c2-4324-ace3-00eed9ebe6f2\",\"eventID\":\"880e2ed7-c4f0-45ae-a826-70e6fc2e8878\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"memory-db.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "962b9aba-7ede-4bca-95cb-f3e7c1d418fd",
+      "EventName": "ListTasks",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:26+05:30",
+      "EventSource": "datasync.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:26Z\",\"eventSource\":\"datasync.amazonaws.com\",\"eventName\":\"ListTasks\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"fff2da6f-d2b7-4b7f-8e73-565863985cbb\",\"eventID\":\"962b9aba-7ede-4bca-95cb-f3e7c1d418fd\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"datasync.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "e9fea534-2626-4316-992b-1c721e541ddb",
+      "EventName": "GetRegistryScanningConfiguration",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:26+05:30",
+      "EventSource": "ecr.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:26Z\",\"eventSource\":\"ecr.amazonaws.com\",\"eventName\":\"GetRegistryScanningConfiguration\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"b71cf789-71d9-470e-81e4-c5c26fe9ea19\",\"eventID\":\"e9fea534-2626-4316-992b-1c721e541ddb\",\"readOnly\":true,\"resources\":[{\"accountId\":\"588989875114\",\"type\":\"RegistryScanningConfiguration\",\"ARN\":\"*\"}],\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"api.ecr.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "f0772519-bbfc-41bb-8113-3261437e3a15",
+      "EventName": "DescribeDBClusterSnapshots",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:26+05:30",
+      "EventSource": "rds.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:26Z\",\"eventSource\":\"rds.amazonaws.com\",\"eventName\":\"DescribeDBClusterSnapshots\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":{\"includePublic\":false,\"includeShared\":false},\"responseElements\":null,\"requestID\":\"cbcd279b-3236-4e0d-ad51-d3756f18cf93\",\"eventID\":\"f0772519-bbfc-41bb-8113-3261437e3a15\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"rds.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "38afcc03-f487-412a-9118-db8f1e3b7393",
+      "EventName": "GetStaticIps",
+      "ReadOnly": "true",
+      "AccessKeyId": "ASIAYSIUIIOVONWAKSNT",
+      "EventTime": "2025-06-03T19:56:25+05:30",
+      "EventSource": "lightsail.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"ASIAYSIUIIOVONWAKSNT\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:25Z\",\"eventSource\":\"lightsail.amazonaws.com\",\"eventName\":\"GetStaticIps\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"cc0eabff-4dc4-4bb8-8465-785713179fc1\",\"eventID\":\"38afcc03-f487-412a-9118-db8f1e3b7393\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"lightsail.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "832d7f88-7fb4-4bc8-9970-550c19650305",
+      "EventName": "DescribeConfigurationRecorderStatus",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:24+05:30",
+      "EventSource": "config.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:24Z\",\"eventSource\":\"config.amazonaws.com\",\"eventName\":\"DescribeConfigurationRecorderStatus\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"5a34ed05-c15a-4345-b924-47af5cab1fd0\",\"eventID\":\"832d7f88-7fb4-4bc8-9970-550c19650305\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"config.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "f49dfc56-56b9-488c-bb38-a15dcbfe7a36",
+      "EventName": "DescribeDBSubnetGroups",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:24+05:30",
+      "EventSource": "rds.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:24Z\",\"eventSource\":\"rds.amazonaws.com\",\"eventName\":\"DescribeDBSubnetGroups\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"e04adc75-aa73-4775-8c8b-f762a948372f\",\"eventID\":\"f49dfc56-56b9-488c-bb38-a15dcbfe7a36\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"rds.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "5a7ef495-6b78-40d1-8f83-91156fdbd34f",
+      "EventName": "GetInstances",
+      "ReadOnly": "true",
+      "AccessKeyId": "ASIAYSIUIIOVPYCCZFLJ",
+      "EventTime": "2025-06-03T19:56:23+05:30",
+      "EventSource": "lightsail.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"ASIAYSIUIIOVPYCCZFLJ\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:23Z\",\"eventSource\":\"lightsail.amazonaws.com\",\"eventName\":\"GetInstances\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"241050fa-1095-439e-b406-f4fce1a7725f\",\"eventID\":\"5a7ef495-6b78-40d1-8f83-91156fdbd34f\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"lightsail.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "cfdbb09c-59b7-482c-a451-799af0e332ec",
+      "EventName": "DescribeConfigurationRecorders",
+      "ReadOnly": "true",
+      "AccessKeyId": "AKIAYSIUIIOVG4LMR7FK",
+      "EventTime": "2025-06-03T19:56:23+05:30",
+      "EventSource": "config.amazonaws.com",
+      "Username": "ajay",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDAYSIUIIOVHUMR7CPIF\",\"arn\":\"arn:aws:iam::588989875114:user/ajay\",\"accountId\":\"588989875114\",\"accessKeyId\":\"AKIAYSIUIIOVG4LMR7FK\",\"userName\":\"ajay\"},\"eventTime\":\"2025-06-03T14:26:23Z\",\"eventSource\":\"config.amazonaws.com\",\"eventName\":\"DescribeConfigurationRecorders\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.49.18\",\"userAgent\":\"Boto3/1.36.21 md/Botocore#1.36.21 ua/2.0 os/windows#11 md/arch#amd64 lang/python#3.13.3 md/pyimpl#CPython cfg/retry-mode#adaptive Botocore/1.36.21\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"1c28f5a5-372c-4022-a842-f492f2e16485\",\"eventID\":\"cfdbb09c-59b7-482c-a451-799af0e332ec\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"config.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "8e398459-235d-4654-b5c9-57dbafb60760",
+      "EventName": "ListInstances",
+      "ReadOnly": "true",
+      "AccessKeyId": "ASIAYSIUIIOVMW6QHPXC",
+      "EventTime": "2025-06-03T19:50:53+05:30",
+      "EventSource": "sso.amazonaws.com",
+      "Username": "root",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"Root\",\"principalId\":\"588989875114\",\"arn\":\"arn:aws:iam::588989875114:root\",\"accountId\":\"588989875114\",\"accessKeyId\":\"ASIAYSIUIIOVMW6QHPXC\",\"sessionContext\":{\"attributes\":{\"creationDate\":\"2025-06-03T14:20:35Z\",\"mfaAuthenticated\":\"true\"}}},\"eventTime\":\"2025-06-03T14:20:53Z\",\"eventSource\":\"sso.amazonaws.com\",\"eventName\":\"ListInstances\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"122.161.51.245\",\"userAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"5501a1ad-2468-4aa1-8f1d-67e988ce8fe5\",\"eventID\":\"8e398459-235d-4654-b5c9-57dbafb60760\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"sso.eu-central-1.amazonaws.com\"},\"sessionCredentialFromConsole\":\"true\"}"
+    },
+    {
+      "EventId": "e65cf520-6d61-3db9-aa43-cf0ca56c68ef",
+      "EventName": "AssumeRole",
+      "ReadOnly": "true",
+      "EventTime": "2025-06-03T17:58:33+05:30",
+      "EventSource": "sts.amazonaws.com",
+      "Resources": [
+        {
+          "ResourceType": "AWS::IAM::AccessKey",
+          "ResourceName": "ASIAYSIUIIOVIESQSRUR"
+        },
+        {
+          "ResourceType": "AWS::STS::AssumedRole",
+          "ResourceName": "arn:aws:sts::588989875114:assumed-role/AWSServiceRoleForSSO/AWS-SSO"
+        },
+        {
+          "ResourceType": "AWS::STS::AssumedRole",
+          "ResourceName": "AWS-SSO"
+        },
+        {
+          "ResourceType": "AWS::STS::AssumedRole",
+          "ResourceName": "AROAYSIUIIOVNEGIPWTFO:AWS-SSO"
+        },
+        {
+          "ResourceType": "AWS::IAM::Role",
+          "ResourceName": "arn:aws:iam::588989875114:role/aws-service-role/sso.amazonaws.com/AWSServiceRoleForSSO"
+        }
+      ],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"AWSService\",\"invokedBy\":\"sso.amazonaws.com\"},\"eventTime\":\"2025-06-03T12:28:33Z\",\"eventSource\":\"sts.amazonaws.com\",\"eventName\":\"AssumeRole\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"sso.amazonaws.com\",\"userAgent\":\"sso.amazonaws.com\",\"requestParameters\":{\"roleArn\":\"arn:aws:iam::588989875114:role/aws-service-role/sso.amazonaws.com/AWSServiceRoleForSSO\",\"roleSessionName\":\"AWS-SSO\",\"durationSeconds\":3600},\"responseElements\":{\"credentials\":{\"accessKeyId\":\"ASIAYSIUIIOVIESQSRUR\",\"sessionToken\":\"IQoJb3JpZ2luX2VjED0aDGV1LWNlbnRyYWwtMSJGMEQCIFBFAAxQzNebXP0+B3gSPYMVoK+w9fTdUF9V8j9jButGAiAJBTbCn2WjEcQA4Jh/nTJIBF9h7l58BEHatqMtlsTv4yrEAggWEAAaDDU4ODk4OTg3NTExNCIMyJN0hEbEgaovcmTmKqECqPiV4ugDZKP7KrK5ALDllDVKUm7+SvFPDZfy885KfpqNzVKabbDmBo38nc1NRyoSj5EQPlWw8+pI5GSQT2LUkTK/miUpj60DSFwng46QkyG+EHlK6r/rO2GHW7Iq5c5gSIKd6rrI+USpVZwwAl0UxggsmYAfnNMJ7ziVEnjFGbH77l0Wvozmtx80184tCCuU/4qbkSXBOqE2f9cB0Fow3m5sSFsJ+VYJoXpuqcKPM92RAJJ76rXy995rympAIrBF/aln3C8BHr0n9Wl4ACnH1YFBpnE4bAVqEO0rB+gYseK9ifyHoxUOcm6Gy5Jh0muvFhbw34Dkm+WPzkPRtKlCF5J3ZIB3RlnwWrc4Iotx/7U+velLPonZkPoOmSUFsQUwJTDx1PvBBjrAAfyp/WTwP/GW8DyVyB7TwIrBUsdY0RINBn3VyRxjc2XjuNjLtw6HARdmJy40ZkfT4XPuXa96FDaN5Up3U+/tCJ5hJ+AXv6CF+rvmeWlFlF98ZFC/8Sc798CMnfyoo6V6i9DyWRGQeOT1DG2YI9muRg4994/J9m6yuFeNYbSBT7M1tW+RWd2wYiJx7vsjP1aYgyHhP5MWLh9viER5BD8O4+4035griHnDG47w9NQ5AY4LGOZq3a0kDaFezn4KRRpFug==\",\"expiration\":\"Jun 3, 2025, 1:28:33 PM\"},\"assumedRoleUser\":{\"assumedRoleId\":\"AROAYSIUIIOVNEGIPWTFO:AWS-SSO\",\"arn\":\"arn:aws:sts::588989875114:assumed-role/AWSServiceRoleForSSO/AWS-SSO\"}},\"requestID\":\"e82cccf8-dc7f-4eb4-9044-44252dd89477\",\"eventID\":\"e65cf520-6d61-3db9-aa43-cf0ca56c68ef\",\"readOnly\":true,\"resources\":[{\"accountId\":\"588989875114\",\"type\":\"AWS::IAM::Role\",\"ARN\":\"arn:aws:iam::588989875114:role/aws-service-role/sso.amazonaws.com/AWSServiceRoleForSSO\"}],\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"sharedEventID\":\"9718dae5-1dad-434f-8365-5cb9b5b0fd33\",\"eventCategory\":\"Management\"}"
+    },
+    {
+      "EventId": "6b25f138-e128-46f2-82d7-ef2e1fb4f62f",
+      "EventName": "DescribeWorkspaces",
+      "ReadOnly": "true",
+      "AccessKeyId": "ASIAYSIUIIOVC33CV7AJ",
+      "EventTime": "2025-06-03T10:19:13+05:30",
+      "EventSource": "workspaces.amazonaws.com",
+      "Username": "ProwlerAssessmentSession",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"AssumedRole\",\"principalId\":\"AROAYSIUIIOVP6DHMTEGD:ProwlerAssessmentSession\",\"arn\":\"arn:aws:sts::588989875114:assumed-role/ProwlerProSaaSScanRole/ProwlerAssessmentSession\",\"accountId\":\"588989875114\",\"accessKeyId\":\"ASIAYSIUIIOVC33CV7AJ\",\"sessionContext\":{\"sessionIssuer\":{\"type\":\"Role\",\"principalId\":\"AROAYSIUIIOVP6DHMTEGD\",\"arn\":\"arn:aws:iam::588989875114:role/ProwlerProSaaSScanRole\",\"accountId\":\"588989875114\",\"userName\":\"ProwlerProSaaSScanRole\"},\"attributes\":{\"creationDate\":\"2025-06-03T04:44:03Z\",\"mfaAuthenticated\":\"false\"}}},\"eventTime\":\"2025-06-03T04:49:13Z\",\"eventSource\":\"workspaces.amazonaws.com\",\"eventName\":\"DescribeWorkspaces\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"52.48.254.174\",\"userAgent\":\"Boto3/1.34.160 md/Botocore#1.34.162 ua/2.0 os/linux#5.10.235-227.919.amzn2.x86_64 md/arch#x86_64 lang/python#3.12.5 md/pyimpl#CPython exec-env/AWS_ECS_FARGATE cfg/retry-mode#standard Botocore/1.34.162 APN_1826889\",\"requestParameters\":{\"requestContext\":{\"awsAccountId\":\"588989875114\"}},\"responseElements\":null,\"requestID\":\"8ef43482-aaf5-4804-a5e3-5e16d5c3b393\",\"eventID\":\"6b25f138-e128-46f2-82d7-ef2e1fb4f62f\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"workspaces.eu-central-1.amazonaws.com\"}}"
+    },
+    {
+      "EventId": "6d999bcd-22bd-40b0-b5e5-7458a2c91ce8",
+      "EventName": "ListWorkloads",
+      "ReadOnly": "true",
+      "AccessKeyId": "ASIAYSIUIIOVC33CV7AJ",
+      "EventTime": "2025-06-03T10:19:12+05:30",
+      "EventSource": "wellarchitected.amazonaws.com",
+      "Username": "ProwlerAssessmentSession",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"AssumedRole\",\"principalId\":\"AROAYSIUIIOVP6DHMTEGD:ProwlerAssessmentSession\",\"arn\":\"arn:aws:sts::588989875114:assumed-role/ProwlerProSaaSScanRole/ProwlerAssessmentSession\",\"accountId\":\"588989875114\",\"accessKeyId\":\"ASIAYSIUIIOVC33CV7AJ\",\"sessionContext\":{\"sessionIssuer\":{\"type\":\"Role\",\"principalId\":\"AROAYSIUIIOVP6DHMTEGD\",\"arn\":\"arn:aws:iam::588989875114:role/ProwlerProSaaSScanRole\",\"accountId\":\"588989875114\",\"userName\":\"ProwlerProSaaSScanRole\"},\"attributes\":{\"creationDate\":\"2025-06-03T04:44:03Z\",\"mfaAuthenticated\":\"false\"}}},\"eventTime\":\"2025-06-03T04:49:12Z\",\"eventSource\":\"wellarchitected.amazonaws.com\",\"eventName\":\"ListWorkloads\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"52.48.254.174\",\"userAgent\":\"Boto3/1.34.160 md/Botocore#1.34.162 ua/2.0 os/linux#5.10.235-227.919.amzn2.x86_64 md/arch#x86_64 lang/python#3.12.5 md/pyimpl#CPython exec-env/AWS_ECS_FARGATE cfg/retry-mode#standard Botocore/1.34.162 APN_1826889\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"336ff98c-613d-45ed-9679-b75c108f4217\",\"eventID\":\"6d999bcd-22bd-40b0-b5e5-7458a2c91ce8\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\"}"
+    },
+    {
+      "EventId": "9eb1fc1d-1ac1-49ec-8ec0-1f919bbb3f6e",
+      "EventName": "ListResponsePlans",
+      "ReadOnly": "true",
+      "AccessKeyId": "ASIAYSIUIIOVC33CV7AJ",
+      "EventTime": "2025-06-03T10:19:08+05:30",
+      "EventSource": "ssm-incidents.amazonaws.com",
+      "Username": "ProwlerAssessmentSession",
+      "Resources": [],
+      "CloudTrailEvent": "{\"eventVersion\":\"1.09\",\"userIdentity\":{\"type\":\"AssumedRole\",\"principalId\":\"AROAYSIUIIOVP6DHMTEGD:ProwlerAssessmentSession\",\"arn\":\"arn:aws:sts::588989875114:assumed-role/ProwlerProSaaSScanRole/ProwlerAssessmentSession\",\"accountId\":\"588989875114\",\"accessKeyId\":\"ASIAYSIUIIOVC33CV7AJ\",\"sessionContext\":{\"sessionIssuer\":{\"type\":\"Role\",\"principalId\":\"AROAYSIUIIOVP6DHMTEGD\",\"arn\":\"arn:aws:iam::588989875114:role/ProwlerProSaaSScanRole\",\"accountId\":\"588989875114\",\"userName\":\"ProwlerProSaaSScanRole\"},\"attributes\":{\"creationDate\":\"2025-06-03T04:44:03Z\",\"mfaAuthenticated\":\"false\"}}},\"eventTime\":\"2025-06-03T04:49:08Z\",\"eventSource\":\"ssm-incidents.amazonaws.com\",\"eventName\":\"ListResponsePlans\",\"awsRegion\":\"eu-central-1\",\"sourceIPAddress\":\"52.48.254.174\",\"userAgent\":\"Boto3/1.34.160 md/Botocore#1.34.162 ua/2.0 os/linux#5.10.235-227.919.amzn2.x86_64 md/arch#x86_64 lang/python#3.12.5 md/pyimpl#CPython exec-env/AWS_ECS_FARGATE cfg/retry-mode#standard Botocore/1.34.162 APN_1826889\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"e406580c-0a80-46cd-8e30-48441d0376d0\",\"eventID\":\"9eb1fc1d-1ac1-49ec-8ec0-1f919bbb3f6e\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"588989875114\",\"eventCategory\":\"Management\"}"
+    }
+  ],
+  "NextToken": "csydtEKkxPMx6LiSpJ1T9jWLx6lG93Qa14sdvnmt3tmw8LBlDr5WvPAp8tsQO7MC",
+  "ResponseMetadata": {
+    "RequestId": "fb75ba04-001d-4517-902e-984d64b4eb95",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "fb75ba04-001d-4517-902e-984d64b4eb95",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "69442",
+      "date": "Tue, 03 Jun 2025 14:38:29 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

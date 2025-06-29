@@ -1,0 +1,20 @@
+{
+  "AccountLevel": {
+    "ManagedBy": "account"
+  },
+  "ResponseMetadata": {
+    "RequestId": "121e0ff4-1398-4c78-b5f5-5defa7178149",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "121e0ff4-1398-4c78-b5f5-5defa7178149",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "date": "Tue, 03 Jun 2025 15:02:02 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

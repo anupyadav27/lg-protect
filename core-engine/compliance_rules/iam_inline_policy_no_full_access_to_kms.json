@@ -1,0 +1,32 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "8.3.4.6",
+  "Name": "iam",
+  "Description": "Checks if the inline policies attached to your IAM users, roles, and groups do not allow blocked actions on all AWS KMS keys",
+  "Function Name": "iam_inline_policy_no_full_access_to_kms",
+  "clients": ["iam"],
+  "functions": {
+    "iam_users": {
+      "method": "list_users",
+      "field_path": "Users[].UserName"
+    },
+    "iam_user_policies": {
+      "method": "list_user_policies",
+      "field_path": "PolicyNames[]"
+    },
+    "iam_roles": {
+      "method": "list_roles",
+      "field_path": "Roles[].RoleName"
+    },
+    "iam_role_policies": {
+      "method": "list_role_policies",
+      "field_path": "PolicyNames[]"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "PolicyDocument",
+    "value": "kms:*"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_well_architected_framework_security_pillar_aws",
+  "ID": "SEC03-BP06",
+  "Name": "",
+  "Description": "Integrate access controls with operator and application lifecycle and your centralized federation provider. For example, remove a user's access when they leave the organization or change roles. As you manage workloads using separate accounts, there will be cases where you need to share resources between those accounts. We recommend that you share resources using AWS Resource Access Manager (AWS RAM). This service enables you to easily and securely share AWS resources within your AWS Organizations and Organizational Units. Using AWS RAM, access to shared resources is automatically granted or revoked as accounts are moved in and out of the Organization or Organization Unit with which they are shared. This helps ensure that resources are only shared with the accounts that you intend.",
+  "Function Name": "appstream_fleet_maximum_session_duration",
+  "clients": ["appstream"],
+  "functions": {
+    "appstream": {
+      "method": "describe_fleets",
+      "field_path": "Fleets[].MaxSessionDurationInSeconds"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "appstream",
+    "field": "MaxSessionDurationInSeconds"
+  }
+}

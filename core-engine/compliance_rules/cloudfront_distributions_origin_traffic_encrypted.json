@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "Origin Traffic Encryption",
+  "Description": "Ensure origin traffic is encrypted for CloudFront distributions.",
+  "Function Name": "cloudfront_distributions_origin_traffic_encrypted",
+  "clients": ["cloudfront"],
+  "functions": {
+    "cloudfront": {
+      "method": "get_distribution_config",
+      "field_path": "DistributionConfig.Origins.Items[].OriginSslProtocols"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudfront",
+    "field": "OriginSslProtocols"
+  }
+}

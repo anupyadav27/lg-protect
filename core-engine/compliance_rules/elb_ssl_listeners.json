@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "sc-7",
+  "Name": "ELB SSL Listeners Configured",
+  "Description": "The information system: a. Monitors and controls communications at the external boundary of the system and at key internal boundaries within the system; b. Implements subnetworks for publicly accessible system components that are [Selection: physically; logically] separated from internal organizational networks; and c. Connects to external networks or information systems only through managed interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.",
+  "Function Name": "elb_ssl_listeners",
+  "clients": ["elb"],
+  "functions": {
+    "elb": {
+      "method": "describe_load_balancers",
+      "field_path": "LoadBalancerDescriptions[].ListenerDescriptions[].Listener.Protocol"
+    }
+  },
+  "evaluation": {
+    "type": "in",
+    "source_client": "elb",
+    "field": "Protocol",
+    "allowed_values": ["HTTPS", "SSL"]
+  }
+}

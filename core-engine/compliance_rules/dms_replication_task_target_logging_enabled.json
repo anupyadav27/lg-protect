@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Target Logging Enabled for DMS Replication Task",
+  "Description": "Ensure logging is enabled for the target of Database Migration Service (DMS) replication tasks to track data movement.",
+  "Function Name": "dms_replication_task_target_logging_enabled",
+  "clients": ["dms", "cloudwatch"],
+  "functions": {
+    "dms": {
+      "method": "describe_replication_tasks",
+      "field_path": "ReplicationTasks[].TargetEndpoint.LoggingConfiguration.LogGroup"
+    },
+    "cloudwatch": {
+      "method": "describe_log_groups",
+      "field_path": "logGroups[].logGroupName"
+    }
+  },
+  "evaluation": {
+    "type": "subset",
+    "source_client": "dms",
+    "target_client": "cloudwatch",
+    "field": "LogGroup"
+  }
+}

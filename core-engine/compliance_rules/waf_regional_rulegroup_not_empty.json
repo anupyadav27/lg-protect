@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "WAF.6",
+  "Name": "AWS WAF Classic regional rule groups should have at least one rule",
+  "Description": "This control checks whether AWS WAF regional rule groups have at least one rule.",
+  "Function Name": "waf_regional_rulegroup_not_empty",
+  "clients": ["waf-regional"],
+  "functions": {
+    "waf-regional": {
+      "method": "get_rule_group",
+      "field_path": "RuleGroup.Rules[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "waf-regional",
+    "field": "Rules"
+  }
+}

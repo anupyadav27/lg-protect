@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "S3.13",
+  "Name": "S3 buckets should have object lock enabled",
+  "Description": "This control checks whether the specified Amazon S3 bucket has Object Lock enabled.",
+  "Function Name": "s3_bucket_object_lock",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_object_lock_configuration",
+      "field_path": "ObjectLockConfiguration.ObjectLockEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "s3",
+    "field": "ObjectLockEnabled",
+    "value": "Enabled"
+  }
+}

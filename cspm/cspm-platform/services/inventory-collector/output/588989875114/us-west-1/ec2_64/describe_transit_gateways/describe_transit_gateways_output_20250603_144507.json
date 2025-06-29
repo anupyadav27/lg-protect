@@ -1,0 +1,18 @@
+{
+  "TransitGateways": [],
+  "ResponseMetadata": {
+    "RequestId": "d8a7a4f2-ac88-4249-9a8f-55087efe288a",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "d8a7a4f2-ac88-4249-9a8f-55087efe288a",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "date": "Tue, 03 Jun 2025 14:45:20 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

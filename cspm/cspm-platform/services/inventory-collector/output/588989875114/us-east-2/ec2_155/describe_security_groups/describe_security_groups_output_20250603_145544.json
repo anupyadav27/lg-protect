@@ -1,0 +1,125 @@
+{
+  "SecurityGroups": [
+    {
+      "GroupId": "sg-2680594e",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-26bc9b4f",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-2:588989875114:security-group/sg-2680594e",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-2680594e"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-084dc7bdeda48b57a",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "acg-ansible-course-sg"
+        },
+        {
+          "Key": "aws:cloudformation:logical-id",
+          "Value": "LnSecurityGroup"
+        },
+        {
+          "Key": "aws:cloudformation:stack-name",
+          "Value": "ansible"
+        },
+        {
+          "Key": "aws:cloudformation:stack-id",
+          "Value": "arn:aws:cloudformation:us-east-2:588989875114:stack/ansible/0b3a10b0-8bbc-11ec-b6c1-0a5977010daa"
+        },
+        {
+          "Key": "Description",
+          "Value": "Security Group created for SSH and HTTP access to instances."
+        }
+      ],
+      "VpcId": "vpc-26bc9b4f",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-2:588989875114:security-group/sg-084dc7bdeda48b57a",
+      "OwnerId": "588989875114",
+      "GroupName": "ansible-LnSecurityGroup-Q3NGJB3QTY4X",
+      "Description": "Allow SSH to client host. Created using CloudFormation template.",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 80,
+          "ToPort": 80,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "fac5ca10-6b48-4fca-ab2c-052c3ee781a5",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "fac5ca10-6b48-4fca-ab2c-052c3ee781a5",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "2386",
+      "date": "Tue, 03 Jun 2025 14:55:58 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

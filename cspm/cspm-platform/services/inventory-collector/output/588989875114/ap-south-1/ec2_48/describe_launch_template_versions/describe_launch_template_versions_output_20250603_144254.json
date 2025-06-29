@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ec2",
+  "function": "describe_launch_template_versions",
+  "timestamp": "2025-06-03T14:42:54.417606",
+  "error": "An error occurred (MissingParameter) when calling the DescribeLaunchTemplateVersions operation: To describe the launch template data for all your launch templates, for \u2018--versions\u2019 specify \u2018$Latest\u2019, \u2018$Default\u2019, or both, and omit \u2018--launch-template-id\u2019, \u2018--launch-template-name\u2019, and version numbers. To describe the launch template data for a specific launch template, specify \u2018--launch-template-id\u2019 or \u2018--launch-template-name\u2019, and for \u2018--versions\u2019 specify one or more of the following values: \u2018$Latest\u2019, \u2018$Default\u2019, or one or more version numbers."
+}

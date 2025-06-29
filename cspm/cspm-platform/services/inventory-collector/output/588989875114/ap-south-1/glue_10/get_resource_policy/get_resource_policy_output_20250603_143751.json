@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "glue",
+  "function": "get_resource_policy",
+  "timestamp": "2025-06-03T14:37:51.156134",
+  "error": "An error occurred (EntityNotFoundException) when calling the GetResourcePolicy operation: Policy not found"
+}

@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ElastiCache.2",
+  "Name": "ElastiCache for Redis replication groups should have encryption at rest enabled",
+  "Description": "This control checks whether ElastiCache for Redis replication groups have encryption at rest enabled.",
+  "Function Name": "elasticache_redis_cluster_rest_encryption_enabled",
+  "clients": ["elasticache"],
+  "functions": {
+    "elasticache": {
+      "method": "describe_replication_groups",
+      "field_path": "ReplicationGroups[].AtRestEncryptionEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elasticache",
+    "field": "AtRestEncryptionEnabled",
+    "value": true
+  }
+}

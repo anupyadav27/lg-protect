@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "SageMaker.1",
+  "Name": "SageMaker notebook instances should not have direct internet access",
+  "Description": "This control checks whether direct internet access is disabled for an Amazon SageMaker notebook instance.",
+  "Function Name": "sagemaker_models_network_isolation_enabled",
+  "clients": ["sagemaker"],
+  "functions": {
+    "sagemaker": {
+      "method": "describe_model",
+      "field_path": "EnableNetworkIsolation"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "sagemaker",
+    "field": "EnableNetworkIsolation",
+    "value": true
+  }
+}

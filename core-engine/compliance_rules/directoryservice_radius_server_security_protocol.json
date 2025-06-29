@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Radius Server Security Protocol",
+  "Description": "Ensure Radius servers use secure protocols for communication.",
+  "Function Name": "directoryservice_radius_server_security_protocol",
+  "clients": ["directoryservice"],
+  "functions": {
+    "directoryservice": {
+      "method": "describe_radius_settings",
+      "field_path": "RadiusSettings[].Protocol"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "directoryservice",
+    "field": "Protocol",
+    "expected_value": "TLS"
+  }
+}

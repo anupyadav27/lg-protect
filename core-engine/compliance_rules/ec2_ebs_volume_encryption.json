@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "EBS Volume Encryption",
+  "Description": "Ensure EBS volumes are encrypted to secure data at rest.",
+  "Function Name": "ec2_ebs_volume_encryption",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_volumes",
+      "field_path": "Volumes[].Encrypted"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "ec2",
+    "field": "Encrypted",
+    "expected_value": true
+  }
+}

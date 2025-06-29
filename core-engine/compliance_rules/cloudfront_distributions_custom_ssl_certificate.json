@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "A1.1.3.5",
+  "Name": "Custom SSL Certificate",
+  "Description": "Ensure CloudFront distributions use custom SSL certificates.",
+  "Function Name": "cloudfront_distributions_custom_ssl_certificate",
+  "clients": ["cloudfront"],
+  "functions": {
+    "cloudfront": {
+      "method": "get_distribution_config",
+      "field_path": "DistributionConfig.ViewerCertificate.CertificateSource"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudfront",
+    "field": "CertificateSource"
+  }
+}

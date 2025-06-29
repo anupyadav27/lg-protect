@@ -1,0 +1,12 @@
+[
+    {
+        "Compliance committee":"cisa_aws",
+        "Compliance ID":"your-systems-1",
+        "Compliance Name":"Your Systems-1",
+        "Compliance Description":"Learn what is on your network. Maintain inventories of hardware and software assets to know what is in play and at-risk from attack.",
+        "Compliance Function Name":"ec2_instance_older_than_specific_days",
+        "Required API client":"client = boto3.client('ec2')",
+        "Required Boto3 user function":"describe_instances()",
+        "Compliance function logic":"```rego\npackage aws_compliance\n\nimport future.keywords.in\n\ndefault compliant = false\n\nfind_old_instances[instance] {\n    some account_id, region, service, function, reservation, instance\n\n    data.Inventory[account_id][region][service][function][\"Reservations\"][_] = reservation\n    reservation[\"Instances\"][_] = instance\n    instance[\"LaunchTime\"] != null\n    \n    now := time.now_ns() \/ 1000000\n    launch_time := time.parse_rfc3339_ns(instance[\"LaunchTime\"])\n\n    age_in_days := (now - launch_time) \/ 1000 \/ 60 \/ 60 \/ 24\n    age_in_days > input.specified_days\n}\n\ncompliant {\n    not find_old_instances[_]\n}\n```"
+    }
+]

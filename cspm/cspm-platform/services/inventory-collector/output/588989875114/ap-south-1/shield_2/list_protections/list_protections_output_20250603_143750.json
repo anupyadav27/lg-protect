@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "shield",
+  "function": "list_protections",
+  "timestamp": "2025-06-03T14:37:50.334028",
+  "error": "An error occurred (ResourceNotFoundException) when calling the ListProtections operation: The subscription does not exist."
+}

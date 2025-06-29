@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ec2",
+  "function": "get_instance_user_data",
+  "timestamp": "2025-06-03T14:38:34.571585",
+  "error": "Function get_instance_user_data not found on boto3 client"
+}

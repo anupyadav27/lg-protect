@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "dynamodb",
+  "function": "describe_clusters",
+  "timestamp": "2025-06-03T14:37:42.098797",
+  "error": "Function describe_clusters not found on boto3 client"
+}

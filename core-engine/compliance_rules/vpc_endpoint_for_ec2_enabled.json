@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.22",
+  "Name": "VPC Endpoint for EC2 Enabled",
+  "Description": "Security mechanisms, service levels and service requirements of network services should be identified, implemented and monitored.",
+  "Function Name": "vpc_endpoint_for_ec2_enabled",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_vpc_endpoints",
+      "field_path": "VpcEndpoints[].ServiceName"
+    }
+  },
+  "evaluation": {
+    "type": "contains",
+    "source_client": "ec2",
+    "field": "ServiceName",
+    "expected_value": "com.amazonaws.vpce"
+  }
+}

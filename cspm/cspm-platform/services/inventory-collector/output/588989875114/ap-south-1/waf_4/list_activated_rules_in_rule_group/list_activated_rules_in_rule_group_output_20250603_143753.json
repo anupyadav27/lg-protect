@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "waf",
+  "function": "list_activated_rules_in_rule_group",
+  "timestamp": "2025-06-03T14:37:53.512223",
+  "error": "An error occurred (ValidationException) when calling the ListActivatedRulesInRuleGroup operation: RuleGroupId could not be empty."
+}

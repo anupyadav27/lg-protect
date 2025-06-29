@@ -1,0 +1,72 @@
+{
+  "NetworkAcls": [
+    {
+      "Associations": [
+        {
+          "NetworkAclAssociationId": "aclassoc-348c095c",
+          "NetworkAclId": "acl-c80e76a1",
+          "SubnetId": "subnet-b9b91ff4"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-338c095b",
+          "NetworkAclId": "acl-c80e76a1",
+          "SubnetId": "subnet-c3d91daa"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-328c095a",
+          "NetworkAclId": "acl-c80e76a1",
+          "SubnetId": "subnet-0548af7e"
+        }
+      ],
+      "Entries": [
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        }
+      ],
+      "IsDefault": true,
+      "NetworkAclId": "acl-c80e76a1",
+      "Tags": [],
+      "VpcId": "vpc-5d88fd34",
+      "OwnerId": "588989875114"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "06dbec1b-4196-454b-8f90-5420adf574a0",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "06dbec1b-4196-454b-8f90-5420adf574a0",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "1501",
+      "date": "Tue, 03 Jun 2025 14:45:27 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

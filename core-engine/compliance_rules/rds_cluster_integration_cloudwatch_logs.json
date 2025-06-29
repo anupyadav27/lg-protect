@@ -1,0 +1,22 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Logging",
+  "Description": "Logs that record activities, exceptions, faults and other relevant events should be produced, stored, protected and analysed.",
+  "Function Name": "rds_cluster_integration_cloudwatch_logs",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_clusters",
+      "field_path": "DBClusters[].EnabledCloudwatchLogsExports"
+    }
+  },
+  "evaluation": {
+    "type": "find",
+    "source_client": "rds",
+    "target_client": "rds",
+    "field": "EnabledCloudwatchLogsExports",
+    "required_log_types": ["error", "general", "slowquery"],
+    "validation": "cloudwatch_logs_enabled"
+  }
+}

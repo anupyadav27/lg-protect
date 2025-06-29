@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "EKS Control Plane Logging All Types Enabled",
+  "Description": "Logs that record activities, exceptions, faults and other relevant events should be produced, stored, protected and analysed.",
+  "Function Name": "eks_control_plane_logging_all_types_enabled",
+  "clients": ["eks"],
+  "functions": {
+    "eks": {
+      "method": "describe_cluster",
+      "field_path": "cluster.logging.clusterLogging[].enabled"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "eks",
+    "field": "enabled",
+    "expected_value": true
+  }
+}

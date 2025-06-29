@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "au-11",
+  "Name": "Audit Record Retention (AU-11)",
+  "Description": "The organization retains audit records for at least 90 days to provide support for after-the-fact investigations of security incidents and to meet regulatory and organizational information retention requirements.",
+  "Function Name": "cloudwatch_log_group_retention_policy_specific_days_enabled",
+  "clients": ["logs"],
+  "functions": {
+    "logs": {
+      "method": "describe_log_groups",
+      "field_path": "logGroups[].retentionInDays"
+    }
+  },
+  "evaluation": {
+    "type": "greater_or_equal",
+    "source_client": "logs",
+    "field": "retentionInDays",
+    "value": 90
+  }
+}

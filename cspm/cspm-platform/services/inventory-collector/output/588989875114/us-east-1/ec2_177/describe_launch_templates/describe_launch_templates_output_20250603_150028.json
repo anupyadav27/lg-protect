@@ -1,0 +1,18 @@
+{
+  "LaunchTemplates": [],
+  "ResponseMetadata": {
+    "RequestId": "e543cdfc-5939-4eca-b5b2-35fcb52e1405",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "e543cdfc-5939-4eca-b5b2-35fcb52e1405",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "date": "Tue, 03 Jun 2025 15:00:40 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

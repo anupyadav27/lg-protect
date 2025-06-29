@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "guardduty",
+  "function": "get_administrator_account",
+  "timestamp": "2025-06-03T14:37:47.486952",
+  "error": "Missing required parameter: 'DetectorId'"
+}

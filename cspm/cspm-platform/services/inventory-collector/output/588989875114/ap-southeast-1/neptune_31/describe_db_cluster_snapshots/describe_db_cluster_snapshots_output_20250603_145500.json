@@ -1,0 +1,15 @@
+{
+  "DBClusterSnapshots": [],
+  "ResponseMetadata": {
+    "RequestId": "2593ba95-7e7f-466e-bf97-17514438b0b4",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "2593ba95-7e7f-466e-bf97-17514438b0b4",
+      "strict-transport-security": "max-age=31536000",
+      "content-type": "text/xml",
+      "content-length": "332",
+      "date": "Tue, 03 Jun 2025 14:55:13 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

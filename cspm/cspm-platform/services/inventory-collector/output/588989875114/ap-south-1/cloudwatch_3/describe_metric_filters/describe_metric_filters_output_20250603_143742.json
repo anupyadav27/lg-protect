@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudwatch",
+  "function": "describe_metric_filters",
+  "timestamp": "2025-06-03T14:37:42.282161",
+  "error": "Function describe_metric_filters not found on boto3 client"
+}

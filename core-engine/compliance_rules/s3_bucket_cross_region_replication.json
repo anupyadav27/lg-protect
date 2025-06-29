@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "S3.17",
+  "Name": "S3 buckets should have cross-region replication enabled",
+  "Description": "This control checks whether Amazon S3 buckets have cross-region replication enabled.",
+  "Function Name": "s3_bucket_cross_region_replication",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_replication",
+      "field_path": "ReplicationConfiguration.Rules[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "s3",
+    "field": "Rules"
+  }
+}

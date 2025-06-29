@@ -1,0 +1,77 @@
+{
+  "NetworkAcls": [
+    {
+      "Associations": [
+        {
+          "NetworkAclAssociationId": "aclassoc-4c6fff21",
+          "NetworkAclId": "acl-89e332e1",
+          "SubnetId": "subnet-857c83fe"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-4a63e926",
+          "NetworkAclId": "acl-89e332e1",
+          "SubnetId": "subnet-6acdeb36"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-9a3bb7f1",
+          "NetworkAclId": "acl-89e332e1",
+          "SubnetId": "subnet-bc1c19f1"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-9b3bb7f0",
+          "NetworkAclId": "acl-89e332e1",
+          "SubnetId": "subnet-13db137b"
+        }
+      ],
+      "Entries": [
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        }
+      ],
+      "IsDefault": true,
+      "NetworkAclId": "acl-89e332e1",
+      "Tags": [],
+      "VpcId": "vpc-fdc03295",
+      "OwnerId": "588989875114"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "80efafa2-d9d9-4501-b2fe-0db8671f747c",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "80efafa2-d9d9-4501-b2fe-0db8671f747c",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "1659",
+      "date": "Tue, 03 Jun 2025 14:47:04 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

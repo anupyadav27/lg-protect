@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudwatch",
+  "function": "get_log_events",
+  "timestamp": "2025-06-03T14:37:42.298909",
+  "error": "Function get_log_events not found on boto3 client"
+}

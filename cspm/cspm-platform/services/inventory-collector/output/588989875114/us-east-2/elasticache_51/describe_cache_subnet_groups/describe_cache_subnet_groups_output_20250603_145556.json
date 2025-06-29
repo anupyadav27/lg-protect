@@ -1,0 +1,14 @@
+{
+  "CacheSubnetGroups": [],
+  "ResponseMetadata": {
+    "RequestId": "3c8b6ba1-c432-49ed-8e1f-6c083731a7cb",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "3c8b6ba1-c432-49ed-8e1f-6c083731a7cb",
+      "content-type": "text/xml",
+      "content-length": "335",
+      "date": "Tue, 03 Jun 2025 14:56:09 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

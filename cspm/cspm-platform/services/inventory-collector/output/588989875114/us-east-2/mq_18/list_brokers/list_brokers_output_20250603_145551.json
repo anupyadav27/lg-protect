@@ -1,0 +1,22 @@
+{
+  "ResponseMetadata": {
+    "RequestId": "f1ea6c8f-9df7-49ee-ac76-52fde26e5335",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "date": "Tue, 03 Jun 2025 14:56:04 GMT",
+      "content-type": "application/json",
+      "content-length": "39",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "f1ea6c8f-9df7-49ee-ac76-52fde26e5335",
+      "access-control-allow-origin": "*",
+      "x-amz-apigw-id": "Ll74yGGAiYcEYbg=",
+      "cache-control": "no-cache; no-store, must-revalidate, private",
+      "expires": "0",
+      "access-control-expose-headers": "x-amzn-errortype,x-amzn-requestid,x-amzn-errormessage,x-amzn-trace-id,x-amz-apigw-id,date",
+      "x-amzn-trace-id": "Root=1-683f0d04-37ac0d42055ce09b34986e13",
+      "pragma": "no-cache"
+    },
+    "RetryAttempts": 0
+  },
+  "BrokerSummaries": []
+}

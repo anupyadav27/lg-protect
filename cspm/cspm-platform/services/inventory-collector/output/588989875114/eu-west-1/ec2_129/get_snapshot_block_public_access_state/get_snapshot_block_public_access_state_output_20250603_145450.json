@@ -1,0 +1,19 @@
+{
+  "State": "unblocked",
+  "ManagedBy": "account",
+  "ResponseMetadata": {
+    "RequestId": "f09a4fa6-1e3e-481e-b877-adaca259bd0c",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "f09a4fa6-1e3e-481e-b877-adaca259bd0c",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "date": "Tue, 03 Jun 2025 14:55:03 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

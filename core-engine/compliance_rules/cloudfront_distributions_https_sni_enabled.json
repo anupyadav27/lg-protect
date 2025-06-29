@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "2.2.5.4",
+  "Name": "HTTPS SNI Enabled",
+  "Description": "Ensure CloudFront distributions use SNI for HTTPS requests.",
+  "Function Name": "cloudfront_distributions_https_sni_enabled",
+  "clients": ["cloudfront"],
+  "functions": {
+    "cloudfront": {
+      "method": "get_distribution_config",
+      "field_path": "DistributionConfig.ViewerCertificate.SSLSupportMethod"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudfront",
+    "field": "SSLSupportMethod"
+  }
+}

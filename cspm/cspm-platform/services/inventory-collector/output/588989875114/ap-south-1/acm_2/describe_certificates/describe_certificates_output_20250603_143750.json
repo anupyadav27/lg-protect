@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "acm",
+  "function": "describe_certificates",
+  "timestamp": "2025-06-03T14:37:50.589506",
+  "error": "Function describe_certificates not found on boto3 client"
+}

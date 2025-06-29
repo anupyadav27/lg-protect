@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.1",
+  "Name": "KMS Key Not Publicly Accessible",
+  "Description": "Information stored on, processed by or accessible via user endpoint devices should be protected.",
+  "Function Name": "kms_key_not_publicly_accessible",
+  "clients": ["kms"],
+  "functions": {
+    "kms": {
+      "method": "get_key_policy",
+      "field_path": "Policy"
+    }
+  },
+  "evaluation": {
+    "type": "not_contains",
+    "source_client": "kms",
+    "field": "Policy",
+    "forbidden_value": "*"
+  }
+}

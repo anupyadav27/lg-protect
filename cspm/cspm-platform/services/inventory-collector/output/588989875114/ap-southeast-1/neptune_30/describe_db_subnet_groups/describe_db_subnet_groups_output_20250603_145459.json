@@ -1,0 +1,69 @@
+{
+  "DBSubnetGroups": [
+    {
+      "DBSubnetGroupName": "default-vpc-0fce11bda8dc074e5",
+      "DBSubnetGroupDescription": "Created from the RDS Management Console",
+      "VpcId": "vpc-0fce11bda8dc074e5",
+      "SubnetGroupStatus": "Complete",
+      "Subnets": [
+        {
+          "SubnetIdentifier": "subnet-0f326d87ae4cec910",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-southeast-1b"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-0189bd2b1362520cf",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-southeast-1c"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-0c6151a64db27ac4c",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-southeast-1a"
+          },
+          "SubnetStatus": "Active"
+        }
+      ],
+      "DBSubnetGroupArn": "arn:aws:rds:ap-southeast-1:588989875114:subgrp:default-vpc-0fce11bda8dc074e5"
+    },
+    {
+      "DBSubnetGroupName": "pgsql-subnetgroup",
+      "DBSubnetGroupDescription": "pgsql-subnetgroup",
+      "VpcId": "vpc-08500b30ab84f000b",
+      "SubnetGroupStatus": "Complete",
+      "Subnets": [
+        {
+          "SubnetIdentifier": "subnet-0881b2c8035798233",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-southeast-1a"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-05e596fe48145fbcb",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-southeast-1b"
+          },
+          "SubnetStatus": "Active"
+        }
+      ],
+      "DBSubnetGroupArn": "arn:aws:rds:ap-southeast-1:588989875114:subgrp:pgsql-subnetgroup"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "ee039ff9-e4aa-47ff-8cab-c78842ea8419",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "ee039ff9-e4aa-47ff-8cab-c78842ea8419",
+      "strict-transport-security": "max-age=31536000",
+      "content-type": "text/xml",
+      "content-length": "2859",
+      "date": "Tue, 03 Jun 2025 14:55:12 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

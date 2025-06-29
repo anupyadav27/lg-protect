@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.23",
+  "Name": "VPC Default Security Group Closed",
+  "Description": "Access to external websites should be managed to reduce exposure to malicious content.",
+  "Function Name": "vpc_default_security_group_closed",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].IpPermissions"
+    }
+  },
+  "evaluation": {
+    "type": "empty",
+    "source_client": "ec2",
+    "field": "IpPermissions"
+  }
+}

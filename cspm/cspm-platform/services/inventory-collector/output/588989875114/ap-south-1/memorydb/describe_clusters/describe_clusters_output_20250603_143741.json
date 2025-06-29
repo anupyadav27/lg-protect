@@ -1,0 +1,15 @@
+{
+  "Clusters": [],
+  "ResponseMetadata": {
+    "RequestId": "d582bd96-dc3a-4a93-bb90-d152b497e436",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "d582bd96-dc3a-4a93-bb90-d152b497e436",
+      "strict-transport-security": "max-age=31536000",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "15",
+      "date": "Tue, 03 Jun 2025 14:37:55 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

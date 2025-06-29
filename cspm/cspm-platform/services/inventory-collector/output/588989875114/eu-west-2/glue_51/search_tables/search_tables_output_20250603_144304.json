@@ -1,0 +1,138 @@
+{
+  "TableList": [
+    {
+      "Name": "elb_logs",
+      "DatabaseName": "sampledb",
+      "Owner": "hadoop",
+      "CreateTime": "2019-08-12T19:08:43+05:30",
+      "UpdateTime": "2019-08-12T19:08:43+05:30",
+      "LastAccessTime": "2019-08-12T19:08:43+05:30",
+      "Retention": 0,
+      "StorageDescriptor": {
+        "Columns": [
+          {
+            "Name": "request_timestamp",
+            "Type": "string"
+          },
+          {
+            "Name": "elb_name",
+            "Type": "string"
+          },
+          {
+            "Name": "request_ip",
+            "Type": "string"
+          },
+          {
+            "Name": "request_port",
+            "Type": "int"
+          },
+          {
+            "Name": "backend_ip",
+            "Type": "string"
+          },
+          {
+            "Name": "backend_port",
+            "Type": "int"
+          },
+          {
+            "Name": "request_processing_time",
+            "Type": "double"
+          },
+          {
+            "Name": "backend_processing_time",
+            "Type": "double"
+          },
+          {
+            "Name": "client_response_time",
+            "Type": "double"
+          },
+          {
+            "Name": "elb_response_code",
+            "Type": "string"
+          },
+          {
+            "Name": "backend_response_code",
+            "Type": "string"
+          },
+          {
+            "Name": "received_bytes",
+            "Type": "bigint"
+          },
+          {
+            "Name": "sent_bytes",
+            "Type": "bigint"
+          },
+          {
+            "Name": "request_verb",
+            "Type": "string"
+          },
+          {
+            "Name": "url",
+            "Type": "string"
+          },
+          {
+            "Name": "protocol",
+            "Type": "string"
+          },
+          {
+            "Name": "user_agent",
+            "Type": "string"
+          },
+          {
+            "Name": "ssl_cipher",
+            "Type": "string"
+          },
+          {
+            "Name": "ssl_protocol",
+            "Type": "string"
+          }
+        ],
+        "Location": "s3://athena-examples-eu-west-2/elb/plaintext",
+        "InputFormat": "org.apache.hadoop.mapred.TextInputFormat",
+        "OutputFormat": "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat",
+        "Compressed": false,
+        "NumberOfBuckets": -1,
+        "SerdeInfo": {
+          "SerializationLibrary": "org.apache.hadoop.hive.serde2.RegexSerDe",
+          "Parameters": {
+            "serialization.format": "1",
+            "input.regex": "([^ ]*) ([^ ]*) ([^ ]*):([0-9]*) ([^ ]*):([0-9]*) ([.0-9]*) ([.0-9]*) ([.0-9]*) (-|[0-9]*) (-|[0-9]*) ([-0-9]*) ([-0-9]*) \\\"([^ ]*) ([^ ]*) (- |[^ ]*)\\\" (\"[^\"]*\") ([A-Z0-9-]+) ([A-Za-z0-9.-]*)$"
+          }
+        },
+        "BucketColumns": [],
+        "SortColumns": [],
+        "Parameters": {},
+        "SkewedInfo": {
+          "SkewedColumnNames": [],
+          "SkewedColumnValues": [],
+          "SkewedColumnValueLocationMaps": {}
+        },
+        "StoredAsSubDirectories": false
+      },
+      "PartitionKeys": [],
+      "TableType": "EXTERNAL_TABLE",
+      "Parameters": {
+        "EXTERNAL": "TRUE",
+        "transient_lastDdlTime": "1480278335"
+      },
+      "CreatedBy": "arn:aws:iam::588989875114:root",
+      "IsRegisteredWithLakeFormation": false,
+      "CatalogId": "588989875114",
+      "VersionId": "0",
+      "IsMultiDialectView": false
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "c2658305-700c-4bc7-9c9e-fe5d32743402",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "date": "Tue, 03 Jun 2025 14:43:17 GMT",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "2123",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "c2658305-700c-4bc7-9c9e-fe5d32743402",
+      "cache-control": "no-cache"
+    },
+    "RetryAttempts": 0
+  }
+}

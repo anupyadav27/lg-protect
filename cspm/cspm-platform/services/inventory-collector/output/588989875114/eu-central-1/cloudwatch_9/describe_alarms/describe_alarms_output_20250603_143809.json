@@ -1,0 +1,45 @@
+{
+  "CompositeAlarms": [],
+  "MetricAlarms": [
+    {
+      "AlarmName": "awsec2-test-CPU-Utilization",
+      "AlarmArn": "arn:aws:cloudwatch:eu-central-1:588989875114:alarm:awsec2-test-CPU-Utilization",
+      "AlarmConfigurationUpdatedTimestamp": "2019-06-13T06:29:03.966000+00:00",
+      "ActionsEnabled": true,
+      "OKActions": [],
+      "AlarmActions": [
+        "arn:aws:sns:eu-central-1:588989875114:cpuincrease"
+      ],
+      "InsufficientDataActions": [],
+      "StateValue": "INSUFFICIENT_DATA",
+      "StateReason": "Insufficient Data: 1 datapoint was unknown.",
+      "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2019-06-13T06:37:44.108+0000\",\"statistic\":\"Average\",\"period\":300,\"recentDatapoints\":[],\"threshold\":60.0}",
+      "StateUpdatedTimestamp": "2019-06-13T06:37:44.114000+00:00",
+      "MetricName": "CPUUtilization",
+      "Namespace": "AWS/EC2",
+      "Statistic": "Average",
+      "Dimensions": [
+        {
+          "Name": "AutoScalingGroupName",
+          "Value": "test"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 60.0,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "StateTransitionedTimestamp": "2019-06-13T06:37:44.114000+00:00"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "10cbec0f-840d-4be6-a97f-1a7b289ed9b6",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "10cbec0f-840d-4be6-a97f-1a7b289ed9b6",
+      "content-type": "text/xml",
+      "content-length": "1974",
+      "date": "Tue, 03 Jun 2025 14:38:22 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

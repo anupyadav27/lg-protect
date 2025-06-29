@@ -1,0 +1,15 @@
+{
+  "Stacks": [],
+  "ResponseMetadata": {
+    "RequestId": "c3510f47-a27a-49d4-b071-9d58c5e5d3f2",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "c3510f47-a27a-49d4-b071-9d58c5e5d3f2",
+      "date": "Tue, 03 Jun 2025 14:38:44 GMT",
+      "content-type": "text/xml",
+      "content-length": "283",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

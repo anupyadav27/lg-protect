@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "S3.3",
+  "Name": "S3 buckets should prohibit public write access",
+  "Description": "This control checks whether your S3 buckets allow public write access by evaluating the Block Public Access settings, the bucket policy, and the bucket access control list (ACL).",
+  "Function Name": "s3_bucket_public_write_acl",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_acl",
+      "field_path": "Grants[].Permission"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "s3",
+    "field": "Permission",
+    "value": "WRITE"
+  }
+}

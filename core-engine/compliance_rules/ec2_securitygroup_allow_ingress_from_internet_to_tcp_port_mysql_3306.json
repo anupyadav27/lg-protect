@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "5.2",
+  "Name": "Ensure no security groups allow ingress from 0.0.0.0/0 to port 3306",
+  "Description": "Security groups provide stateful filtering of ingress/egress network traffic to AWS resources.",
+  "Function Name": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mysql_3306",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].IpPermissions[].FromPort"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "ec2",
+    "field": "FromPort",
+    "value": 3306
+  }
+}

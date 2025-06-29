@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.1",
+  "Name": "User Endpoint Devices",
+  "Description": "Ensure AWS Lambda function URLs have proper CORS policies.",
+  "Function Name": "awslambda_function_url_cors_policy",
+  "clients": ["lambda", "apigatewayv2"],
+  "functions": {
+    "lambda": {
+      "method": "get_function_url_config",
+      "field_path": "Cors.AllowOrigins"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "lambda",
+    "field": "AllowOrigins"
+  }
+}

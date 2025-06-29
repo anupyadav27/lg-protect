@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "MQ.3",
+  "Name": "MQ brokers should have cluster deployment mode enabled",
+  "Description": "This control checks whether Amazon MQ brokers are configured with cluster deployment mode.",
+  "Function Name": "mq_broker_cluster_deployment_mode",
+  "clients": ["mq"],
+  "functions": {
+    "mq": {
+      "method": "describe_broker",
+      "field_path": "DeploymentMode"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "mq",
+    "field": "DeploymentMode",
+    "value": "CLUSTER_MULTI_AZ"
+  }
+}

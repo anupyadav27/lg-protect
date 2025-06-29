@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EC2.51",
+  "Name": "EC2 instances should use multiple ENIs",
+  "Description": "This control checks whether EC2 instances use multiple Elastic Network Interfaces (ENIs).",
+  "Function Name": "ec2_instance_uses_single_eni",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_instances",
+      "field_path": "Reservations[].Instances[].NetworkInterfaces[]"
+    }
+  },
+  "evaluation": {
+    "type": "count",
+    "source_client": "ec2",
+    "field": "NetworkInterfaces",
+    "value": 1
+  }
+}

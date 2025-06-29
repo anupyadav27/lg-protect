@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "route53",
+  "function": "list_domains",
+  "timestamp": "2025-06-03T14:37:54.213400",
+  "error": "Function list_domains not found on boto3 client"
+}

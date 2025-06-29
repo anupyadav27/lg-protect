@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.2",
+  "Name": "",
+  "Description": "Ensure security contact information is registered",
+  "Function Name": "account_security_contact_information_is_registered",
+  "clients": ["support"],
+  "functions": {
+    "support": {
+      "method": "describe_cases",
+      "field_path": "cases[].contact"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "support",
+    "field": "contact"
+  }
+}

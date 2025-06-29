@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "athena",
+  "function": "get_workgroups",
+  "timestamp": "2025-06-03T14:37:42.133920",
+  "error": "Function get_workgroups not found on boto3 client"
+}

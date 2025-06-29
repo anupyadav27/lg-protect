@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "acm",
+  "function": "list_tags_for_certificate",
+  "timestamp": "2025-06-03T14:37:50.597812",
+  "error": "Missing required parameter: 'CertificateArn'"
+}

@@ -1,0 +1,17 @@
+{
+  "Volumes": [],
+  "ResponseMetadata": {
+    "RequestId": "de83a3b9-232f-4da4-a7da-1c71c2c1a0c8",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "de83a3b9-232f-4da4-a7da-1c71c2c1a0c8",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "210",
+      "date": "Tue, 03 Jun 2025 15:02:31 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

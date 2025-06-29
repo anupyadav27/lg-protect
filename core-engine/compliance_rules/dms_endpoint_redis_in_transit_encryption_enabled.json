@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "DMS.9",
+  "Name": "DMS endpoints should use SSL",
+  "Description": "This control checks whether an AWS DMS endpoint uses an SSL connection.",
+  "Function Name": "dms_endpoint_redis_in_transit_encryption_enabled",
+  "clients": ["dms"],
+  "functions": {
+    "dms": {
+      "method": "describe_endpoints",
+      "field_path": "Endpoints[].SslMode"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "dms",
+    "field": "SslMode",
+    "value": "require"
+  }
+}

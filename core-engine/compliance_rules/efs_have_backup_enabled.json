@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "EFS Backup Enabled",
+  "Description": "Ensure EFS file systems have backups enabled to prevent data loss.",
+  "Function Name": "efs_have_backup_enabled",
+  "clients": ["efs"],
+  "functions": {
+    "efs": {
+      "method": "describe_file_systems",
+      "field_path": "FileSystems[].BackupPolicy.Status"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "efs",
+    "field": "BackupPolicy.Status",
+    "expected_value": "ENABLED"
+  }
+}

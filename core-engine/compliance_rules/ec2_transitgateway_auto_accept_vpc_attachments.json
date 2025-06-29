@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.22",
+  "Name": "EC2 Transit Gateway Auto Accept VPC Attachments Disabled",
+  "Description": "Security mechanisms, service levels and service requirements of network services should be identified, implemented and monitored.",
+  "Function Name": "ec2_transitgateway_auto_accept_vpc_attachments",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_transit_gateways",
+      "field_path": "TransitGateways[].Options.AutoAcceptSharedAttachments"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "ec2",
+    "field": "AutoAcceptSharedAttachments",
+    "expected_value": "disable"
+  }
+}

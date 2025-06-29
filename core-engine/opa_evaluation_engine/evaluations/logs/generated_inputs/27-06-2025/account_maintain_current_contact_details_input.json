@@ -1,0 +1,41 @@
+{
+  "data": {
+    "ContactInformation": {
+      "AddressLine1": "123 Main St",
+      "AddressLine2": "Suite 100",
+      "AddressLine3": "",
+      "City": "Seattle",
+      "CompanyName": "Example Corp",
+      "CountryCode": "US",
+      "DistrictOrCounty": "King County",
+      "FullName": "John Doe",
+      "PhoneNumber": "+1-555-555-5555",
+      "PostalCode": "98101",
+      "StateOrRegion": "WA",
+      "WebsiteUrl": "https://www.example.com"
+    }
+  },
+  "policy": {
+    "details": {
+      "Compliance Name": "cis_4.0_aws",
+      "ID": "1.1",
+      "Name": "",
+      "Description": "Maintain current contact details",
+      "Function Name": "account_maintain_current_contact_details",
+      "clients": [
+        "account"
+      ],
+      "functions": {
+        "account": {
+          "method": "get_contact_information",
+          "field_path": "ContactInformation[].FullName"
+        }
+      }
+    },
+    "evaluation": {
+      "type": "exists",
+      "source_client": "account",
+      "field": "FullName"
+    }
+  }
+}

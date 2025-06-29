@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Logging",
+  "Description": "Logs that record activities, exceptions, faults and other relevant events should be produced, stored, protected and analysed.",
+  "Function Name": "route53_public_hosted_zones_cloudwatch_logging_enabled",
+  "clients": ["route53"],
+  "functions": {
+    "route53_zones": {
+      "method": "list_hosted_zones",
+      "field_path": "HostedZones[].Id"
+    },
+    "route53_logging": {
+      "method": "list_query_logging_configs",
+      "field_path": "QueryLoggingConfigs[].HostedZoneId"
+    }
+  },
+  "evaluation": {
+    "type": "subset",
+    "source_client": "route53_zones",
+    "target_client": "route53_logging",
+    "field": "Id"
+  }
+}

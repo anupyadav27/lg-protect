@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "backup",
+  "function": "list_backup_report_plans",
+  "timestamp": "2025-06-03T14:37:43.577065",
+  "error": "Function list_backup_report_plans not found on boto3 client"
+}

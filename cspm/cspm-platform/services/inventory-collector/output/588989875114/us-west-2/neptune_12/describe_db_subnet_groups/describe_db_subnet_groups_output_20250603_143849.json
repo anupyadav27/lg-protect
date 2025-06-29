@@ -1,0 +1,92 @@
+{
+  "DBSubnetGroups": [
+    {
+      "DBSubnetGroupName": "default-vpc-68b3b60d",
+      "DBSubnetGroupDescription": "Created from the RDS Management Console",
+      "VpcId": "vpc-68b3b60d",
+      "SubnetGroupStatus": "Complete",
+      "Subnets": [
+        {
+          "SubnetIdentifier": "subnet-f7474c92",
+          "SubnetAvailabilityZone": {
+            "Name": "us-west-2a"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-d0004489",
+          "SubnetAvailabilityZone": {
+            "Name": "us-west-2c"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-ebe6ca9c",
+          "SubnetAvailabilityZone": {
+            "Name": "us-west-2b"
+          },
+          "SubnetStatus": "Active"
+        }
+      ],
+      "DBSubnetGroupArn": "arn:aws:rds:us-west-2:588989875114:subgrp:default-vpc-68b3b60d"
+    },
+    {
+      "DBSubnetGroupName": "my-db-subnet-group",
+      "DBSubnetGroupDescription": "Managed by Terraform",
+      "VpcId": "vpc-0c7b2d7cf44e2f711",
+      "SubnetGroupStatus": "Complete",
+      "Subnets": [
+        {
+          "SubnetIdentifier": "subnet-0b2b6c7c223d2f43b",
+          "SubnetAvailabilityZone": {
+            "Name": "us-west-2b"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-0e9651597be878a50",
+          "SubnetAvailabilityZone": {
+            "Name": "us-west-2a"
+          },
+          "SubnetStatus": "Active"
+        }
+      ],
+      "DBSubnetGroupArn": "arn:aws:rds:us-west-2:588989875114:subgrp:my-db-subnet-group"
+    },
+    {
+      "DBSubnetGroupName": "neptune-subnet-group",
+      "DBSubnetGroupDescription": "Managed by Terraform",
+      "VpcId": "vpc-0c7b2d7cf44e2f711",
+      "SubnetGroupStatus": "Complete",
+      "Subnets": [
+        {
+          "SubnetIdentifier": "subnet-0b2b6c7c223d2f43b",
+          "SubnetAvailabilityZone": {
+            "Name": "us-west-2b"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-0e9651597be878a50",
+          "SubnetAvailabilityZone": {
+            "Name": "us-west-2a"
+          },
+          "SubnetStatus": "Active"
+        }
+      ],
+      "DBSubnetGroupArn": "arn:aws:rds:us-west-2:588989875114:subgrp:neptune-subnet-group"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "ec2f200f-31cd-4c08-90f3-5ca69b71b43f",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "ec2f200f-31cd-4c08-90f3-5ca69b71b43f",
+      "strict-transport-security": "max-age=31536000",
+      "content-type": "text/xml",
+      "content-length": "3983",
+      "date": "Tue, 03 Jun 2025 14:39:02 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

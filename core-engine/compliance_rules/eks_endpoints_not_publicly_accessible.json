@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "EKS Endpoints Not Publicly Accessible",
+  "Description": "Ensure EKS endpoints are not publicly accessible to prevent unauthorized access.",
+  "Function Name": "eks_endpoints_not_publicly_accessible",
+  "clients": ["eks"],
+  "functions": {
+    "eks": {
+      "method": "describe_clusters",
+      "field_path": "clusters[].endpointPublicAccess"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "eks",
+    "field": "endpointPublicAccess",
+    "expected_value": false
+  }
+}

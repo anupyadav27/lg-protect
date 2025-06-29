@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Well-Architected.1",
+  "Name": "Well-Architected Framework workloads should not have high or medium risk issues outstanding",
+  "Description": "This control checks whether AWS Well-Architected Framework workloads have high or medium risk issues outstanding.",
+  "Function Name": "wellarchitected_workload_no_high_or_medium_risks",
+  "clients": ["wellarchitected"],
+  "functions": {
+    "wellarchitected": {
+      "method": "list_answers",
+      "field_path": "AnswerSummaries[].Risk"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "wellarchitected",
+    "field": "Risk",
+    "value": "HIGH"
+  }
+}

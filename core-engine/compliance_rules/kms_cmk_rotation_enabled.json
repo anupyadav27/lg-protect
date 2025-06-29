@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "3.7",
+  "Name": "Ensure rotation for customer created CMKs is enabled",
+  "Description": "AWS Key Management Service (KMS) allows customers to rotate the backing key which is key material stored within the KMS which is tied to the key ID of the Customer Created customer master key (CMK).",
+  "Function Name": "kms_cmk_rotation_enabled",
+  "clients": ["kms"],
+  "functions": {
+    "kms": {
+      "method": "get_key_rotation_status",
+      "field_path": "KeyRotationEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "kms",
+    "field": "KeyRotationEnabled",
+    "value": true
+  }
+}

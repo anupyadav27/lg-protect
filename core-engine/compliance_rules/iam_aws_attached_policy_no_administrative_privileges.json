@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.16",
+  "Name": "IAM No Full Administrative Privileges",
+  "Description": "Ensure IAM policies that allow full *:* administrative privileges are not attached",
+  "Function Name": "iam_aws_attached_policy_no_administrative_privileges",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_attached_role_policies",
+      "field_path": "AttachedPolicies[].PolicyArn"
+    }
+  },
+  "evaluation": {
+    "type": "not_in",
+    "source_client": "iam",
+    "field": "PolicyArn",
+    "forbidden_values": ["arn:aws:iam::aws:policy/AdministratorAccess"]
+  }
+}

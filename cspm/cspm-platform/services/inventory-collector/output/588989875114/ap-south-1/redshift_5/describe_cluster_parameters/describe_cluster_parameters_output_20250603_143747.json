@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "redshift",
+  "function": "describe_cluster_parameters",
+  "timestamp": "2025-06-03T14:37:47.241699",
+  "error": "Missing required parameter: 'ParameterGroupName'"
+}

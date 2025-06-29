@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_account_security_onboarding_aws",
+  "ID": "Apply managed domain name lists for Resolver in block mode)",
+  "Name": "Route53 Domains Transfer Lock Enabled",
+  "Description": "Utilize managed domain name lists within Resolver to implement block mode.",
+  "Function Name": "route53_domains_transferlock_enabled",
+  "clients": ["route53domains"],
+  "functions": {
+    "route53domains": {
+      "method": "get_domain_detail",
+      "field_path": "TransferLock"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "route53domains",
+    "field": "TransferLock",
+    "expected_value": true
+  }
+}

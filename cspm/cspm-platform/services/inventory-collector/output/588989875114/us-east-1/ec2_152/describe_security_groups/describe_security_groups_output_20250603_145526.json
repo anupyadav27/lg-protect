@@ -1,0 +1,604 @@
+{
+  "SecurityGroups": [
+    {
+      "GroupId": "sg-0e726bd2151e3c1a4",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-0e726bd2151e3c1a4",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-2",
+      "Description": "launch-wizard-2 created 2025-01-15T05:48:30.917Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 3389,
+          "ToPort": 3389,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-02c8b487b0e798166",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "kubernetes.io/cluster/eks-cluster",
+          "Value": "owned"
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-02c8b487b0e798166",
+      "OwnerId": "588989875114",
+      "GroupName": "k8s-elb-a5c6dd8ef52b14fd98ccbb86b046b353",
+      "Description": "Security group for Kubernetes ELB a5c6dd8ef52b14fd98ccbb86b046b353 (nifi/neo4j-service)",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 7474,
+          "ToPort": 7474,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "icmp",
+          "FromPort": 3,
+          "ToPort": 4,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 7687,
+          "ToPort": 7687,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0ece1d6ddf9fa5a3f",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "kubernetes.io/cluster/eks-cluster",
+          "Value": "owned"
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-0ece1d6ddf9fa5a3f",
+      "OwnerId": "588989875114",
+      "GroupName": "k8s-elb-a927e917ff44047ba826f1283800551e",
+      "Description": "Security group for Kubernetes ELB a927e917ff44047ba826f1283800551e (nifi/fluentd-service)",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 9880,
+          "ToPort": 9880,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "icmp",
+          "FromPort": 3,
+          "ToPort": 4,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-04f0354a1dbaba250",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-04f0354a1dbaba250",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-1",
+      "Description": "launch-wizard-1 created 2025-01-15T02:41:05.188Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 80,
+          "ToPort": 80,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 443,
+          "ToPort": 443,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 3389,
+          "ToPort": 3389,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-09bfcbf8d756d9185",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-09bfcbf8d756d9185",
+      "OwnerId": "588989875114",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-0a01c3317361043b0"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-06e744f16e8d6d1bb",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "kubernetes.io/cluster/eks-cluster",
+          "Value": "owned"
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-06e744f16e8d6d1bb",
+      "OwnerId": "588989875114",
+      "GroupName": "k8s-elb-a7208ec5b69d04e5b94799203a6dd929",
+      "Description": "Security group for Kubernetes ELB a7208ec5b69d04e5b94799203a6dd929 (nifi/nifi-service)",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 8080,
+          "ToPort": 8080,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "icmp",
+          "FromPort": 3,
+          "ToPort": 4,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0459057fa16878681",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-0459057fa16878681",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-4",
+      "Description": "launch-wizard-4 created 2025-01-15T09:16:40.594Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 3389,
+          "ToPort": 3389,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0230c34329fc80aa0",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-0230c34329fc80aa0",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-5",
+      "Description": "launch-wizard-5 created 2025-01-15T15:44:08.650Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 3389,
+          "ToPort": 3389,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0b45a29d4be173787",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-0b45a29d4be173787",
+      "OwnerId": "588989875114",
+      "GroupName": "launch-wizard-3",
+      "Description": "launch-wizard-3 created 2025-01-15T08:30:30.054Z",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 3389,
+          "ToPort": 3389,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-028404066dd3cc5cc",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-028404066dd3cc5cc",
+      "OwnerId": "588989875114",
+      "GroupName": "ekscluster_sg",
+      "Description": "ekscluster",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-0a01c3317361043b0"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-04bcb7dc28aa6ef45",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1"
+        },
+        {
+          "Key": "aws:cloudformation:stack-name",
+          "Value": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1"
+        },
+        {
+          "Key": "aws:cloud9:owner",
+          "Value": "588989875114"
+        },
+        {
+          "Key": "aws:cloud9:environment",
+          "Value": "fc19745854f840e79c93e1fb454b49e1"
+        },
+        {
+          "Key": "aws:cloudformation:logical-id",
+          "Value": "InstanceSecurityGroup"
+        },
+        {
+          "Key": "aws:cloudformation:stack-id",
+          "Value": "arn:aws:cloudformation:us-east-1:588989875114:stack/aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1/27efa9f0-dbe0-11ef-8ce9-0efbaab7e7f9"
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-04bcb7dc28aa6ef45",
+      "OwnerId": "588989875114",
+      "GroupName": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1-InstanceSecurityGroup-mPRxm7MSITNw",
+      "Description": "Security group for AWS Cloud9 environment aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "35.172.155.192/27"
+            },
+            {
+              "CidrIp": "35.172.155.96/27"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-0a01c3317361043b0",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-028404066dd3cc5cc"
+            }
+          ],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "SecurityGroupArn": "arn:aws:ec2:us-east-1:588989875114:security-group/sg-0a01c3317361043b0",
+      "OwnerId": "588989875114",
+      "GroupName": "eksworkernode",
+      "Description": "ekswokernodes",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "588989875114",
+              "GroupId": "sg-028404066dd3cc5cc"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 22,
+          "ToPort": 22,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "f0f8fadd-d7b3-4d95-869a-3fd394e2fb0c",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "f0f8fadd-d7b3-4d95-869a-3fd394e2fb0c",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "date": "Tue, 03 Jun 2025 14:55:39 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

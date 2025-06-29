@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "S3.5",
+  "Name": "S3 buckets should require requests to use Secure Socket Layer",
+  "Description": "This control checks whether S3 buckets have policies that require requests to use Secure Socket Layer (SSL).",
+  "Function Name": "s3_bucket_enforces_ssl",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_policy",
+      "field_path": "Policy"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "s3",
+    "field": "Policy"
+  }
+}

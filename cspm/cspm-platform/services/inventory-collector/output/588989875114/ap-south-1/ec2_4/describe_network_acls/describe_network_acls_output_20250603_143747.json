@@ -1,0 +1,72 @@
+{
+  "NetworkAcls": [
+    {
+      "Associations": [
+        {
+          "NetworkAclAssociationId": "aclassoc-0b81a96908b4a74ad",
+          "NetworkAclId": "acl-0297bfb19d13fd0fe",
+          "SubnetId": "subnet-0eb3ec80f3c9cb1af"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-020fe0e54db6dd45c",
+          "NetworkAclId": "acl-0297bfb19d13fd0fe",
+          "SubnetId": "subnet-06cc90b4acc9aa656"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-80c8e5ea",
+          "NetworkAclId": "acl-0297bfb19d13fd0fe",
+          "SubnetId": "subnet-fe709485"
+        }
+      ],
+      "Entries": [
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        }
+      ],
+      "IsDefault": true,
+      "NetworkAclId": "acl-0297bfb19d13fd0fe",
+      "Tags": [],
+      "VpcId": "vpc-0f01f92b214c2db02",
+      "OwnerId": "588989875114"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "1325a5ee-596d-4452-8203-02f58591d570",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "1325a5ee-596d-4452-8203-02f58591d570",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "1582",
+      "date": "Tue, 03 Jun 2025 14:38:00 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

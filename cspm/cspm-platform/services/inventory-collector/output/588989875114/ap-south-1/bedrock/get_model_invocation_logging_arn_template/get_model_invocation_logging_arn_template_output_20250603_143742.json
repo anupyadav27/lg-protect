@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "bedrock",
+  "function": "get_model_invocation_logging_arn_template",
+  "timestamp": "2025-06-03T14:37:42.355745",
+  "error": "Function get_model_invocation_logging_arn_template not found on boto3 client"
+}

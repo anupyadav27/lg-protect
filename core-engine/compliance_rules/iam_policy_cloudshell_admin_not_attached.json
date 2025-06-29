@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "IAM.22",
+  "Name": "IAM user credentials unused for 45 days should be removed",
+  "Description": "This control checks whether your IAM users' credentials (passwords and access keys) have been used within 45 days.",
+  "Function Name": "iam_policy_cloudshell_admin_not_attached",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_attached_user_policies",
+      "field_path": "AttachedPolicies[].PolicyName"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "PolicyName",
+    "value": "AWSCloudShellFullAccess"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.11.2",
+  "Name": "Trusted Advisor Premium Support Plan Subscribed",
+  "Description": "정보시스템의 취약점이 노출되어 있는지를 확인하기 위하여 정기적으로 취약점 점검을 수행하고, 발견된 취약점에 대해서는 신속하게 조치하여야 한다. 또한 최신 보안취약점의 발생 여부를 지속적으로 파악하고, 정보시스템에 미치는 영향을 분석하여 조치하여야 한다.",
+  "Function Name": "trustedadvisor_premium_support_plan_subscribed",
+  "clients": ["support"],
+  "functions": {
+    "support": {
+      "method": "describe_trusted_advisor_checks",
+      "field_path": "checks[].status"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "support",
+    "field": "status"
+  }
+}

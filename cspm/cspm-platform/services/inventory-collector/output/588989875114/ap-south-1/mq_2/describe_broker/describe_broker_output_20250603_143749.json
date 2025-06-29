@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "mq",
+  "function": "describe_broker",
+  "timestamp": "2025-06-03T14:37:49.691573",
+  "error": "Missing required parameter: 'BrokerId'"
+}

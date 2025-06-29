@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "MFA Radius Enabled",
+  "Description": "Ensure Multi-Factor Authentication (MFA) is enabled for Radius servers.",
+  "Function Name": "directoryservice_supported_mfa_radius_enabled",
+  "clients": ["directoryservice"],
+  "functions": {
+    "directoryservice": {
+      "method": "describe_radius_settings",
+      "field_path": "RadiusSettings[].MFAEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "directoryservice",
+    "field": "MFAEnabled",
+    "expected_value": true
+  }
+}

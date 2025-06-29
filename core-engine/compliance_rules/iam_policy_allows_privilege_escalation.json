@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "IAM.21",
+  "Name": "IAM customer managed policies should not allow wildcard actions for services",
+  "Description": "This control checks whether AWS Identity and Access Management (IAM) customer managed policies allow wildcard actions for services.",
+  "Function Name": "iam_policy_allows_privilege_escalation",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_policies",
+      "field_path": "Policies[].PolicyDocument"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "PolicyDocument",
+    "value": "iam:CreateRole"
+  }
+}

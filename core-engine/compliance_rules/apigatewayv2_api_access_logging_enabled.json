@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "API Gateway v2 Access Logging Enabled",
+  "Description": "Ensure access logging is enabled for API Gateway v2 APIs to record activities and events.",
+  "Function Name": "apigatewayv2_api_access_logging_enabled",
+  "clients": ["apigateway"],
+  "functions": {
+    "apigateway": {
+      "method": "get_apis",
+      "field_path": "items[].id"
+    },
+    "apigateway": {
+      "method": "get_stages",
+      "field_path": "item[].accessLogSettings"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "apigateway",
+    "field": "accessLogSettings"
+  }
+}

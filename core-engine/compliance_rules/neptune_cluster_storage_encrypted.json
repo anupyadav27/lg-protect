@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Neptune.1",
+  "Name": "Neptune DB clusters should be encrypted",
+  "Description": "This control checks whether Neptune DB clusters have encryption enabled.",
+  "Function Name": "neptune_cluster_storage_encrypted",
+  "clients": ["neptune"],
+  "functions": {
+    "neptune": {
+      "method": "describe_db_clusters",
+      "field_path": "DBClusters[].StorageEncrypted"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "neptune",
+    "field": "StorageEncrypted",
+    "value": true
+  }
+}

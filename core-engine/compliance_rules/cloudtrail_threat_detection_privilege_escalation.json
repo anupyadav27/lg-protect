@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.5.7",
+  "Name": "Threat Intelligence",
+  "Description": "Information relating to information security threats should be collected and analysed to produce threat intelligence.",
+  "Function Name": "cloudtrail_threat_detection_privilege_escalation",
+  "clients": ["cloudtrail"],
+  "functions": {
+    "cloudtrail": {
+      "method": "lookup_events",
+      "field_path": "Events[].EventName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudtrail",
+    "field": "EventName"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.13",
+  "Name": "Information Backup",
+  "Description": "Ensure report plans for backups are created.",
+  "Function Name": "backup_reportplans_exist",
+  "clients": ["backup"],
+  "functions": {
+    "backup": {
+      "method": "list_report_plans",
+      "field_path": "ReportPlans[].ReportPlanName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "backup",
+    "field": "ReportPlanName"
+  }
+}

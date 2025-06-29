@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "bedrock",
+  "function": "list_tags_for_resource",
+  "timestamp": "2025-06-03T14:37:45.911860",
+  "error": "Missing required parameter: 'resourceARN'"
+}

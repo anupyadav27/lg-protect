@@ -1,0 +1,21 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Default Security Group Traffic Restriction",
+  "Description": "Ensure default security groups restrict traffic to prevent unauthorized access.",
+  "Function Name": "ec2_securitygroup_default_restrict_traffic",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].GroupName"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "ec2",
+    "field": "GroupName",
+    "expected_value": "default",
+    "condition": "restrict_traffic"
+  }
+}

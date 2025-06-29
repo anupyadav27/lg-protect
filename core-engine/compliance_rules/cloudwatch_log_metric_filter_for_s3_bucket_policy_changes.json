@@ -1,0 +1,27 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "4.8",
+  "Name": "",
+  "Description": "Ensure S3 bucket policy changes are monitored",
+  "Function Name": "cloudwatch_log_metric_filter_for_s3_bucket_policy_changes",
+  "clients": ["cloudtrail", "cloudwatch"],
+  "functions": {
+    "cloudtrail": {
+      "method": "lookup_events",
+      "field_path": "Events[].EventName"
+    },
+    "cloudwatch": {
+      "method": "describe_metric_filters",
+      "field_path": "metricFilters[].filterPattern"
+    },
+    "cloudwatch": {
+      "method": "describe_alarms",
+      "field_path": "MetricAlarms[].AlarmName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudwatch",
+    "field": "AlarmName"
+  }
+}

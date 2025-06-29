@@ -1,0 +1,33 @@
+{
+  "TableNames": [
+    "AuditCheck",
+    "AuditChecks",
+    "BuckeTest",
+    "BucketStatus",
+    "BucketStatusTable",
+    "DeepSeek",
+    "EnabledServices",
+    "Services_Command",
+    "Servicesaduassbcsdc_Command",
+    "cs_account_database",
+    "cs_aws_regional_services_list",
+    "cs_aws_regions",
+    "cs_aws_services_commanDatabase",
+    "customer_account_database",
+    "us_east_1_services"
+  ],
+  "ResponseMetadata": {
+    "RequestId": "M1VVPNJMAMMQ9R2E8A5GEJC90BVV4KQNSO5AEMVJF66Q9ASUAAJG",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "server": "Server",
+      "date": "Tue, 03 Jun 2025 14:55:36 GMT",
+      "content-type": "application/x-amz-json-1.0",
+      "content-length": "321",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "M1VVPNJMAMMQ9R2E8A5GEJC90BVV4KQNSO5AEMVJF66Q9ASUAAJG",
+      "x-amz-crc32": "1762394238"
+    },
+    "RetryAttempts": 0
+  }
+}

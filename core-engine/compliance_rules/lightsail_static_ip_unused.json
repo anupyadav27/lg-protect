@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.10.3",
+  "Name": "Unused Static IPs",
+  "Description": "Ensure Lightsail static IPs are in use and not left unused.",
+  "Function Name": "lightsail_static_ip_unused",
+  "clients": ["lightsail"],
+  "functions": {
+    "lightsail": {
+      "method": "get_static_ips",
+      "field_path": "staticIps[].isAttached"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "lightsail",
+    "field": "isAttached"
+  }
+}

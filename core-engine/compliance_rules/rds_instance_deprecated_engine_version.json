@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.4",
+  "Name": "RDS cluster snapshots and database snapshots should be encrypted at rest",
+  "Description": "This control checks whether RDS DB clusters and DB instances use deprecated engine versions.",
+  "Function Name": "rds_instance_deprecated_engine_version",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].EngineVersion"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "EngineVersion"
+  }
+}

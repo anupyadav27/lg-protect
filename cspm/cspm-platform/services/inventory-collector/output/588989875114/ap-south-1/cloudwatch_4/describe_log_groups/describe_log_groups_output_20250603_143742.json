@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudwatch",
+  "function": "describe_log_groups",
+  "timestamp": "2025-06-03T14:37:42.290219",
+  "error": "Function describe_log_groups not found on boto3 client"
+}

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ecr",
+  "function": "list_tags_for_resource",
+  "timestamp": "2025-06-03T14:37:40.381330",
+  "error": "Missing required parameter: 'resourceArn'"
+}

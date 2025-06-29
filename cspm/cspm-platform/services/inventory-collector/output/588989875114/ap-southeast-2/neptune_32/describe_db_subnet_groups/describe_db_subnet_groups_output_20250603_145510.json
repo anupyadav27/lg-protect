@@ -1,0 +1,15 @@
+{
+  "DBSubnetGroups": [],
+  "ResponseMetadata": {
+    "RequestId": "9b2cf6db-215a-4f45-b147-2b1c0f720104",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "9b2cf6db-215a-4f45-b147-2b1c0f720104",
+      "strict-transport-security": "max-age=31536000",
+      "content-type": "text/xml",
+      "content-length": "312",
+      "date": "Tue, 03 Jun 2025 14:55:23 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

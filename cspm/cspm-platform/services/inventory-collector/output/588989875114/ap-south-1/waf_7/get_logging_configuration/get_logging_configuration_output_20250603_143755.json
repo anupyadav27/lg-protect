@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "waf",
+  "function": "get_logging_configuration",
+  "timestamp": "2025-06-03T14:37:55.848514",
+  "error": "Missing required parameter: 'ResourceArn'"
+}

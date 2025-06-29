@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "sc-7",
+  "Name": "Boundary Protection (SC-7)",
+  "Description": "Ensure AWS Lambda function URLs are not publicly accessible.",
+  "Function Name": "awslambda_function_url_public",
+  "clients": ["lambda", "apigatewayv2"],
+  "functions": {
+    "lambda": {
+      "method": "get_function_url_config",
+      "field_path": "AuthType"
+    }
+  },
+  "evaluation": {
+    "type": "not exists",
+    "source_client": "lambda",
+    "field": "AuthType"
+  }
+}

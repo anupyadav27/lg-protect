@@ -1,0 +1,15 @@
+{
+  "ResponseMetadata": {
+    "RequestId": "84296a4f-b837-42d6-8f67-98f73ef1d30c",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "date": "Tue, 03 Jun 2025 14:51:13 GMT",
+      "content-type": "application/json",
+      "content-length": "39",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "84296a4f-b837-42d6-8f67-98f73ef1d30c"
+    },
+    "RetryAttempts": 0
+  },
+  "BackupVaultList": []
+}

@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "ens_rd2022_aws",
+  "ID": "op.acc.4.aws.iam.1",
+  "Name": "",
+  "Description": "Proceso de gestión de derechos de acceso",
+  "Function Name": "cloudwatch_cross_account_sharing_disabled",
+  "clients": ["logs"],
+  "functions": {
+    "logs": {
+      "method": "describe_resource_policies",
+      "field_path": "ResourcePolicies[].PolicyName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "logs",
+    "field": "PolicyName"
+  }
+}

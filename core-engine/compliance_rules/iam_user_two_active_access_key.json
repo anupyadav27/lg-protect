@@ -1,0 +1,21 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.13",
+  "Name": "IAM User Has Only One Active Access Key",
+  "Description": "Ensure there is only one active access key for any single IAM user",
+  "Function Name": "iam_user_two_active_access_key",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_access_keys",
+      "field_path": "AccessKeyMetadata[].Status"
+    }
+  },
+  "evaluation": {
+    "type": "count_equals",
+    "source_client": "iam",
+    "field": "Status",
+    "expected_value": "Active",
+    "max_count": 1
+  }
+}

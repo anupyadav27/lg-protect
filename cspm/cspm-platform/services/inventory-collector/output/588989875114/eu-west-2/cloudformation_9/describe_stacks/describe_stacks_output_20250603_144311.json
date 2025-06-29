@@ -1,0 +1,136 @@
+{
+  "Stacks": [
+    {
+      "StackId": "arn:aws:cloudformation:eu-west-2:588989875114:stack/awscodestar-test123-lambda/225e1ba0-4151-11e9-b081-02d140453e24",
+      "StackName": "awscodestar-test123-lambda",
+      "ChangeSetId": "arn:aws:cloudformation:eu-west-2:588989875114:changeSet/pipeline-changeset/197e0c26-1f93-4e3f-9b08-245dce709f9e",
+      "Parameters": [
+        {
+          "ParameterKey": "CodeDeployRole",
+          "ParameterValue": "arn:aws:iam::588989875114:role/CodeStarWorker-test123-CodeDeploy"
+        },
+        {
+          "ParameterKey": "ProjectId",
+          "ParameterValue": "test123"
+        },
+        {
+          "ParameterKey": "Stage",
+          "ParameterValue": ""
+        }
+      ],
+      "CreationTime": "2019-03-08T03:20:33.657000+00:00",
+      "LastUpdatedTime": "2019-03-08T03:21:14.159000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [],
+      "Capabilities": [
+        "CAPABILITY_NAMED_IAM"
+      ],
+      "RoleARN": "arn:aws:iam::588989875114:role/CodeStarWorker-test123-CloudFormation",
+      "Tags": [
+        {
+          "Key": "awscodestar:projectArn",
+          "Value": "arn:aws:codestar:eu-west-2:588989875114:project/test123"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    },
+    {
+      "StackId": "arn:aws:cloudformation:eu-west-2:588989875114:stack/awscodestar-test123/a433d440-4150-11e9-ad7c-0225e826733a",
+      "StackName": "awscodestar-test123",
+      "Description": "A Python web service deployed to AWS Lambda.",
+      "Parameters": [
+        {
+          "ParameterKey": "ProjectId",
+          "ParameterValue": "test123"
+        },
+        {
+          "ParameterKey": "RepositoryName",
+          "ParameterValue": "test123"
+        },
+        {
+          "ParameterKey": "AppName",
+          "ParameterValue": "test123"
+        }
+      ],
+      "CreationTime": "2019-03-08T03:17:02.045000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [
+        "arn:aws:sns:eu-west-2:340661127691:CloudFormationProjectEvents"
+      ],
+      "TimeoutInMinutes": 30,
+      "Capabilities": [
+        "CAPABILITY_NAMED_IAM"
+      ],
+      "Tags": [
+        {
+          "Key": "awscodestar:projectArn",
+          "Value": "arn:aws:codestar:eu-west-2:588989875114:project/test123"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    },
+    {
+      "StackId": "arn:aws:cloudformation:eu-west-2:588989875114:stack/awscodestar-test/5e63d1e0-4150-11e9-ace5-06afee4bb078",
+      "StackName": "awscodestar-test",
+      "Description": "A Python web service deployed to AWS Lambda.",
+      "Parameters": [
+        {
+          "ParameterKey": "ProjectId",
+          "ParameterValue": "test"
+        },
+        {
+          "ParameterKey": "RepositoryName",
+          "ParameterValue": "test"
+        },
+        {
+          "ParameterKey": "AppName",
+          "ParameterValue": "test"
+        }
+      ],
+      "CreationTime": "2019-03-08T03:15:04.909000+00:00",
+      "DeletionTime": "2019-03-08T03:15:45.969000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "ROLLBACK_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [
+        "arn:aws:sns:eu-west-2:340661127691:CloudFormationProjectEvents"
+      ],
+      "TimeoutInMinutes": 30,
+      "Capabilities": [
+        "CAPABILITY_NAMED_IAM"
+      ],
+      "Tags": [
+        {
+          "Key": "awscodestar:projectArn",
+          "Value": "arn:aws:codestar:eu-west-2:588989875114:project/test"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "d5ba6fe9-603d-48ef-ba48-8ac16a68f956",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "d5ba6fe9-603d-48ef-ba48-8ac16a68f956",
+      "date": "Tue, 03 Jun 2025 14:43:24 GMT",
+      "content-type": "text/xml",
+      "content-length": "5380",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

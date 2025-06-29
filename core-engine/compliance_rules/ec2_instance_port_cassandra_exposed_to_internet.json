@@ -1,0 +1,21 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Cassandra Port Exposure",
+  "Description": "Ensure EC2 instances do not expose Cassandra ports to the internet to prevent unauthorized access.",
+  "Function Name": "ec2_instance_port_cassandra_exposed_to_internet",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].IpPermissions[].FromPort"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "ec2",
+    "field": "FromPort",
+    "expected_value": "9042",
+    "condition": "not_exposed_to_internet"
+  }
+}

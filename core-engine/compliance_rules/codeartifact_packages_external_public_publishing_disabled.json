@@ -1,0 +1,28 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.1",
+  "Name": "User Endpoint Devices",
+  "Description": "Information stored on, processed by or accessible via user endpoint devices should be protected.",
+  "Function Name": "codeartifact_packages_external_public_publishing_disabled",
+  "clients": ["codeartifact"],
+  "functions": {
+    "codeartifact": {
+      "method": "list_domains",
+      "field_path": "Domains[].DomainName"
+    },
+    "codeartifact": {
+      "method": "list_repositories_in_domain",
+      "field_path": "Repositories[].RepositoryName"
+    },
+    "codeartifact": {
+      "method": "get_repository_permissions_policy",
+      "field_path": "Policy.Document.Statement[].Effect"
+    }
+  },
+  "evaluation": {
+    "type": "not exists",
+    "source_client": "codeartifact",
+    "field": "Effect",
+    "value": "Allow"
+  }
+}

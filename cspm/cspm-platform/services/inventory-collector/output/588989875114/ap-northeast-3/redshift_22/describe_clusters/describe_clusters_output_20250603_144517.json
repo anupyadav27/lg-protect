@@ -1,0 +1,14 @@
+{
+  "Clusters": [],
+  "ResponseMetadata": {
+    "RequestId": "2baf9fa0-24af-4d35-8253-ef563809febb",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "2baf9fa0-24af-4d35-8253-ef563809febb",
+      "content-type": "text/xml",
+      "content-length": "287",
+      "date": "Tue, 03 Jun 2025 14:45:30 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

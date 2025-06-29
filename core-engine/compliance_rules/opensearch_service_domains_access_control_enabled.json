@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "OpenSearch.2",
+  "Name": "OpenSearch domains should not be publicly accessible",
+  "Description": "This control checks whether OpenSearch domains have resource-based policies that allow unrestricted access to the domain.",
+  "Function Name": "opensearch_service_domains_access_control_enabled",
+  "clients": ["opensearch"],
+  "functions": {
+    "opensearch": {
+      "method": "describe_domains",
+      "field_path": "DomainStatusList[].AccessPolicies"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "opensearch",
+    "field": "AccessPolicies"
+  }
+}

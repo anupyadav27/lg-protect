@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "EventBridge Global Endpoint Event Replication Enabled",
+  "Description": "Ensure EventBridge global endpoints have event replication enabled to maintain data consistency.",
+  "Function Name": "eventbridge_global_endpoint_event_replication_enabled",
+  "clients": ["eventbridge"],
+  "functions": {
+    "eventbridge": {
+      "method": "describe_global_endpoints",
+      "field_path": "GlobalEndpoints[].EventReplicationEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "eventbridge",
+    "field": "EventReplicationEnabled",
+    "expected_value": true
+  }
+}

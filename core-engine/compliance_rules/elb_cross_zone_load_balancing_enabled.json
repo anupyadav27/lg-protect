@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ELB.12",
+  "Name": "Application Load Balancers should be configured with defensive or strictest desync mitigation mode",
+  "Description": "This control checks whether an Application Load Balancer is configured with defensive or strictest desync mitigation mode.",
+  "Function Name": "elb_cross_zone_load_balancing_enabled",
+  "clients": ["elb"],
+  "functions": {
+    "elb": {
+      "method": "describe_load_balancer_attributes",
+      "field_path": "LoadBalancerAttributes[].Value"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elb",
+    "field": "Value",
+    "value": "true"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "Use of Cryptography",
+  "Description": "Rules for the effective use of cryptography, including cryptographic key management, should be defined and implemented.",
+  "Function Name": "codebuild_report_group_export_encrypted",
+  "clients": ["codebuild"],
+  "functions": {
+    "codebuild": {
+      "method": "list_report_groups",
+      "field_path": "reportGroups[]"
+    },
+    "codebuild": {
+      "method": "batch_get_report_groups",
+      "field_path": "reportGroups[].exportConfig.s3Destination.encryptionDisabled"
+    }
+  },
+  "evaluation": {
+    "type": "equal",
+    "source_client": "codebuild",
+    "field": "encryptionDisabled",
+    "value": false
+  }
+}

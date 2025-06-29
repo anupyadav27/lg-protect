@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "SSL Enabled for DMS Endpoint",
+  "Description": "Ensure SSL is enabled for Database Migration Service (DMS) endpoints to secure data in transit.",
+  "Function Name": "dms_endpoint_ssl_enabled",
+  "clients": ["dms"],
+  "functions": {
+    "dms": {
+      "method": "describe_endpoints",
+      "field_path": "Endpoints[].SslEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "dms",
+    "field": "SslEnabled",
+    "expected_value": true
+  }
+}

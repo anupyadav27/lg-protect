@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "API Gateway Cache Encryption",
+  "Description": "Ensure API Gateway cache is encrypted to comply with cryptographic key management rules.",
+  "Function Name": "apigateway_restapi_cache_encrypted",
+  "clients": ["apigateway"],
+  "functions": {
+    "apigateway": {
+      "method": "get_rest_apis",
+      "field_path": "items[].id"
+    },
+    "apigateway": {
+      "method": "get_stages",
+      "field_path": "item[].cacheClusterEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "apigateway",
+    "field": "cacheClusterEnabled"
+  }
+}

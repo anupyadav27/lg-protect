@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EFS.2",
+  "Name": "Amazon EFS volumes should be in backup plans",
+  "Description": "This control checks whether Amazon Elastic File System (Amazon EFS) file systems are protected by a backup plan. The control fails if the EFS file system is not covered by a backup plan.",
+  "Function Name": "efs_not_publicly_accessible",
+  "clients": ["efs"],
+  "functions": {
+    "efs": {
+      "method": "describe_file_systems",
+      "field_path": "FileSystems[].FileSystemPolicy"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "efs",
+    "field": "FileSystemPolicy",
+    "value": "aws:SourceIp"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "DevEndpoints": [],
+  "NextToken": "",
+  "ResponseMetadata": {
+    "RequestId": "f419d27b-e864-4485-8941-bfe000382811",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "date": "Tue, 03 Jun 2025 14:55:11 GMT",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "34",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "f419d27b-e864-4485-8941-bfe000382811",
+      "cache-control": "no-cache"
+    },
+    "RetryAttempts": 0
+  }
+}

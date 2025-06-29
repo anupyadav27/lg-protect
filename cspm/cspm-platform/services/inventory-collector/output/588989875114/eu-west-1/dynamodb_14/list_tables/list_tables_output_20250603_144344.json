@@ -1,0 +1,17 @@
+{
+  "TableNames": [],
+  "ResponseMetadata": {
+    "RequestId": "GT20QM2JAEE79OGO688298NKQJVV4KQNSO5AEMVJF66Q9ASUAAJG",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "server": "Server",
+      "date": "Tue, 03 Jun 2025 14:43:57 GMT",
+      "content-type": "application/x-amz-json-1.0",
+      "content-length": "17",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "GT20QM2JAEE79OGO688298NKQJVV4KQNSO5AEMVJF66Q9ASUAAJG",
+      "x-amz-crc32": "1315925753"
+    },
+    "RetryAttempts": 0
+  }
+}

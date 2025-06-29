@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.9.2",
+  "Name": "\uc131\ub2a5 \ubc0f \uc7a5\uc560\uad00\ub9ac",
+  "Description": "\uc815\ubcf4\uc2dc\uc2a4\ud15c\uc758 \uac00\uc6a9\uc131 \ubcf4\uc7a5\uc744 \uc704\ud558\uc5ec \uc131\ub2a5 \ubc0f \uc6a9\ub7c9 \uc694\uad6c\uc0ac\ud56d\uc744 \uc815\uc758\ud558\uace0 \ud604\ud669\uc744 \uc9c0\uc18d\uc801\uc73c\ub85c \ubaa8\ub2c8\ud130\ub9c1\ud558\uc5ec\uc57c \ud558\uba70, \uc7a5\uc560 \ubc1c\uc0dd \uc2dc \ud6a8\uacfc\uc801\uc73c\ub85c \ub300\uc751\ud558\uae30 \uc704\ud55c \ud0d0\uc9c0\u00b7\uae30\ub85d\u00b7\ubd84\uc11d\u00b7\ubcf5\uad6c\u00b7\ubcf4\uace0 \ub4f1\uc758 \uc808\ucc28\ub97c \uc218\ub9bd\u00b7\uad00\ub9ac\ud558\uc5ec\uc57c \ud55c\ub2e4.",
+  "Function Name": "cognito_user_pool_deletion_protection_enabled",
+  "clients": ["cognito-idp"],
+  "functions": {
+    "cognito-idp": {
+      "method": "describe_user_pool",
+      "field_path": "UserPool.DeletionProtection"
+    }
+  },
+  "evaluation": {
+    "type": "equal",
+    "source_client": "cognito-idp",
+    "field": "DeletionProtection",
+    "value": true
+  }
+}

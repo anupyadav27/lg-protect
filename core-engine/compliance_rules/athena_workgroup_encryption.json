@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "Use of Cryptography",
+  "Description": "Rules for the effective use of cryptography, including cryptographic key management, should be defined and implemented.",
+  "Function Name": "athena_workgroup_encryption",
+  "clients": ["athena"],
+  "functions": {
+    "athena": {
+      "method": "list_work_groups",
+      "field_path": "WorkGroups[].Name"
+    },
+    "athena": {
+      "method": "get_work_group",
+      "field_path": "WorkGroup.Configuration.EnforceWorkGroupConfiguration"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "athena",
+    "field": "EnforceWorkGroupConfiguration"
+  }
+}

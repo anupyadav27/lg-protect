@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "glue",
+  "function": "get_data_catalogs",
+  "timestamp": "2025-06-03T14:37:48.281452",
+  "error": "Function get_data_catalogs not found on boto3 client"
+}

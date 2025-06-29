@@ -1,0 +1,15 @@
+{
+  "CompositeAlarms": [],
+  "MetricAlarms": [],
+  "ResponseMetadata": {
+    "RequestId": "1b8eab7d-41cf-4479-961c-75b3c1a4b4ad",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "1b8eab7d-41cf-4479-961c-75b3c1a4b4ad",
+      "content-type": "text/xml",
+      "content-length": "308",
+      "date": "Tue, 03 Jun 2025 14:43:09 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

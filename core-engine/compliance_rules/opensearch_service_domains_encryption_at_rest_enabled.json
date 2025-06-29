@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "OpenSearch.1",
+  "Name": "OpenSearch domains should have encryption at rest enabled",
+  "Description": "This control checks whether OpenSearch domains have encryption at rest configuration enabled.",
+  "Function Name": "opensearch_service_domains_encryption_at_rest_enabled",
+  "clients": ["opensearch"],
+  "functions": {
+    "opensearch": {
+      "method": "describe_domains",
+      "field_path": "DomainStatusList[].EncryptionAtRestOptions.Enabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "opensearch",
+    "field": "Enabled",
+    "value": true
+  }
+}

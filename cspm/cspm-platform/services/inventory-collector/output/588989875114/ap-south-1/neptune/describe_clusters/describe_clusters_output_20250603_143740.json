@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "neptune",
+  "function": "describe_clusters",
+  "timestamp": "2025-06-03T14:37:40.259407",
+  "error": "Function describe_clusters not found on boto3 client"
+}

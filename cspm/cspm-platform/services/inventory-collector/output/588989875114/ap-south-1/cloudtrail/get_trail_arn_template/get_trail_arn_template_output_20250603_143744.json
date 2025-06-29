@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudtrail",
+  "function": "get_trail_arn_template",
+  "timestamp": "2025-06-03T14:37:44.609546",
+  "error": "Function get_trail_arn_template not found on boto3 client"
+}

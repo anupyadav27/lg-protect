@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ec2",
+  "function": "get_ebs_encryption_settings",
+  "timestamp": "2025-06-03T14:42:47.102732",
+  "error": "Function get_ebs_encryption_settings not found on boto3 client"
+}

@@ -1,0 +1,19 @@
+{
+  "registryId": "588989875114",
+  "scanningConfiguration": {
+    "scanType": "BASIC",
+    "rules": []
+  },
+  "ResponseMetadata": {
+    "RequestId": "5e1e0815-9a86-4d80-9694-43ac2f35f29b",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "5e1e0815-9a86-4d80-9694-43ac2f35f29b",
+      "date": "Tue, 03 Jun 2025 14:43:03 GMT",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "85",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ElasticBeanstalk.1",
+  "Name": "Elastic Beanstalk environments should have enhanced health reporting enabled",
+  "Description": "This control checks whether enhanced health reporting is enabled for AWS Elastic Beanstalk environments.",
+  "Function Name": "elasticbeanstalk_environment_cloudwatch_logging_enabled",
+  "clients": ["elasticbeanstalk"],
+  "functions": {
+    "elasticbeanstalk": {
+      "method": "describe_environments",
+      "field_path": "Environments[].HealthStatus"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elasticbeanstalk",
+    "field": "HealthStatus"
+  }
+}

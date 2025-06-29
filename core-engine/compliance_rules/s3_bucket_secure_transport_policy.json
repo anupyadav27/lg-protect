@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "2.1.1",
+  "Name": "S3 Bucket Secure Transport Policy",
+  "Description": "Ensure S3 Bucket Policy is set to deny HTTP requests",
+  "Function Name": "s3_bucket_secure_transport_policy",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_policy",
+      "field_path": "Policy"
+    }
+  },
+  "evaluation": {
+    "type": "contains",
+    "source_client": "s3",
+    "field": "Policy",
+    "expected_value": "aws:SecureTransport"
+  }
+}

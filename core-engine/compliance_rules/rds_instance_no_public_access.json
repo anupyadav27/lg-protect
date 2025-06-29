@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "2.2.3",
+  "Name": "RDS Instance No Public Access",
+  "Description": "Ensure that RDS instances are not publicly accessible",
+  "Function Name": "rds_instance_no_public_access",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].PubliclyAccessible"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "rds",
+    "field": "PubliclyAccessible",
+    "value": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "codebuild",
+  "function": "list_builds_for_project",
+  "timestamp": "2025-06-03T14:37:49.186316",
+  "error": "Missing required parameter: 'projectName'"
+}

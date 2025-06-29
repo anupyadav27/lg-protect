@@ -1,0 +1,65 @@
+{
+  "Stacks": [
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:588989875114:stack/aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1/27efa9f0-dbe0-11ef-8ce9-0efbaab7e7f9",
+      "StackName": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1",
+      "CreationTime": "2025-01-26T12:22:06.141000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [],
+      "Tags": [
+        {
+          "Key": "aws:cloud9:environment",
+          "Value": "fc19745854f840e79c93e1fb454b49e1"
+        },
+        {
+          "Key": "aws:cloud9:owner",
+          "Value": "588989875114"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    },
+    {
+      "StackId": "arn:aws:cloudformation:us-east-1:588989875114:stack/ProwlerProSaaSScanRole/f254e650-73e5-11ef-bbbe-0ed90967629b",
+      "StackName": "ProwlerProSaaSScanRole",
+      "Description": "This template creates the ProwlerProSaaSScanRole role in this account with \nall read-only permissions to scan your account for security issues. \nContains two AWS managed policies (SecurityAudit and ViewOnlyAccess) and an inline policy. \nIt sets the trust policy on that IAM Role to permit Prowler Pro to assume that role.\n",
+      "Parameters": [
+        {
+          "ParameterKey": "ExternalId",
+          "ParameterValue": "c8fc5c9e-f02b-47df-8913-886812059f85"
+        }
+      ],
+      "CreationTime": "2024-09-16T04:41:32.531000+00:00",
+      "RollbackConfiguration": {
+        "RollbackTriggers": []
+      },
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [],
+      "Capabilities": [
+        "CAPABILITY_NAMED_IAM"
+      ],
+      "Tags": [],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "45b05bae-8e95-49f2-9dcd-6aab0804c644",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "45b05bae-8e95-49f2-9dcd-6aab0804c644",
+      "date": "Tue, 03 Jun 2025 14:55:42 GMT",
+      "content-type": "text/xml",
+      "content-length": "2658",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

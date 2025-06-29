@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.6.1",
+  "Name": "Geo Restrictions",
+  "Description": "Ensure geo restrictions are enabled for CloudFront distributions.",
+  "Function Name": "cloudfront_distributions_geo_restrictions_enabled",
+  "clients": ["cloudfront"],
+  "functions": {
+    "cloudfront": {
+      "method": "get_distribution_config",
+      "field_path": "DistributionConfig.Restrictions.GeoRestriction.RestrictionType"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudfront",
+    "field": "RestrictionType"
+  }
+}

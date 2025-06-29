@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EFS.4",
+  "Name": "EFS access points should enforce a user identity",
+  "Description": "This control checks whether Amazon EFS access points are configured to enforce a user identity.",
+  "Function Name": "efs_access_point_enforce_user_identity",
+  "clients": ["efs"],
+  "functions": {
+    "efs": {
+      "method": "describe_access_points",
+      "field_path": "AccessPoints[].PosixUser.Uid"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "efs",
+    "field": "Uid"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Monitor Notifications for Directory Service",
+  "Description": "Ensure notifications for Directory Service are monitored to respond to events promptly.",
+  "Function Name": "directoryservice_directory_monitor_notifications",
+  "clients": ["directoryservice", "sns"],
+  "functions": {
+    "directoryservice": {
+      "method": "describe_directories",
+      "field_path": "Directories[].NotificationConfiguration.Topic"
+    },
+    "sns": {
+      "method": "list_topics",
+      "field_path": "Topics[].TopicArn"
+    }
+  },
+  "evaluation": {
+    "type": "subset",
+    "source_client": "directoryservice",
+    "target_client": "sns",
+    "field": "Topic"
+  }
+}

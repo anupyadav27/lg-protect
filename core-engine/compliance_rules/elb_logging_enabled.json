@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ELB.5",
+  "Name": "Application and Classic Load Balancers logging should be enabled",
+  "Description": "This control checks whether the Application Load Balancer and the Classic Load Balancer have logging enabled.",
+  "Function Name": "elb_logging_enabled",
+  "clients": ["elb"],
+  "functions": {
+    "elb": {
+      "method": "describe_load_balancer_attributes",
+      "field_path": "LoadBalancerAttributes[].Value"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elb",
+    "field": "Value",
+    "value": "true"
+  }
+}

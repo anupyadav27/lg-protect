@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "route53",
+  "function": "list_tags_for_resource",
+  "timestamp": "2025-06-03T14:37:54.204790",
+  "error": "Function execution failed: An error occurred (NoSuchHostedZone) when calling the ListTagsForResource operation: No hosted zone found with ID: /hostedzone/Z1RRBOM412L405"
+}

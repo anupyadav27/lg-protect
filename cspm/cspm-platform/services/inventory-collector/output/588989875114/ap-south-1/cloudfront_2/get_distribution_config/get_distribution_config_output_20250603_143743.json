@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudfront",
+  "function": "get_distribution_config",
+  "timestamp": "2025-06-03T14:37:43.460548",
+  "error": "Missing required parameter: 'Id'"
+}

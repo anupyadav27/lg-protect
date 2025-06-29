@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.23",
+  "Name": "RDS Instance Non Default Port",
+  "Description": "This control checks whether the RDS cluster or instance uses a port other than the default port of the database engine.",
+  "Function Name": "rds_instance_non_default_port",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].DbInstancePort"
+    }
+  },
+  "evaluation": {
+    "type": "not_equals",
+    "source_client": "rds",
+    "field": "DbInstancePort",
+    "default_ports": [3306, 5432, 1433, 1521, 3389]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EC2.2",
+  "Name": "The VPC default security group should not allow inbound and outbound traffic",
+  "Description": "This control checks that the default security group of a VPC does not allow inbound or outbound traffic.",
+  "Function Name": "ec2_securitygroup_not_used",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2_sgs": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].GroupId"
+    },
+    "ec2_instances": {
+      "method": "describe_instances",
+      "field_path": "Reservations[].Instances[].SecurityGroups[].GroupId"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "ec2_sgs",
+    "target_client": "ec2_instances",
+    "field": "GroupId"
+  }
+}

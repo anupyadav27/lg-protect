@@ -1,0 +1,14 @@
+{
+  "Workspaces": [],
+  "ResponseMetadata": {
+    "RequestId": "ae3cc2e9-9ebe-471b-80b3-12db16555346",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "ae3cc2e9-9ebe-471b-80b3-12db16555346",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "17",
+      "date": "Tue, 03 Jun 2025 14:55:26 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

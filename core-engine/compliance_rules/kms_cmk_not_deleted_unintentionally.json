@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "KMS.4",
+  "Name": "AWS KMS key rotation should be enabled",
+  "Description": "This control checks whether key rotation is enabled for AWS KMS keys.",
+  "Function Name": "kms_cmk_not_deleted_unintentionally",
+  "clients": ["kms"],
+  "functions": {
+    "kms": {
+      "method": "describe_key",
+      "field_path": "KeyMetadata.KeyState"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "kms",
+    "field": "KeyState",
+    "value": "PendingDeletion"
+  }
+}

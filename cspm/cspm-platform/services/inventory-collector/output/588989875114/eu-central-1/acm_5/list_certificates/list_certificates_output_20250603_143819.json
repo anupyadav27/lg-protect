@@ -1,0 +1,14 @@
+{
+  "CertificateSummaryList": [],
+  "ResponseMetadata": {
+    "RequestId": "26414767-1349-4aac-8e9b-ccbd0cb053a2",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "26414767-1349-4aac-8e9b-ccbd0cb053a2",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "29",
+      "date": "Tue, 03 Jun 2025 14:38:32 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "3.2",
+  "Name": "",
+  "Description": "Ensure CloudTrail log file validation is enabled",
+  "Function Name": "cloudtrail_log_file_validation_enabled",
+  "clients": ["cloudtrail"],
+  "functions": {
+    "cloudtrail": {
+      "method": "describe_trails",
+      "field_path": "trailList[].LogFileValidationEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "equal",
+    "source_client": "cloudtrail",
+    "field": "LogFileValidationEnabled",
+    "value": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.11",
+  "Name": "No Initial Access Key",
+  "Description": "Ensure IAM users do not have access keys created during initial setup.",
+  "Function Name": "iam_user_no_setup_initial_access_key",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_access_keys",
+      "field_path": "AccessKeyMetadata[].AccessKeyId"
+    }
+  },
+  "evaluation": {
+    "type": "not exists",
+    "source_client": "iam",
+    "field": "AccessKeyId"
+  }
+}

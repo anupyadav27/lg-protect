@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.22",
+  "Name": "Segregation of Networks",
+  "Description": "Ensure AWS Lambda functions are configured inside a VPC.",
+  "Function Name": "awslambda_function_inside_vpc",
+  "clients": ["lambda"],
+  "functions": {
+    "lambda": {
+      "method": "get_function_configuration",
+      "field_path": "VpcConfig.VpcId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "lambda",
+    "field": "VpcId"
+  }
+}

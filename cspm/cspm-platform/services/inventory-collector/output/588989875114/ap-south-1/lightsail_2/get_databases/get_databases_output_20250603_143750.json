@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "lightsail",
+  "function": "get_databases",
+  "timestamp": "2025-06-03T14:37:50.687392",
+  "error": "Function get_databases not found on boto3 client"
+}

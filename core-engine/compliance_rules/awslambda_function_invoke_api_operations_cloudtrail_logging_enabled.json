@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Logging",
+  "Description": "Ensure CloudTrail logging is enabled for API operations invoked by AWS Lambda functions.",
+  "Function Name": "awslambda_function_invoke_api_operations_cloudtrail_logging_enabled",
+  "clients": ["cloudtrail"],
+  "functions": {
+    "cloudtrail": {
+      "method": "lookup_events",
+      "field_path": "Events[].EventName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cloudtrail",
+    "field": "EventName"
+  }
+}

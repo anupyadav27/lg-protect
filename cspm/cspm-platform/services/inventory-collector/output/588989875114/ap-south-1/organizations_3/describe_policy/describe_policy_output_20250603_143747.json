@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "organizations",
+  "function": "describe_policy",
+  "timestamp": "2025-06-03T14:37:47.361423",
+  "error": "Missing required parameter: 'PolicyId'"
+}

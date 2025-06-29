@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.4",
+  "Name": "Ensure no root access keys exist",
+  "Description": "The root user is the most privileged user in an AWS account. Access keys provide programmatic access to a given AWS account.",
+  "Function Name": "iam_no_root_access_key",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "get_account_summary",
+      "field_path": "SummaryMap.AccountAccessKeysPresent"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "AccountAccessKeysPresent",
+    "value": 1
+  }
+}

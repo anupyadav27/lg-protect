@@ -1,0 +1,14 @@
+{
+  "ResponseMetadata": {
+    "RequestId": "15d582b8-ad1d-436c-bd16-7dad16fbd0ac",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "15d582b8-ad1d-436c-bd16-7dad16fbd0ac",
+      "content-type": "text/xml",
+      "content-length": "165",
+      "date": "Tue, 03 Jun 2025 14:38:33 GMT"
+    },
+    "RetryAttempts": 0
+  },
+  "QueryLoggingConfigs": []
+}

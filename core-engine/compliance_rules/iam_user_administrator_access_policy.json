@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "8.3.4.13",
+  "Name": "Administrator Access Policy",
+  "Description": "Ensure IAM users do not have administrator access policies attached.",
+  "Function Name": "iam_user_administrator_access_policy",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_attached_user_policies",
+      "field_path": "AttachedPolicies[].PolicyName"
+    }
+  },
+  "evaluation": {
+    "type": "not exists",
+    "source_client": "iam",
+    "field": "PolicyName"
+  }
+}

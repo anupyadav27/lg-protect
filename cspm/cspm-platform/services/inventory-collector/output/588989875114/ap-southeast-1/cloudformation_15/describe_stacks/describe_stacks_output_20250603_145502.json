@@ -1,0 +1,125 @@
+{
+  "Stacks": [
+    {
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:588989875114:stack/awseb-e-ptfkyk58zy-stack/78c5c040-fecc-11e9-b7d4-068c48abfc3a",
+      "StackName": "awseb-e-ptfkyk58zy-stack",
+      "Description": "AWS Elastic Beanstalk environment (Name: 'Magnuslearning-env'  Id: 'e-ptfkyk58zy')",
+      "Parameters": [
+        {
+          "ParameterKey": "InstanceTypeFamily",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "LogPublicationControl",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "DocumentRoot",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "InstancePort",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "DisplayErrors",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "AWSEBEnvironmentId",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "HooksPkgUrl",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "ZlibOutputCompression",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "AWSEBEnvironmentName",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "AWSEBReferrerId",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "AppSource",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "MaxExecutionTime",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "MemoryLimit",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "EnvironmentVariables",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "AllowUrlFopen",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "AWSEBAgentId",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "ComposerOptions",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "InstanceType",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "AWSEBEnvironmentBucket",
+          "ParameterValue": "****"
+        }
+      ],
+      "CreationTime": "2019-11-04T06:29:36.622000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": true,
+      "NotificationARNs": [],
+      "Capabilities": [
+        "CAPABILITY_IAM"
+      ],
+      "Tags": [
+        {
+          "Key": "elasticbeanstalk:environment-name",
+          "Value": "Magnuslearning-env"
+        },
+        {
+          "Key": "elasticbeanstalk:environment-id",
+          "Value": "e-ptfkyk58zy"
+        },
+        {
+          "Key": "Name",
+          "Value": "Magnuslearning-env"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "78c7eca6-ee54-4f8f-9a2e-be859b7827aa",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "78c7eca6-ee54-4f8f-9a2e-be859b7827aa",
+      "date": "Tue, 03 Jun 2025 14:55:15 GMT",
+      "content-type": "text/xml",
+      "content-length": "4388",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

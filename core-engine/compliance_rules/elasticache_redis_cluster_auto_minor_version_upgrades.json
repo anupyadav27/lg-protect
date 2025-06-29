@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ElastiCache.3",
+  "Name": "ElastiCache Redis clusters should have automatic backup enabled",
+  "Description": "This control checks whether ElastiCache Redis clusters have automatic backup enabled.",
+  "Function Name": "elasticache_redis_cluster_auto_minor_version_upgrades",
+  "clients": ["elasticache"],
+  "functions": {
+    "elasticache": {
+      "method": "describe_cache_clusters",
+      "field_path": "CacheClusters[].AutoMinorVersionUpgrade"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elasticache",
+    "field": "AutoMinorVersionUpgrade",
+    "value": true
+  }
+}

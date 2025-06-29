@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.10",
+  "Name": "S3 Bucket Lifecycle Policy Enabled",
+  "Description": "Information stored in information systems, devices or in any other storage media should be deleted when no longer required.",
+  "Function Name": "s3_bucket_lifecycle_enabled",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_lifecycle_configuration",
+      "field_path": "Rules[].Status"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "s3",
+    "field": "Status",
+    "expected_value": "Enabled"
+  }
+}

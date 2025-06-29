@@ -1,0 +1,187 @@
+{
+  "Reservations": [
+    {
+      "ReservationId": "r-0d770f9b40a09e390",
+      "OwnerId": "588989875114",
+      "RequesterId": "043234062703",
+      "Groups": [],
+      "Instances": [
+        {
+          "Architecture": "x86_64",
+          "BlockDeviceMappings": [
+            {
+              "DeviceName": "/dev/xvda",
+              "Ebs": {
+                "AttachTime": "2025-01-26T12:22:19+00:00",
+                "DeleteOnTermination": true,
+                "Status": "attached",
+                "VolumeId": "vol-09744f2cb863fef44"
+              }
+            }
+          ],
+          "ClientToken": "4e4857d4-ecea-60ce-f913-e6dbf7b155a1",
+          "EbsOptimized": false,
+          "EnaSupport": true,
+          "Hypervisor": "xen",
+          "NetworkInterfaces": [
+            {
+              "Attachment": {
+                "AttachTime": "2025-01-26T12:22:19+00:00",
+                "AttachmentId": "eni-attach-01d61ed67e1edeb64",
+                "DeleteOnTermination": true,
+                "DeviceIndex": 0,
+                "Status": "attached",
+                "NetworkCardIndex": 0
+              },
+              "Description": "ENI for AWS Cloud9 environment aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1",
+              "Groups": [
+                {
+                  "GroupId": "sg-04bcb7dc28aa6ef45",
+                  "GroupName": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1-InstanceSecurityGroup-mPRxm7MSITNw"
+                }
+              ],
+              "Ipv6Addresses": [],
+              "MacAddress": "12:9c:9a:df:5c:5f",
+              "NetworkInterfaceId": "eni-0574af87e10f78805",
+              "OwnerId": "588989875114",
+              "PrivateIpAddress": "10.0.1.208",
+              "PrivateIpAddresses": [
+                {
+                  "Primary": true,
+                  "PrivateIpAddress": "10.0.1.208"
+                }
+              ],
+              "SourceDestCheck": true,
+              "Status": "in-use",
+              "SubnetId": "subnet-0fd37e52d59b4fc2f",
+              "VpcId": "vpc-030571cdbd83ae372",
+              "InterfaceType": "interface",
+              "Operator": {
+                "Managed": false
+              }
+            }
+          ],
+          "RootDeviceName": "/dev/xvda",
+          "RootDeviceType": "ebs",
+          "SecurityGroups": [
+            {
+              "GroupId": "sg-04bcb7dc28aa6ef45",
+              "GroupName": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1-InstanceSecurityGroup-mPRxm7MSITNw"
+            }
+          ],
+          "SourceDestCheck": true,
+          "StateReason": {
+            "Code": "Client.InstanceInitiatedShutdown",
+            "Message": "Client.InstanceInitiatedShutdown: Instance initiated shutdown"
+          },
+          "Tags": [
+            {
+              "Key": "aws:cloudformation:stack-name",
+              "Value": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1"
+            },
+            {
+              "Key": "aws:cloudformation:logical-id",
+              "Value": "Instance"
+            },
+            {
+              "Key": "Name",
+              "Value": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1"
+            },
+            {
+              "Key": "aws:cloud9:environment",
+              "Value": "fc19745854f840e79c93e1fb454b49e1"
+            },
+            {
+              "Key": "aws:cloud9:owner",
+              "Value": "588989875114"
+            },
+            {
+              "Key": "aws:cloudformation:stack-id",
+              "Value": "arn:aws:cloudformation:us-east-1:588989875114:stack/aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1/27efa9f0-dbe0-11ef-8ce9-0efbaab7e7f9"
+            }
+          ],
+          "VirtualizationType": "hvm",
+          "CpuOptions": {
+            "CoreCount": 1,
+            "ThreadsPerCore": 1
+          },
+          "CapacityReservationSpecification": {
+            "CapacityReservationPreference": "open"
+          },
+          "HibernationOptions": {
+            "Configured": false
+          },
+          "MetadataOptions": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+          },
+          "EnclaveOptions": {
+            "Enabled": false
+          },
+          "BootMode": "uefi-preferred",
+          "PlatformDetails": "Linux/UNIX",
+          "UsageOperation": "RunInstances",
+          "UsageOperationUpdateTime": "2025-01-26T12:22:19+00:00",
+          "PrivateDnsNameOptions": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": true,
+            "EnableResourceNameDnsAAAARecord": false
+          },
+          "MaintenanceOptions": {
+            "AutoRecovery": "default"
+          },
+          "CurrentInstanceBootMode": "legacy-bios",
+          "NetworkPerformanceOptions": {
+            "BandwidthWeighting": "default"
+          },
+          "Operator": {
+            "Managed": false
+          },
+          "InstanceId": "i-010ba84c1f5730805",
+          "ImageId": "ami-01bf2bec1a52ce0e1",
+          "State": {
+            "Code": 80,
+            "Name": "stopped"
+          },
+          "PrivateDnsName": "ip-10-0-1-208.ec2.internal",
+          "PublicDnsName": "",
+          "StateTransitionReason": "User initiated",
+          "AmiLaunchIndex": 0,
+          "ProductCodes": [],
+          "InstanceType": "t2.micro",
+          "LaunchTime": "2025-01-26T12:22:19+00:00",
+          "Placement": {
+            "GroupName": "",
+            "Tenancy": "default",
+            "AvailabilityZone": "us-east-1a"
+          },
+          "Monitoring": {
+            "State": "disabled"
+          },
+          "SubnetId": "subnet-0fd37e52d59b4fc2f",
+          "VpcId": "vpc-030571cdbd83ae372",
+          "PrivateIpAddress": "10.0.1.208"
+        }
+      ]
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "eaa1c65b-5137-43dc-943f-3c7c4391b916",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "eaa1c65b-5137-43dc-943f-3c7c4391b916",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "5283",
+      "date": "Tue, 03 Jun 2025 14:55:38 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

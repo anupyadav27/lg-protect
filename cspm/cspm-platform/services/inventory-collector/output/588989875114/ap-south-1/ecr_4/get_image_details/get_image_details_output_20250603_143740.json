@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ecr",
+  "function": "get_image_details",
+  "timestamp": "2025-06-03T14:37:40.290196",
+  "error": "Function get_image_details not found on boto3 client"
+}

@@ -1,0 +1,46 @@
+{
+  "DBSubnetGroups": [
+    {
+      "DBSubnetGroupName": "default-vpc-8fd985e7",
+      "DBSubnetGroupDescription": "Created from the RDS Management Console",
+      "VpcId": "vpc-8fd985e7",
+      "SubnetGroupStatus": "Complete",
+      "Subnets": [
+        {
+          "SubnetIdentifier": "subnet-27b3f74f",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-south-1a"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-5295201e",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-south-1b"
+          },
+          "SubnetStatus": "Active"
+        },
+        {
+          "SubnetIdentifier": "subnet-3181347d",
+          "SubnetAvailabilityZone": {
+            "Name": "ap-south-1b"
+          },
+          "SubnetStatus": "Active"
+        }
+      ],
+      "DBSubnetGroupArn": "arn:aws:rds:ap-south-1:588989875114:subgrp:default-vpc-8fd985e7"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "b7d92b04-c6e0-4db7-8b24-888102fb99ac",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "b7d92b04-c6e0-4db7-8b24-888102fb99ac",
+      "strict-transport-security": "max-age=31536000",
+      "content-type": "text/xml",
+      "content-length": "1703",
+      "date": "Tue, 03 Jun 2025 14:37:55 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

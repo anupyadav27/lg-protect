@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "ens_rd2022_aws",
+  "ID": "mp.s.4.r1.aws.shieldadv.1",
+  "Name": "Shield Advanced Protection",
+  "Description": "Ensure Shield Advanced protection is enabled for global accelerators to detect and react to threats.",
+  "Function Name": "shield_advanced_protection_in_global_accelerators",
+  "clients": ["shield", "globalaccelerator"],
+  "functions": {
+    "shield": {
+      "method": "list_protections",
+      "field_path": "Protections[].ResourceArn"
+    },
+    "globalaccelerator": {
+      "method": "list_accelerators",
+      "field_path": "Accelerators[].AcceleratorArn"
+    }
+  },
+  "evaluation": {
+    "type": "subset",
+    "source_client": "shield",
+    "target_client": "globalaccelerator",
+    "field": "ResourceArn"
+  }
+}

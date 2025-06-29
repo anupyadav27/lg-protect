@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Virtual Interface Redundancy",
+  "Description": "Ensure Direct Connect virtual interfaces are configured with redundancy to prevent single points of failure.",
+  "Function Name": "directconnect_virtual_interface_redundancy",
+  "clients": ["directconnect"],
+  "functions": {
+    "directconnect": {
+      "method": "describe_virtual_interfaces",
+      "field_path": "VirtualInterfaces[].Redundancy"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "directconnect",
+    "field": "Redundancy",
+    "expected_value": true
+  }
+}

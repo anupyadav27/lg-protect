@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "waf",
+  "function": "get_rule",
+  "timestamp": "2025-06-03T14:37:48.738062",
+  "error": "Missing required parameter: 'RuleId'"
+}

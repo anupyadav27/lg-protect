@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "No Public Access for DMS Instance",
+  "Description": "Ensure Database Migration Service (DMS) instances are not publicly accessible to prevent unauthorized access.",
+  "Function Name": "dms_instance_no_public_access",
+  "clients": ["dms"],
+  "functions": {
+    "dms": {
+      "method": "describe_replication_instances",
+      "field_path": "ReplicationInstances[].PubliclyAccessible"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "dms",
+    "field": "PubliclyAccessible",
+    "expected_value": false
+  }
+}

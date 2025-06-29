@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Glue.3",
+  "Name": "Glue jobs should have security configuration enabled",
+  "Description": "This control checks whether AWS Glue jobs have a security configuration associated with them.",
+  "Function Name": "glue_database_connections_ssl_enabled",
+  "clients": ["glue"],
+  "functions": {
+    "glue": {
+      "method": "get_connections",
+      "field_path": "ConnectionList[].ConnectionProperties.SSL_CONNECTION"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "glue",
+    "field": "SSL_CONNECTION",
+    "value": "true"
+  }
+}

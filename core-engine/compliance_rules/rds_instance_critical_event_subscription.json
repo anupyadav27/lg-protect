@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.20",
+  "Name": "Existing RDS event notification subscriptions should be configured for critical database instance events",
+  "Description": "This control checks whether an Amazon RDS event subscription exists with notifications enabled for the following source type, event category key-value pairs.",
+  "Function Name": "rds_instance_critical_event_subscription",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_event_subscriptions",
+      "field_path": "EventSubscriptionsList[].EventCategoriesList[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "EventCategoriesList",
+    "value": "failure"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ec2",
+  "function": "describe_vpn_endpoints",
+  "timestamp": "2025-06-03T14:42:54.438146",
+  "error": "Function describe_vpn_endpoints not found on boto3 client"
+}

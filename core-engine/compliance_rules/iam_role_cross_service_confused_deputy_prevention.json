@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "IAM.17",
+  "Name": "IAM customer managed policies should not allow decryption actions on all KMS keys",
+  "Description": "This control checks whether AWS Identity and Access Management (IAM) customer managed policies allow decryption actions on all AWS KMS keys.",
+  "Function Name": "iam_role_cross_service_confused_deputy_prevention",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_roles",
+      "field_path": "Roles[].AssumeRolePolicyDocument"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "iam",
+    "field": "AssumeRolePolicyDocument"
+  }
+}

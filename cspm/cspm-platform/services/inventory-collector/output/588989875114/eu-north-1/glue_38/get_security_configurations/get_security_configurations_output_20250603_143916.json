@@ -1,0 +1,17 @@
+{
+  "SecurityConfigurations": [],
+  "NextToken": "",
+  "ResponseMetadata": {
+    "RequestId": "b8f7b920-f839-4f9b-a4dc-d306464db243",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "date": "Tue, 03 Jun 2025 14:39:30 GMT",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "44",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "b8f7b920-f839-4f9b-a4dc-d306464db243",
+      "cache-control": "no-cache"
+    },
+    "RetryAttempts": 0
+  }
+}

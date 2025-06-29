@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "route53",
+  "function": "list_resource_record_sets",
+  "timestamp": "2025-06-03T14:37:47.070939",
+  "error": "Missing required parameter: 'HostedZoneId'"
+}

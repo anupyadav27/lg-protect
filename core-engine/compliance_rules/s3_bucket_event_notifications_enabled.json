@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "A3.5.1.8",
+  "Name": "S3 Bucket Event Notifications Enabled",
+  "Description": "Checks if Amazon S3 Events Notifications are enabled on an S3 bucket",
+  "Function Name": "s3_bucket_event_notifications_enabled",
+  "clients": ["s3"],
+  "functions": {
+    "s3": {
+      "method": "get_bucket_notification_configuration",
+      "field_path": "TopicConfigurations"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "s3",
+    "field": "TopicConfigurations"
+  }
+}

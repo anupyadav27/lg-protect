@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.16",
+  "Name": "IAM Customer Unattached Policy No Administrative Privileges",
+  "Description": "Ensure IAM policies that allow full administrative privileges are not created",
+  "Function Name": "iam_customer_unattached_policy_no_administrative_privileges",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_policies",
+      "field_path": "Policies[].PolicyDocument"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "PolicyDocument",
+    "value": "*:*"
+  }
+}

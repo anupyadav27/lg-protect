@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "ac-2",
+  "Name": "Account Management (AC-2)",
+  "Description": "Ensure OpenSearch service domains have CloudWatch logging enabled to manage system accounts and activities.",
+  "Function Name": "opensearch_service_domains_cloudwatch_logging_enabled",
+  "clients": ["es"],
+  "functions": {
+    "es": {
+      "method": "describe_elasticsearch_domain",
+      "field_path": "DomainStatus.LogPublishingOptions"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "es",
+    "field": "LogPublishingOptions"
+  }
+}

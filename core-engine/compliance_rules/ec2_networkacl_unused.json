@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.22",
+  "Name": "Segregation of Networks",
+  "Description": "Security mechanisms, service levels and service requirements of network services should be identified, implemented and monitored.",
+  "Function Name": "ec2_networkacl_unused",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_network_acls",
+      "field_path": "NetworkAcls[].Associations[].SubnetId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "ec2",
+    "field": "Associations"
+  }
+}

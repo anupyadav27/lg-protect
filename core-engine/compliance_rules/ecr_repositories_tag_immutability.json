@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ECR.2",
+  "Name": "ECR private repositories should have tag immutability configured",
+  "Description": "This control checks whether a private ECR repository has tag immutability enabled. This control fails if a private ECR repository has tag immutability disabled. This rule passes if tag immutability is enabled and has the value IMMUTABLE.",
+  "Function Name": "ecr_repositories_tag_immutability",
+  "clients": ["ecr"],
+  "functions": {
+    "ecr": {
+      "method": "describe_repositories",
+      "field_path": "repositories[].imageTagMutability"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "ecr",
+    "field": "imageTagMutability",
+    "value": "IMMUTABLE"
+  }
+}

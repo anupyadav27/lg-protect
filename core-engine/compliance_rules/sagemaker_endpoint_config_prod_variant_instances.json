@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.14",
+  "Name": "Production Variant Instances",
+  "Description": "Ensure SageMaker endpoint configurations have production variant instances configured.",
+  "Function Name": "sagemaker_endpoint_config_prod_variant_instances",
+  "clients": ["sagemaker"],
+  "functions": {
+    "sagemaker": {
+      "method": "describe_endpoint_config",
+      "field_path": "ProductionVariants[].InstanceType"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "sagemaker",
+    "field": "InstanceType"
+  }
+}

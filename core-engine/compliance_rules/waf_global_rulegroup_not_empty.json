@@ -1,0 +1,21 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "A1.1.3.41",
+  "Name": "waf",
+  "Description": "Checks if an AWS WAF Classic rule group contains any rules",
+  "Function Name": "waf_global_rulegroup_not_empty",
+  "clients": ["wafv2"],
+  "functions": {
+    "wafv2": {
+      "method": "get_rule_group",
+      "field_path": "RuleGroup.Rules"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "wafv2",
+    "target_client": "wafv2",
+    "field": "Rules",
+    "validation": "rule_group_not_empty"
+  }
+}

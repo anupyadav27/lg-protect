@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "Use of Cryptography",
+  "Description": "Rules for the effective use of cryptography, including cryptographic key management, should be defined and implemented.",
+  "Function Name": "firehose_stream_encrypted_at_rest",
+  "clients": ["firehose"],
+  "functions": {
+    "firehose": {
+      "method": "describe_delivery_stream",
+      "field_path": "DeliveryStreamDescription.ExtendedS3DestinationDescription.EncryptionConfiguration.KMSEncryptionConfig.AWSKMSKeyARN"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "firehose",
+    "target_client": "firehose",
+    "field": "KMSEncryptionConfig"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "NetworkInterfaces": [
+    {
+      "AvailabilityZone": "ap-south-1b",
+      "Description": "Second-Network",
+      "Groups": [
+        {
+          "GroupId": "sg-003764b9102fdcabc",
+          "GroupName": "launch-wizard-1"
+        }
+      ],
+      "InterfaceType": "interface",
+      "Ipv6Addresses": [],
+      "MacAddress": "0a:9b:ec:ca:d8:02",
+      "NetworkInterfaceId": "eni-02d214f6d5611cf4b",
+      "OwnerId": "588989875114",
+      "PrivateDnsName": "ip-172-31-14-212.ap-south-1.compute.internal",
+      "PrivateIpAddress": "172.31.14.212",
+      "PrivateIpAddresses": [
+        {
+          "Primary": true,
+          "PrivateDnsName": "ip-172-31-14-212.ap-south-1.compute.internal",
+          "PrivateIpAddress": "172.31.14.212"
+        }
+      ],
+      "RequesterManaged": false,
+      "SourceDestCheck": true,
+      "Status": "available",
+      "SubnetId": "subnet-06cc90b4acc9aa656",
+      "TagSet": [],
+      "VpcId": "vpc-0f01f92b214c2db02",
+      "Operator": {
+        "Managed": false
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "0ef0cf2f-7a0a-4f74-9220-57ca18e7670f",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "0ef0cf2f-7a0a-4f74-9220-57ca18e7670f",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "1263",
+      "date": "Tue, 03 Jun 2025 14:38:47 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

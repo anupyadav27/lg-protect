@@ -1,0 +1,59 @@
+{
+  "NetworkInterfaces": [
+    {
+      "Attachment": {
+        "AttachTime": "2025-01-26T12:22:19+00:00",
+        "AttachmentId": "eni-attach-01d61ed67e1edeb64",
+        "DeleteOnTermination": true,
+        "DeviceIndex": 0,
+        "NetworkCardIndex": 0,
+        "InstanceId": "i-010ba84c1f5730805",
+        "InstanceOwnerId": "588989875114",
+        "Status": "attached"
+      },
+      "AvailabilityZone": "us-east-1a",
+      "Description": "ENI for AWS Cloud9 environment aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1",
+      "Groups": [
+        {
+          "GroupId": "sg-04bcb7dc28aa6ef45",
+          "GroupName": "aws-cloud9-CSPM-fc19745854f840e79c93e1fb454b49e1-InstanceSecurityGroup-mPRxm7MSITNw"
+        }
+      ],
+      "InterfaceType": "interface",
+      "Ipv6Addresses": [],
+      "MacAddress": "12:9c:9a:df:5c:5f",
+      "NetworkInterfaceId": "eni-0574af87e10f78805",
+      "OwnerId": "588989875114",
+      "PrivateIpAddress": "10.0.1.208",
+      "PrivateIpAddresses": [
+        {
+          "Primary": true,
+          "PrivateIpAddress": "10.0.1.208"
+        }
+      ],
+      "RequesterManaged": false,
+      "SourceDestCheck": true,
+      "Status": "in-use",
+      "SubnetId": "subnet-0fd37e52d59b4fc2f",
+      "TagSet": [],
+      "VpcId": "vpc-030571cdbd83ae372",
+      "Operator": {
+        "Managed": false
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "810757d2-953b-4a2e-a85d-892d3d36776e",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "810757d2-953b-4a2e-a85d-892d3d36776e",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "1592",
+      "date": "Tue, 03 Jun 2025 14:56:35 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

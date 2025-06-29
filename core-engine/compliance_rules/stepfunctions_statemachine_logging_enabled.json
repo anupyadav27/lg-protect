@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "StepFunctions.1",
+  "Name": "Step Functions state machines should have logging turned on",
+  "Description": "This control checks whether an AWS Step Functions state machine has logging turned on.",
+  "Function Name": "stepfunctions_statemachine_logging_enabled",
+  "clients": ["stepfunctions"],
+  "functions": {
+    "stepfunctions": {
+      "method": "describe_state_machine",
+      "field_path": "loggingConfiguration.level"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "stepfunctions",
+    "field": "level"
+  }
+}

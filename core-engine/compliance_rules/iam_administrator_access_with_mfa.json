@@ -1,0 +1,28 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.12",
+  "Name": "IAM Administrator Access with MFA",
+  "Description": "Ensure credentials unused for 90 days or greater are disabled",
+  "Function Name": "iam_administrator_access_with_mfa",
+  "clients": ["iam"],
+  "functions": {
+    "iam_users": {
+      "method": "list_users",
+      "field_path": "Users[].UserName"
+    },
+    "iam_user_policies": {
+      "method": "list_attached_user_policies",
+      "field_path": "AttachedPolicies[].PolicyArn"
+    },
+    "iam_user_mfa": {
+      "method": "list_mfa_devices",
+      "field_path": "MFADevices[].UserName"
+    }
+  },
+  "evaluation": {
+    "type": "subset",
+    "source_client": "iam_users",
+    "target_client": "iam_user_mfa",
+    "field": "UserName"
+  }
+}

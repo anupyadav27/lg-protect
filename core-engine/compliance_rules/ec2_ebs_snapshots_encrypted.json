@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "EC2 EBS Snapshots Encrypted",
+  "Description": "Rules for the effective use of cryptography, including cryptographic key management, should be defined and implemented.",
+  "Function Name": "ec2_ebs_snapshots_encrypted",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_snapshots",
+      "field_path": "Snapshots[].Encrypted"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "ec2",
+    "field": "Encrypted",
+    "expected_value": true
+  }
+}

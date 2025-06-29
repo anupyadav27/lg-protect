@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "waf",
+  "function": "list_resources_for_web_acl",
+  "timestamp": "2025-06-03T14:38:02.981750",
+  "error": "Function list_resources_for_web_acl not found on boto3 client"
+}

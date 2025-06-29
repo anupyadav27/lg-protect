@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "FSx.2",
+  "Name": "FSx file systems should copy tags to backups",
+  "Description": "This control checks whether Amazon FSx file systems are configured to copy tags to backups.",
+  "Function Name": "fsx_file_system_copy_tags_to_backups_enabled",
+  "clients": ["fsx"],
+  "functions": {
+    "fsx": {
+      "method": "describe_file_systems",
+      "field_path": "FileSystems[].Tags[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "fsx",
+    "field": "Tags"
+  }
+}

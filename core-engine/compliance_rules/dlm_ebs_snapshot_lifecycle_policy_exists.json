@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "DLM.1",
+  "Name": "EBS snapshots should not be publicly restorable",
+  "Description": "This control checks whether Amazon Elastic Block Store snapshots are not publicly restorable by everyone.",
+  "Function Name": "dlm_ebs_snapshot_lifecycle_policy_exists",
+  "clients": ["dlm"],
+  "functions": {
+    "dlm": {
+      "method": "get_lifecycle_policies",
+      "field_path": "Policies[].PolicyId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "dlm",
+    "field": "PolicyId"
+  }
+}

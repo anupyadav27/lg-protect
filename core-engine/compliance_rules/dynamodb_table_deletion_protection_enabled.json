@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Deletion Protection Enabled for DynamoDB Table",
+  "Description": "Ensure deletion protection is enabled for DynamoDB tables to prevent accidental deletion.",
+  "Function Name": "dynamodb_table_deletion_protection_enabled",
+  "clients": ["dynamodb"],
+  "functions": {
+    "dynamodb": {
+      "method": "describe_table",
+      "field_path": "Table[].DeletionProtectionEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "dynamodb",
+    "field": "DeletionProtectionEnabled",
+    "expected_value": true
+  }
+}

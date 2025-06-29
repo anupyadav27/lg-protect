@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "ens_rd2022_aws",
+  "ID": "op.acc.4.aws.iam.8",
+  "Name": "Deny Regions in SCP",
+  "Description": "Ensure Service Control Policies (SCPs) deny access to regions not in use.",
+  "Function Name": "organizations_scp_check_deny_regions",
+  "clients": ["organizations"],
+  "functions": {
+    "organizations": {
+      "method": "list_policies",
+      "field_path": "Policies[].PolicySummary.PolicyName"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "organizations",
+    "field": "PolicyName"
+  }
+}

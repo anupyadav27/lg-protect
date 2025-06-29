@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "MSK.1",
+  "Name": "MSK clusters should be encrypted in transit among broker nodes",
+  "Description": "This control checks whether Amazon MSK clusters are encrypted in transit between broker nodes of the cluster.",
+  "Function Name": "kafka_cluster_uses_latest_version",
+  "clients": ["kafka"],
+  "functions": {
+    "kafka": {
+      "method": "describe_cluster",
+      "field_path": "ClusterInfo.CurrentVersion"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "kafka",
+    "field": "CurrentVersion"
+  }
+}

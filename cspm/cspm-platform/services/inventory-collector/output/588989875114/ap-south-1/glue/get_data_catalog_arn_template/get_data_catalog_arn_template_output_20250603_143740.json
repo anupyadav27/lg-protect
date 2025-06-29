@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "glue",
+  "function": "get_data_catalog_arn_template",
+  "timestamp": "2025-06-03T14:37:40.238650",
+  "error": "Function get_data_catalog_arn_template not found on boto3 client"
+}

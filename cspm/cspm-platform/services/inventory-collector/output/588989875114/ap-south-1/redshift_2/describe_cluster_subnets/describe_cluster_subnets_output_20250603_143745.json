@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "redshift",
+  "function": "describe_cluster_subnets",
+  "timestamp": "2025-06-03T14:37:45.637299",
+  "error": "Function describe_cluster_subnets not found on boto3 client"
+}

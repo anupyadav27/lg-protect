@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "dynamodb",
+  "function": "describe_continuous_backups",
+  "timestamp": "2025-06-03T14:37:41.911155",
+  "error": "Missing required parameter: 'TableName'"
+}

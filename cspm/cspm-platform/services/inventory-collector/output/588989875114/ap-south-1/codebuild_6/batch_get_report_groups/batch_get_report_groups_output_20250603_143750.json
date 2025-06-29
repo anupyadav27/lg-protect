@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "codebuild",
+  "function": "batch_get_report_groups",
+  "timestamp": "2025-06-03T14:37:50.559643",
+  "error": "Missing required parameter: 'reportGroupArns'"
+}

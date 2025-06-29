@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "8.3.4.16",
+  "Name": "RDS Cluster IAM Authentication Enabled",
+  "Description": "Checks if an Amazon Relational Database Service (Amazon RDS) cluster has AWS Identity and Access Management (IAM) authentication enabled",
+  "Function Name": "rds_cluster_iam_authentication_enabled",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_clusters",
+      "field_path": "DBClusters[].IAMDatabaseAuthenticationEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "rds",
+    "field": "IAMDatabaseAuthenticationEnabled",
+    "expected_value": true
+  }
+}

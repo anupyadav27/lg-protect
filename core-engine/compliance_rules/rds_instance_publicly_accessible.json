@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.29",
+  "Name": "RDS Instance Publicly Accessible",
+  "Description": "Ensure RDS instances are not publicly accessible to maintain security.",
+  "Function Name": "rds_instance_publicly_accessible",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].PubliclyAccessible"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "rds",
+    "field": "PubliclyAccessible",
+    "expected_value": false
+  }
+}

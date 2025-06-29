@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.19",
+  "Name": "RDS Cluster Critical Event Subscription",
+  "Description": "This control checks whether an Amazon RDS event subscription exists that has notifications enabled for the following source type, event category key-value pairs.",
+  "Function Name": "rds_cluster_critical_event_subscription",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_event_subscriptions",
+      "field_path": "EventSubscriptionsList[].Enabled"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "rds",
+    "field": "Enabled",
+    "expected_value": true
+  }
+}

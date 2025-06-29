@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.1",
+  "Name": "EMR Cluster Account Public Block Enabled",
+  "Description": "Information stored on, processed by or accessible via user endpoint devices should be protected.",
+  "Function Name": "emr_cluster_account_public_block_enabled",
+  "clients": ["emr"],
+  "functions": {
+    "emr": {
+      "method": "get_block_public_access_configuration",
+      "field_path": "BlockPublicAccessConfiguration.BlockPublicSecurityGroupRules"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "emr",
+    "field": "BlockPublicSecurityGroupRules",
+    "expected_value": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "ca-7",
+  "Name": "Continuous Monitoring (CA-7)",
+  "Description": "Continuously monitor configuration management processes. Determine security impact, environment and operational risks.",
+  "Function Name": "rds_instance_enhanced_monitoring_enabled",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].MonitoringInterval"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "MonitoringInterval",
+    "value": 0
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "projects": [
+    "test123",
+    "test"
+  ],
+  "ResponseMetadata": {
+    "RequestId": "8746b7f0-0c09-4935-9782-01d41fa7c3c5",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "8746b7f0-0c09-4935-9782-01d41fa7c3c5",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "31",
+      "date": "Tue, 03 Jun 2025 14:43:36 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

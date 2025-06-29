@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "A3.4.1.16",
+  "Name": "S3 Access Point Public Access Block Enabled",
+  "Description": "Checks if Amazon S3 access points have block public access settings enabled",
+  "Function Name": "s3_access_point_public_access_block",
+  "clients": ["s3control"],
+  "functions": {
+    "s3control": {
+      "method": "get_access_point_policy_status",
+      "field_path": "PolicyStatus.IsPublic"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "s3control",
+    "field": "IsPublic",
+    "expected_value": false
+  }
+}

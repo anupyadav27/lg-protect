@@ -1,0 +1,74 @@
+{
+  "ResponseMetadata": {
+    "RequestId": "GNR1RMPYMM4BK6KY",
+    "HostId": "nrqzDZ6BXy9ARg5Z89b3SHRYlg82s1+crePmez3rfP22tvcG0wsgZKI2ovzkHDWn0QK3lAit7OE=",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amz-id-2": "nrqzDZ6BXy9ARg5Z89b3SHRYlg82s1+crePmez3rfP22tvcG0wsgZKI2ovzkHDWn0QK3lAit7OE=",
+      "x-amz-request-id": "GNR1RMPYMM4BK6KY",
+      "date": "Tue, 03 Jun 2025 14:55:34 GMT",
+      "content-type": "application/xml",
+      "transfer-encoding": "chunked",
+      "server": "AmazonS3"
+    },
+    "RetryAttempts": 0
+  },
+  "Buckets": [
+    {
+      "Name": "anup-backup",
+      "CreationDate": "2018-08-18T15:28:44+00:00"
+    },
+    {
+      "Name": "aws-codestar-us-east-1-588989875114-codestar-pipe",
+      "CreationDate": "2022-05-04T09:56:59+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-ap-south-1-588989875114",
+      "CreationDate": "2019-08-16T03:52:01+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-ap-southeast-1-588989875114",
+      "CreationDate": "2019-02-16T12:20:33+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-us-east-1-588989875114",
+      "CreationDate": "2019-02-09T09:02:54+00:00"
+    },
+    {
+      "Name": "elasticbeanstalk-us-west-2-588989875114",
+      "CreationDate": "2016-04-21T15:39:55+00:00"
+    },
+    {
+      "Name": "lgtech-website",
+      "CreationDate": "2019-02-28T06:09:12+00:00"
+    },
+    {
+      "Name": "my-bucket-x2nc4n2t",
+      "CreationDate": "2024-09-01T13:49:11+00:00"
+    },
+    {
+      "Name": "nmbackupanup",
+      "CreationDate": "2020-08-13T10:03:19+00:00"
+    },
+    {
+      "Name": "sytestspeechtotext",
+      "CreationDate": "2019-01-19T14:15:47+00:00"
+    },
+    {
+      "Name": "textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00",
+      "CreationDate": "2024-09-19T13:47:28+00:00"
+    },
+    {
+      "Name": "www.c-and-c.in",
+      "CreationDate": "2019-11-03T13:45:41+00:00"
+    },
+    {
+      "Name": "www.lgtech.in",
+      "CreationDate": "2018-06-25T02:15:01+00:00"
+    }
+  ],
+  "Owner": {
+    "DisplayName": "yadav.anup",
+    "ID": "4bd91a63d87f2e3c1873469bf5b05c26b53b462b7e66af6f366d45010344644f"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "EC2.1",
+  "Name": "Amazon EBS snapshots should not be publicly restorable",
+  "Description": "This control checks whether Amazon EBS snapshots are not publicly restorable by everyone.",
+  "Function Name": "ec2_ebs_public_snapshot",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_snapshots",
+      "field_path": "Snapshots[].State"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "ec2",
+    "field": "State",
+    "value": "public"
+  }
+}

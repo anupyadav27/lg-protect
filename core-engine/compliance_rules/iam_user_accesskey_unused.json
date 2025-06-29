@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.13",
+  "Name": "Ensure IAM users' access keys are rotated every 90 days or less",
+  "Description": "Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS.",
+  "Function Name": "iam_user_accesskey_unused",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "list_access_keys",
+      "field_path": "AccessKeyMetadata[].CreateDate"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "iam",
+    "field": "CreateDate"
+  }
+}

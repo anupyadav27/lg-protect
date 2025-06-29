@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "VPC.8",
+  "Name": "VPC endpoints should be in multiple Availability Zones",
+  "Description": "This control checks whether a VPC endpoint is configured to use multiple Availability Zones.",
+  "Function Name": "vpc_endpoint_multi_az_enabled",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_vpc_endpoints",
+      "field_path": "VpcEndpoints[].SubnetIds[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "ec2",
+    "field": "SubnetIds"
+  }
+}

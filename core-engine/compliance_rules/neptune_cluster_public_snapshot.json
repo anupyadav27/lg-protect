@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "A3.4.1.12",
+  "Name": "Public Neptune Snapshots",
+  "Description": "Ensure Amazon Neptune manual DB cluster snapshots are not public.",
+  "Function Name": "neptune_cluster_public_snapshot",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_snapshot_attributes",
+      "field_path": "DBSnapshotAttributesResult.Attributes[].AttributeValues"
+    }
+  },
+  "evaluation": {
+    "type": "not exists",
+    "source_client": "rds",
+    "field": "AttributeValues"
+  }
+}

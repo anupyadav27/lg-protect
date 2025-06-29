@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Organizations.5",
+  "Name": "AWS Organizations should not allow creation of access keys in member accounts",
+  "Description": "This control checks whether AWS Organizations is configured to centrally manage access keys for member accounts.",
+  "Function Name": "organizations_delegated_administrators",
+  "clients": ["organizations"],
+  "functions": {
+    "organizations": {
+      "method": "list_delegated_administrators",
+      "field_path": "DelegatedAdministrators[].Id"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "organizations",
+    "field": "Id"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudwatch",
+  "function": "describe_resource_policies",
+  "timestamp": "2025-06-03T14:37:42.307949",
+  "error": "Function describe_resource_policies not found on boto3 client"
+}

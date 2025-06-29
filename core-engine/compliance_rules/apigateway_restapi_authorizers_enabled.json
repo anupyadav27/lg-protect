@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "aws_well_architected_framework_security_pillar_aws",
+  "ID": "SEC05-BP04",
+  "Name": "API Gateway Authorizers Enabled",
+  "Description": "Ensure API Gateway authorizers are enabled to inspect and filter traffic at each layer.",
+  "Function Name": "apigateway_restapi_authorizers_enabled",
+  "clients": ["apigateway"],
+  "functions": {
+    "apigateway": {
+      "method": "get_rest_apis",
+      "field_path": "items[].id"
+    },
+    "apigateway": {
+      "method": "get_authorizers",
+      "field_path": "items[].name"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "apigateway",
+    "field": "name"
+  }
+}

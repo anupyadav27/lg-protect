@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_well_architected_framework_security_pillar_aws",
+  "ID": "SEC04-BP01",
+  "Name": "",
+  "Description": "Retain security event logs from services and applications. This is a fundamental principle of security for audit, investigations, and operational use cases, and a common security requirement driven by governance, risk, and compliance (GRC) standards, policies, and procedures.",
+  "Function Name": "acm_certificates_transparency_logs_enabled",
+  "clients": ["acm"],
+  "functions": {
+    "acm": {
+      "method": "describe_certificate",
+      "field_path": "Certificate[].CertificateTransparencyLogging"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "acm",
+    "field": "CertificateTransparencyLogging"
+  }
+}

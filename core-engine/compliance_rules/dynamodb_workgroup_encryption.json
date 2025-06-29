@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Encryption Enabled for DynamoDB Workgroup",
+  "Description": "Ensure encryption is enabled for DynamoDB workgroups to secure data at rest.",
+  "Function Name": "dynamodb_workgroup_encryption",
+  "clients": ["dynamodb"],
+  "functions": {
+    "dynamodb": {
+      "method": "describe_workgroups",
+      "field_path": "Workgroups[].EncryptionEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "dynamodb",
+    "field": "EncryptionEnabled",
+    "expected_value": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "reportGroups": [],
+  "ResponseMetadata": {
+    "RequestId": "030d0d60-0323-4574-bdf5-884219972b3f",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "030d0d60-0323-4574-bdf5-884219972b3f",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "19",
+      "date": "Tue, 03 Jun 2025 14:55:47 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

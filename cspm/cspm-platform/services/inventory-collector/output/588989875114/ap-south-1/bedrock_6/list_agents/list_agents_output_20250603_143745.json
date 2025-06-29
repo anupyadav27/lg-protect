@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "bedrock",
+  "function": "list_agents",
+  "timestamp": "2025-06-03T14:37:45.934507",
+  "error": "Function list_agents not found on boto3 client"
+}

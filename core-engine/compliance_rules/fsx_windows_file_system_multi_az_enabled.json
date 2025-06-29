@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "FSx.1",
+  "Name": "FSx file systems should be encrypted at rest",
+  "Description": "This control checks whether Amazon FSx file systems are encrypted at rest.",
+  "Function Name": "fsx_windows_file_system_multi_az_enabled",
+  "clients": ["fsx"],
+  "functions": {
+    "fsx": {
+      "method": "describe_file_systems",
+      "field_path": "FileSystems[].WindowsConfiguration.DeploymentType"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "fsx",
+    "field": "DeploymentType",
+    "value": "MULTI_AZ_1"
+  }
+}

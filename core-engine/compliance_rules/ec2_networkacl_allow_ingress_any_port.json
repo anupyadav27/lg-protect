@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "5.2",
+  "Name": "Network ACLs Restrict Ingress from Any Port",
+  "Description": "Ensure no Network ACLs allow ingress from 0.0.0.0/0 to remote server administration ports",
+  "Function Name": "ec2_networkacl_allow_ingress_any_port",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_network_acls",
+      "field_path": "NetworkAcls[].Entries[].CidrBlock"
+    }
+  },
+  "evaluation": {
+    "type": "not_equals",
+    "source_client": "ec2",
+    "field": "CidrBlock",
+    "expected_value": "0.0.0.0/0"
+  }
+}

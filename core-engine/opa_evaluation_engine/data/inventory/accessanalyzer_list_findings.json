@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "id": "example-id",
+      "principal": {
+        "type": "AWS::IAM::User",
+        "name": "example-user"
+      },
+      "action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "resource": "arn:aws:s3:::example-bucket/*",
+      "isPublic": false,
+      "resourceType": "AWS::S3::Bucket",
+      "condition": {
+        "StringEquals": {
+          "s3:x-amz-server-side-encryption": "AES256"
+        }
+      },
+      "createdAt": "2025-06-27T00:00:00Z",
+      "analyzedAt": "2025-06-27T00:00:00Z",
+      "updatedAt": "2025-06-27T00:00:00Z",
+      "status": "ACTIVE",
+      "resourceOwnerAccount": "123456789012",
+      "error": null,
+      "sources": [
+        {
+          "type": "POLICY",
+          "detail": {
+            "accessPointArn": "arn:aws:s3:::example-access-point",
+            "accessPointAccount": "123456789012"
+          }
+        }
+      ],
+      "resourceControlPolicyRestriction": "APPLICABLE"
+    }
+  ],
+  "nextToken": null
+}

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "datasync",
+  "function": "describe_tasks",
+  "timestamp": "2025-06-03T14:37:45.903755",
+  "error": "Function describe_tasks not found on boto3 client"
+}

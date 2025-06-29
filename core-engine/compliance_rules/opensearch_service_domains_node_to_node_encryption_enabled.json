@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "OpenSearch.7",
+  "Name": "OpenSearch domains should have node-to-node encryption enabled",
+  "Description": "This control checks whether OpenSearch domains have node-to-node encryption enabled.",
+  "Function Name": "opensearch_service_domains_node_to_node_encryption_enabled",
+  "clients": ["opensearch"],
+  "functions": {
+    "opensearch": {
+      "method": "describe_domains",
+      "field_path": "DomainStatusList[].NodeToNodeEncryptionOptions.Enabled"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "opensearch",
+    "field": "Enabled",
+    "value": true
+  }
+}

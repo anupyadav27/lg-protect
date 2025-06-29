@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "Route53.2",
+  "Name": "Route 53 public hosted zones should log DNS queries",
+  "Description": "This control checks whether Amazon Route 53 public hosted zones are configured to log DNS queries.",
+  "Function Name": "route53_dangling_ip_subdomain_takeover",
+  "clients": ["route53"],
+  "functions": {
+    "route53": {
+      "method": "list_resource_record_sets",
+      "field_path": "ResourceRecordSets[].ResourceRecords[].Value"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "route53",
+    "field": "Value"
+  }
+}

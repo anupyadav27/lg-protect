@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "Point-in-Time Recovery Enabled for DynamoDB Tables",
+  "Description": "Ensure Point-in-Time Recovery (PITR) is enabled for DynamoDB tables to allow data restoration to any point in time.",
+  "Function Name": "dynamodb_tables_pitr_enabled",
+  "clients": ["dynamodb"],
+  "functions": {
+    "dynamodb": {
+      "method": "describe_continuous_backups",
+      "field_path": "ContinuousBackupsDescription[].PointInTimeRecoveryStatus"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "dynamodb",
+    "field": "PointInTimeRecoveryStatus",
+    "expected_value": "ENABLED"
+  }
+}

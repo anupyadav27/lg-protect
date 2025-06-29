@@ -1,0 +1,24 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "NetworkFirewall.3",
+  "Name": "Network Firewall policies should have at least one rule group associated",
+  "Description": "This control checks whether there is at least one stateful or stateless rule group associated with an AWS Network Firewall firewall policy.",
+  "Function Name": "networkfirewall_in_all_vpc",
+  "clients": ["network-firewall", "ec2"],
+  "functions": {
+    "ec2_vpcs": {
+      "method": "describe_vpcs",
+      "field_path": "Vpcs[].VpcId"
+    },
+    "network_firewall": {
+      "method": "list_firewalls",
+      "field_path": "Firewalls[].VpcId"
+    }
+  },
+  "evaluation": {
+    "type": "subset",
+    "source_client": "ec2_vpcs",
+    "target_client": "network_firewall",
+    "field": "VpcId"
+  }
+}

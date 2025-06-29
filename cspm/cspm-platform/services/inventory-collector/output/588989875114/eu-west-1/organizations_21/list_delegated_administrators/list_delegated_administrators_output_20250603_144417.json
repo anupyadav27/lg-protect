@@ -1,0 +1,14 @@
+{
+  "DelegatedAdministrators": [],
+  "ResponseMetadata": {
+    "RequestId": "e72d6fa7-4015-459c-a78f-6291e370956e",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "e72d6fa7-4015-459c-a78f-6291e370956e",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "30",
+      "date": "Tue, 03 Jun 2025 14:44:28 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

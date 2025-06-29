@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "datasync",
+  "function": "list_task_tags",
+  "timestamp": "2025-06-03T14:37:45.926784",
+  "error": "Function list_task_tags not found on boto3 client"
+}

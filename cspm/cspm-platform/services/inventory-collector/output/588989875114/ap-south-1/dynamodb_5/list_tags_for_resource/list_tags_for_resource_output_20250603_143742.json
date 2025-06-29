@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "dynamodb",
+  "function": "list_tags_for_resource",
+  "timestamp": "2025-06-03T14:37:42.074180",
+  "error": "Function list_tags_for_resource not found on boto3 client"
+}

@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.27",
+  "Name": "ElastiCache Cluster Uses Public Subnet",
+  "Description": "Ensure ElastiCache clusters are not using public subnets to maintain security.",
+  "Function Name": "elasticache_cluster_uses_public_subnet",
+  "clients": ["elasticache"],
+  "functions": {
+    "elasticache": {
+      "method": "describe_cache_clusters",
+      "field_path": "CacheClusters[].CacheSubnetGroupName"
+    }
+  },
+  "evaluation": {
+    "type": "value_check",
+    "source_client": "elasticache",
+    "field": "CacheSubnetGroupName",
+    "expected_value": "private"
+  }
+}

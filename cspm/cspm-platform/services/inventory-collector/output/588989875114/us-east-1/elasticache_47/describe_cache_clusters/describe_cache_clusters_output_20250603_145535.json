@@ -1,0 +1,14 @@
+{
+  "CacheClusters": [],
+  "ResponseMetadata": {
+    "RequestId": "daca704a-8c85-4bda-a8c9-912e6fa962c8",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "daca704a-8c85-4bda-a8c9-912e6fa962c8",
+      "content-type": "text/xml",
+      "content-length": "315",
+      "date": "Tue, 03 Jun 2025 14:55:49 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

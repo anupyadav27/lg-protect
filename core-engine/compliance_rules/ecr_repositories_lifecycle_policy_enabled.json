@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "3.3.3.7",
+  "Name": "ECR Repositories Lifecycle Policy Enabled",
+  "Description": "Checks if a private Amazon Elastic Container Registry (ECR) repository has at least one lifecycle policy configured",
+  "Function Name": "ecr_repositories_lifecycle_policy_enabled",
+  "clients": ["ecr"],
+  "functions": {
+    "ecr": {
+      "method": "get_lifecycle_policy",
+      "field_path": "lifecyclePolicyText"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "ecr",
+    "field": "lifecyclePolicyText"
+  }
+}

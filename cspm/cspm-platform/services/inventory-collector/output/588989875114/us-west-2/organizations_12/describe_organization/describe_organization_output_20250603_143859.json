@@ -1,0 +1,27 @@
+{
+  "Organization": {
+    "Id": "o-pnqvhuz78r",
+    "Arn": "arn:aws:organizations::588989875114:organization/o-pnqvhuz78r",
+    "FeatureSet": "ALL",
+    "MasterAccountArn": "arn:aws:organizations::588989875114:account/o-pnqvhuz78r/588989875114",
+    "MasterAccountId": "588989875114",
+    "MasterAccountEmail": "yadav.anup@gmail.com",
+    "AvailablePolicyTypes": [
+      {
+        "Type": "SERVICE_CONTROL_POLICY",
+        "Status": "ENABLED"
+      }
+    ]
+  },
+  "ResponseMetadata": {
+    "RequestId": "79ac92b1-c118-40cc-bdfc-4c50e169b8be",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "79ac92b1-c118-40cc-bdfc-4c50e169b8be",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "373",
+      "date": "Tue, 03 Jun 2025 14:39:12 GMT"
+    },
+    "RetryAttempts": 0
+  }
+}

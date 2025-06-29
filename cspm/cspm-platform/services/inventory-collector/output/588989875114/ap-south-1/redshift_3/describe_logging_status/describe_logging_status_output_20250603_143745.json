@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "redshift",
+  "function": "describe_logging_status",
+  "timestamp": "2025-06-03T14:37:45.648897",
+  "error": "Missing required parameter: 'ClusterIdentifier'"
+}

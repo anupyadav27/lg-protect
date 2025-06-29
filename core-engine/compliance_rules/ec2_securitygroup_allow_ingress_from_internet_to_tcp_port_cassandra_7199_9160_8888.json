@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.26",
+  "Name": "EC2 Security Group Allow Ingress from Internet to TCP Port Cassandra",
+  "Description": "Ensure EC2 security groups do not allow ingress from the internet to TCP ports used by Cassandra.",
+  "Function Name": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_cassandra",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_security_groups",
+      "field_path": "SecurityGroups[].IpPermissions[].FromPort"
+    }
+  },
+  "evaluation": {
+    "type": "find",
+    "source_client": "ec2",
+    "field": "FromPort",
+    "expected_value": [7199, 9160, 8888]
+  }
+}

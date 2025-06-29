@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "ELB.2",
+  "Name": "Classic Load Balancers with SSL/HTTPS listeners should use a certificate provided by AWS Certificate Manager",
+  "Description": "This control checks whether the Classic Load Balancer uses HTTPS/SSL certificates provided by AWS Certificate Manager (ACM).",
+  "Function Name": "elbv2_is_in_multiple_az",
+  "clients": ["elbv2"],
+  "functions": {
+    "elbv2": {
+      "method": "describe_load_balancers",
+      "field_path": "LoadBalancers[].AvailabilityZones[]"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "elbv2",
+    "field": "AvailabilityZones"
+  }
+}

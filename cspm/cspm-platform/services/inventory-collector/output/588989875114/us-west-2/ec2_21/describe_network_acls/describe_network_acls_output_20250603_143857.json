@@ -1,0 +1,117 @@
+{
+  "NetworkAcls": [
+    {
+      "Associations": [
+        {
+          "NetworkAclAssociationId": "aclassoc-47945b3e",
+          "NetworkAclId": "acl-bad5b6de",
+          "SubnetId": "subnet-0ba50a7d"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-39945b40",
+          "NetworkAclId": "acl-bad5b6de",
+          "SubnetId": "subnet-e1801485"
+        }
+      ],
+      "Entries": [
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        }
+      ],
+      "IsDefault": true,
+      "NetworkAclId": "acl-bad5b6de",
+      "Tags": [],
+      "VpcId": "vpc-e00f9b84",
+      "OwnerId": "588989875114"
+    },
+    {
+      "Associations": [
+        {
+          "NetworkAclAssociationId": "aclassoc-042189a280ed33979",
+          "NetworkAclId": "acl-08e314a143b14ee3b",
+          "SubnetId": "subnet-0e9651597be878a50"
+        },
+        {
+          "NetworkAclAssociationId": "aclassoc-0901c9d8f65c627bd",
+          "NetworkAclId": "acl-08e314a143b14ee3b",
+          "SubnetId": "subnet-0b2b6c7c223d2f43b"
+        }
+      ],
+      "Entries": [
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": true,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "allow",
+          "RuleNumber": 100
+        },
+        {
+          "CidrBlock": "0.0.0.0/0",
+          "Egress": false,
+          "Protocol": "-1",
+          "RuleAction": "deny",
+          "RuleNumber": 32767
+        }
+      ],
+      "IsDefault": true,
+      "NetworkAclId": "acl-08e314a143b14ee3b",
+      "Tags": [],
+      "VpcId": "vpc-0c7b2d7cf44e2f711",
+      "OwnerId": "588989875114"
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "28d9829a-4631-4641-bd1f-0342c27710a8",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "28d9829a-4631-4641-bd1f-0342c27710a8",
+      "cache-control": "no-cache, no-store",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "accept-encoding",
+      "content-type": "text/xml;charset=UTF-8",
+      "content-length": "2521",
+      "date": "Tue, 03 Jun 2025 14:39:10 GMT",
+      "server": "AmazonEC2"
+    },
+    "RetryAttempts": 0
+  }
+}

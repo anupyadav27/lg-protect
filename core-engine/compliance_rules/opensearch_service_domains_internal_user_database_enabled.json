@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.2",
+  "Name": "OpenSearch Service Domains Internal User Database Enabled",
+  "Description": "The allocation and use of privileged access rights should be restricted and managed.",
+  "Function Name": "opensearch_service_domains_internal_user_database_enabled",
+  "clients": ["opensearch"],
+  "functions": {
+    "opensearch": {
+      "method": "describe_domain",
+      "field_path": "DomainStatus.AdvancedSecurityOptions.InternalUserDatabaseEnabled"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "opensearch",
+    "field": "InternalUserDatabaseEnabled",
+    "expected_value": true
+  }
+}

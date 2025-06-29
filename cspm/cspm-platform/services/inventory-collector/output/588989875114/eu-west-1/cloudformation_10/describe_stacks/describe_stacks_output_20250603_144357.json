@@ -1,0 +1,127 @@
+{
+  "Stacks": [
+    {
+      "StackId": "arn:aws:cloudformation:eu-west-1:588989875114:stack/awscodestar-test-lambda/ab4038b0-216f-11e9-aa42-06366d428b7a",
+      "StackName": "awscodestar-test-lambda",
+      "ChangeSetId": "arn:aws:cloudformation:eu-west-1:588989875114:changeSet/pipeline-changeset/61b9e961-1e58-4816-804c-00dc3ba511d2",
+      "Parameters": [
+        {
+          "ParameterKey": "CodeDeployRole",
+          "ParameterValue": "arn:aws:iam::588989875114:role/CodeStarWorker-test-CodeDeploy"
+        },
+        {
+          "ParameterKey": "ProjectId",
+          "ParameterValue": "test"
+        },
+        {
+          "ParameterKey": "Stage",
+          "ParameterValue": ""
+        }
+      ],
+      "CreationTime": "2019-01-26T13:38:31+00:00",
+      "LastUpdatedTime": "2019-01-26T13:39:07.603000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [],
+      "Capabilities": [
+        "CAPABILITY_NAMED_IAM"
+      ],
+      "RoleARN": "arn:aws:iam::588989875114:role/CodeStarWorker-test-CloudFormation",
+      "Tags": [
+        {
+          "Key": "awscodestar:projectArn",
+          "Value": "arn:aws:codestar:eu-west-1:588989875114:project/test"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    },
+    {
+      "StackId": "arn:aws:cloudformation:eu-west-1:588989875114:stack/awscodestar-test/3f8925f0-216f-11e9-bbdc-02731a038876",
+      "StackName": "awscodestar-test",
+      "Description": "A Python web service deployed to AWS Lambda.",
+      "Parameters": [
+        {
+          "ParameterKey": "RepositoryBranch",
+          "ParameterValue": "master"
+        },
+        {
+          "ParameterKey": "ThirdPartyWebhookSecretToken",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "RepositoryProviderUsername",
+          "ParameterValue": "anupyadav27"
+        },
+        {
+          "ParameterKey": "RepositoryProviderUserId",
+          "ParameterValue": "24474965"
+        },
+        {
+          "ParameterKey": "ProjectId",
+          "ParameterValue": "test"
+        },
+        {
+          "ParameterKey": "RepositoryToken",
+          "ParameterValue": "****"
+        },
+        {
+          "ParameterKey": "RepositoryName",
+          "ParameterValue": "test"
+        },
+        {
+          "ParameterKey": "RepositoryEnableIssues",
+          "ParameterValue": "true"
+        },
+        {
+          "ParameterKey": "RepositoryURL",
+          "ParameterValue": "https://github.com/anupyadav27/test"
+        },
+        {
+          "ParameterKey": "RepositoryProvider",
+          "ParameterValue": "GitHub"
+        },
+        {
+          "ParameterKey": "AppName",
+          "ParameterValue": "test"
+        }
+      ],
+      "CreationTime": "2019-01-26T13:35:30.334000+00:00",
+      "RollbackConfiguration": {},
+      "StackStatus": "CREATE_COMPLETE",
+      "DisableRollback": false,
+      "NotificationARNs": [
+        "arn:aws:sns:eu-west-1:446616461182:CloudFormationProjectEvents"
+      ],
+      "TimeoutInMinutes": 30,
+      "Capabilities": [
+        "CAPABILITY_NAMED_IAM"
+      ],
+      "Tags": [
+        {
+          "Key": "awscodestar:projectArn",
+          "Value": "arn:aws:codestar:eu-west-1:588989875114:project/test"
+        }
+      ],
+      "EnableTerminationProtection": false,
+      "DriftInformation": {
+        "StackDriftStatus": "NOT_CHECKED"
+      }
+    }
+  ],
+  "ResponseMetadata": {
+    "RequestId": "d4f6b7a7-4937-4225-9706-432302672e1c",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "d4f6b7a7-4937-4225-9706-432302672e1c",
+      "date": "Tue, 03 Jun 2025 14:44:11 GMT",
+      "content-type": "text/xml",
+      "content-length": "4908",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

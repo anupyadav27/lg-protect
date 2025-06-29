@@ -1,0 +1,16 @@
+{
+  "Jobs": [],
+  "ResponseMetadata": {
+    "RequestId": "4c57ade0-ae22-4b65-83f0-2b12f08adcf2",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "date": "Tue, 03 Jun 2025 14:45:51 GMT",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "11",
+      "connection": "keep-alive",
+      "x-amzn-requestid": "4c57ade0-ae22-4b65-83f0-2b12f08adcf2",
+      "cache-control": "no-cache"
+    },
+    "RetryAttempts": 0
+  }
+}

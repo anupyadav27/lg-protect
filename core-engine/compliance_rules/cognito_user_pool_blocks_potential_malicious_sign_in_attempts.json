@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "kisa_isms_p_2023_korean_aws",
+  "ID": "2.6.1",
+  "Name": "\ub124\ud2b8\uc6cc\ud06c \uc811\uadfc",
+  "Description": "\ub124\ud2b8\uc6cc\ud06c\uc5d0 \ub300\ud55c \ube44\uc778\uac00 \uc811\uadfc\uc744 \ud1b5\uc81c\ud558\uae30 \uc704\ud558\uc5ec IP\uad00\ub9ac, \ub2e8\ub9d0\uc778\uc99d \ub4f1 \uad00\ub9ac\uc808\ucc28\ub97c \uc218\ub9bd \ubc0f\uc774\ud589\ud558\uace0, \uc5c5\ubb34\ubaa9\uc801 \ubc0f \uc911\uc694\ub3c4\uc5d0 \ub530\ub77c \ub124\ud2b8\uc6cc\ud06c \ubd84\ub9ac(DMZ, \uc11c\ubc84\ud31c, DB\uc874, \uac1c\ubc1c\uc874 \ub4f1)\uc640 \uc811\uadfc\ud1b5\uc81c\ub97c \uc801\uc6a9\ud558\uc5ec\uc57c \ud55c\ub2e4.",
+  "Function Name": "cognito_user_pool_blocks_potential_malicious_sign_in_attempts",
+  "clients": ["cognito-idp"],
+  "functions": {
+    "cognito-idp": {
+      "method": "list_user_pools",
+      "field_path": "UserPools[].Id"
+    },
+    "cognito-idp": {
+      "method": "describe_user_pool",
+      "field_path": "UserPool.Id"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "cognito-idp",
+    "field": "Id"
+  }
+}

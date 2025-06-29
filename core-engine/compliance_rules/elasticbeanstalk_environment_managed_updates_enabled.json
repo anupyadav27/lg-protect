@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "pci_4.0_aws",
+  "ID": "6.3.3.7",
+  "Name": "Elastic Beanstalk Environment Managed Updates Enabled",
+  "Description": "Checks if managed platform updates in an AWS Elastic Beanstalk environment is enabled",
+  "Function Name": "elasticbeanstalk_environment_managed_updates_enabled",
+  "clients": ["elasticbeanstalk"],
+  "functions": {
+    "elasticbeanstalk": {
+      "method": "describe_configuration_settings",
+      "field_path": "ConfigurationSettings[].OptionSettings[].Value"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "elasticbeanstalk",
+    "field": "Value",
+    "expected_value": "true"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "s3",
+  "function": "list_access_points",
+  "timestamp": "2025-06-03T14:37:42.747164",
+  "error": "Function list_access_points not found on boto3 client"
+}

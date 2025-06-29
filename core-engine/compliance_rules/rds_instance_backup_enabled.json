@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "fedramp_low_revision_4_aws",
+  "ID": "sc-5",
+  "Name": "Denial Of Service Protection (SC-5)",
+  "Description": "The information system protects against or limits the effects of the following types of denial of service attacks: [Assignment: organization-defined types of denial of service attacks or references to sources for such information] by employing [Assignment: organization-defined security safeguards].",
+  "Function Name": "rds_instance_backup_enabled",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].BackupRetentionPeriod"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "BackupRetentionPeriod",
+    "value": 0
+  }
+}

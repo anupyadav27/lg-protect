@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "cloudtrail",
+  "function": "get_trail_status",
+  "timestamp": "2025-06-03T14:37:44.627655",
+  "error": "Missing required parameter: 'Name'"
+}

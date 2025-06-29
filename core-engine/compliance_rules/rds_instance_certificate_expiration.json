@@ -1,0 +1,19 @@
+{
+  "Compliance Name": "aws_foundational_security_best_practices_aws",
+  "ID": "RDS.10",
+  "Name": "IAM authentication should be configured for RDS instances",
+  "Description": "This control checks whether an RDS DB instance has IAM database authentication enabled.",
+  "Function Name": "rds_instance_certificate_expiration",
+  "clients": ["rds"],
+  "functions": {
+    "rds": {
+      "method": "describe_db_instances",
+      "field_path": "DBInstances[].CACertificateIdentifier"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "rds",
+    "field": "CACertificateIdentifier"
+  }
+}

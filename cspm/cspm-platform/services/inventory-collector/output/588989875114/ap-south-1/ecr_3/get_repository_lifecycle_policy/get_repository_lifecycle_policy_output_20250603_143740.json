@@ -1,0 +1,7 @@
+{
+  "region": "ap-south-1",
+  "service": "ecr",
+  "function": "get_repository_lifecycle_policy",
+  "timestamp": "2025-06-03T14:37:40.190671",
+  "error": "Function get_repository_lifecycle_policy not found on boto3 client"
+}

@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "cis_4.0_aws",
+  "ID": "1.16",
+  "Name": "Ensure IAM policies that allow full \"*:*\" administrative privileges are not created",
+  "Description": "IAM policies are the means by which privileges are granted to users, groups, or roles.",
+  "Function Name": "iam_customer_attached_policy_no_administrative_privileges",
+  "clients": ["iam"],
+  "functions": {
+    "iam": {
+      "method": "get_policy_version",
+      "field_path": "PolicyVersion.Document.Statement[].Effect"
+    }
+  },
+  "evaluation": {
+    "type": "not_exists",
+    "source_client": "iam",
+    "field": "Effect",
+    "value": "Allow"
+  }
+}

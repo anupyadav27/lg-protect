@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.15",
+  "Name": "EC2 Instance Age Check",
+  "Description": "Ensure EC2 instances are not older than a specific number of days to maintain up-to-date configurations.",
+  "Function Name": "ec2_instance_older_than_specific_days",
+  "clients": ["ec2"],
+  "functions": {
+    "ec2": {
+      "method": "describe_instances",
+      "field_path": "Reservations[].Instances[].LaunchTime"
+    }
+  },
+  "evaluation": {
+    "type": "date_check",
+    "source_client": "ec2",
+    "field": "LaunchTime",
+    "threshold": "365 days"
+  }
+}

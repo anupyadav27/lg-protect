@@ -1,0 +1,20 @@
+{
+  "Compliance Name": "pci_3.2.1_aws",
+  "ID": "8.2.1.a",
+  "Name": "DynamoDB Table Encryption Enabled",
+  "Description": "Many network devices and applications transmit unencrypted, readable passwords across the network and/or store passwords without encryption. A malicious individual can easily intercept unencrypted passwords during transmission using a \"sniffer,\" or directly access unencrypted passwords in files where they are stored, and use this data to gain unauthorized access. Note: Testing Procedures 8.2.1.d and 8.2.1.e are additional procedures that only apply if the entity being assessed is a service provider.",
+  "Function Name": "dynamodb_table_encryption_enabled",
+  "clients": ["dynamodb"],
+  "functions": {
+    "dynamodb": {
+      "method": "describe_table",
+      "field_path": "Table.SSEDescription.Status"
+    }
+  },
+  "evaluation": {
+    "type": "equals",
+    "source_client": "dynamodb",
+    "field": "Status",
+    "expected_value": "ENABLED"
+  }
+}

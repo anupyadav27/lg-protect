@@ -1,0 +1,23 @@
+{
+  "Compliance Name": "iso27001_2022_aws",
+  "ID": "A.8.24",
+  "Name": "CloudWatch Logs Encryption",
+  "Description": "Ensure Glue development endpoints use CloudWatch logs with encryption enabled.",
+  "Function Name": "glue_development_endpoints_cloudwatch_logs_encryption_enabled",
+  "clients": ["glue", "logs"],
+  "functions": {
+    "glue": {
+      "method": "get_dev_endpoint",
+      "field_path": "DevEndpoint.Name"
+    },
+    "logs": {
+      "method": "describe_log_groups",
+      "field_path": "logGroups[].kmsKeyId"
+    }
+  },
+  "evaluation": {
+    "type": "exists",
+    "source_client": "logs",
+    "field": "kmsKeyId"
+  }
+}
