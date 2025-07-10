@@ -1,0 +1,29 @@
+{
+  "scan_session_id": "enterprise_scan_20250705_101953_b03251e1",
+  "scan_timestamp": "2025-07-05T04:49:53.278567+00:00",
+  "scan_end_timestamp": "2025-07-05T04:50:54.315361+00:00",
+  "scan_duration_seconds": 61.036794,
+  "scan_duration_minutes": 1.0172799,
+  "total_accounts": 1,
+  "total_regions": 18,
+  "total_services": 64,
+  "total_checks_performed": 944,
+  "total_api_calls": 944,
+  "success_rate": 93.53813559322035,
+  "files_generated": {
+    "detailed_results": "detailed_enablement_results_20250705_102054.json",
+    "service_matrix": "service_enablement_matrix_#20250705_102054.json",
+    "summary_report": "service_enablement_summary_#20250705_102054.json"
+  },
+  "quick_stats": {
+    "enabled_service_instances": 883,
+    "total_service_instances": 944,
+    "enablement_rate": 93.53813559322035,
+    "unique_enabled_services": 61,
+    "total_errors": 61
+  },
+  "csv_files": {
+    "account_service_inventory": "/Users/apple/Desktop/lg-protect/inventory/service_enablement_results/scan_20250705_101953/account_service_inventory_20250705_102054.csv",
+    "session_reference": "/Users/apple/Desktop/lg-protect/inventory/service_enablement_results/scan_20250705_101953/scan_session_reference_20250705_102054.csv"
+  }
+}

@@ -1,0 +1,7949 @@
+[
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "acm",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigateway",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "apigatewayv2",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "athena",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "autoscaling",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "backup",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudformation",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudtrail",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "chime",
+    "Region_Name": "global",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "global",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudfront",
+    "Region_Name": "global",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "global",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "cloudwatch",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "comprehend",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "config",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "connect",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "datasync",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "directconnect",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 1,
+    "Scope": "regional",
+    "Resources": "test"
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 15,
+    "Scope": "regional",
+    "Resources": "AuditCheck; AuditChecks; BuckeTest; BucketStatus; BucketStatusTable; DeepSeek; EnabledServices; Services_Command; Servicesaduassbcsdc_Command; cs_account_database; cs_aws_regional_services_list; cs_aws_regions; cs_aws_services_commanDatabase; customer_account_database; us_east_1_services"
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "dynamodb",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ebs",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ec2",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecr",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 1,
+    "Scope": "regional",
+    "Resources": "arn:aws:ecs:ap-south-1:588989875114:cluster/default"
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 1,
+    "Scope": "regional",
+    "Resources": "arn:aws:ecs:ap-southeast-1:588989875114:cluster/default"
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ecs",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "efs",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "eks",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elasticache",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "elbv2",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "emr",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "events",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "firehose",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "fsx",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glacier",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "glue",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "guardduty",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "inspector2",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kinesis",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "iam",
+    "Region_Name": "global",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "global",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "kms",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "lambda",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "logs",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "networkfirewall",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "polly",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "organizations",
+    "Region_Name": "global",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "global",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rds",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "redshift",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "rekognition",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sagemaker",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "s3",
+    "Region_Name": "global",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "global",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "route53",
+    "Region_Name": "global",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "global",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "secretsmanager",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "securityhub",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "securityhub",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sns",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 1,
+    "Scope": "regional",
+    "Resources": "https://sqs.us-east-1.amazonaws.com/588989875114/test"
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "sqs",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "ssm",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "stepfunctions",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "storagegateway",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "textract",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transcribe",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "transfer",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "translate",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "ap-northeast-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "eu-north-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "us-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "us-east-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "vpc-lattice",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "ap-south-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "ap-southeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "ap-northeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "ap-southeast-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "ap-northeast-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "eu-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "eu-west-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "eu-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "eu-west-3",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "ca-central-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "us-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "us-west-2",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "workspaces",
+    "Region_Name": "sa-east-1",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "regional",
+    "Resources": ""
+  },
+  {
+    "Account_ID": "588989875114",
+    "Service_Name": "waf",
+    "Region_Name": "global",
+    "Enabled": true,
+    "Resource_Count": 0,
+    "Scope": "global",
+    "Resources": ""
+  }
+]

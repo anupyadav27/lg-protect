@@ -1,0 +1,79 @@
+Account,Region,Service,Function,ErrorType,ErrorMessage,Timestamp,ScanSessionId
+588989875114,eu-west-3,comprehend,list_document_classifiers,unknown,An error occurred (InvalidRequestException) when calling the ListDocumentClassifiers operation: UNSUPPORTED_OPERATION: This operation is not supported in this region,2025-07-05T04:50:03.034302+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,comprehend,list_document_classifiers,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://comprehend.ap-northeast-3.amazonaws.com/""",2025-07-05T04:50:03.645930+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-west-1,comprehend,list_document_classifiers,unknown,An error occurred (InvalidRequestException) when calling the ListDocumentClassifiers operation: UNSUPPORTED_OPERATION: This operation is not supported in this region,2025-07-05T04:50:03.966726+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,sa-east-1,comprehend,list_document_classifiers,unknown,An error occurred (InvalidRequestException) when calling the ListDocumentClassifiers operation: UNSUPPORTED_OPERATION: This operation is not supported in this region,2025-07-05T04:50:03.972468+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-south-1,connect,list_instances,unknown,An error occurred (InvalidRequestException) when calling the ListInstances operation: None,2025-07-05T04:50:04.599642+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-north-1,comprehend,list_document_classifiers,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://comprehend.eu-north-1.amazonaws.com/""",2025-07-05T04:50:04.719478+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-3,connect,list_instances,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://connect.eu-west-3.amazonaws.com/instance""",2025-07-05T04:50:07.434901+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-north-1,connect,list_instances,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://connect.eu-north-1.amazonaws.com/instance""",2025-07-05T04:50:07.857505+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-1,connect,list_instances,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://connect.eu-west-1.amazonaws.com/instance""",2025-07-05T04:50:07.890001+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-west-1,connect,list_instances,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://connect.us-west-1.amazonaws.com/instance""",2025-07-05T04:50:07.959965+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-east-2,connect,list_instances,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://connect.us-east-2.amazonaws.com/instance""",2025-07-05T04:50:09.453551+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,sa-east-1,connect,list_instances,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://connect.sa-east-1.amazonaws.com/instance""",2025-07-05T04:50:10.747397+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,global,globalaccelerator,list_accelerators,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://globalaccelerator.us-east-1.amazonaws.com/""",2025-07-05T04:50:24.812599+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-3,rekognition,list_collections,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://rekognition.eu-west-3.amazonaws.com/""",2025-07-05T04:50:34.763168+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,rekognition,list_collections,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://rekognition.ap-northeast-3.amazonaws.com/""",2025-07-05T04:50:36.252436+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-south-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:37.067202+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,sa-east-1,rekognition,list_collections,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://rekognition.sa-east-1.amazonaws.com/""",2025-07-05T04:50:37.372651+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-2,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:37.379006+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:37.399190+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:37.421678+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-north-1,rekognition,list_collections,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://rekognition.eu-north-1.amazonaws.com/""",2025-07-05T04:50:37.452583+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-central-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:37.711675+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-southeast-2,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:37.723581+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-north-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:37.901644+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-2,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.004534+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-3,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.027051+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.035657+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ca-central-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.147079+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-west-2,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.466443+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-west-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.488762+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-east-2,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.597094+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,sa-east-1,securityhub,get_enabled_standards,unknown,An error occurred (InvalidAccessException) when calling the GetEnabledStandards operation: Account 588989875114 is not subscribed to AWS Security Hub,2025-07-05T04:50:38.655328+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,global,shield,list_protections,resource_not_found,An error occurred (ResourceNotFoundException) when calling the ListProtections operation: The subscription does not exist.,2025-07-05T04:50:38.989105+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,textract,list_adapters,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://textract.ap-northeast-3.amazonaws.com/""",2025-07-05T04:50:43.795421+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,transcribe,list_transcription_jobs,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://transcribe.ap-northeast-3.amazonaws.com/""",2025-07-05T04:50:46.934399+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-north-1,textract,list_adapters,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://textract.eu-north-1.amazonaws.com/""",2025-07-05T04:50:47.939265+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,sa-east-1,textract,list_adapters,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://textract.sa-east-1.amazonaws.com/""",2025-07-05T04:50:48.138994+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.560224+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-2,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.563520+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.566539+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-south-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.569666+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-southeast-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.579420+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-southeast-2,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.582861+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ca-central-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.586439+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-north-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.594043+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-central-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.596859+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.600926+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-2,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.604030+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-west-3,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.607365+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,sa-east-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.610821+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-east-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.614555+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-east-2,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.617525+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-west-1,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.622078+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-west-2,wafv2,list_web_acls,parameter_validation,"Parameter validation failed:
+Missing required parameter in input: ""Scope""",2025-07-05T04:50:48.623626+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-1,textract,list_adapters,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://textract.ap-northeast-1.amazonaws.com/""",2025-07-05T04:50:48.885021+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,sa-east-1,translate,list_text_translation_jobs,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://translate.sa-east-1.amazonaws.com/""",2025-07-05T04:50:49.035897+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,translate,list_text_translation_jobs,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://translate.ap-northeast-3.amazonaws.com/""",2025-07-05T04:50:49.845640+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-west-1,workspaces,describe_workspaces,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://workspaces.us-west-1.amazonaws.com/""",2025-07-05T04:50:52.136855+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,ap-northeast-3,workspaces,describe_workspaces,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://workspaces.ap-northeast-3.amazonaws.com/""",2025-07-05T04:50:52.162329+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,us-east-2,workspaces,describe_workspaces,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://workspaces.us-east-2.amazonaws.com/""",2025-07-05T04:50:53.928187+00:00,enterprise_scan_20250705_101953_b03251e1
+588989875114,eu-north-1,workspaces,describe_workspaces,endpoint_connection_error,"Could not connect to the endpoint URL: ""https://workspaces.eu-north-1.amazonaws.com/""",2025-07-05T04:50:54.314057+00:00,enterprise_scan_20250705_101953_b03251e1

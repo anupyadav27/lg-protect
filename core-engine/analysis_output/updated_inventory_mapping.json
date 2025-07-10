@@ -1,0 +1,5708 @@
+{
+  "accessanalyzer": {
+    "list_functions": [
+      "list_analyzers"
+    ],
+    "describe_functions": {
+      "list_analyzers": [
+        "get_analyzer",
+        "get_finding",
+        "list_findings",
+        "list_access_previews",
+        "list_archive_rules"
+      ]
+    },
+    "resource_identifiers": {
+      "list_analyzers": [
+        "analyzerArn"
+      ]
+    }
+  },
+  "account": {
+    "list_functions": [
+      "list_regions"
+    ],
+    "describe_functions": {
+      "list_regions": [
+        "get_account_information",
+        "get_contact_information",
+        "get_alternate_contact"
+      ]
+    },
+    "resource_identifiers": {
+      "list_regions": [
+        "RegionName"
+      ]
+    }
+  },
+  "acm": {
+    "list_functions": [
+      "list_certificates"
+    ],
+    "describe_functions": {
+      "list_certificates": [
+        "describe_certificate",
+        "list_tags_for_certificate",
+        "get_certificate"
+      ]
+    },
+    "resource_identifiers": {
+      "list_certificates": [
+        "CertificateArn"
+      ]
+    }
+  },
+  "acm-pca": {
+    "list_functions": [
+      "list_certificate_authorities"
+    ],
+    "describe_functions": {
+      "list_certificate_authorities": [
+        "describe_certificate_authority",
+        "describe_certificate_authority_audit_report",
+        "list_permissions",
+        "list_tags"
+      ]
+    },
+    "resource_identifiers": {
+      "list_certificate_authorities": [
+        "CertificateAuthorityArn"
+      ]
+    }
+  },
+  "aiops": {
+    "list_functions": [
+      "list_investigation_groups"
+    ],
+    "describe_functions": {
+      "list_investigation_groups": [
+        "get_investigation_group",
+        "get_investigation_group_policy",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_investigation_groups": [
+        "InvestigationGroupArn"
+      ]
+    }
+  },
+  "amp": {
+    "list_functions": [
+      "list_workspaces",
+      "list_rule_groups_namespaces"
+    ],
+    "describe_functions": {
+      "list_workspaces": [
+        "describe_workspace",
+        "describe_workspace_configuration",
+        "list_tags_for_resource"
+      ],
+      "list_rule_groups_namespaces": [
+        "describe_rule_groups_namespace"
+      ]
+    },
+    "resource_identifiers": {
+      "list_workspaces": [
+        "workspaceId"
+      ],
+      "list_rule_groups_namespaces": [
+        "arn"
+      ]
+    }
+  },
+  "amplify": {
+    "list_functions": [
+      "list_apps"
+    ],
+    "describe_functions": {
+      "list_apps": [
+        "get_app",
+        "list_branches",
+        "list_backend_environments",
+        "list_webhooks",
+        "list_domain_associations",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_apps": [
+        "appId"
+      ]
+    }
+  },
+  "amplifybackend": {
+    "list_functions": [
+      "list_backend_jobs"
+    ],
+    "describe_functions": {
+      "list_backend_jobs": [
+        "get_backend",
+        "get_backend_job",
+        "get_backend_api",
+        "get_backend_auth",
+        "get_backend_storage"
+      ]
+    },
+    "resource_identifiers": {
+      "list_backend_jobs": [
+        "appId",
+        "backendEnvironmentName"
+      ]
+    }
+  },
+  "amplifyuibuilder": {
+    "list_functions": [
+      "list_components",
+      "list_forms",
+      "list_themes"
+    ],
+    "describe_functions": {
+      "list_components": [
+        "get_component",
+        "list_tags_for_resource"
+      ],
+      "list_forms": [
+        "get_form"
+      ],
+      "list_themes": [
+        "get_theme"
+      ]
+    },
+    "resource_identifiers": {
+      "list_components": [
+        "id"
+      ],
+      "list_forms": [
+        "id"
+      ],
+      "list_themes": [
+        "id"
+      ]
+    }
+  },
+  "apigateway": {
+    "list_functions": [
+      "get_rest_apis",
+      "get_domain_names",
+      "list_resources_for_web_acl",
+      "get_stage",
+      "get_apis",
+      "get_method",
+      "get_routes"
+    ],
+    "describe_functions": {
+      "get_rest_apis": [
+        "get_rest_api",
+        "get_resources",
+        "get_stages",
+        "get_deployments",
+        "get_authorizers",
+        "get_models"
+      ],
+      "get_domain_names": [
+        "get_domain_name",
+        "get_base_path_mappings"
+      ],
+      "list_resources_for_web_acl": [
+        "list_resources_for_web_acl",
+        "get_stage",
+        "get_apis",
+        "get_method",
+        "get_routes"
+      ],
+      "get_stage": [
+        "list_resources_for_web_acl",
+        "get_stage",
+        "get_apis",
+        "get_method",
+        "get_routes"
+      ],
+      "get_apis": [
+        "list_resources_for_web_acl",
+        "get_stage",
+        "get_apis",
+        "get_method",
+        "get_routes"
+      ],
+      "get_method": [
+        "list_resources_for_web_acl",
+        "get_stage",
+        "get_apis",
+        "get_method",
+        "get_routes"
+      ],
+      "get_routes": [
+        "list_resources_for_web_acl",
+        "get_stage",
+        "get_apis",
+        "get_method",
+        "get_routes"
+      ]
+    },
+    "resource_identifiers": {
+      "get_rest_apis": [
+        "id"
+      ],
+      "get_domain_names": [
+        "domainName"
+      ],
+      "list_resources_for_web_acl": [
+        "resources_for_web_aclId"
+      ],
+      "get_stage": [
+        "apigatewayId"
+      ],
+      "get_apis": [
+        "apigatewayId"
+      ],
+      "get_method": [
+        "apigatewayId"
+      ],
+      "get_routes": [
+        "apigatewayId"
+      ]
+    }
+  },
+  "apigatewayv2": {
+    "list_functions": [
+      "get_apis",
+      "get_domain_names",
+      "get_function_url_config"
+    ],
+    "describe_functions": {
+      "get_apis": [
+        "get_api",
+        "get_stages",
+        "get_routes",
+        "get_integrations",
+        "get_authorizers"
+      ],
+      "get_domain_names": [
+        "get_domain_name",
+        "get_api_mappings"
+      ],
+      "get_function_url_config": [
+        "get_function_url_config"
+      ]
+    },
+    "resource_identifiers": {
+      "get_apis": [
+        "ApiId"
+      ],
+      "get_domain_names": [
+        "DomainName"
+      ],
+      "get_function_url_config": [
+        "apigatewayv2Id"
+      ]
+    }
+  },
+  "appconfig": {
+    "list_functions": [
+      "list_applications"
+    ],
+    "describe_functions": {
+      "list_applications": [
+        "get_application",
+        "list_configuration_profiles",
+        "list_environments",
+        "list_deployments",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_applications": [
+        "Id"
+      ]
+    }
+  },
+  "appfabric": {
+    "list_functions": [
+      "list_app_bundles",
+      "list_app_authorizations"
+    ],
+    "describe_functions": {
+      "list_app_bundles": [
+        "get_app_bundle",
+        "list_ingestions",
+        "list_tags_for_resource"
+      ],
+      "list_app_authorizations": [
+        "get_app_authorization"
+      ]
+    },
+    "resource_identifiers": {
+      "list_app_bundles": [
+        "appBundleIdentifier"
+      ],
+      "list_app_authorizations": [
+        "appAuthorizationIdentifier"
+      ]
+    }
+  },
+  "appflow": {
+    "list_functions": [
+      "list_flows",
+      "list_connectors"
+    ],
+    "describe_functions": {
+      "list_flows": [
+        "describe_flow",
+        "describe_flow_execution_records",
+        "list_tags_for_resource"
+      ],
+      "list_connectors": [
+        "describe_connector"
+      ]
+    },
+    "resource_identifiers": {
+      "list_flows": [
+        "flowName"
+      ],
+      "list_connectors": [
+        "connectorType"
+      ]
+    }
+  },
+  "appintegrations": {
+    "list_functions": [
+      "list_applications",
+      "list_data_integrations",
+      "list_event_integrations"
+    ],
+    "describe_functions": {
+      "list_applications": [
+        "get_application",
+        "list_tags_for_resource"
+      ],
+      "list_data_integrations": [
+        "get_data_integration"
+      ],
+      "list_event_integrations": [
+        "get_event_integration"
+      ]
+    },
+    "resource_identifiers": {
+      "list_applications": [
+        "Arn"
+      ],
+      "list_data_integrations": [
+        "Identifier"
+      ],
+      "list_event_integrations": [
+        "Name"
+      ]
+    }
+  },
+  "application-autoscaling": {
+    "list_functions": [
+      "describe_scalable_targets",
+      "describe_scaling_policies"
+    ],
+    "describe_functions": {
+      "describe_scalable_targets": [
+        "describe_scaling_activities",
+        "list_tags_for_resource"
+      ],
+      "describe_scaling_policies": [
+        "describe_scheduled_actions"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_scalable_targets": [
+        "ResourceId"
+      ],
+      "describe_scaling_policies": [
+        "PolicyARN"
+      ]
+    }
+  },
+  "application-insights": {
+    "list_functions": [
+      "list_applications"
+    ],
+    "describe_functions": {
+      "list_applications": [
+        "describe_application",
+        "list_components",
+        "list_problems",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_applications": [
+        "ResourceGroupName"
+      ]
+    }
+  },
+  "application-signals": {
+    "list_functions": [
+      "list_services",
+      "list_service_level_objectives"
+    ],
+    "describe_functions": {
+      "list_services": [
+        "get_service",
+        "list_service_operations",
+        "list_service_dependencies"
+      ],
+      "list_service_level_objectives": [
+        "get_service_level_objective"
+      ]
+    },
+    "resource_identifiers": {
+      "list_services": [
+        "KeyAttributes"
+      ],
+      "list_service_level_objectives": [
+        "Id"
+      ]
+    }
+  },
+  "applicationcostprofiler": {
+    "list_functions": [
+      "list_report_definitions"
+    ],
+    "describe_functions": {
+      "list_report_definitions": [
+        "get_report_definition"
+      ]
+    },
+    "resource_identifiers": {
+      "list_report_definitions": [
+        "reportId"
+      ]
+    }
+  },
+  "appmesh": {
+    "list_functions": [
+      "list_meshes",
+      "list_virtual_nodes",
+      "list_virtual_services",
+      "list_virtual_routers"
+    ],
+    "describe_functions": {
+      "list_meshes": [
+        "describe_mesh",
+        "list_virtual_nodes",
+        "list_virtual_routers",
+        "list_virtual_gateways"
+      ],
+      "list_virtual_nodes": [
+        "describe_virtual_node"
+      ],
+      "list_virtual_services": [
+        "describe_virtual_service"
+      ],
+      "list_virtual_routers": [
+        "describe_virtual_router",
+        "list_routes"
+      ]
+    },
+    "resource_identifiers": {
+      "list_meshes": [
+        "meshName"
+      ],
+      "list_virtual_nodes": [
+        "virtualNodeName"
+      ],
+      "list_virtual_services": [
+        "virtualServiceName"
+      ],
+      "list_virtual_routers": [
+        "virtualRouterName"
+      ]
+    }
+  },
+  "apprunner": {
+    "list_functions": [
+      "list_services",
+      "list_auto_scaling_configurations"
+    ],
+    "describe_functions": {
+      "list_services": [
+        "describe_service",
+        "list_operations",
+        "list_tags_for_resource"
+      ],
+      "list_auto_scaling_configurations": [
+        "describe_auto_scaling_configuration"
+      ]
+    },
+    "resource_identifiers": {
+      "list_services": [
+        "ServiceArn"
+      ],
+      "list_auto_scaling_configurations": [
+        "AutoScalingConfigurationArn"
+      ]
+    }
+  },
+  "appstream": {
+    "list_functions": [
+      "describe_fleets",
+      "describe_stacks",
+      "describe_images"
+    ],
+    "describe_functions": {
+      "describe_fleets": [
+        "describe_fleet_attributes",
+        "list_associated_stacks"
+      ],
+      "describe_stacks": [
+        "describe_stack_attributes",
+        "list_associated_fleets"
+      ],
+      "describe_images": [
+        "describe_image_permissions"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_fleets": [
+        "Name"
+      ],
+      "describe_stacks": [
+        "Name"
+      ],
+      "describe_images": [
+        "Name"
+      ]
+    }
+  },
+  "appsync": {
+    "list_functions": [
+      "list_graphql_apis",
+      "list_api_keys"
+    ],
+    "describe_functions": {
+      "list_graphql_apis": [
+        "get_graphql_api",
+        "list_data_sources",
+        "list_functions",
+        "list_resolvers",
+        "list_tags_for_resource"
+      ],
+      "list_api_keys": [
+        "get_api_key"
+      ]
+    },
+    "resource_identifiers": {
+      "list_graphql_apis": [
+        "apiId"
+      ],
+      "list_api_keys": [
+        "id"
+      ]
+    }
+  },
+  "apptest": {
+    "list_functions": [
+      "list_test_cases",
+      "list_test_suites",
+      "list_test_configurations"
+    ],
+    "describe_functions": {
+      "list_test_cases": [
+        "get_test_case",
+        "list_tags_for_resource"
+      ],
+      "list_test_suites": [
+        "get_test_suite"
+      ],
+      "list_test_configurations": [
+        "get_test_configuration"
+      ]
+    },
+    "resource_identifiers": {
+      "list_test_cases": [
+        "testCaseId"
+      ],
+      "list_test_suites": [
+        "testSuiteId"
+      ],
+      "list_test_configurations": [
+        "testConfigurationId"
+      ]
+    }
+  },
+  "arc-zonal-shift": {
+    "list_functions": [
+      "list_managed_resources",
+      "list_zonal_shifts"
+    ],
+    "describe_functions": {
+      "list_managed_resources": [
+        "get_managed_resource"
+      ],
+      "list_zonal_shifts": [
+        "get_zonal_shift"
+      ]
+    },
+    "resource_identifiers": {
+      "list_managed_resources": [
+        "resourceIdentifier"
+      ],
+      "list_zonal_shifts": [
+        "zonalShiftId"
+      ]
+    }
+  },
+  "artifact": {
+    "list_functions": [
+      "list_reports"
+    ],
+    "describe_functions": {
+      "list_reports": [
+        "get_report",
+        "get_report_metadata",
+        "get_term_for_report"
+      ]
+    },
+    "resource_identifiers": {
+      "list_reports": [
+        "reportId"
+      ]
+    }
+  },
+  "athena": {
+    "list_functions": [
+      "list_work_groups",
+      "list_data_catalogs",
+      "list_databases"
+    ],
+    "describe_functions": {
+      "list_work_groups": [
+        "get_work_group",
+        "list_query_executions",
+        "list_tags_for_resource"
+      ],
+      "list_data_catalogs": [
+        "get_data_catalog"
+      ],
+      "list_databases": [
+        "get_database",
+        "list_table_metadata"
+      ]
+    },
+    "resource_identifiers": {
+      "list_work_groups": [
+        "Name"
+      ],
+      "list_data_catalogs": [
+        "Name"
+      ],
+      "list_databases": [
+        "Name"
+      ]
+    }
+  },
+  "auditmanager": {
+    "list_functions": [
+      "list_assessments",
+      "list_assessment_frameworks",
+      "list_controls"
+    ],
+    "describe_functions": {
+      "list_assessments": [
+        "get_assessment",
+        "get_assessment_report_url",
+        "list_tags_for_resource"
+      ],
+      "list_assessment_frameworks": [
+        "get_assessment_framework"
+      ],
+      "list_controls": [
+        "get_control"
+      ]
+    },
+    "resource_identifiers": {
+      "list_assessments": [
+        "assessmentId"
+      ],
+      "list_assessment_frameworks": [
+        "frameworkId"
+      ],
+      "list_controls": [
+        "controlId"
+      ]
+    }
+  },
+  "autoscaling": {
+    "list_functions": [
+      "describe_auto_scaling_groups",
+      "describe_launch_configurations",
+      "describe_policies"
+    ],
+    "describe_functions": {
+      "describe_auto_scaling_groups": [
+        "describe_scaling_activities",
+        "describe_scheduled_actions",
+        "describe_lifecycle_hooks"
+      ],
+      "describe_launch_configurations": [
+        "describe_launch_configurations"
+      ],
+      "describe_policies": [
+        "describe_scaling_activities"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_auto_scaling_groups": [
+        "AutoScalingGroupName"
+      ],
+      "describe_launch_configurations": [
+        "LaunchConfigurationName"
+      ],
+      "describe_policies": [
+        "PolicyName"
+      ]
+    }
+  },
+  "autoscaling-plans": {
+    "list_functions": [
+      "describe_scaling_plans"
+    ],
+    "describe_functions": {
+      "describe_scaling_plans": [
+        "describe_scaling_plan_resources"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_scaling_plans": [
+        "ScalingPlanName"
+      ]
+    }
+  },
+  "b2bi": {
+    "list_functions": [
+      "list_profiles",
+      "list_partnerships",
+      "list_transformers"
+    ],
+    "describe_functions": {
+      "list_profiles": [
+        "get_profile",
+        "list_tags_for_resource"
+      ],
+      "list_partnerships": [
+        "get_partnership"
+      ],
+      "list_transformers": [
+        "get_transformer"
+      ]
+    },
+    "resource_identifiers": {
+      "list_profiles": [
+        "profileId"
+      ],
+      "list_partnerships": [
+        "partnershipId"
+      ],
+      "list_transformers": [
+        "transformerId"
+      ]
+    }
+  },
+  "backup": {
+    "list_functions": [
+      "list_backup_vaults",
+      "list_backup_plans",
+      "list_protected_resources",
+      "describe_file_systems",
+      "describe_recovery_point",
+      "list_protected_items",
+      "describe_db_instances",
+      "describe_backup_job",
+      "list_report_plans"
+    ],
+    "describe_functions": {
+      "list_backup_vaults": [
+        "describe_backup_vault",
+        "list_recovery_points_by_backup_vault"
+      ],
+      "list_backup_plans": [
+        "get_backup_plan",
+        "list_backup_selections"
+      ],
+      "list_protected_resources": [
+        "describe_protected_resource",
+        "list_recovery_points_by_resource"
+      ],
+      "describe_file_systems": [
+        "describe_file_systems",
+        "describe_recovery_point",
+        "list_protected_items",
+        "describe_db_instances",
+        "describe_backup_job",
+        "list_report_plans"
+      ],
+      "describe_recovery_point": [
+        "describe_file_systems",
+        "describe_recovery_point",
+        "list_protected_items",
+        "describe_db_instances",
+        "describe_backup_job",
+        "list_report_plans"
+      ],
+      "list_protected_items": [
+        "describe_file_systems",
+        "describe_recovery_point",
+        "list_protected_items",
+        "describe_db_instances",
+        "describe_backup_job",
+        "list_report_plans"
+      ],
+      "describe_db_instances": [
+        "describe_file_systems",
+        "describe_recovery_point",
+        "list_protected_items",
+        "describe_db_instances",
+        "describe_backup_job",
+        "list_report_plans"
+      ],
+      "describe_backup_job": [
+        "describe_file_systems",
+        "describe_recovery_point",
+        "list_protected_items",
+        "describe_db_instances",
+        "describe_backup_job",
+        "list_report_plans"
+      ],
+      "list_report_plans": [
+        "describe_file_systems",
+        "describe_recovery_point",
+        "list_protected_items",
+        "describe_db_instances",
+        "describe_backup_job",
+        "list_report_plans"
+      ]
+    },
+    "resource_identifiers": {
+      "list_backup_vaults": [
+        "BackupVaultName"
+      ],
+      "list_backup_plans": [
+        "BackupPlanId"
+      ],
+      "list_protected_resources": [
+        "ResourceArn"
+      ],
+      "describe_file_systems": [
+        "file_systemId"
+      ],
+      "describe_recovery_point": [
+        "recovery_pointId"
+      ],
+      "list_protected_items": [
+        "protected_itemId"
+      ],
+      "describe_db_instances": [
+        "db_instanceId"
+      ],
+      "describe_backup_job": [
+        "backup_jobId"
+      ],
+      "list_report_plans": [
+        "report_planId"
+      ]
+    }
+  },
+  "backup-gateway": {
+    "list_functions": [
+      "list_gateways",
+      "list_hypervisors"
+    ],
+    "describe_functions": {
+      "list_gateways": [
+        "get_gateway",
+        "list_tags_for_resource"
+      ],
+      "list_hypervisors": [
+        "get_hypervisor"
+      ]
+    },
+    "resource_identifiers": {
+      "list_gateways": [
+        "GatewayArn"
+      ],
+      "list_hypervisors": [
+        "HypervisorArn"
+      ]
+    }
+  },
+  "backupsearch": {
+    "list_functions": [
+      "list_search_jobs"
+    ],
+    "describe_functions": {
+      "list_search_jobs": [
+        "get_search_job",
+        "list_search_job_results",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_search_jobs": [
+        "SearchJobIdentifier"
+      ]
+    }
+  },
+  "batch": {
+    "list_functions": [
+      "describe_job_queues",
+      "describe_compute_environments",
+      "list_jobs"
+    ],
+    "describe_functions": {
+      "describe_job_queues": [
+        "describe_jobs"
+      ],
+      "describe_compute_environments": [
+        "describe_compute_environments"
+      ],
+      "list_jobs": [
+        "describe_jobs"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_job_queues": [
+        "jobQueueName"
+      ],
+      "describe_compute_environments": [
+        "computeEnvironmentName"
+      ],
+      "list_jobs": [
+        "jobId"
+      ]
+    }
+  },
+  "bedrock": {
+    "list_functions": [
+      "list_foundation_models",
+      "list_custom_models",
+      "list_inference_profiles",
+      "get_model_invocation_logging_configuration"
+    ],
+    "describe_functions": {
+      "list_foundation_models": [
+        "get_foundation_model"
+      ],
+      "list_custom_models": [
+        "get_custom_model",
+        "list_tags_for_resource"
+      ],
+      "list_inference_profiles": [
+        "get_inference_profile"
+      ],
+      "get_model_invocation_logging_configuration": [
+        "get_model_invocation_logging_configuration"
+      ]
+    },
+    "resource_identifiers": {
+      "list_foundation_models": [
+        "modelIdentifier"
+      ],
+      "list_custom_models": [
+        "modelIdentifier"
+      ],
+      "list_inference_profiles": [
+        "inferenceProfileIdentifier"
+      ],
+      "get_model_invocation_logging_configuration": [
+        "bedrockId"
+      ]
+    }
+  },
+  "bedrock-agent": {
+    "list_functions": [
+      "list_agents",
+      "list_knowledge_bases",
+      "list_data_sources"
+    ],
+    "describe_functions": {
+      "list_agents": [
+        "get_agent",
+        "list_agent_aliases",
+        "list_agent_action_groups",
+        "list_tags_for_resource"
+      ],
+      "list_knowledge_bases": [
+        "get_knowledge_base"
+      ],
+      "list_data_sources": [
+        "get_data_source"
+      ]
+    },
+    "resource_identifiers": {
+      "list_agents": [
+        "agentId"
+      ],
+      "list_knowledge_bases": [
+        "knowledgeBaseId"
+      ],
+      "list_data_sources": [
+        "dataSourceId"
+      ]
+    }
+  },
+  "billing": {
+    "list_functions": [
+      "list_billing_views"
+    ],
+    "describe_functions": {
+      "list_billing_views": [
+        "get_billing_view",
+        "get_resource_policy",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_billing_views": [
+        "Arn"
+      ]
+    }
+  },
+  "billingconductor": {
+    "list_functions": [
+      "list_billing_groups",
+      "list_pricing_plans",
+      "list_pricing_rules"
+    ],
+    "describe_functions": {
+      "list_billing_groups": [
+        "get_billing_group_cost_report",
+        "list_account_associations",
+        "list_tags_for_resource"
+      ],
+      "list_pricing_plans": [
+        "list_pricing_rules_associated_to_pricing_plan"
+      ],
+      "list_pricing_rules": [
+        "list_pricing_plans_associated_with_pricing_rule"
+      ]
+    },
+    "resource_identifiers": {
+      "list_billing_groups": [
+        "Arn"
+      ],
+      "list_pricing_plans": [
+        "Arn"
+      ],
+      "list_pricing_rules": [
+        "Arn"
+      ]
+    }
+  },
+  "braket": {
+    "list_functions": [
+      "search_devices",
+      "search_quantum_tasks",
+      "search_jobs"
+    ],
+    "describe_functions": {
+      "search_devices": [
+        "get_device"
+      ],
+      "search_quantum_tasks": [
+        "get_quantum_task",
+        "list_tags_for_resource"
+      ],
+      "search_jobs": [
+        "get_job"
+      ]
+    },
+    "resource_identifiers": {
+      "search_devices": [
+        "deviceArn"
+      ],
+      "search_quantum_tasks": [
+        "quantumTaskArn"
+      ],
+      "search_jobs": [
+        "jobArn"
+      ]
+    }
+  },
+  "budgets": {
+    "list_functions": [
+      "describe_budgets"
+    ],
+    "describe_functions": {
+      "describe_budgets": [
+        "describe_budget_actions_for_budget",
+        "describe_notifications_for_budget",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_budgets": [
+        "BudgetName"
+      ]
+    }
+  },
+  "ce": {
+    "list_functions": [
+      "get_cost_categories",
+      "list_cost_category_definitions"
+    ],
+    "describe_functions": {
+      "get_cost_categories": [
+        "describe_cost_category_definition"
+      ],
+      "list_cost_category_definitions": [
+        "describe_cost_category_definition",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "get_cost_categories": [
+        "CostCategoryArn"
+      ],
+      "list_cost_category_definitions": [
+        "CostCategoryArn"
+      ]
+    }
+  },
+  "chatbot": {
+    "list_functions": [
+      "describe_slack_channel_configurations",
+      "describe_chime_webhook_configurations"
+    ],
+    "describe_functions": {
+      "describe_slack_channel_configurations": [
+        "get_microsoft_teams_channel_configuration",
+        "list_tags_for_resource"
+      ],
+      "describe_chime_webhook_configurations": [
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_slack_channel_configurations": [
+        "ChatConfigurationArn"
+      ],
+      "describe_chime_webhook_configurations": [
+        "ChatConfigurationArn"
+      ]
+    }
+  },
+  "chime": {
+    "list_functions": [
+      "list_accounts",
+      "list_users",
+      "list_rooms"
+    ],
+    "describe_functions": {
+      "list_accounts": [
+        "get_account",
+        "get_account_settings"
+      ],
+      "list_users": [
+        "get_user",
+        "get_user_settings"
+      ],
+      "list_rooms": [
+        "get_room"
+      ]
+    },
+    "resource_identifiers": {
+      "list_accounts": [
+        "AccountId"
+      ],
+      "list_users": [
+        "UserId"
+      ],
+      "list_rooms": [
+        "RoomId"
+      ]
+    }
+  },
+  "chime-sdk-identity": {
+    "list_functions": [
+      "list_app_instances",
+      "list_app_instance_users"
+    ],
+    "describe_functions": {
+      "list_app_instances": [
+        "describe_app_instance",
+        "list_app_instance_admins",
+        "list_tags_for_resource"
+      ],
+      "list_app_instance_users": [
+        "describe_app_instance_user"
+      ]
+    },
+    "resource_identifiers": {
+      "list_app_instances": [
+        "AppInstanceArn"
+      ],
+      "list_app_instance_users": [
+        "AppInstanceUserArn"
+      ]
+    }
+  },
+  "cleanrooms": {
+    "list_functions": [
+      "list_collaborations",
+      "list_memberships",
+      "list_configured_tables"
+    ],
+    "describe_functions": {
+      "list_collaborations": [
+        "get_collaboration",
+        "list_members",
+        "list_tags_for_resource"
+      ],
+      "list_memberships": [
+        "get_membership"
+      ],
+      "list_configured_tables": [
+        "get_configured_table"
+      ]
+    },
+    "resource_identifiers": {
+      "list_collaborations": [
+        "collaborationIdentifier"
+      ],
+      "list_memberships": [
+        "membershipIdentifier"
+      ],
+      "list_configured_tables": [
+        "configuredTableIdentifier"
+      ]
+    }
+  },
+  "cloud9": {
+    "list_functions": [
+      "list_environments"
+    ],
+    "describe_functions": {
+      "list_environments": [
+        "describe_environments",
+        "describe_environment_memberships",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_environments": [
+        "environmentId"
+      ]
+    }
+  },
+  "cloudcontrol": {
+    "list_functions": [
+      "list_resources"
+    ],
+    "describe_functions": {
+      "list_resources": [
+        "get_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_resources": [
+        "Identifier"
+      ]
+    }
+  },
+  "cloudformation": {
+    "list_functions": [
+      "list_stacks",
+      "list_stack_sets"
+    ],
+    "describe_functions": {
+      "list_stacks": [
+        "describe_stacks",
+        "describe_stack_resources",
+        "describe_stack_events",
+        "list_stack_resources"
+      ],
+      "list_stack_sets": [
+        "describe_stack_set",
+        "list_stack_instances"
+      ]
+    },
+    "resource_identifiers": {
+      "list_stacks": [
+        "StackName"
+      ],
+      "list_stack_sets": [
+        "StackSetName"
+      ]
+    }
+  },
+  "cloudfront": {
+    "list_functions": [
+      "list_distributions",
+      "list_origin_access_controls",
+      "list_cache_policies",
+      "get_web_acl",
+      "list_web_acls"
+    ],
+    "describe_functions": {
+      "list_distributions": [
+        "get_distribution",
+        "get_distribution_config",
+        "list_tags_for_resource"
+      ],
+      "list_origin_access_controls": [
+        "get_origin_access_control"
+      ],
+      "list_cache_policies": [
+        "get_cache_policy"
+      ],
+      "get_web_acl": [
+        "get_web_acl",
+        "update_distribution",
+        "list_web_acls",
+        "head_bucket"
+      ],
+      "list_web_acls": [
+        "get_web_acl",
+        "update_distribution",
+        "list_web_acls",
+        "head_bucket"
+      ]
+    },
+    "resource_identifiers": {
+      "list_distributions": [
+        "Id"
+      ],
+      "list_origin_access_controls": [
+        "Id"
+      ],
+      "list_cache_policies": [
+        "Id"
+      ],
+      "get_web_acl": [
+        "cloudfrontId"
+      ],
+      "list_web_acls": [
+        "web_aclId"
+      ]
+    }
+  },
+  "cloudhsmv2": {
+    "list_functions": [
+      "describe_clusters",
+      "describe_backups"
+    ],
+    "describe_functions": {
+      "describe_clusters": [
+        "list_tags"
+      ],
+      "describe_backups": [
+        "list_tags"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_clusters": [
+        "ClusterId"
+      ],
+      "describe_backups": [
+        "BackupId"
+      ]
+    }
+  },
+  "cloudsearch": {
+    "list_functions": [
+      "list_domain_names"
+    ],
+    "describe_functions": {
+      "list_domain_names": [
+        "describe_domains",
+        "describe_index_fields",
+        "describe_analysis_schemes"
+      ]
+    },
+    "resource_identifiers": {
+      "list_domain_names": [
+        "DomainName"
+      ]
+    }
+  },
+  "cloudtrail": {
+    "list_functions": [
+      "describe_trails",
+      "list_event_data_stores",
+      "cloudtrail.describe_trails",
+      "get_insight_selector",
+      "s3.get_bucket_policy_status",
+      "s3.get_bucket_logging",
+      "describe_metric_filters",
+      "describe_alarms"
+    ],
+    "describe_functions": {
+      "describe_trails": [
+        "get_trail_status",
+        "get_event_selectors",
+        "list_tags"
+      ],
+      "list_event_data_stores": [
+        "get_event_data_store"
+      ],
+      "cloudtrail.describe_trails": [
+        "cloudtrail.describe_trails",
+        "get_insight_selector",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "describe_metric_filters",
+        "lookup_events",
+        "describe_alarms"
+      ],
+      "get_insight_selector": [
+        "cloudtrail.describe_trails",
+        "get_insight_selector",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "describe_metric_filters",
+        "lookup_events",
+        "describe_alarms"
+      ],
+      "s3.get_bucket_policy_status": [
+        "cloudtrail.describe_trails",
+        "get_insight_selector",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "describe_metric_filters",
+        "lookup_events",
+        "describe_alarms"
+      ],
+      "s3.get_bucket_logging": [
+        "cloudtrail.describe_trails",
+        "get_insight_selector",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "describe_metric_filters",
+        "lookup_events",
+        "describe_alarms"
+      ],
+      "describe_metric_filters": [
+        "cloudtrail.describe_trails",
+        "get_insight_selector",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "describe_metric_filters",
+        "lookup_events",
+        "describe_alarms"
+      ],
+      "describe_alarms": [
+        "cloudtrail.describe_trails",
+        "get_insight_selector",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "describe_metric_filters",
+        "lookup_events",
+        "describe_alarms"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_trails": [
+        "trailNameList"
+      ],
+      "list_event_data_stores": [
+        "EventDataStore"
+      ],
+      "cloudtrail.describe_trails": [
+        "cloudtrail.trailId"
+      ],
+      "get_insight_selector": [
+        "cloudtrailId"
+      ],
+      "s3.get_bucket_policy_status": [
+        "cloudtrailId"
+      ],
+      "s3.get_bucket_logging": [
+        "cloudtrailId"
+      ],
+      "describe_metric_filters": [
+        "metric_filterId"
+      ],
+      "describe_alarms": [
+        "alarmId"
+      ]
+    }
+  },
+  "cloudwatch": {
+    "list_functions": [
+      "describe_alarms",
+      "list_metrics",
+      "list_dashboards",
+      "list_key_policies",
+      "describe_log_groups",
+      "describe_key",
+      "list_keys",
+      "describe_metric_filters"
+    ],
+    "describe_functions": {
+      "describe_alarms": [
+        "describe_alarm_history",
+        "list_tags_for_resource"
+      ],
+      "list_metrics": [
+        "get_metric_statistics"
+      ],
+      "list_dashboards": [
+        "get_dashboard"
+      ],
+      "list_key_policies": [
+        "list_key_policies",
+        "describe_log_groups",
+        "describe_key",
+        "list_keys",
+        "describe_metric_filters",
+        "lookup_events"
+      ],
+      "describe_log_groups": [
+        "list_key_policies",
+        "describe_log_groups",
+        "describe_key",
+        "list_keys",
+        "describe_metric_filters",
+        "lookup_events"
+      ],
+      "describe_key": [
+        "list_key_policies",
+        "describe_log_groups",
+        "describe_key",
+        "list_keys",
+        "describe_metric_filters",
+        "lookup_events"
+      ],
+      "list_keys": [
+        "list_key_policies",
+        "describe_log_groups",
+        "describe_key",
+        "list_keys",
+        "describe_metric_filters",
+        "lookup_events"
+      ],
+      "describe_metric_filters": [
+        "list_key_policies",
+        "describe_log_groups",
+        "describe_key",
+        "list_keys",
+        "describe_metric_filters",
+        "lookup_events"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_alarms": [
+        "AlarmNames"
+      ],
+      "list_metrics": [
+        "MetricName"
+      ],
+      "list_dashboards": [
+        "DashboardName"
+      ],
+      "list_key_policies": [
+        "key_policieId"
+      ],
+      "describe_log_groups": [
+        "log_groupId"
+      ],
+      "describe_key": [
+        "keyId"
+      ],
+      "list_keys": [
+        "keyId"
+      ],
+      "describe_metric_filters": [
+        "metric_filterId"
+      ]
+    }
+  },
+  "codeartifact": {
+    "list_functions": [
+      "list_domains",
+      "list_repositories",
+      "get_repository_permissions_policy"
+    ],
+    "describe_functions": {
+      "list_domains": [
+        "describe_domain",
+        "list_repositories_in_domain",
+        "list_tags_for_resource"
+      ],
+      "list_repositories": [
+        "describe_repository",
+        "list_packages"
+      ],
+      "get_repository_permissions_policy": [
+        "repository=...)",
+        "get_repository_permissions_policy"
+      ]
+    },
+    "resource_identifiers": {
+      "list_domains": [
+        "domain"
+      ],
+      "list_repositories": [
+        "repository"
+      ],
+      "get_repository_permissions_policy": [
+        "codeartifactId"
+      ]
+    }
+  },
+  "codebuild": {
+    "list_functions": [
+      "list_projects",
+      "list_builds"
+    ],
+    "describe_functions": {
+      "list_projects": [
+        "batch_get_projects"
+      ],
+      "list_builds": [
+        "batch_get_builds"
+      ]
+    },
+    "resource_identifiers": {
+      "list_projects": [
+        "name"
+      ],
+      "list_builds": [
+        "id"
+      ]
+    }
+  },
+  "codecommit": {
+    "list_functions": [
+      "list_repositories"
+    ],
+    "describe_functions": {
+      "list_repositories": [
+        "get_repository",
+        "list_branches",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_repositories": [
+        "repositoryName"
+      ]
+    }
+  },
+  "codeconnections": {
+    "list_functions": [
+      "list_connections",
+      "list_hosts"
+    ],
+    "describe_functions": {
+      "list_connections": [
+        "get_connection",
+        "list_tags_for_resource"
+      ],
+      "list_hosts": [
+        "get_host"
+      ]
+    },
+    "resource_identifiers": {
+      "list_connections": [
+        "ConnectionArn"
+      ],
+      "list_hosts": [
+        "HostArn"
+      ]
+    }
+  },
+  "codedeploy": {
+    "list_functions": [
+      "list_applications",
+      "list_deployment_groups"
+    ],
+    "describe_functions": {
+      "list_applications": [
+        "get_application",
+        "list_deployment_groups"
+      ],
+      "list_deployment_groups": [
+        "get_deployment_group",
+        "list_deployments"
+      ]
+    },
+    "resource_identifiers": {
+      "list_applications": [
+        "applicationName"
+      ],
+      "list_deployment_groups": [
+        "deploymentGroupName"
+      ]
+    }
+  },
+  "codepipeline": {
+    "list_functions": [
+      "list_pipelines"
+    ],
+    "describe_functions": {
+      "list_pipelines": [
+        "get_pipeline",
+        "get_pipeline_state",
+        "list_pipeline_executions",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_pipelines": [
+        "name"
+      ]
+    }
+  },
+  "cognito-identity": {
+    "list_functions": [
+      "list_identity_pools"
+    ],
+    "describe_functions": {
+      "list_identity_pools": [
+        "describe_identity_pool",
+        "get_identity_pool_roles",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "list_identity_pools": [
+        "IdentityPoolId"
+      ]
+    }
+  },
+  "cognito-idp": {
+    "list_functions": [
+      "list_user_pools",
+      "list_user_pool_clients"
+    ],
+    "describe_functions": {
+      "list_user_pools": [
+        "describe_user_pool",
+        "list_users",
+        "list_groups"
+      ],
+      "list_user_pool_clients": [
+        "describe_user_pool_client"
+      ]
+    },
+    "resource_identifiers": {
+      "list_user_pools": [
+        "Id"
+      ],
+      "list_user_pool_clients": [
+        "ClientId"
+      ]
+    }
+  },
+  "comprehend": {
+    "list_functions": [
+      "list_document_classifiers",
+      "list_entity_recognizers"
+    ],
+    "describe_functions": {
+      "list_document_classifiers": [
+        "describe_document_classifier",
+        "list_tags_for_resource"
+      ],
+      "list_entity_recognizers": [
+        "describe_entity_recognizer"
+      ]
+    },
+    "resource_identifiers": {
+      "list_document_classifiers": [
+        "DocumentClassifierArn"
+      ],
+      "list_entity_recognizers": [
+        "EntityRecognizerArn"
+      ]
+    }
+  },
+  "config": {
+    "list_functions": [
+      "describe_configuration_recorders",
+      "describe_config_rules"
+    ],
+    "describe_functions": {
+      "describe_configuration_recorders": [
+        "get_configuration_recorder_status"
+      ],
+      "describe_config_rules": [
+        "get_config_rule_evaluation_status",
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_configuration_recorders": [
+        "ConfigurationRecorderName"
+      ],
+      "describe_config_rules": [
+        "ConfigRuleName"
+      ]
+    }
+  },
+  "connect": {
+    "list_functions": [
+      "list_instances",
+      "list_users",
+      "list_queues"
+    ],
+    "describe_functions": {
+      "list_instances": [
+        "describe_instance",
+        "list_contact_flows"
+      ],
+      "list_users": [
+        "describe_user"
+      ],
+      "list_queues": [
+        "describe_queue"
+      ]
+    },
+    "resource_identifiers": {
+      "list_instances": [
+        "Id"
+      ],
+      "list_users": [
+        "Id"
+      ],
+      "list_queues": [
+        "QueueId"
+      ]
+    }
+  },
+  "datasync": {
+    "list_functions": [
+      "list_agents",
+      "list_tasks",
+      "list_locations"
+    ],
+    "describe_functions": {
+      "list_agents": [
+        "describe_agent",
+        "list_tags_for_resource"
+      ],
+      "list_tasks": [
+        "describe_task"
+      ],
+      "list_locations": [
+        "describe_location_s3",
+        "describe_location_efs",
+        "describe_location_nfs"
+      ]
+    },
+    "resource_identifiers": {
+      "list_agents": [
+        "AgentArn"
+      ],
+      "list_tasks": [
+        "TaskArn"
+      ],
+      "list_locations": [
+        "LocationArn"
+      ]
+    }
+  },
+  "directconnect": {
+    "list_functions": [
+      "describe_connections",
+      "describe_virtual_interfaces",
+      "list_connections"
+    ],
+    "describe_functions": {
+      "describe_connections": [
+        "describe_connection_loa"
+      ],
+      "describe_virtual_interfaces": [
+        "describe_virtual_interface"
+      ],
+      "list_connections": [
+        "list_connections"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_connections": [
+        "connectionId"
+      ],
+      "describe_virtual_interfaces": [
+        "virtualInterfaceId"
+      ],
+      "list_connections": [
+        "connectionId"
+      ]
+    }
+  },
+  "dms": {
+    "list_functions": [
+      "describe_replication_instances",
+      "describe_replication_tasks",
+      "describe_endpoint"
+    ],
+    "describe_functions": {
+      "describe_replication_instances": [
+        "describe_replication_subnet_groups",
+        "list_tags_for_resource"
+      ],
+      "describe_replication_tasks": [
+        "describe_table_statistics"
+      ],
+      "describe_endpoint": [
+        "describe_endpoint"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_replication_instances": [
+        "ReplicationInstanceIdentifier"
+      ],
+      "describe_replication_tasks": [
+        "ReplicationTaskIdentifier"
+      ],
+      "describe_endpoint": [
+        "endpointId"
+      ]
+    }
+  },
+  "docdb": {
+    "list_functions": [
+      "describe_db_clusters",
+      "describe_db_instances",
+      "describe_db_snapshot_attributes"
+    ],
+    "describe_functions": {
+      "describe_db_clusters": [
+        "describe_db_cluster_snapshots",
+        "list_tags_for_resource"
+      ],
+      "describe_db_instances": [
+        "describe_db_snapshots"
+      ],
+      "describe_db_snapshot_attributes": [
+        "describe_db_snapshot_attributes"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_db_clusters": [
+        "DBClusterIdentifier"
+      ],
+      "describe_db_instances": [
+        "DBInstanceIdentifier"
+      ],
+      "describe_db_snapshot_attributes": [
+        "db_snapshot_attributeId"
+      ]
+    }
+  },
+  "dynamodb": {
+    "list_functions": [
+      "list_tables",
+      "list_backups",
+      "get_resource_policy"
+    ],
+    "describe_functions": {
+      "list_tables": [
+        "describe_table",
+        "describe_table_replica_auto_scaling",
+        "list_tags_of_resource"
+      ],
+      "list_backups": [
+        "describe_backup"
+      ],
+      "get_resource_policy": [
+        "get_resource_policy"
+      ]
+    },
+    "resource_identifiers": {
+      "list_tables": [
+        "TableName"
+      ],
+      "list_backups": [
+        "BackupArn"
+      ],
+      "get_resource_policy": [
+        "dynamodbId"
+      ]
+    }
+  },
+  "ec2": {
+    "list_functions": [
+      "describe_instances",
+      "describe_vpcs",
+      "describe_security_groups",
+      "describe_subnets",
+      "describe_volumes",
+      "describe_network_interfaces",
+      "describe_snapshots",
+      "describe_launch_templates",
+      "describe_vpc_peering_connections",
+      "describe_instance_information",
+      "describe_vpc_endpoint_services",
+      "describe_client_vpn_endpoints",
+      "describe_route_tables",
+      "get_function_configuration",
+      "describe_network_acls",
+      "describe_flow_logs",
+      "list_functions",
+      "describe_addresses",
+      "describe_volumes_modifications",
+      "describe_cluster",
+      "describe_db_clusters",
+      "describe_images",
+      "describe_nat_gateways",
+      "describe_launch_template_versions",
+      "list_detectors",
+      "describe_vpn_connections",
+      "describe_transit_gateways"
+    ],
+    "describe_functions": {
+      "describe_instances": [
+        "describe_instance_attribute",
+        "describe_instance_status"
+      ],
+      "describe_vpcs": [
+        "describe_vpc_attribute",
+        "describe_vpc_endpoints"
+      ],
+      "describe_security_groups": [
+        "describe_security_group_rules"
+      ],
+      "describe_subnets": [
+        "describe_subnet_attributes"
+      ],
+      "describe_volumes": [
+        "describe_volume_attribute",
+        "describe_volume_status"
+      ],
+      "describe_network_interfaces": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_snapshots": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_launch_templates": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_vpc_peering_connections": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_instance_information": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_vpc_endpoint_services": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_client_vpn_endpoints": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_route_tables": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "get_function_configuration": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_network_acls": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_flow_logs": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "list_functions": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_addresses": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_volumes_modifications": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_cluster": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_db_clusters": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_images": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_nat_gateways": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_launch_template_versions": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "list_detectors": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_vpn_connections": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ],
+      "describe_transit_gateways": [
+        "describe_network_interfaces",
+        "describe_snapshots",
+        "describe_launch_templates",
+        "describe_vpc_peering_connections",
+        "describe_instance_information",
+        "\"Values\": [vpc_id]}])",
+        "describe_vpc_endpoint_services",
+        "describe_client_vpn_endpoints",
+        "describe_route_tables",
+        "get_function_configuration",
+        "describe_network_acls",
+        "describe_flow_logs",
+        "list_functions",
+        "describe_addresses",
+        "describe_volumes_modifications",
+        "describe_cluster",
+        "describe_db_clusters",
+        "describe_images",
+        "describe_nat_gateways",
+        "describe_launch_template_versions",
+        "list_detectors",
+        "describe_vpn_connections",
+        "describe_transit_gateways"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_instances": [
+        "InstanceId"
+      ],
+      "describe_vpcs": [
+        "VpcId"
+      ],
+      "describe_security_groups": [
+        "GroupId"
+      ],
+      "describe_subnets": [
+        "SubnetId"
+      ],
+      "describe_volumes": [
+        "VolumeId"
+      ],
+      "describe_network_interfaces": [
+        "network_interfaceId"
+      ],
+      "describe_snapshots": [
+        "snapshotId"
+      ],
+      "describe_launch_templates": [
+        "launch_templateId"
+      ],
+      "describe_vpc_peering_connections": [
+        "vpc_peering_connectionId"
+      ],
+      "describe_instance_information": [
+        "instance_informationId"
+      ],
+      "describe_vpc_endpoint_services": [
+        "vpc_endpoint_serviceId"
+      ],
+      "describe_client_vpn_endpoints": [
+        "client_vpn_endpointId"
+      ],
+      "describe_route_tables": [
+        "route_tableId"
+      ],
+      "get_function_configuration": [
+        "ec2Id"
+      ],
+      "describe_network_acls": [
+        "network_aclId"
+      ],
+      "describe_flow_logs": [
+        "flow_logId"
+      ],
+      "list_functions": [
+        "functionId"
+      ],
+      "describe_addresses": [
+        "addresseId"
+      ],
+      "describe_volumes_modifications": [
+        "volumes_modificationId"
+      ],
+      "describe_cluster": [
+        "clusterId"
+      ],
+      "describe_db_clusters": [
+        "db_clusterId"
+      ],
+      "describe_images": [
+        "imageId"
+      ],
+      "describe_nat_gateways": [
+        "nat_gatewayId"
+      ],
+      "describe_launch_template_versions": [
+        "launch_template_versionId"
+      ],
+      "list_detectors": [
+        "detectorId"
+      ],
+      "describe_vpn_connections": [
+        "vpn_connectionId"
+      ],
+      "describe_transit_gateways": [
+        "transit_gatewayId"
+      ]
+    }
+  },
+  "ecr": {
+    "list_functions": [
+      "describe_repositories",
+      "describe_registry",
+      "get_lifecycle_policy",
+      "describe_image_scan_settings",
+      "list_repositories"
+    ],
+    "describe_functions": {
+      "describe_repositories": [
+        "list_images",
+        "describe_image_scan_findings",
+        "get_repository_policy",
+        "list_tags_for_resource"
+      ],
+      "describe_registry": [
+        "describe_registry",
+        "get_lifecycle_policy",
+        "describe_image_scan_settings",
+        "list_repositories"
+      ],
+      "get_lifecycle_policy": [
+        "describe_registry",
+        "get_lifecycle_policy",
+        "describe_image_scan_settings",
+        "list_repositories"
+      ],
+      "describe_image_scan_settings": [
+        "describe_registry",
+        "get_lifecycle_policy",
+        "describe_image_scan_settings",
+        "list_repositories"
+      ],
+      "list_repositories": [
+        "describe_registry",
+        "get_lifecycle_policy",
+        "describe_image_scan_settings",
+        "list_repositories"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_repositories": [
+        "repositoryName"
+      ],
+      "describe_registry": [
+        "registryId"
+      ],
+      "get_lifecycle_policy": [
+        "ecrId"
+      ],
+      "describe_image_scan_settings": [
+        "image_scan_settingId"
+      ],
+      "list_repositories": [
+        "repositorieId"
+      ]
+    }
+  },
+  "ecs": {
+    "list_functions": [
+      "list_clusters",
+      "list_services",
+      "list_task_definitions"
+    ],
+    "describe_functions": {
+      "list_clusters": [
+        "describe_clusters",
+        "list_services"
+      ],
+      "list_services": [
+        "describe_services"
+      ],
+      "list_task_definitions": [
+        "describe_task_definition"
+      ]
+    },
+    "resource_identifiers": {
+      "list_clusters": [
+        "clusterArn"
+      ],
+      "list_services": [
+        "serviceArn"
+      ],
+      "list_task_definitions": [
+        "taskDefinitionArn"
+      ]
+    }
+  },
+  "efs": {
+    "list_functions": [
+      "describe_file_systems",
+      "describe_backup_job",
+      "list_backup_vaults"
+    ],
+    "describe_functions": {
+      "describe_file_systems": [
+        "describe_mount_targets",
+        "describe_access_points",
+        "list_tags_for_resource"
+      ],
+      "describe_backup_job": [
+        "describe_backup_job",
+        "list_backup_vaults"
+      ],
+      "list_backup_vaults": [
+        "describe_backup_job",
+        "list_backup_vaults"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_file_systems": [
+        "FileSystemId"
+      ],
+      "describe_backup_job": [
+        "backup_jobId"
+      ],
+      "list_backup_vaults": [
+        "backup_vaultId"
+      ]
+    }
+  },
+  "eks": {
+    "list_functions": [
+      "list_clusters",
+      "list_nodegroups",
+      "list_addons",
+      "describe_subnets"
+    ],
+    "describe_functions": {
+      "list_clusters": [
+        "describe_cluster",
+        "list_nodegroups",
+        "list_tags_for_resource"
+      ],
+      "list_nodegroups": [
+        "describe_nodegroup"
+      ],
+      "list_addons": [
+        "list_addons",
+        "describe_subnets"
+      ],
+      "describe_subnets": [
+        "list_addons",
+        "describe_subnets"
+      ]
+    },
+    "resource_identifiers": {
+      "list_clusters": [
+        "name"
+      ],
+      "list_nodegroups": [
+        "nodegroupName"
+      ],
+      "list_addons": [
+        "addonId"
+      ],
+      "describe_subnets": [
+        "subnetId"
+      ]
+    }
+  },
+  "elasticache": {
+    "list_functions": [
+      "describe_cache_clusters",
+      "describe_replication_groups"
+    ],
+    "describe_functions": {
+      "describe_cache_clusters": [
+        "describe_cache_parameters",
+        "list_tags_for_resource"
+      ],
+      "describe_replication_groups": [
+        "describe_cache_parameters"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_cache_clusters": [
+        "CacheClusterId"
+      ],
+      "describe_replication_groups": [
+        "ReplicationGroupId"
+      ]
+    }
+  },
+  "elasticbeanstalk": {
+    "list_functions": [
+      "describe_applications",
+      "describe_environments"
+    ],
+    "describe_functions": {
+      "describe_applications": [
+        "describe_application_versions",
+        "list_tags_for_resource"
+      ],
+      "describe_environments": [
+        "describe_environment_resources",
+        "describe_configuration_settings"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_applications": [
+        "ApplicationName"
+      ],
+      "describe_environments": [
+        "EnvironmentName"
+      ]
+    }
+  },
+  "elbv2": {
+    "list_functions": [
+      "describe_load_balancers",
+      "describe_target_groups",
+      "list_protections",
+      "list_web_acls",
+      "describe_web_acl",
+      "describe_ssl_policies"
+    ],
+    "describe_functions": {
+      "describe_load_balancers": [
+        "describe_listeners",
+        "describe_load_balancer_attributes",
+        "describe_tags"
+      ],
+      "describe_target_groups": [
+        "describe_target_group_attributes",
+        "describe_target_health"
+      ],
+      "list_protections": [
+        "list_protections",
+        "list_web_acls",
+        "describe_web_acl",
+        "describe_ssl_policies"
+      ],
+      "list_web_acls": [
+        "list_protections",
+        "list_web_acls",
+        "describe_web_acl",
+        "describe_ssl_policies"
+      ],
+      "describe_web_acl": [
+        "list_protections",
+        "list_web_acls",
+        "describe_web_acl",
+        "describe_ssl_policies"
+      ],
+      "describe_ssl_policies": [
+        "list_protections",
+        "list_web_acls",
+        "describe_web_acl",
+        "describe_ssl_policies"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_load_balancers": [
+        "LoadBalancerArn"
+      ],
+      "describe_target_groups": [
+        "TargetGroupArn"
+      ],
+      "list_protections": [
+        "protectionId"
+      ],
+      "list_web_acls": [
+        "web_aclId"
+      ],
+      "describe_web_acl": [
+        "web_aclId"
+      ],
+      "describe_ssl_policies": [
+        "ssl_policieId"
+      ]
+    }
+  },
+  "emr": {
+    "list_functions": [
+      "list_clusters",
+      "get_block_public_access_configuration"
+    ],
+    "describe_functions": {
+      "list_clusters": [
+        "describe_cluster",
+        "list_instance_groups",
+        "list_steps"
+      ],
+      "get_block_public_access_configuration": [
+        "get_block_public_access_configuration"
+      ]
+    },
+    "resource_identifiers": {
+      "list_clusters": [
+        "Id"
+      ],
+      "get_block_public_access_configuration": [
+        "emrId"
+      ]
+    }
+  },
+  "events": {
+    "list_functions": [
+      "list_rules",
+      "list_event_buses",
+      "get_resource_policy",
+      "describe_global_endpoint"
+    ],
+    "describe_functions": {
+      "list_rules": [
+        "describe_rule",
+        "list_targets_by_rule",
+        "list_tags_for_resource"
+      ],
+      "list_event_buses": [
+        "describe_event_bus"
+      ],
+      "get_resource_policy": [
+        "get_resource_policy",
+        "describe_global_endpoint"
+      ],
+      "describe_global_endpoint": [
+        "get_resource_policy",
+        "describe_global_endpoint"
+      ]
+    },
+    "resource_identifiers": {
+      "list_rules": [
+        "Name"
+      ],
+      "list_event_buses": [
+        "Name"
+      ],
+      "get_resource_policy": [
+        "eventsId"
+      ],
+      "describe_global_endpoint": [
+        "global_endpointId"
+      ]
+    }
+  },
+  "firehose": {
+    "list_functions": [
+      "list_delivery_streams"
+    ],
+    "describe_functions": {
+      "list_delivery_streams": [
+        "describe_delivery_stream",
+        "list_tags_for_delivery_stream"
+      ]
+    },
+    "resource_identifiers": {
+      "list_delivery_streams": [
+        "DeliveryStreamName"
+      ]
+    }
+  },
+  "fsx": {
+    "list_functions": [
+      "describe_file_systems",
+      "describe_backups"
+    ],
+    "describe_functions": {
+      "describe_file_systems": [
+        "describe_data_repository_tasks",
+        "list_tags_for_resource"
+      ],
+      "describe_backups": [
+        "list_tags_for_resource"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_file_systems": [
+        "FileSystemId"
+      ],
+      "describe_backups": [
+        "BackupId"
+      ]
+    }
+  },
+  "glacier": {
+    "list_functions": [
+      "list_vaults",
+      "get_vault_access_policy"
+    ],
+    "describe_functions": {
+      "list_vaults": [
+        "describe_vault",
+        "list_jobs",
+        "list_tags_for_vault"
+      ],
+      "get_vault_access_policy": [
+        "get_vault_access_policy"
+      ]
+    },
+    "resource_identifiers": {
+      "list_vaults": [
+        "vaultName"
+      ],
+      "get_vault_access_policy": [
+        "glacierId"
+      ]
+    }
+  },
+  "globalaccelerator": {
+    "list_functions": [
+      "list_accelerators",
+      "list_protections"
+    ],
+    "describe_functions": {
+      "list_accelerators": [
+        "describe_accelerator",
+        "list_listeners",
+        "list_tags_for_resource"
+      ],
+      "list_protections": [
+        "list_protections"
+      ]
+    },
+    "resource_identifiers": {
+      "list_accelerators": [
+        "AcceleratorArn"
+      ],
+      "list_protections": [
+        "protectionId"
+      ]
+    }
+  },
+  "glue": {
+    "list_functions": [
+      "get_databases",
+      "get_crawlers",
+      "list_jobs",
+      "get_data_catalog_encryption_settings",
+      "get_connection",
+      "describe_log_groups",
+      "get_bucket_encryption",
+      "get_jobs",
+      "get_resource_policy",
+      "get_dev_endpoint",
+      "get_ml_transform"
+    ],
+    "describe_functions": {
+      "get_databases": [
+        "get_tables"
+      ],
+      "get_crawlers": [
+        "get_crawler",
+        "list_tags_for_resource"
+      ],
+      "list_jobs": [
+        "get_job"
+      ],
+      "get_data_catalog_encryption_settings": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ],
+      "get_connection": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ],
+      "describe_log_groups": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ],
+      "get_bucket_encryption": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ],
+      "get_jobs": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ],
+      "get_resource_policy": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ],
+      "get_dev_endpoint": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ],
+      "get_ml_transform": [
+        "get_data_catalog_encryption_settings",
+        "get_connection",
+        "describe_log_groups",
+        "get_bucket_encryption",
+        "get_jobs",
+        "get_resource_policy",
+        "get_dev_endpoint",
+        "get_ml_transform"
+      ]
+    },
+    "resource_identifiers": {
+      "get_databases": [
+        "Name"
+      ],
+      "get_crawlers": [
+        "Name"
+      ],
+      "list_jobs": [
+        "JobName"
+      ],
+      "get_data_catalog_encryption_settings": [
+        "glueId"
+      ],
+      "get_connection": [
+        "glueId"
+      ],
+      "describe_log_groups": [
+        "log_groupId"
+      ],
+      "get_bucket_encryption": [
+        "glueId"
+      ],
+      "get_jobs": [
+        "glueId"
+      ],
+      "get_resource_policy": [
+        "glueId"
+      ],
+      "get_dev_endpoint": [
+        "glueId"
+      ],
+      "get_ml_transform": [
+        "glueId"
+      ]
+    }
+  },
+  "guardduty": {
+    "list_functions": [
+      "list_detectors",
+      "get_data_source",
+      "list_organization_admin_accounts"
+    ],
+    "describe_functions": {
+      "list_detectors": [
+        "get_detector",
+        "list_findings",
+        "list_tags_for_resource"
+      ],
+      "get_data_source": [
+        "get_data_source",
+        "list_organization_admin_accounts"
+      ],
+      "list_organization_admin_accounts": [
+        "get_data_source",
+        "list_organization_admin_accounts"
+      ]
+    },
+    "resource_identifiers": {
+      "list_detectors": [
+        "DetectorId"
+      ],
+      "get_data_source": [
+        "guarddutyId"
+      ],
+      "list_organization_admin_accounts": [
+        "organization_admin_accountId"
+      ]
+    }
+  },
+  "iam": {
+    "list_functions": [
+      "list_users",
+      "list_roles",
+      "list_policies",
+      "list_groups",
+      "get_access_key_last_used",
+      "get_account_password_policy",
+      "get_group_policy",
+      "get_user_policy",
+      "list_saml_providers",
+      "list_access_keys",
+      "get_credential_report",
+      "list_entities_for_policy",
+      "get_login_profile",
+      "list_server_certificates",
+      "list_groups_for_user",
+      "get_role_policy",
+      "list_mfa_devices"
+    ],
+    "describe_functions": {
+      "list_users": [
+        "get_user",
+        "list_user_policies",
+        "list_attached_user_policies",
+        "list_user_tags"
+      ],
+      "list_roles": [
+        "get_role",
+        "list_role_policies",
+        "list_attached_role_policies",
+        "list_role_tags"
+      ],
+      "list_policies": [
+        "get_policy",
+        "get_policy_version"
+      ],
+      "list_groups": [
+        "get_group",
+        "list_group_policies",
+        "list_attached_group_policies"
+      ],
+      "get_access_key_last_used": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "get_account_password_policy": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "get_group_policy": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "get_user_policy": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "list_saml_providers": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "list_access_keys": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "get_credential_report": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "list_entities_for_policy": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "get_login_profile": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "list_server_certificates": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "list_groups_for_user": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "get_role_policy": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ],
+      "list_mfa_devices": [
+        "get_access_key_last_used",
+        "get_account_password_policy",
+        "get_group_policy",
+        "get_user_policy",
+        "list_saml_providers",
+        "list_access_keys",
+        "get_credential_report",
+        "list_entities_for_policy",
+        "get_login_profile",
+        "list_server_certificates",
+        "list_groups_for_user",
+        "get_role_policy",
+        "list_mfa_devices"
+      ]
+    },
+    "resource_identifiers": {
+      "list_users": [
+        "UserName"
+      ],
+      "list_roles": [
+        "RoleName"
+      ],
+      "list_policies": [
+        "PolicyName",
+        "Arn"
+      ],
+      "list_groups": [
+        "GroupName"
+      ],
+      "get_access_key_last_used": [
+        "iamId"
+      ],
+      "get_account_password_policy": [
+        "iamId"
+      ],
+      "get_group_policy": [
+        "iamId"
+      ],
+      "get_user_policy": [
+        "iamId"
+      ],
+      "list_saml_providers": [
+        "saml_providerId"
+      ],
+      "list_access_keys": [
+        "access_keyId"
+      ],
+      "get_credential_report": [
+        "iamId"
+      ],
+      "list_entities_for_policy": [
+        "entities_for_policyId"
+      ],
+      "get_login_profile": [
+        "iamId"
+      ],
+      "list_server_certificates": [
+        "server_certificateId"
+      ],
+      "list_groups_for_user": [
+        "groups_for_userId"
+      ],
+      "get_role_policy": [
+        "iamId"
+      ],
+      "list_mfa_devices": [
+        "mfa_deviceId"
+      ]
+    }
+  },
+  "kinesis": {
+    "list_functions": [
+      "list_streams",
+      "describe_stream_summary"
+    ],
+    "describe_functions": {
+      "list_streams": [
+        "describe_stream",
+        "list_shards",
+        "list_tags_for_stream"
+      ],
+      "describe_stream_summary": [
+        "describe_stream_summary"
+      ]
+    },
+    "resource_identifiers": {
+      "list_streams": [
+        "StreamName"
+      ],
+      "describe_stream_summary": [
+        "stream_summaryId"
+      ]
+    }
+  },
+  "kms": {
+    "list_functions": [
+      "list_keys",
+      "list_aliases",
+      "describe_metric_filters",
+      "list_key_policies",
+      "describe_alarms"
+    ],
+    "describe_functions": {
+      "list_keys": [
+        "describe_key",
+        "get_key_policy",
+        "get_key_rotation_status",
+        "list_resource_tags"
+      ],
+      "list_aliases": [
+        "describe_key"
+      ],
+      "describe_metric_filters": [
+        "describe_metric_filters",
+        "list_key_policies",
+        "describe_alarms"
+      ],
+      "list_key_policies": [
+        "describe_metric_filters",
+        "list_key_policies",
+        "describe_alarms"
+      ],
+      "describe_alarms": [
+        "describe_metric_filters",
+        "list_key_policies",
+        "describe_alarms"
+      ]
+    },
+    "resource_identifiers": {
+      "list_keys": [
+        "KeyId"
+      ],
+      "list_aliases": [
+        "AliasName"
+      ],
+      "describe_metric_filters": [
+        "metric_filterId"
+      ],
+      "list_key_policies": [
+        "key_policieId"
+      ],
+      "describe_alarms": [
+        "alarmId"
+      ]
+    }
+  },
+  "lambda": {
+    "list_functions": [
+      "list_functions",
+      "list_layers",
+      "get_function_url_config",
+      "describe_subnets",
+      "describe_vpcs"
+    ],
+    "describe_functions": {
+      "list_functions": [
+        "get_function",
+        "get_function_configuration",
+        "get_policy",
+        "list_tags"
+      ],
+      "list_layers": [
+        "get_layer_version"
+      ],
+      "get_function_url_config": [
+        "get_function_url_config",
+        "describe_subnets",
+        "describe_vpcs"
+      ],
+      "describe_subnets": [
+        "get_function_url_config",
+        "describe_subnets",
+        "describe_vpcs"
+      ],
+      "describe_vpcs": [
+        "get_function_url_config",
+        "describe_subnets",
+        "describe_vpcs"
+      ]
+    },
+    "resource_identifiers": {
+      "list_functions": [
+        "FunctionName"
+      ],
+      "list_layers": [
+        "LayerName"
+      ],
+      "get_function_url_config": [
+        "lambdaId"
+      ],
+      "describe_subnets": [
+        "subnetId"
+      ],
+      "describe_vpcs": [
+        "vpcId"
+      ]
+    }
+  },
+  "logs": {
+    "list_functions": [
+      "describe_log_groups",
+      "describe_resource_policies",
+      "get_job",
+      "get_jobs",
+      "describe_metric_filters",
+      "get_dev_endpoint",
+      "describe_alarms"
+    ],
+    "describe_functions": {
+      "describe_log_groups": [
+        "describe_log_streams",
+        "list_tags_log_group"
+      ],
+      "describe_resource_policies": [
+        "describe_resource_policies",
+        "lookup_events",
+        "filter_log_events",
+        "get_job",
+        "get_jobs",
+        "describe_metric_filters",
+        "get_dev_endpoint",
+        "describe_alarms"
+      ],
+      "get_job": [
+        "describe_resource_policies",
+        "lookup_events",
+        "filter_log_events",
+        "get_job",
+        "get_jobs",
+        "describe_metric_filters",
+        "get_dev_endpoint",
+        "describe_alarms"
+      ],
+      "get_jobs": [
+        "describe_resource_policies",
+        "lookup_events",
+        "filter_log_events",
+        "get_job",
+        "get_jobs",
+        "describe_metric_filters",
+        "get_dev_endpoint",
+        "describe_alarms"
+      ],
+      "describe_metric_filters": [
+        "describe_resource_policies",
+        "lookup_events",
+        "filter_log_events",
+        "get_job",
+        "get_jobs",
+        "describe_metric_filters",
+        "get_dev_endpoint",
+        "describe_alarms"
+      ],
+      "get_dev_endpoint": [
+        "describe_resource_policies",
+        "lookup_events",
+        "filter_log_events",
+        "get_job",
+        "get_jobs",
+        "describe_metric_filters",
+        "get_dev_endpoint",
+        "describe_alarms"
+      ],
+      "describe_alarms": [
+        "describe_resource_policies",
+        "lookup_events",
+        "filter_log_events",
+        "get_job",
+        "get_jobs",
+        "describe_metric_filters",
+        "get_dev_endpoint",
+        "describe_alarms"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_log_groups": [
+        "logGroupName"
+      ],
+      "describe_resource_policies": [
+        "resource_policieId"
+      ],
+      "get_job": [
+        "logsId"
+      ],
+      "get_jobs": [
+        "logsId"
+      ],
+      "describe_metric_filters": [
+        "metric_filterId"
+      ],
+      "get_dev_endpoint": [
+        "logsId"
+      ],
+      "describe_alarms": [
+        "alarmId"
+      ]
+    }
+  },
+  "organizations": {
+    "list_functions": [
+      "list_accounts",
+      "list_organizational_units",
+      "describe_organization",
+      "list_policies",
+      "list_delegated_administrators",
+      "describe_contact"
+    ],
+    "describe_functions": {
+      "list_accounts": [
+        "describe_account"
+      ],
+      "list_organizational_units": [
+        "describe_organizational_unit",
+        "list_accounts_for_parent"
+      ],
+      "describe_organization": [
+        "describe_organization",
+        "list_policies",
+        "list_delegated_administrators",
+        "describe_contact"
+      ],
+      "list_policies": [
+        "describe_organization",
+        "list_policies",
+        "list_delegated_administrators",
+        "describe_contact"
+      ],
+      "list_delegated_administrators": [
+        "describe_organization",
+        "list_policies",
+        "list_delegated_administrators",
+        "describe_contact"
+      ],
+      "describe_contact": [
+        "describe_organization",
+        "list_policies",
+        "list_delegated_administrators",
+        "describe_contact"
+      ]
+    },
+    "resource_identifiers": {
+      "list_accounts": [
+        "Id"
+      ],
+      "list_organizational_units": [
+        "Id"
+      ],
+      "describe_organization": [
+        "organizationId"
+      ],
+      "list_policies": [
+        "policieId"
+      ],
+      "list_delegated_administrators": [
+        "delegated_administratorId"
+      ],
+      "describe_contact": [
+        "contactId"
+      ]
+    }
+  },
+  "rds": {
+    "list_functions": [
+      "describe_db_instances",
+      "describe_db_clusters",
+      "describe_db_engine_versions",
+      "describe_db_snapshots",
+      "describe_db_cluster_snapshots",
+      "describe_event_subscriptions",
+      "describe_db_snapshot_attributes",
+      "list_protected_resources",
+      "describe_certificates"
+    ],
+    "describe_functions": {
+      "describe_db_instances": [
+        "describe_db_log_files",
+        "describe_db_parameters",
+        "list_tags_for_resource"
+      ],
+      "describe_db_clusters": [
+        "describe_db_cluster_parameters"
+      ],
+      "describe_db_engine_versions": [
+        "describe_db_engine_versions",
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_event_subscriptions",
+        "describe_db_snapshot_attributes",
+        "list_protected_resources",
+        "describe_certificates"
+      ],
+      "describe_db_snapshots": [
+        "describe_db_engine_versions",
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_event_subscriptions",
+        "describe_db_snapshot_attributes",
+        "list_protected_resources",
+        "describe_certificates"
+      ],
+      "describe_db_cluster_snapshots": [
+        "describe_db_engine_versions",
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_event_subscriptions",
+        "describe_db_snapshot_attributes",
+        "list_protected_resources",
+        "describe_certificates"
+      ],
+      "describe_event_subscriptions": [
+        "describe_db_engine_versions",
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_event_subscriptions",
+        "describe_db_snapshot_attributes",
+        "list_protected_resources",
+        "describe_certificates"
+      ],
+      "describe_db_snapshot_attributes": [
+        "describe_db_engine_versions",
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_event_subscriptions",
+        "describe_db_snapshot_attributes",
+        "list_protected_resources",
+        "describe_certificates"
+      ],
+      "list_protected_resources": [
+        "describe_db_engine_versions",
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_event_subscriptions",
+        "describe_db_snapshot_attributes",
+        "list_protected_resources",
+        "describe_certificates"
+      ],
+      "describe_certificates": [
+        "describe_db_engine_versions",
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_event_subscriptions",
+        "describe_db_snapshot_attributes",
+        "list_protected_resources",
+        "describe_certificates"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_db_instances": [
+        "DBInstanceIdentifier"
+      ],
+      "describe_db_clusters": [
+        "DBClusterIdentifier"
+      ],
+      "describe_db_engine_versions": [
+        "db_engine_versionId"
+      ],
+      "describe_db_snapshots": [
+        "db_snapshotId"
+      ],
+      "describe_db_cluster_snapshots": [
+        "db_cluster_snapshotId"
+      ],
+      "describe_event_subscriptions": [
+        "event_subscriptionId"
+      ],
+      "describe_db_snapshot_attributes": [
+        "db_snapshot_attributeId"
+      ],
+      "list_protected_resources": [
+        "protected_resourceId"
+      ],
+      "describe_certificates": [
+        "certificateId"
+      ]
+    }
+  },
+  "redshift": {
+    "list_functions": [
+      "describe_clusters"
+    ],
+    "describe_functions": {
+      "describe_clusters": [
+        "describe_cluster_parameters",
+        "describe_cluster_snapshots",
+        "describe_tags"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_clusters": [
+        "ClusterIdentifier"
+      ]
+    }
+  },
+  "route53": {
+    "list_functions": [
+      "list_hosted_zones",
+      "list_health_checks",
+      "list_query_logging_configs",
+      "list_protections"
+    ],
+    "describe_functions": {
+      "list_hosted_zones": [
+        "get_hosted_zone",
+        "list_resource_record_sets",
+        "list_tags_for_resource"
+      ],
+      "list_health_checks": [
+        "get_health_check"
+      ],
+      "list_query_logging_configs": [
+        "list_query_logging_configs",
+        "list_protections"
+      ],
+      "list_protections": [
+        "list_query_logging_configs",
+        "list_protections"
+      ]
+    },
+    "resource_identifiers": {
+      "list_hosted_zones": [
+        "Id"
+      ],
+      "list_health_checks": [
+        "HealthCheckId"
+      ],
+      "list_query_logging_configs": [
+        "query_logging_configId"
+      ],
+      "list_protections": [
+        "protectionId"
+      ]
+    }
+  },
+  "s3": {
+    "list_functions": [
+      "list_buckets",
+      "list_distributions",
+      "get_distribution_config",
+      "cloudtrail.describe_trails",
+      "get_bucket_lifecycle_configuration",
+      "get_bucket_policy_status",
+      "get_bucket_notification_configuration",
+      "get_bucket_replication",
+      "get_object_lock_configuration",
+      "get_public_access_block",
+      "get_job",
+      "get_jobs",
+      "s3.get_bucket_policy_status",
+      "s3.get_bucket_logging",
+      "get_bucket_acl"
+    ],
+    "describe_functions": {
+      "list_buckets": [
+        "get_bucket_policy",
+        "get_bucket_encryption",
+        "get_bucket_versioning",
+        "get_bucket_logging",
+        "get_bucket_tagging"
+      ],
+      "list_distributions": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_distribution_config": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "cloudtrail.describe_trails": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_bucket_lifecycle_configuration": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_bucket_policy_status": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_bucket_notification_configuration": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_bucket_replication": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_object_lock_configuration": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_public_access_block": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_job": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_jobs": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "s3.get_bucket_policy_status": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "s3.get_bucket_logging": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ],
+      "get_bucket_acl": [
+        "list_distributions",
+        "get_distribution_config",
+        "cloudtrail.describe_trails",
+        "get_bucket_lifecycle_configuration",
+        "get_bucket_policy_status",
+        "get_bucket_notification_configuration",
+        "get_bucket_replication",
+        "get_object_lock_configuration",
+        "head_bucket",
+        "get_public_access_block",
+        "get_job",
+        "get_jobs",
+        "s3.get_bucket_policy_status",
+        "s3.get_bucket_logging",
+        "get_bucket_acl"
+      ]
+    },
+    "resource_identifiers": {
+      "list_buckets": [
+        "Name"
+      ],
+      "list_distributions": [
+        "distributionId"
+      ],
+      "get_distribution_config": [
+        "s3Id"
+      ],
+      "cloudtrail.describe_trails": [
+        "cloudtrail.trailId"
+      ],
+      "get_bucket_lifecycle_configuration": [
+        "s3Id"
+      ],
+      "get_bucket_policy_status": [
+        "s3Id"
+      ],
+      "get_bucket_notification_configuration": [
+        "s3Id"
+      ],
+      "get_bucket_replication": [
+        "s3Id"
+      ],
+      "get_object_lock_configuration": [
+        "s3Id"
+      ],
+      "get_public_access_block": [
+        "s3Id"
+      ],
+      "get_job": [
+        "s3Id"
+      ],
+      "get_jobs": [
+        "s3Id"
+      ],
+      "s3.get_bucket_policy_status": [
+        "s3Id"
+      ],
+      "s3.get_bucket_logging": [
+        "s3Id"
+      ],
+      "get_bucket_acl": [
+        "s3Id"
+      ]
+    }
+  },
+  "secretsmanager": {
+    "list_functions": [
+      "list_secrets"
+    ],
+    "describe_functions": {
+      "list_secrets": [
+        "describe_secret",
+        "get_resource_policy",
+        "list_secret_version_ids"
+      ]
+    },
+    "resource_identifiers": {
+      "list_secrets": [
+        "ARN"
+      ]
+    }
+  },
+  "securityhub": {
+    "list_functions": [
+      "get_enabled_standards",
+      "list_findings",
+      "describe_hub"
+    ],
+    "describe_functions": {
+      "get_enabled_standards": [
+        "get_findings"
+      ],
+      "list_findings": [
+        "get_insight_results"
+      ],
+      "describe_hub": [
+        "describe_hub"
+      ]
+    },
+    "resource_identifiers": {
+      "get_enabled_standards": [
+        "StandardsSubscriptionArn"
+      ],
+      "list_findings": [
+        "Id"
+      ],
+      "describe_hub": [
+        "hubId"
+      ]
+    }
+  },
+  "sns": {
+    "list_functions": [
+      "list_topics",
+      "list_subscriptions"
+    ],
+    "describe_functions": {
+      "list_topics": [
+        "get_topic_attributes",
+        "list_tags_for_resource"
+      ],
+      "list_subscriptions": [
+        "get_subscription_attributes"
+      ]
+    },
+    "resource_identifiers": {
+      "list_topics": [
+        "TopicArn"
+      ],
+      "list_subscriptions": [
+        "SubscriptionArn"
+      ]
+    }
+  },
+  "sqs": {
+    "list_functions": [
+      "list_queues"
+    ],
+    "describe_functions": {
+      "list_queues": [
+        "get_queue_attributes",
+        "list_queue_tags"
+      ]
+    },
+    "resource_identifiers": {
+      "list_queues": [
+        "QueueUrl"
+      ]
+    }
+  },
+  "ssm": {
+    "list_functions": [
+      "describe_parameters",
+      "describe_instances",
+      "list_documents",
+      "describe_instance_patch_states",
+      "get_document",
+      "describe_document"
+    ],
+    "describe_functions": {
+      "describe_parameters": [
+        "get_parameter",
+        "list_tags_for_resource"
+      ],
+      "describe_instances": [
+        "describe_instance_information"
+      ],
+      "list_documents": [
+        "list_documents",
+        "describe_instance_patch_states",
+        "get_document",
+        "describe_document"
+      ],
+      "describe_instance_patch_states": [
+        "list_documents",
+        "describe_instance_patch_states",
+        "get_document",
+        "describe_document"
+      ],
+      "get_document": [
+        "list_documents",
+        "describe_instance_patch_states",
+        "get_document",
+        "describe_document"
+      ],
+      "describe_document": [
+        "list_documents",
+        "describe_instance_patch_states",
+        "get_document",
+        "describe_document"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_parameters": [
+        "Name"
+      ],
+      "describe_instances": [
+        "InstanceId"
+      ],
+      "list_documents": [
+        "documentId"
+      ],
+      "describe_instance_patch_states": [
+        "instance_patch_stateId"
+      ],
+      "get_document": [
+        "ssmId"
+      ],
+      "describe_document": [
+        "documentId"
+      ]
+    }
+  },
+  "stepfunctions": {
+    "list_functions": [
+      "list_state_machines",
+      "list_activities"
+    ],
+    "describe_functions": {
+      "list_state_machines": [
+        "describe_state_machine",
+        "list_tags_for_resource"
+      ],
+      "list_activities": [
+        "describe_activity"
+      ]
+    },
+    "resource_identifiers": {
+      "list_state_machines": [
+        "stateMachineArn"
+      ],
+      "list_activities": [
+        "activityArn"
+      ]
+    }
+  },
+  "wafv2": {
+    "list_functions": [
+      "list_web_acls",
+      "list_rule_groups",
+      "get_stages",
+      "list_distributions",
+      "get_rule",
+      "list_resources_for_web_acl",
+      "get_apis",
+      "get_distribution",
+      "get_rest_apis",
+      "get_routes",
+      "get_logging_configuration",
+      "describe_web_acl",
+      "describe_load_balancers"
+    ],
+    "describe_functions": {
+      "list_web_acls": [
+        "get_web_acl",
+        "list_tags_for_resource"
+      ],
+      "list_rule_groups": [
+        "get_rule_group"
+      ],
+      "get_stages": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "list_distributions": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "get_rule": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "list_resources_for_web_acl": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "get_apis": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "get_distribution": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "get_rest_apis": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "get_routes": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "get_logging_configuration": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "describe_web_acl": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ],
+      "describe_load_balancers": [
+        "get_stages",
+        "list_distributions",
+        "get_rule",
+        "list_resources_for_web_acl",
+        "get_apis",
+        "get_distribution",
+        "get_rest_apis",
+        "get_routes",
+        "get_logging_configuration",
+        "describe_web_acl",
+        "describe_load_balancers"
+      ]
+    },
+    "resource_identifiers": {
+      "list_web_acls": [
+        "Id"
+      ],
+      "list_rule_groups": [
+        "Id"
+      ],
+      "get_stages": [
+        "wafv2Id"
+      ],
+      "list_distributions": [
+        "distributionId"
+      ],
+      "get_rule": [
+        "wafv2Id"
+      ],
+      "list_resources_for_web_acl": [
+        "resources_for_web_aclId"
+      ],
+      "get_apis": [
+        "wafv2Id"
+      ],
+      "get_distribution": [
+        "wafv2Id"
+      ],
+      "get_rest_apis": [
+        "wafv2Id"
+      ],
+      "get_routes": [
+        "wafv2Id"
+      ],
+      "get_logging_configuration": [
+        "wafv2Id"
+      ],
+      "describe_web_acl": [
+        "web_aclId"
+      ],
+      "describe_load_balancers": [
+        "load_balancerId"
+      ]
+    }
+  },
+  "dax": {
+    "list_functions": [
+      "describe_clusters"
+    ],
+    "describe_functions": {
+      "describe_clusters": [
+        "describe_clusters"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_clusters": [
+        "clusterId"
+      ]
+    }
+  },
+  "elb": {
+    "list_functions": [
+      "describe_load_balancer_listeners",
+      "describe_load_balancer_policies",
+      "describe_listeners",
+      "describe_load_balancer_attributes",
+      "describe_load_balancers"
+    ],
+    "describe_functions": {
+      "describe_load_balancer_listeners": [
+        "describe_load_balancer_listeners",
+        "describe_load_balancer_policies",
+        "describe_listeners",
+        "describe_load_balancer_attributes",
+        "describe_load_balancers"
+      ],
+      "describe_load_balancer_policies": [
+        "describe_load_balancer_listeners",
+        "describe_load_balancer_policies",
+        "describe_listeners",
+        "describe_load_balancer_attributes",
+        "describe_load_balancers"
+      ],
+      "describe_listeners": [
+        "describe_load_balancer_listeners",
+        "describe_load_balancer_policies",
+        "describe_listeners",
+        "describe_load_balancer_attributes",
+        "describe_load_balancers"
+      ],
+      "describe_load_balancer_attributes": [
+        "describe_load_balancer_listeners",
+        "describe_load_balancer_policies",
+        "describe_listeners",
+        "describe_load_balancer_attributes",
+        "describe_load_balancers"
+      ],
+      "describe_load_balancers": [
+        "describe_load_balancer_listeners",
+        "describe_load_balancer_policies",
+        "describe_listeners",
+        "describe_load_balancer_attributes",
+        "describe_load_balancers"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_load_balancer_listeners": [
+        "load_balancer_listenerId"
+      ],
+      "describe_load_balancer_policies": [
+        "load_balancer_policieId"
+      ],
+      "describe_listeners": [
+        "listenerId"
+      ],
+      "describe_load_balancer_attributes": [
+        "load_balancer_attributeId"
+      ],
+      "describe_load_balancers": [
+        "load_balancerId"
+      ]
+    }
+  },
+  "opensearch": {
+    "list_functions": [
+      "describe_domain_config",
+      "describe_domain"
+    ],
+    "describe_functions": {
+      "describe_domain_config": [
+        "describe_domain_config",
+        "describe_domain"
+      ],
+      "describe_domain": [
+        "describe_domain_config",
+        "describe_domain"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_domain_config": [
+        "domain_configId"
+      ],
+      "describe_domain": [
+        "domainId"
+      ]
+    }
+  },
+  "es": {
+    "list_functions": [
+      "describe_elasticsearch_domain"
+    ],
+    "describe_functions": {
+      "describe_elasticsearch_domain": [
+        "describe_elasticsearch_domain"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_elasticsearch_domain": [
+        "elasticsearch_domainId"
+      ]
+    }
+  },
+  "neptune": {
+    "list_functions": [
+      "describe_db_snapshots",
+      "describe_db_cluster_snapshots",
+      "describe_db_snapshot_attributes",
+      "describe_subnets",
+      "describe_db_clusters"
+    ],
+    "describe_functions": {
+      "describe_db_snapshots": [
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_db_snapshot_attributes",
+        "describe_subnets",
+        "describe_db_clusters"
+      ],
+      "describe_db_cluster_snapshots": [
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_db_snapshot_attributes",
+        "describe_subnets",
+        "describe_db_clusters"
+      ],
+      "describe_db_snapshot_attributes": [
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_db_snapshot_attributes",
+        "describe_subnets",
+        "describe_db_clusters"
+      ],
+      "describe_subnets": [
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_db_snapshot_attributes",
+        "describe_subnets",
+        "describe_db_clusters"
+      ],
+      "describe_db_clusters": [
+        "describe_db_snapshots",
+        "describe_db_cluster_snapshots",
+        "describe_db_snapshot_attributes",
+        "describe_subnets",
+        "describe_db_clusters"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_db_snapshots": [
+        "db_snapshotId"
+      ],
+      "describe_db_cluster_snapshots": [
+        "db_cluster_snapshotId"
+      ],
+      "describe_db_snapshot_attributes": [
+        "db_snapshot_attributeId"
+      ],
+      "describe_subnets": [
+        "subnetId"
+      ],
+      "describe_db_clusters": [
+        "db_clusterId"
+      ]
+    }
+  },
+  "sagemaker": {
+    "list_functions": [
+      "describe_model",
+      "describe_notebook_instance",
+      "describe_training_job",
+      "describe_endpoint_config"
+    ],
+    "describe_functions": {
+      "describe_model": [
+        "describe_model",
+        "describe_notebook_instance",
+        "describe_training_job",
+        "describe_endpoint_config"
+      ],
+      "describe_notebook_instance": [
+        "describe_model",
+        "describe_notebook_instance",
+        "describe_training_job",
+        "describe_endpoint_config"
+      ],
+      "describe_training_job": [
+        "describe_model",
+        "describe_notebook_instance",
+        "describe_training_job",
+        "describe_endpoint_config"
+      ],
+      "describe_endpoint_config": [
+        "describe_model",
+        "describe_notebook_instance",
+        "describe_training_job",
+        "describe_endpoint_config"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_model": [
+        "modelId"
+      ],
+      "describe_notebook_instance": [
+        "notebook_instanceId"
+      ],
+      "describe_training_job": [
+        "training_jobId"
+      ],
+      "describe_endpoint_config": [
+        "endpoint_configId"
+      ]
+    }
+  },
+  "dlm": {
+    "list_functions": [
+      "describe_lifecycle_policies",
+      "describe_endpoint"
+    ],
+    "describe_functions": {
+      "describe_lifecycle_policies": [
+        "describe_lifecycle_policies",
+        "describe_endpoint"
+      ],
+      "describe_endpoint": [
+        "describe_lifecycle_policies",
+        "describe_endpoint"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_lifecycle_policies": [
+        "lifecycle_policieId"
+      ],
+      "describe_endpoint": [
+        "endpointId"
+      ]
+    }
+  },
+  "kafka": {
+    "list_functions": [
+      "describe_security_groups",
+      "list_kafka_versions",
+      "describe_cluster",
+      "list_clusters"
+    ],
+    "describe_functions": {
+      "describe_security_groups": [
+        "describe_security_groups",
+        "list_kafka_versions",
+        "describe_cluster",
+        "list_clusters"
+      ],
+      "list_kafka_versions": [
+        "describe_security_groups",
+        "list_kafka_versions",
+        "describe_cluster",
+        "list_clusters"
+      ],
+      "describe_cluster": [
+        "describe_security_groups",
+        "list_kafka_versions",
+        "describe_cluster",
+        "list_clusters"
+      ],
+      "list_clusters": [
+        "describe_security_groups",
+        "list_kafka_versions",
+        "describe_cluster",
+        "list_clusters"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_security_groups": [
+        "security_groupId"
+      ],
+      "list_kafka_versions": [
+        "kafka_versionId"
+      ],
+      "describe_cluster": [
+        "clusterId"
+      ],
+      "list_clusters": [
+        "clusterId"
+      ]
+    }
+  },
+  "kafkaconnect": {
+    "list_functions": [
+      "describe_connector",
+      "list_connectors"
+    ],
+    "describe_functions": {
+      "describe_connector": [
+        "describe_connector",
+        "list_connectors"
+      ],
+      "list_connectors": [
+        "describe_connector",
+        "list_connectors"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_connector": [
+        "connectorId"
+      ],
+      "list_connectors": [
+        "connectorId"
+      ]
+    }
+  },
+  "transfer": {
+    "list_functions": [
+      "describe_server",
+      "list_servers"
+    ],
+    "describe_functions": {
+      "describe_server": [
+        "describe_server",
+        "list_servers"
+      ],
+      "list_servers": [
+        "describe_server",
+        "list_servers"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_server": [
+        "serverId"
+      ],
+      "list_servers": [
+        "serverId"
+      ]
+    }
+  },
+  "mq": {
+    "list_functions": [
+      "list_brokers",
+      "describe_broker"
+    ],
+    "describe_functions": {
+      "list_brokers": [
+        "list_brokers",
+        "describe_broker"
+      ],
+      "describe_broker": [
+        "list_brokers",
+        "describe_broker"
+      ]
+    },
+    "resource_identifiers": {
+      "list_brokers": [
+        "brokerId"
+      ],
+      "describe_broker": [
+        "brokerId"
+      ]
+    }
+  },
+  "networkfirewall": {
+    "list_functions": [
+      "describe_firewall_policy",
+      "list_firewalls",
+      "describe_vpcs",
+      "describe_logging_configuration",
+      "describe_firewall"
+    ],
+    "describe_functions": {
+      "describe_firewall_policy": [
+        "describe_firewall_policy",
+        "list_firewalls",
+        "describe_vpcs",
+        "describe_logging_configuration",
+        "describe_firewall"
+      ],
+      "list_firewalls": [
+        "describe_firewall_policy",
+        "list_firewalls",
+        "describe_vpcs",
+        "describe_logging_configuration",
+        "describe_firewall"
+      ],
+      "describe_vpcs": [
+        "describe_firewall_policy",
+        "list_firewalls",
+        "describe_vpcs",
+        "describe_logging_configuration",
+        "describe_firewall"
+      ],
+      "describe_logging_configuration": [
+        "describe_firewall_policy",
+        "list_firewalls",
+        "describe_vpcs",
+        "describe_logging_configuration",
+        "describe_firewall"
+      ],
+      "describe_firewall": [
+        "describe_firewall_policy",
+        "list_firewalls",
+        "describe_vpcs",
+        "describe_logging_configuration",
+        "describe_firewall"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_firewall_policy": [
+        "firewall_policyId"
+      ],
+      "list_firewalls": [
+        "firewallId"
+      ],
+      "describe_vpcs": [
+        "vpcId"
+      ],
+      "describe_logging_configuration": [
+        "logging_configurationId"
+      ],
+      "describe_firewall": [
+        "firewallId"
+      ]
+    }
+  },
+  "support": {
+    "list_functions": [
+      "describe_services",
+      "describe_cases",
+      "describe_contact",
+      "describe_account"
+    ],
+    "describe_functions": {
+      "describe_services": [
+        "describe_services",
+        "describe_cases",
+        "describe_contact",
+        "describe_account"
+      ],
+      "describe_cases": [
+        "describe_services",
+        "describe_cases",
+        "describe_contact",
+        "describe_account"
+      ],
+      "describe_contact": [
+        "describe_services",
+        "describe_cases",
+        "describe_contact",
+        "describe_account"
+      ],
+      "describe_account": [
+        "describe_services",
+        "describe_cases",
+        "describe_contact",
+        "describe_account"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_services": [
+        "serviceId"
+      ],
+      "describe_cases": [
+        "caseId"
+      ],
+      "describe_contact": [
+        "contactId"
+      ],
+      "describe_account": [
+        "accountId"
+      ]
+    }
+  },
+  "macie2": {
+    "list_functions": [
+      "get_automated_discovery_configuration",
+      "get_public_access_block",
+      "get_macie_session"
+    ],
+    "describe_functions": {
+      "get_automated_discovery_configuration": [
+        "get_automated_discovery_configuration",
+        "get_public_access_block",
+        "get_macie_session"
+      ],
+      "get_public_access_block": [
+        "get_automated_discovery_configuration",
+        "get_public_access_block",
+        "get_macie_session"
+      ],
+      "get_macie_session": [
+        "get_automated_discovery_configuration",
+        "get_public_access_block",
+        "get_macie_session"
+      ]
+    },
+    "resource_identifiers": {
+      "get_automated_discovery_configuration": [
+        "macie2Id"
+      ],
+      "get_public_access_block": [
+        "macie2Id"
+      ],
+      "get_macie_session": [
+        "macie2Id"
+      ]
+    }
+  },
+  "drs": {
+    "list_functions": [
+      "describe_jobs"
+    ],
+    "describe_functions": {
+      "describe_jobs": [
+        "describe_jobs"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_jobs": [
+        "jobId"
+      ]
+    }
+  },
+  "inspector2": {
+    "list_functions": [
+      "get_status",
+      "list_findings"
+    ],
+    "describe_functions": {
+      "get_status": [
+        "get_status",
+        "list_findings"
+      ],
+      "list_findings": [
+        "get_status",
+        "list_findings"
+      ]
+    },
+    "resource_identifiers": {
+      "get_status": [
+        "inspector2Id"
+      ],
+      "list_findings": [
+        "findingId"
+      ]
+    }
+  },
+  "shield": {
+    "list_functions": [
+      "list_hosted_zones",
+      "list_protections",
+      "list_accelerators",
+      "describe_load_balancers"
+    ],
+    "describe_functions": {
+      "list_hosted_zones": [
+        "list_hosted_zones",
+        "list_protections",
+        "list_accelerators",
+        "describe_load_balancers"
+      ],
+      "list_protections": [
+        "list_hosted_zones",
+        "list_protections",
+        "list_accelerators",
+        "describe_load_balancers"
+      ],
+      "list_accelerators": [
+        "list_hosted_zones",
+        "list_protections",
+        "list_accelerators",
+        "describe_load_balancers"
+      ],
+      "describe_load_balancers": [
+        "list_hosted_zones",
+        "list_protections",
+        "list_accelerators",
+        "describe_load_balancers"
+      ]
+    },
+    "resource_identifiers": {
+      "list_hosted_zones": [
+        "hosted_zoneId"
+      ],
+      "list_protections": [
+        "protectionId"
+      ],
+      "list_accelerators": [
+        "acceleratorId"
+      ],
+      "describe_load_balancers": [
+        "load_balancerId"
+      ]
+    }
+  },
+  "s3control": {
+    "list_functions": [
+      "get_access_point_policy_status",
+      "list_access_points"
+    ],
+    "describe_functions": {
+      "get_access_point_policy_status": [
+        "get_access_point_policy_status",
+        "list_access_points"
+      ],
+      "list_access_points": [
+        "get_access_point_policy_status",
+        "list_access_points"
+      ]
+    },
+    "resource_identifiers": {
+      "get_access_point_policy_status": [
+        "s3controlId"
+      ],
+      "list_access_points": [
+        "access_pointId"
+      ]
+    }
+  },
+  "resource-explorer-2": {
+    "list_functions": [
+      "list_indexes"
+    ],
+    "describe_functions": {
+      "list_indexes": [
+        "list_indexes"
+      ]
+    },
+    "resource_identifiers": {
+      "list_indexes": [
+        "indexeId"
+      ]
+    }
+  },
+  "ds": {
+    "list_functions": [
+      "describe_snapshots",
+      "describe_directories",
+      "describe_radius_server"
+    ],
+    "describe_functions": {
+      "describe_snapshots": [
+        "describe_snapshots",
+        "describe_directories",
+        "describe_radius_server"
+      ],
+      "describe_directories": [
+        "describe_snapshots",
+        "describe_directories",
+        "describe_radius_server"
+      ],
+      "describe_radius_server": [
+        "describe_snapshots",
+        "describe_directories",
+        "describe_radius_server"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_snapshots": [
+        "snapshotId"
+      ],
+      "describe_directories": [
+        "directorieId"
+      ],
+      "describe_radius_server": [
+        "radius_serverId"
+      ]
+    }
+  },
+  "lightsail": {
+    "list_functions": [
+      "get_static_ips",
+      "get_instances",
+      "get_instance_snapshot_schedule",
+      "get_instance_port_states",
+      "get_relational_databases"
+    ],
+    "describe_functions": {
+      "get_static_ips": [
+        "get_static_ips",
+        "get_instances",
+        "get_instance_snapshot_schedule",
+        "get_instance_port_states",
+        "get_relational_databases"
+      ],
+      "get_instances": [
+        "get_static_ips",
+        "get_instances",
+        "get_instance_snapshot_schedule",
+        "get_instance_port_states",
+        "get_relational_databases"
+      ],
+      "get_instance_snapshot_schedule": [
+        "get_static_ips",
+        "get_instances",
+        "get_instance_snapshot_schedule",
+        "get_instance_port_states",
+        "get_relational_databases"
+      ],
+      "get_instance_port_states": [
+        "get_static_ips",
+        "get_instances",
+        "get_instance_snapshot_schedule",
+        "get_instance_port_states",
+        "get_relational_databases"
+      ],
+      "get_relational_databases": [
+        "get_static_ips",
+        "get_instances",
+        "get_instance_snapshot_schedule",
+        "get_instance_port_states",
+        "get_relational_databases"
+      ]
+    },
+    "resource_identifiers": {
+      "get_static_ips": [
+        "lightsailId"
+      ],
+      "get_instances": [
+        "lightsailId"
+      ],
+      "get_instance_snapshot_schedule": [
+        "lightsailId"
+      ],
+      "get_instance_port_states": [
+        "lightsailId"
+      ],
+      "get_relational_databases": [
+        "lightsailId"
+      ]
+    }
+  },
+  "workspaces": {
+    "list_functions": [
+      "describe_workspaces"
+    ],
+    "describe_functions": {
+      "describe_workspaces": [
+        "describe_workspaces"
+      ]
+    },
+    "resource_identifiers": {
+      "describe_workspaces": [
+        "workspaceId"
+      ]
+    }
+  },
+  "storagegateway": {
+    "list_functions": [
+      "list_file_shares",
+      "describe_file_shares"
+    ],
+    "describe_functions": {
+      "list_file_shares": [
+        "list_file_shares",
+        "describe_file_shares"
+      ],
+      "describe_file_shares": [
+        "list_file_shares",
+        "describe_file_shares"
+      ]
+    },
+    "resource_identifiers": {
+      "list_file_shares": [
+        "file_shareId"
+      ],
+      "describe_file_shares": [
+        "file_shareId"
+      ]
+    }
+  },
+  "fms": {
+    "list_functions": [
+      "get_policy_compliance_status"
+    ],
+    "describe_functions": {
+      "get_policy_compliance_status": [
+        "get_policy_compliance_status"
+      ]
+    },
+    "resource_identifiers": {
+      "get_policy_compliance_status": [
+        "fmsId"
+      ]
+    }
+  },
+  "wellarchitected": {
+    "list_functions": [
+      "list_workloads",
+      "list_risks"
+    ],
+    "describe_functions": {
+      "list_workloads": [
+        "list_workloads",
+        "list_risks"
+      ],
+      "list_risks": [
+        "list_workloads",
+        "list_risks"
+      ]
+    },
+    "resource_identifiers": {
+      "list_workloads": [
+        "workloadId"
+      ],
+      "list_risks": [
+        "riskId"
+      ]
+    }
+  },
+  "route53domains": {
+    "list_functions": [
+      "get_domain_detail",
+      "list_domains"
+    ],
+    "describe_functions": {
+      "get_domain_detail": [
+        "get_domain_detail",
+        "list_domains"
+      ],
+      "list_domains": [
+        "get_domain_detail",
+        "list_domains"
+      ]
+    },
+    "resource_identifiers": {
+      "get_domain_detail": [
+        "route53domainsId"
+      ],
+      "list_domains": [
+        "domainId"
+      ]
+    }
+  },
+  "ssm-incidents": {
+    "list_functions": [
+      "list_response_plans",
+      "get_response_plan",
+      "list_incident_records"
+    ],
+    "describe_functions": {
+      "list_response_plans": [
+        "list_response_plans",
+        "get_response_plan",
+        "list_incident_records"
+      ],
+      "get_response_plan": [
+        "list_response_plans",
+        "get_response_plan",
+        "list_incident_records"
+      ],
+      "list_incident_records": [
+        "list_response_plans",
+        "get_response_plan",
+        "list_incident_records"
+      ]
+    },
+    "resource_identifiers": {
+      "list_response_plans": [
+        "response_planId"
+      ],
+      "get_response_plan": [
+        "ssm-incidentsId"
+      ],
+      "list_incident_records": [
+        "incident_recordId"
+      ]
+    }
+  },
+  "waf": {
+    "list_functions": [
+      "get_web_acl"
+    ],
+    "describe_functions": {
+      "get_web_acl": [
+        "get_web_acl"
+      ]
+    },
+    "resource_identifiers": {
+      "get_web_acl": [
+        "wafId"
+      ]
+    }
+  },
+  "waf-regional": {
+    "list_functions": [
+      "get_web_acl",
+      "get_rule",
+      "get_rule_group"
+    ],
+    "describe_functions": {
+      "get_web_acl": [
+        "get_web_acl",
+        "get_rule",
+        "get_rule_group"
+      ],
+      "get_rule": [
+        "get_web_acl",
+        "get_rule",
+        "get_rule_group"
+      ],
+      "get_rule_group": [
+        "get_web_acl",
+        "get_rule",
+        "get_rule_group"
+      ]
+    },
+    "resource_identifiers": {
+      "get_web_acl": [
+        "waf-regionalId"
+      ],
+      "get_rule": [
+        "waf-regionalId"
+      ],
+      "get_rule_group": [
+        "waf-regionalId"
+      ]
+    }
+  },
+  "servicecatalog": {
+    "list_functions": [
+      "list_shared_resources",
+      "list_portfolios"
+    ],
+    "describe_functions": {
+      "list_shared_resources": [
+        "list_shared_resources",
+        "list_portfolios"
+      ],
+      "list_portfolios": [
+        "list_shared_resources",
+        "list_portfolios"
+      ]
+    },
+    "resource_identifiers": {
+      "list_shared_resources": [
+        "shared_resourceId"
+      ],
+      "list_portfolios": [
+        "portfolioId"
+      ]
+    }
+  }
+}

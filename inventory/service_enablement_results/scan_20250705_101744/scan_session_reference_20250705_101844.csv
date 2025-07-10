@@ -1,0 +1,17 @@
+Metric,Value
+Scan Session ID,enterprise_scan_20250705_101744_eef196df
+Scan Start Timestamp,2025-07-05T04:47:44.480585+00:00
+Scan End Timestamp,2025-07-05T04:48:43.985156+00:00
+Scan Duration Seconds,59.504571
+Scan Duration Minutes,0.99174285
+Total Accounts,1
+Total Regions,18
+Total Services,64
+Total Checks Performed,944
+Total API Calls,944
+Success Rate Percent,93.53813559322035
+Enabled Service Instances,883
+Total Service Instances,944
+Enablement Rate Percent,93.53813559322035
+Unique Enabled Services,61
+Total Errors,61

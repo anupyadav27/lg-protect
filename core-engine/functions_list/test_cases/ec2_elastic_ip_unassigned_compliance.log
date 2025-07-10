@@ -1,0 +1,6 @@
+2025-07-05 14:29:43,805 - ec2_elastic_ip_unassigned - INFO - Starting compliance check: ec2_elastic_ip_unassigned
+2025-07-05 14:29:45,662 - ec2_elastic_ip_unassigned - INFO - Processing account: default (588989875114)
+2025-07-05 14:29:45,662 - ec2_elastic_ip_unassigned - INFO - Checking compliance in region: us-east-1 for account: default
+2025-07-05 14:29:45,756 - ec2_elastic_ip_unassigned - INFO - Starting ec2_elastic_ip_unassigned compliance check in us-east-1
+2025-07-05 14:29:47,602 - ec2_elastic_ip_unassigned - INFO - No Elastic IP addresses found in us-east-1
+2025-07-05 14:29:47,602 - ec2_elastic_ip_unassigned - INFO - Compliance check completed. Status: NO_DATA, Findings: 0, Errors: 0

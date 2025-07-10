@@ -1,0 +1,145 @@
+Here is the updated prompt which need to be placed inside each file along with compliance content 
+
+Updated Prompt for Enhanced Architecture:
+
+"""""
+
+"You are building a Python-based AWS Compliance Engine using the centralized compliance_utils framework.
+
+## 📋 Task Overview:
+Implement the specific compliance check logic for the above compliance details using the existing centralized architecture.
+
+## 🏗️ Architecture Guidelines:
+
+### 1. Use Centralized Utilities:
+Your function should import and use the centralized compliance framework:
+
+```python
+from compliance_utils import (
+    ComplianceEngine, 
+    setup_command_line_interface, 
+    save_results, 
+    exit_with_status
+)
+```
+
+### 2. Compliance Data Structure:
+Define your compliance metadata using the standard structure:
+
+```python
+COMPLIANCE_DATA = {
+    'compliance_name': '[from above compliance details]',
+    'function_name': '[from above compliance details]',
+    'id': '[from above compliance details]',
+    'name': '[from above compliance details]',
+    'description': '[from above compliance details]',
+    'api_function': '[from above compliance details]',
+    'user_function': '[from above compliance details]'
+}
+```
+
+### 3. Core Check Function:
+Implement only the specific compliance logic in this format:
+
+```python
+def [function_name]_check([service]_client, region: str, profile: str, logger) -> List[Dict[str, Any]]:
+    """
+    Perform the actual compliance check for [function_name].
+    
+    Args:
+        [service]_client: Boto3 service client (auto-created by framework)
+        region (str): AWS region (auto-managed by framework)
+        profile (str): AWS profile name (auto-managed by framework)
+        logger: Logger instance (auto-configured by framework)
+        
+    Returns:
+        List[Dict[str, Any]]: List of compliance findings
+    """
+    findings = []
+    
+    try:
+        # TODO: Implement your specific compliance logic here
+        # Use the API function and user function from compliance details
+        # Example: response = [service]_client.[user_function]()
+        
+        # Process response and create findings
+        # Each finding should follow this structure:
+        finding = {
+            'region': region,
+            'profile': profile,
+            'resource_type': '[resource-type]',
+            'resource_id': '[resource-identifier]',
+            'status': 'COMPLIANT' | 'NON_COMPLIANT',
+            'compliance_status': 'PASS' | 'FAIL',
+            'risk_level': 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL',
+            'recommendation': '[specific recommendation]',
+            'details': {
+                # Include relevant resource details
+            }
+        }
+        
+        findings.append(finding)
+        
+    except Exception as e:
+        logger.error(f"Error in [function_name] check for {region}: {e}")
+        findings.append({
+            'region': region,
+            'profile': profile,
+            'resource_type': '[resource-type]',
+            'status': 'ERROR',
+            'error': str(e)
+        })
+        
+    return findings
+```
+
+### 4. Main Function:
+Use the ComplianceEngine to orchestrate the check:
+
+```python
+def [function_name](profile_name: str = None, region_name: str = None) -> Dict[str, Any]:
+    """Main compliance check function."""
+    engine = ComplianceEngine(COMPLIANCE_DATA)
+    return engine.run_compliance_check(
+        check_function=[function_name]_check,
+        profile_name=profile_name,
+        region_name=region_name
+    )
+```
+
+## 🔧 What the Framework Handles Automatically:
+
+✅ **Multi-region support** - Reads from service-regions.json
+✅ **Global services mapping** - Automatically uses us-east-1 for IAM, S3, etc.
+✅ **AWS profile management** - Reads from ~/.aws/config
+✅ **Error handling and logging** - Centralized error capture and logging
+✅ **Results aggregation** - Standard compliance report format
+✅ **Command-line interface** - Standard --profile, --region, --output, --verbose flags
+✅ **Service client creation** - Auto-detects service from API function
+✅ **Regional optimization** - Skips global services in non-us-east-1 regions
+
+## 🎯 Your Focus Areas:
+
+1. **Implement the core compliance logic** in the [function_name]_check function
+2. **Use the specific AWS API calls** mentioned in the compliance details
+3. **Determine COMPLIANT vs NON_COMPLIANT** based on your compliance rule
+4. **Provide meaningful recommendations** for non-compliant resources
+5. **Handle service-specific exceptions** gracefully
+
+## 📁 File Structure:
+- Main function: /functions_list/services_functions/[function_name].py
+- Tests: /functions_list/test_cases/test_[function_name].py
+- Common utilities: /functions_list/compliance_utils.py (already created)
+- Service regions: /functions_list/service-regions.json (already configured)
+
+## 🧪 Testing:
+Create comprehensive test cases that mock AWS responses and validate:
+- Compliant scenarios
+- Non-compliant scenarios  
+- Error handling
+- Multi-region behavior
+- Different AWS profiles
+
+The framework handles all infrastructure concerns - you focus purely on the compliance logic!
+
+"""""

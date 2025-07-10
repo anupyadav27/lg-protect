@@ -1,0 +1,194 @@
+# Glue Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: glue_data_catalogs_not_publicly_accessible
+  title: Ensure Glue Data Catalogs are not publicly accessible
+  description: Ensure Glue Data Catalogs are not publicly accessible to prevent unauthorized access to data metadata and schemas.
+  capability: access_governance
+  service: glue
+  subservice: access
+  risk: HIGH
+  existing: true
+
+- function_name: glue_database_connections_ssl_enabled
+  title: Enable SSL for Glue database connections
+  description: Ensure Glue database connections use SSL to protect data in transit during ETL operations.
+  capability: access_governance
+  service: glue
+  subservice: ssl
+  risk: HIGH
+  existing: true
+
+- function_name: glue_crawler_iam_least_privilege
+  title: Enforce least privilege for Glue crawler IAM roles
+  description: Ensure Glue crawlers use IAM roles with least privilege to minimize unauthorized access to data sources.
+  capability: access_governance
+  service: glue
+  subservice: iam
+  risk: MEDIUM
+  existing: false
+
+- function_name: glue_job_iam_least_privilege
+  title: Enforce least privilege for Glue job IAM roles
+  description: Ensure Glue jobs use IAM roles with least privilege to minimize unauthorized access to data during processing.
+  capability: access_governance
+  service: glue
+  subservice: iam
+  risk: MEDIUM
+  existing: false
+
+- function_name: glue_workflow_access_restricted
+  title: Restrict access to Glue workflows
+  description: Ensure Glue workflows have proper access controls to prevent unauthorized modification of data processing pipelines.
+  capability: access_governance
+  service: glue
+  subservice: workflow
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: glue_data_catalogs_metadata_encryption_enabled
+  title: Enable metadata encryption for Glue Data Catalogs
+  description: Ensure Glue Data Catalogs have metadata encryption enabled to protect data schema information.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: glue_data_catalogs_connection_passwords_encryption_enabled
+  title: Enable connection password encryption for Glue
+  description: Ensure Glue Data Catalog connection passwords are encrypted to protect database credentials.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: glue_etl_jobs_amazon_s3_encryption_enabled
+  title: Enable S3 encryption for Glue ETL jobs
+  description: Ensure Glue ETL jobs use S3 encryption to protect data during extract, transform, and load operations.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: glue_etl_jobs_cloudwatch_logs_encryption_enabled
+  title: Enable CloudWatch logs encryption for Glue ETL jobs
+  description: Ensure Glue ETL job logs are encrypted in CloudWatch to protect sensitive information in log data.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: MEDIUM
+  existing: true
+
+- function_name: glue_etl_jobs_job_bookmark_encryption_enabled
+  title: Enable job bookmark encryption for Glue ETL jobs
+  description: Ensure Glue ETL job bookmarks are encrypted to protect job state information.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: MEDIUM
+  existing: true
+
+- function_name: glue_etl_jobs_logging_enabled
+  title: Enable logging for Glue ETL jobs
+  description: Enable comprehensive logging for Glue ETL jobs to monitor data processing activities and detect anomalies.
+  capability: data_protection
+  service: glue
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: glue_ml_transform_encrypted_at_rest
+  title: Enable encryption at rest for Glue ML transforms
+  description: Ensure Glue ML transforms have encryption at rest enabled to protect machine learning model data.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: glue_development_endpoints_s3_encryption_enabled
+  title: Enable S3 encryption for Glue development endpoints
+  description: Ensure Glue development endpoints use S3 encryption to protect data during development and testing.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: glue_development_endpoints_cloudwatch_logs_encryption_enabled
+  title: Enable CloudWatch logs encryption for Glue development endpoints
+  description: Ensure Glue development endpoint logs are encrypted in CloudWatch to protect sensitive development data.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: MEDIUM
+  existing: true
+
+- function_name: glue_development_endpoints_job_bookmark_encryption_enabled
+  title: Enable job bookmark encryption for Glue development endpoints
+  description: Ensure Glue development endpoint job bookmarks are encrypted to protect development state information.
+  capability: data_protection
+  service: glue
+  subservice: encryption
+  risk: MEDIUM
+  existing: true
+
+- function_name: glue_data_quality_rules_configured
+  title: Configure data quality rules for Glue
+  description: Implement data quality rules in Glue to ensure data integrity and detect anomalies in processed data.
+  capability: data_protection
+  service: glue
+  subservice: quality
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: glue_job_region_restriction_enforced
+  title: Enforce region restrictions for Glue jobs
+  description: Ensure Glue jobs are executed only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: glue
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: glue_crawler_region_compliance
+  title: Ensure Glue crawlers comply with region restrictions
+  description: Ensure Glue crawlers operate only in approved regions to maintain data residency compliance.
+  capability: data_residency
+  service: glue
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: glue_data_catalog_region_restriction
+  title: Restrict Glue Data Catalog to approved regions
+  description: Ensure Glue Data Catalog resources are created only in approved regions for data residency compliance.
+  capability: data_residency
+  service: glue
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: glue_data_sovereignty_tags
+  title: Tag Glue resources with data sovereignty information
+  description: Ensure Glue resources are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: glue
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: glue_cross_region_data_access_restricted
+  title: Restrict cross-region data access in Glue
+  description: Ensure Glue jobs do not access data sources across regions unless approved for data residency compliance.
+  capability: data_residency
+  service: glue
+  subservice: access
+  risk: HIGH
+  existing: false

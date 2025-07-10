@@ -1,0 +1,185 @@
+# VPC Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: vpc_default_security_group_closed
+  title: Ensure default security group restricts all traffic
+  description: Ensure default VPC security group restricts all traffic to prevent unauthorized access to data resources.
+  capability: access_governance
+  service: vpc
+  subservice: security_groups
+  risk: HIGH
+  existing: true
+
+- function_name: vpc_flow_logs_enabled
+  title: Enable VPC Flow Logs
+  description: Enable VPC Flow Logs to monitor network traffic and detect unauthorized access attempts to data resources.
+  capability: access_governance
+  service: vpc
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: vpc_endpoint_services_allowed_principals_trust_boundaries
+  title: Restrict VPC endpoint service principals
+  description: Ensure VPC endpoint services have proper principal restrictions to prevent unauthorized access to data services.
+  capability: access_governance
+  service: vpc
+  subservice: endpoints
+  risk: HIGH
+  existing: true
+
+- function_name: vpc_endpoint_connections_trust_boundaries
+  title: Validate VPC endpoint connection trust boundaries
+  description: Ensure VPC endpoint connections maintain proper trust boundaries to prevent unauthorized data access.
+  capability: access_governance
+  service: vpc
+  subservice: endpoints
+  risk: HIGH
+  existing: true
+
+- function_name: vpc_peering_routing_tables_with_least_privilege
+  title: Ensure VPC peering routing follows least privilege
+  description: Ensure VPC peering routing tables follow least privilege principles to minimize unauthorized data access.
+  capability: access_governance
+  service: vpc
+  subservice: peering
+  risk: MEDIUM
+  existing: true
+
+- function_name: vpc_nacl_ingress_restrictions
+  title: Restrict VPC NACL ingress rules
+  description: Ensure VPC Network ACLs have restrictive ingress rules to prevent unauthorized access to data subnets.
+  capability: access_governance
+  service: vpc
+  subservice: nacl
+  risk: MEDIUM
+  existing: false
+
+- function_name: vpc_security_group_least_privilege
+  title: Enforce least privilege for VPC security groups
+  description: Ensure VPC security groups follow least privilege principles to minimize unauthorized access to data resources.
+  capability: access_governance
+  service: vpc
+  subservice: security_groups
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: vpc_flow_logs_encryption_enabled
+  title: Enable encryption for VPC Flow Logs
+  description: Ensure VPC Flow Logs are encrypted to protect network traffic data from unauthorized access.
+  capability: data_protection
+  service: vpc
+  subservice: encryption
+  risk: MEDIUM
+  existing: false
+
+- function_name: vpc_endpoint_policy_data_protection
+  title: Configure VPC endpoint policies for data protection
+  description: Configure VPC endpoint policies to ensure only authorized data operations are permitted.
+  capability: data_protection
+  service: vpc
+  subservice: endpoints
+  risk: MEDIUM
+  existing: false
+
+- function_name: vpc_dns_resolution_logging_enabled
+  title: Enable DNS resolution logging for VPC
+  description: Enable DNS resolution logging to monitor DNS queries that could indicate data access patterns.
+  capability: data_protection
+  service: vpc
+  subservice: dns
+  risk: LOW
+  existing: false
+
+- function_name: vpc_traffic_mirroring_configured
+  title: Configure VPC traffic mirroring for monitoring
+  description: Configure VPC traffic mirroring to monitor network traffic for data security analysis.
+  capability: data_protection
+  service: vpc
+  subservice: mirroring
+  risk: LOW
+  existing: false
+
+- function_name: vpc_subnet_route_table_validation
+  title: Validate VPC subnet route tables for security
+  description: Ensure VPC subnet route tables do not expose data resources to unauthorized networks.
+  capability: data_protection
+  service: vpc
+  subservice: routing
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: vpc_different_regions
+  title: Ensure VPCs are deployed in different regions
+  description: Ensure VPCs are deployed across different approved regions to meet data residency and availability requirements.
+  capability: data_residency
+  service: vpc
+  subservice: region
+  risk: MEDIUM
+  existing: true
+
+- function_name: vpc_subnet_different_az
+  title: Ensure VPC subnets are in different availability zones
+  description: Ensure VPC subnets are distributed across different availability zones within approved regions.
+  capability: data_residency
+  service: vpc
+  subservice: availability
+  risk: MEDIUM
+  existing: true
+
+- function_name: vpc_subnet_no_public_ip_by_default
+  title: Disable public IP assignment by default in VPC subnets
+  description: Ensure VPC subnets do not assign public IP addresses by default to maintain data residency controls.
+  capability: data_residency
+  service: vpc
+  subservice: subnets
+  risk: HIGH
+  existing: true
+
+- function_name: vpc_subnet_separate_private_public
+  title: Separate private and public subnets in VPC
+  description: Ensure VPC has separate private and public subnets to maintain data residency and security boundaries.
+  capability: data_residency
+  service: vpc
+  subservice: subnets
+  risk: MEDIUM
+  existing: true
+
+- function_name: vpc_region_restriction_enforced
+  title: Enforce region restrictions for VPC resources
+  description: Ensure VPC resources are created only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: vpc
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: vpc_peering_region_compliance
+  title: Ensure VPC peering complies with region restrictions
+  description: Ensure VPC peering connections are established only between approved regions for data residency compliance.
+  capability: data_residency
+  service: vpc
+  subservice: peering
+  risk: HIGH
+  existing: false
+
+- function_name: vpc_endpoint_region_compliance
+  title: Ensure VPC endpoints comply with region restrictions
+  description: Ensure VPC endpoints are created only in approved regions to maintain data residency compliance.
+  capability: data_residency
+  service: vpc
+  subservice: endpoints
+  risk: HIGH
+  existing: false
+
+- function_name: vpc_data_sovereignty_tags
+  title: Tag VPC resources with data sovereignty information
+  description: Ensure VPC resources are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: vpc
+  subservice: tagging
+  risk: LOW
+  existing: false

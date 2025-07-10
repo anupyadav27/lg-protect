@@ -1,0 +1,302 @@
+# IAM Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: iam_user_mfa_enabled_console_access
+  title: Enable MFA for IAM users with console access
+  description: Ensure IAM users with console access have multi-factor authentication enabled to prevent unauthorized access to sensitive data.
+  capability: access_governance
+  service: iam
+  subservice: mfa
+  risk: HIGH
+  existing: true
+
+- function_name: iam_root_mfa_enabled
+  title: Enable MFA for root account
+  description: Ensure root account has multi-factor authentication enabled to protect against unauthorized access to all AWS resources and data.
+  capability: access_governance
+  service: iam
+  subservice: mfa
+  risk: HIGH
+  existing: true
+
+- function_name: iam_user_hardware_mfa_enabled
+  title: Enable hardware MFA for privileged users
+  description: Ensure privileged IAM users use hardware MFA devices for enhanced security when accessing sensitive data and systems.
+  capability: access_governance
+  service: iam
+  subservice: mfa
+  risk: HIGH
+  existing: true
+
+- function_name: iam_root_hardware_mfa_enabled
+  title: Enable hardware MFA for root account
+  description: Ensure root account uses hardware MFA device for maximum security when accessing critical AWS resources.
+  capability: access_governance
+  service: iam
+  subservice: mfa
+  risk: HIGH
+  existing: true
+
+- function_name: iam_no_root_access_key
+  title: Ensure no root access keys exist
+  description: Ensure root account does not have access keys to prevent programmatic access that could lead to data exposure.
+  capability: access_governance
+  service: iam
+  subservice: keys
+  risk: HIGH
+  existing: true
+
+- function_name: iam_user_two_active_access_key
+  title: Limit users to one active access key
+  description: Ensure IAM users do not have multiple active access keys to reduce the risk of credential compromise and unauthorized data access.
+  capability: access_governance
+  service: iam
+  subservice: keys
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_rotate_access_key_90_days
+  title: Rotate access keys every 90 days
+  description: Ensure IAM user access keys are rotated every 90 days to minimize the risk of compromised credentials accessing sensitive data.
+  capability: access_governance
+  service: iam
+  subservice: keys
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_user_accesskey_unused
+  title: Remove unused access keys
+  description: Ensure unused IAM access keys are removed to prevent potential unauthorized access to AWS resources and data.
+  capability: access_governance
+  service: iam
+  subservice: keys
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_aws_attached_policy_no_administrative_privileges
+  title: Restrict AWS managed policies with admin privileges
+  description: Ensure AWS managed policies do not grant administrative privileges unnecessarily to prevent unauthorized access to sensitive data.
+  capability: access_governance
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: true
+
+- function_name: iam_customer_attached_policy_no_administrative_privileges
+  title: Restrict customer managed policies with admin privileges
+  description: Ensure customer managed policies do not grant administrative privileges unnecessarily to minimize data exposure risks.
+  capability: access_governance
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: true
+
+- function_name: iam_inline_policy_no_administrative_privileges
+  title: Restrict inline policies with admin privileges
+  description: Ensure inline policies do not grant administrative privileges to prevent unauthorized access to sensitive data and resources.
+  capability: access_governance
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: true
+
+- function_name: iam_policy_attached_only_to_group_or_roles
+  title: Attach policies only to groups or roles
+  description: Ensure IAM policies are attached only to groups or roles rather than individual users for better access governance.
+  capability: access_governance
+  service: iam
+  subservice: policy
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_role_cross_service_confused_deputy_prevention
+  title: Prevent confused deputy attacks in IAM roles
+  description: Ensure IAM roles include condition keys to prevent confused deputy attacks that could lead to unauthorized data access.
+  capability: access_governance
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: true
+
+- function_name: iam_data_access_policies_least_privilege
+  title: Enforce least privilege for data access policies
+  description: Ensure IAM policies follow least privilege principles when granting access to data storage services like S3, RDS, and DynamoDB.
+  capability: access_governance
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: iam_cross_account_data_access_restricted
+  title: Restrict cross-account data access
+  description: Ensure IAM policies do not allow unrestricted cross-account access to sensitive data resources.
+  capability: access_governance
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: iam_password_policy_minimum_length_14
+  title: Enforce minimum password length of 14 characters
+  description: Ensure IAM password policy requires minimum 14 characters to protect against brute force attacks on accounts accessing sensitive data.
+  capability: data_protection
+  service: iam
+  subservice: password
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_password_policy_uppercase
+  title: Require uppercase letters in passwords
+  description: Ensure IAM password policy requires uppercase letters to strengthen password complexity for data protection.
+  capability: data_protection
+  service: iam
+  subservice: password
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_password_policy_lowercase
+  title: Require lowercase letters in passwords
+  description: Ensure IAM password policy requires lowercase letters to strengthen password complexity for securing data access.
+  capability: data_protection
+  service: iam
+  subservice: password
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_password_policy_number
+  title: Require numbers in passwords
+  description: Ensure IAM password policy requires numbers to strengthen password complexity for protecting sensitive data access.
+  capability: data_protection
+  service: iam
+  subservice: password
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_password_policy_symbol
+  title: Require symbols in passwords
+  description: Ensure IAM password policy requires symbols to strengthen password complexity for securing access to sensitive data.
+  capability: data_protection
+  service: iam
+  subservice: password
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_password_policy_reuse_24
+  title: Prevent password reuse for 24 generations
+  description: Ensure IAM password policy prevents reuse of last 24 passwords to maintain strong authentication for data access.
+  capability: data_protection
+  service: iam
+  subservice: password
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_password_policy_expires_passwords_within_90_days_or_less
+  title: Expire passwords within 90 days
+  description: Ensure IAM password policy expires passwords within 90 days to maintain strong authentication for accessing sensitive data.
+  capability: data_protection
+  service: iam
+  subservice: password
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_no_expired_server_certificates_stored
+  title: Remove expired server certificates
+  description: Ensure expired server certificates are removed from IAM to prevent potential security vulnerabilities in data transmission.
+  capability: data_protection
+  service: iam
+  subservice: certificates
+  risk: MEDIUM
+  existing: true
+
+- function_name: iam_server_certificate_rotation_enabled
+  title: Enable automatic server certificate rotation
+  description: Ensure IAM server certificates are automatically rotated to maintain secure data transmission and prevent certificate expiration.
+  capability: data_protection
+  service: iam
+  subservice: certificates
+  risk: MEDIUM
+  existing: false
+
+- function_name: iam_user_credential_report_monitoring
+  title: Monitor IAM credential reports for anomalies
+  description: Regularly monitor IAM credential reports to detect unusual access patterns that could indicate unauthorized data access.
+  capability: data_protection
+  service: iam
+  subservice: monitoring
+  risk: LOW
+  existing: false
+
+- function_name: iam_access_analyzer_enabled
+  title: Enable IAM Access Analyzer
+  description: Enable IAM Access Analyzer to identify resources that are shared with external entities and could lead to unintended data exposure.
+  capability: data_protection
+  service: iam
+  subservice: analyzer
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: iam_saml_provider_regional_restriction
+  title: Restrict SAML providers to approved regions
+  description: Ensure SAML identity providers are configured only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: iam
+  subservice: saml
+  risk: MEDIUM
+  existing: false
+
+- function_name: iam_oidc_provider_regional_restriction
+  title: Restrict OIDC providers to approved regions
+  description: Ensure OIDC identity providers are configured only in approved regions to meet data residency compliance requirements.
+  capability: data_residency
+  service: iam
+  subservice: oidc
+  risk: MEDIUM
+  existing: false
+
+- function_name: iam_role_region_restriction_enforced
+  title: Enforce region restrictions in IAM roles
+  description: Ensure IAM roles include condition keys to restrict access to resources in approved regions only for data residency compliance.
+  capability: data_residency
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: iam_user_region_restriction_enforced
+  title: Enforce region restrictions for IAM users
+  description: Ensure IAM user policies include condition keys to restrict access to resources in approved regions for data sovereignty.
+  capability: data_residency
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: iam_policy_data_residency_conditions
+  title: Include data residency conditions in policies
+  description: Ensure IAM policies include condition keys to enforce data residency requirements for accessing sensitive data.
+  capability: data_residency
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: iam_cloudtrail_data_residency_compliance
+  title: Ensure CloudTrail logs comply with data residency
+  description: Ensure CloudTrail logs for IAM activities are stored in regions that comply with data residency requirements.
+  capability: data_residency
+  service: iam
+  subservice: logging
+  risk: MEDIUM
+  existing: false
+
+- function_name: iam_cross_region_assume_role_restricted
+  title: Restrict cross-region assume role operations
+  description: Ensure IAM roles cannot be assumed across regions unless explicitly required for approved data residency use cases.
+  capability: data_residency
+  service: iam
+  subservice: policy
+  risk: HIGH
+  existing: false

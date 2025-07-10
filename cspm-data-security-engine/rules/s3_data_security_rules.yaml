@@ -1,0 +1,284 @@
+# S3 Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: s3_bucket_level_public_access_block
+  title: Enable S3 bucket-level public access block
+  description: Ensure S3 buckets have public access block settings enabled at bucket level to prevent accidental data exposure through public access policies.
+  capability: access_governance
+  service: s3
+  subservice: acl
+  risk: HIGH
+  existing: true
+
+- function_name: s3_account_level_public_access_blocks
+  title: Enable S3 account-level public access blocks
+  description: Ensure S3 account-level public access blocks are enabled to prevent accidental data exposure across all buckets in the account.
+  capability: access_governance
+  service: s3
+  subservice: acl
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_public_access
+  title: Prevent S3 bucket public access
+  description: Ensure S3 buckets are not publicly accessible to prevent unauthorized access to sensitive data stored in buckets.
+  capability: access_governance
+  service: s3
+  subservice: acl
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_cross_account_access
+  title: Restrict S3 bucket cross-account access
+  description: Ensure S3 bucket policies do not allow unrestricted cross-account access that could lead to unauthorized data access.
+  capability: access_governance
+  service: s3
+  subservice: policy
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_policy_public_write_access
+  title: Prevent public write access in S3 bucket policies
+  description: Ensure S3 bucket policies do not allow public write access which could lead to data tampering or unauthorized uploads.
+  capability: access_governance
+  service: s3
+  subservice: policy
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_server_access_logging_enabled
+  title: Enable S3 server access logging
+  description: Ensure S3 server access logging is enabled to track data access patterns and detect unauthorized access attempts for compliance auditing.
+  capability: access_governance
+  service: s3
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: s3_bucket_no_mfa_delete
+  title: Enable MFA delete for S3 buckets
+  description: Require multi-factor authentication for permanent deletion of S3 objects to prevent accidental or malicious data loss.
+  capability: access_governance
+  service: s3
+  subservice: mfa
+  risk: MEDIUM
+  existing: true
+
+- function_name: s3_access_point_public_access_block
+  title: Enable public access block for S3 access points
+  description: Ensure S3 access points have public access block enabled to prevent data exposure through access point policies.
+  capability: access_governance
+  service: s3
+  subservice: acl
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_conditional_access_enforced
+  title: Enforce conditional access policies for S3 buckets
+  description: Implement IP-based, VPC-based, or time-based conditional access controls to restrict data access to authorized contexts only.
+  capability: access_governance
+  service: s3
+  subservice: policy
+  risk: MEDIUM
+  existing: false
+
+- function_name: s3_bucket_principal_access_restricted
+  title: Restrict S3 bucket access to specific principals
+  description: Ensure S3 bucket policies restrict access to specific IAM principals to prevent unauthorized data access from unknown entities.
+  capability: access_governance
+  service: s3
+  subservice: policy
+  risk: MEDIUM
+  existing: false
+
+- function_name: s3_bucket_cloudtrail_data_events_enabled
+  title: Enable CloudTrail data events for S3 buckets
+  description: Configure CloudTrail to log S3 data events for monitoring access to sensitive data and compliance auditing requirements.
+  capability: access_governance
+  service: s3
+  subservice: logging
+  risk: LOW
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: s3_bucket_default_encryption
+  title: Ensure default encryption on S3 buckets
+  description: All S3 buckets must enforce server-side encryption using AES256 or AWS-KMS to protect data at rest and meet compliance requirements.
+  capability: data_protection
+  service: s3
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_secure_transport_policy
+  title: Enforce HTTPS-only access to S3 buckets
+  description: Require all access to S3 to use TLS by enforcing aws:SecureTransport condition in bucket policies to protect data in transit.
+  capability: data_protection
+  service: s3
+  subservice: tls
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_kms_encryption
+  title: Use KMS encryption for S3 buckets
+  description: Ensure S3 buckets storing sensitive data use AWS KMS encryption instead of AES256 for enhanced key management and audit trails.
+  capability: data_protection
+  service: s3
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_object_versioning
+  title: Enable versioning for S3 buckets
+  description: Enable S3 bucket versioning to protect against accidental data deletion and maintain data integrity for compliance and recovery purposes.
+  capability: data_protection
+  service: s3
+  subservice: versioning
+  risk: MEDIUM
+  existing: true
+
+- function_name: s3_bucket_versioning_enabled
+  title: Verify S3 bucket versioning is properly configured
+  description: Ensure S3 bucket versioning is enabled and properly configured to prevent data loss and support compliance data retention requirements.
+  capability: data_protection
+  service: s3
+  subservice: versioning
+  risk: MEDIUM
+  existing: true
+
+- function_name: s3_bucket_object_lock
+  title: Configure S3 Object Lock for compliance
+  description: Enable S3 Object Lock with retention policies to implement WORM (Write Once Read Many) compliance for regulated data storage.
+  capability: data_protection
+  service: s3
+  subservice: retention
+  risk: MEDIUM
+  existing: true
+
+- function_name: s3_bucket_lifecycle_enabled
+  title: Configure lifecycle policies for data retention
+  description: Implement S3 lifecycle policies to automatically transition or delete data based on compliance and data retention requirements.
+  capability: data_protection
+  service: s3
+  subservice: lifecycle
+  risk: LOW
+  existing: true
+
+- function_name: s3_bucket_kms_key_rotation_enabled
+  title: Enable KMS key rotation for S3 encryption
+  description: Ensure KMS keys used for S3 encryption have automatic key rotation enabled to meet security best practices and compliance requirements.
+  capability: data_protection
+  service: s3
+  subservice: encryption
+  risk: MEDIUM
+  existing: false
+
+- function_name: s3_bucket_backup_configured
+  title: Configure backup and replication for critical data
+  description: Ensure critical S3 data has appropriate backup mechanisms configured to prevent data loss and ensure business continuity.
+  capability: data_protection
+  service: s3
+  subservice: backup
+  risk: MEDIUM
+  existing: false
+
+- function_name: s3_bucket_intelligent_tiering_enabled
+  title: Enable S3 Intelligent Tiering for cost optimization
+  description: Configure S3 Intelligent Tiering to automatically optimize storage costs while maintaining data accessibility and compliance.
+  capability: data_protection
+  service: s3
+  subservice: lifecycle
+  risk: LOW
+  existing: false
+
+- function_name: s3_bucket_multipart_upload_cleanup
+  title: Configure multipart upload cleanup policies
+  description: Implement lifecycle policies to automatically clean up incomplete multipart uploads to prevent storage cost accumulation and data exposure.
+  capability: data_protection
+  service: s3
+  subservice: lifecycle
+  risk: LOW
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: s3_bucket_cross_region_replication
+  title: Validate cross-region replication for compliance
+  description: Ensure S3 cross-region replication is configured only to approved regions that meet data residency and sovereignty requirements.
+  capability: data_residency
+  service: s3
+  subservice: replication
+  risk: HIGH
+  existing: true
+
+- function_name: s3_bucket_region_restriction_enforced
+  title: Enforce data residency through region restrictions
+  description: Ensure S3 buckets are created only in approved regions to comply with data sovereignty and geographic data residency requirements.
+  capability: data_residency
+  service: s3
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: s3_bucket_transfer_acceleration_disabled
+  title: Disable Transfer Acceleration for regulated data
+  description: Ensure S3 Transfer Acceleration is disabled for buckets containing regulated data to prevent data from transiting through unapproved regions.
+  capability: data_residency
+  service: s3
+  subservice: transfer
+  risk: MEDIUM
+  existing: false
+
+- function_name: s3_bucket_vpc_endpoint_required
+  title: Require VPC endpoints for S3 access
+  description: Ensure S3 access occurs through VPC endpoints to prevent data from leaving the controlled network environment and maintain data residency.
+  capability: data_residency
+  service: s3
+  subservice: network
+  risk: MEDIUM
+  existing: false
+
+- function_name: s3_bucket_geo_tagging_enforced
+  title: Enforce geo-tagging for data classification
+  description: Ensure S3 buckets have appropriate geo-location tags to identify data residency requirements and facilitate compliance auditing.
+  capability: data_residency
+  service: s3
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: s3_bucket_replication_destination_compliance
+  title: Validate replication destinations for compliance
+  description: Ensure all S3 replication destinations comply with organizational data residency and sovereignty policies before enabling replication.
+  capability: data_residency
+  service: s3
+  subservice: replication
+  risk: HIGH
+  existing: false
+
+- function_name: s3_bucket_data_sovereignty_tags
+  title: Tag buckets with data sovereignty information
+  description: Ensure S3 buckets are tagged with data sovereignty and jurisdiction information for compliance tracking and regulatory auditing.
+  capability: data_residency
+  service: s3
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: s3_bucket_same_region_replication_only
+  title: Restrict replication to same region only
+  description: Ensure S3 replication is configured only within the same region to maintain strict data residency requirements for highly regulated data.
+  capability: data_residency
+  service: s3
+  subservice: replication
+  risk: HIGH
+  existing: false
+
+- function_name: s3_bucket_cloudfront_geo_restriction
+  title: Enforce CloudFront geo-restrictions for S3 content
+  description: Ensure S3 content served through CloudFront has appropriate geo-restrictions to comply with data residency and export control requirements.
+  capability: data_residency
+  service: s3
+  subservice: distribution
+  risk: MEDIUM
+  existing: false

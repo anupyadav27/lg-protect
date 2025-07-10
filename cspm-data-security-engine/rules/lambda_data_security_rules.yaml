@@ -1,0 +1,212 @@
+# Lambda Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: awslambda_function_not_publicly_accessible
+  title: Ensure Lambda functions are not publicly accessible
+  description: Ensure Lambda functions are not publicly accessible to prevent unauthorized access to sensitive data and business logic.
+  capability: access_governance
+  service: lambda
+  subservice: access
+  risk: HIGH
+  existing: true
+
+- function_name: awslambda_function_url_public
+  title: Restrict public access to Lambda function URLs
+  description: Ensure Lambda function URLs are not publicly accessible to prevent unauthorized invocation and data exposure.
+  capability: access_governance
+  service: lambda
+  subservice: url
+  risk: HIGH
+  existing: true
+
+- function_name: awslambda_function_inside_vpc
+  title: Deploy Lambda functions inside VPC
+  description: Deploy Lambda functions inside VPC to provide network isolation and secure access to sensitive data resources.
+  capability: access_governance
+  service: lambda
+  subservice: network
+  risk: MEDIUM
+  existing: true
+
+- function_name: awslambda_function_invoke_api_operations_cloudtrail_logging_enabled
+  title: Enable CloudTrail logging for Lambda invocations
+  description: Enable CloudTrail logging for Lambda function invocations to monitor access patterns and support compliance auditing.
+  capability: access_governance
+  service: lambda
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: awslambda_function_no_secrets_in_code
+  title: Avoid secrets in Lambda function code
+  description: Ensure Lambda functions do not contain hardcoded secrets in source code to prevent credential exposure.
+  capability: access_governance
+  service: lambda
+  subservice: secrets
+  risk: HIGH
+  existing: true
+
+- function_name: awslambda_function_no_secrets_in_variables
+  title: Avoid secrets in Lambda environment variables
+  description: Ensure Lambda functions do not store secrets in environment variables to prevent credential exposure.
+  capability: access_governance
+  service: lambda
+  subservice: secrets
+  risk: HIGH
+  existing: true
+
+- function_name: awslambda_function_iam_least_privilege
+  title: Enforce least privilege IAM policies for Lambda
+  description: Ensure Lambda functions use IAM roles with least privilege principles to minimize unauthorized data access risks.
+  capability: access_governance
+  service: lambda
+  subservice: iam
+  risk: MEDIUM
+  existing: false
+
+- function_name: awslambda_function_cross_account_access_restricted
+  title: Restrict cross-account access to Lambda functions
+  description: Ensure Lambda functions do not allow unrestricted cross-account access that could lead to unauthorized data access.
+  capability: access_governance
+  service: lambda
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: awslambda_function_resource_policy_restricted
+  title: Restrict Lambda function resource policies
+  description: Ensure Lambda function resource policies follow least privilege principles and do not grant excessive permissions.
+  capability: access_governance
+  service: lambda
+  subservice: policy
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: awslambda_function_environment_encryption_enabled
+  title: Enable encryption for Lambda environment variables
+  description: Ensure Lambda function environment variables are encrypted using KMS to protect sensitive configuration data.
+  capability: data_protection
+  service: lambda
+  subservice: encryption
+  risk: HIGH
+  existing: false
+
+- function_name: awslambda_function_using_supported_runtimes
+  title: Use supported Lambda runtimes
+  description: Ensure Lambda functions use supported runtime versions to maintain security patches and prevent vulnerabilities.
+  capability: data_protection
+  service: lambda
+  subservice: runtime
+  risk: MEDIUM
+  existing: true
+
+- function_name: awslambda_function_dead_letter_queue_configured
+  title: Configure dead letter queues for Lambda functions
+  description: Configure dead letter queues for Lambda functions to capture and analyze failed invocations for data integrity.
+  capability: data_protection
+  service: lambda
+  subservice: dlq
+  risk: LOW
+  existing: false
+
+- function_name: awslambda_function_data_classification_tags
+  title: Tag Lambda functions with data classification
+  description: Ensure Lambda functions are tagged with appropriate data classification levels for governance and compliance tracking.
+  capability: data_protection
+  service: lambda
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: awslambda_function_versioning_enabled
+  title: Enable versioning for Lambda functions
+  description: Enable versioning for Lambda functions to maintain code integrity and support rollback capabilities.
+  capability: data_protection
+  service: lambda
+  subservice: versioning
+  risk: MEDIUM
+  existing: false
+
+- function_name: awslambda_function_code_signing_enabled
+  title: Enable code signing for Lambda functions
+  description: Enable code signing for Lambda functions to ensure code integrity and prevent unauthorized modifications.
+  capability: data_protection
+  service: lambda
+  subservice: signing
+  risk: MEDIUM
+  existing: false
+
+- function_name: awslambda_function_monitoring_enabled
+  title: Enable monitoring for Lambda functions
+  description: Enable comprehensive monitoring for Lambda functions to detect anomalies and potential data access issues.
+  capability: data_protection
+  service: lambda
+  subservice: monitoring
+  risk: LOW
+  existing: false
+
+- function_name: awslambda_function_error_handling_configured
+  title: Configure error handling for Lambda functions
+  description: Implement proper error handling in Lambda functions to prevent sensitive data exposure in error messages.
+  capability: data_protection
+  service: lambda
+  subservice: error_handling
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: awslambda_function_region_restriction_enforced
+  title: Enforce region restrictions for Lambda functions
+  description: Ensure Lambda functions are deployed only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: lambda
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: awslambda_function_vpc_multi_az
+  title: Deploy Lambda functions across multiple AZs
+  description: Deploy Lambda functions across multiple availability zones within approved regions for resilience and compliance.
+  capability: data_residency
+  service: lambda
+  subservice: availability
+  risk: MEDIUM
+  existing: true
+
+- function_name: awslambda_function_data_sovereignty_tags
+  title: Tag Lambda functions with data sovereignty information
+  description: Ensure Lambda functions are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: lambda
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: awslambda_function_cross_region_invocation_restricted
+  title: Restrict cross-region Lambda invocations
+  description: Ensure Lambda functions cannot be invoked from regions that do not meet data residency requirements.
+  capability: data_residency
+  service: lambda
+  subservice: invocation
+  risk: HIGH
+  existing: false
+
+- function_name: awslambda_function_layer_region_compliance
+  title: Ensure Lambda layers comply with region restrictions
+  description: Ensure Lambda layers are shared only within approved regions to maintain data residency compliance.
+  capability: data_residency
+  service: lambda
+  subservice: layers
+  risk: MEDIUM
+  existing: false
+
+- function_name: awslambda_function_destination_region_compliance
+  title: Validate Lambda destination regions for compliance
+  description: Ensure Lambda function destinations are configured only in regions that meet data residency requirements.
+  capability: data_residency
+  service: lambda
+  subservice: destinations
+  risk: MEDIUM
+  existing: false

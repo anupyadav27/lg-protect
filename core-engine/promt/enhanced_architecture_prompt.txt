@@ -1,0 +1,428 @@
+"""
+Enhanced Architecture Prompt for AWS Compliance Engine
+
+You are building a Python-based AWS Compliance Engine using the centralized compliance_engine framework.
+
+## 📋 Task Overview:
+Implement the specific compliance check logic using the existing centralized compliance_engine architecture.
+
+## 🏗️ Architecture Guidelines:
+
+### 1. Import Compliance Engine Framework:
+```python
+import sys
+import os
+from typing import Dict, List, Any
+
+# Add the core-engine path to sys.path to import compliance_engine
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+from compliance_engine import (
+    ComplianceEngine,
+    setup_command_line_interface,
+    save_results,
+    exit_with_status
+)
+```
+
+### 2. Load Compliance Metadata from JSON:
+```python
+import json
+
+def load_compliance_metadata(function_name: str) -> dict:
+    """Load compliance metadata including risk level and recommendation from JSON."""
+    try:
+        # Path to compliance_checks.json relative to functions_list directory
+        compliance_json_path = os.path.join(
+            os.path.dirname(__file__), 
+            '..', '..', 
+            'compliance_checks.json'
+        )
+        
+        with open(compliance_json_path, 'r') as f:
+            compliance_data = json.load(f)
+        
+        # Find the specific compliance entry for this function
+        for entry in compliance_data:
+            if entry.get('Function Name') == function_name:
+                return {
+                    'compliance_name': entry.get('Compliance Name', ''),
+                    'function_name': entry.get('Function Name', ''),
+                    'id': entry.get('ID', ''),
+                    'name': entry.get('Name', ''),
+                    'description': entry.get('Description', ''),
+                    'api_function': entry.get('API function', ''),
+                    'user_function': entry.get('user function', ''),
+                    'risk_level': entry.get('Risk Level', 'MEDIUM'),
+                    'recommendation': entry.get('Recommendation', 'Review and remediate as needed')
+                }
+    except Exception as e:
+        print(f"Warning: Could not load compliance metadata: {e}")
+        
+    # Return default structure if JSON loading fails
+    return {
+        'compliance_name': '[FROM COMPLIANCE DETAILS]',
+        'function_name': '[FROM COMPLIANCE DETAILS]',
+        'id': '[FROM COMPLIANCE DETAILS]',
+        'name': '[FROM COMPLIANCE DETAILS]',
+        'description': '[FROM COMPLIANCE DETAILS]',
+        'api_function': '[FROM COMPLIANCE DETAILS]',
+        'user_function': '[FROM COMPLIANCE DETAILS]',
+        'risk_level': 'MEDIUM',
+        'recommendation': 'Review and remediate as needed'
+    }
+
+# Load compliance metadata for this specific function
+COMPLIANCE_DATA = load_compliance_metadata('[FUNCTION_NAME]')
+```
+
+### 3. Implement Core Check Function:
+```python
+def [FUNCTION_NAME]_check([SERVICE]_client, region: str, profile: str, logger) -> List[Dict[str, Any]]:
+    """
+    Perform the actual compliance check for [FUNCTION_NAME].
+    
+    Args:
+        [SERVICE]_client: Boto3 service client (auto-created by framework)
+        region (str): AWS region (auto-managed by framework)
+        profile (str): AWS profile name (auto-managed by framework)
+        logger: Logger instance (auto-configured by framework)
+        
+    Returns:
+        List[Dict[str, Any]]: List of compliance findings
+    """
+    findings = []
+    
+    try:
+        # TODO: Implement your specific compliance logic here
+        # Use the API function and user function from compliance details
+        # Example: response = [SERVICE]_client.[USER_FUNCTION]()
+        
+        # Process response and create findings
+        # Each finding should follow this structure:
+        finding = {
+            'region': region,
+            'profile': profile,
+            'resource_type': '[RESOURCE_TYPE]',
+            'resource_id': '[RESOURCE_IDENTIFIER]',
+            'status': 'COMPLIANT' | 'NON_COMPLIANT',
+            'compliance_status': 'PASS' | 'FAIL',
+            'risk_level': COMPLIANCE_DATA.get('risk_level', 'MEDIUM'),
+            'recommendation': COMPLIANCE_DATA.get('recommendation', 'Review and remediate as needed'),
+            'details': {
+                # Include relevant resource details
+            }
+        }
+        
+        findings.append(finding)
+        
+    except Exception as e:
+        logger.error(f"Error in [FUNCTION_NAME] check for {region}: {e}")
+        findings.append({
+            'region': region,
+            'profile': profile,
+            'resource_type': '[RESOURCE_TYPE]',
+            'status': 'ERROR',
+            'risk_level': COMPLIANCE_DATA.get('risk_level', 'MEDIUM'),
+            'recommendation': COMPLIANCE_DATA.get('recommendation', 'Review and remediate as needed'),
+            'error': str(e)
+        })
+        
+    return findings
+```
+
+### 4. Main Function:
+```python
+def [FUNCTION_NAME](profile_name: str = None, region_name: str = None) -> Dict[str, Any]:
+    """Main compliance check function."""
+    engine = ComplianceEngine(COMPLIANCE_DATA)
+    return engine.run_compliance_check(
+        check_function=[FUNCTION_NAME]_check,
+        profile_name=profile_name,
+        region_name=region_name
+    )
+```
+
+### 5. Command Line Interface:
+```python
+if __name__ == "__main__":
+    # Set up command line interface
+    args = setup_command_line_interface(COMPLIANCE_DATA)
+    
+    # Run the compliance check
+    results = [FUNCTION_NAME](
+        profile_name=args.profile,
+        region_name=args.region
+    )
+    
+    # Save results and exit
+    save_results(results, args.output, args.verbose)
+    exit_with_status(results)
+```
+
+## 🔧 What the Compliance Engine Framework Handles:
+
+✅ **Multi-region support** - Automatically handles all supported regions
+✅ **AWS profile management** - Manages multiple AWS profiles
+✅ **Error handling** - Centralized error capture and logging  
+✅ **Results aggregation** - Standard compliance report format
+✅ **Command-line interface** - Standard --profile, --region, --output, --verbose flags
+✅ **Service client creation** - Auto-detects and creates AWS service clients
+✅ **Session management** - Enhanced AWS session management
+✅ **Logging configuration** - Structured logging with proper formatting
+
+## 🎯 Your Focus: Implement the Compliance Logic
+
+1. **Replace placeholders** with actual values from compliance details
+2. **Implement the core check logic** in the `[FUNCTION_NAME]_check` function
+3. **Use the AWS API calls** specified in the compliance details
+4. **Determine COMPLIANT vs NON_COMPLIANT** based on your compliance rule
+5. **Handle service-specific exceptions** appropriately
+
+## 📝 Complete Template:
+
+```python
+#!/usr/bin/env python3
+"""
+[COMPLIANCE_NAME] - [FUNCTION_NAME]
+
+[DESCRIPTION]
+"""
+
+import sys
+import os
+import json
+from typing import Dict, List, Any
+
+# Add the core-engine path to sys.path to import compliance_engine
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+from compliance_engine import (
+    ComplianceEngine,
+    setup_command_line_interface,
+    save_results,
+    exit_with_status
+)
+
+def load_compliance_metadata(function_name: str) -> dict:
+    """Load compliance metadata from compliance_checks.json."""
+    # ... implementation as shown above
+
+COMPLIANCE_DATA = load_compliance_metadata('[FUNCTION_NAME]')
+
+def [FUNCTION_NAME]_check([SERVICE]_client, region: str, profile: str, logger) -> List[Dict[str, Any]]:
+    """Perform the actual compliance check."""
+    # ... implementation as shown above
+
+def [FUNCTION_NAME](profile_name: str = None, region_name: str = None) -> Dict[str, Any]:
+    """Main compliance check function."""
+    # ... implementation as shown above
+
+if __name__ == "__main__":
+    # ... CLI implementation as shown above
+```
+
+## 🧪 ENHANCED TEST CASE GENERATION
+
+### Test Case Naming Convention:
+Generate multiple test files with systematic naming:
+- `test_[FUNCTION_NAME]_01_compliant_scenario.py` - All resources compliant
+- `test_[FUNCTION_NAME]_02_non_compliant_scenario.py` - Resources failing compliance
+- `test_[FUNCTION_NAME]_03_mixed_scenario.py` - Mix of compliant/non-compliant
+- `test_[FUNCTION_NAME]_04_empty_response.py` - No resources found
+- `test_[FUNCTION_NAME]_05_api_error.py` - AWS API errors
+- `test_[FUNCTION_NAME]_06_edge_cases.py` - Edge cases and malformed data
+
+### Intelligent Mock Data Generation:
+
+#### AWS API Response Mapping:
+```python
+# Based on AWS service and API function, generate realistic mock responses
+AWS_API_MOCKS = {
+    'ec2': {
+        'describe_instances': {
+            'compliant': {'Reservations': [{'Instances': [{'InstanceId': 'i-1234567890abcdef0', 'State': {'Name': 'running'}}]}]},
+            'non_compliant': {'Reservations': [{'Instances': [{'InstanceId': 'i-0987654321fedcba0', 'State': {'Name': 'running'}}]}]},
+            'empty': {'Reservations': []}
+        },
+        'describe_addresses': {
+            'compliant': {'Addresses': [{'AllocationId': 'eipalloc-12345678', 'InstanceId': 'i-1234567890abcdef0'}]},
+            'non_compliant': {'Addresses': [{'AllocationId': 'eipalloc-87654321', 'PublicIp': '203.0.113.1'}]},
+            'empty': {'Addresses': []}
+        },
+        'describe_security_groups': {
+            'compliant': {'SecurityGroups': [{'GroupId': 'sg-12345678', 'IpPermissions': []}]},
+            'non_compliant': {'SecurityGroups': [{'GroupId': 'sg-87654321', 'IpPermissions': [{'IpRanges': [{'CidrIp': '0.0.0.0/0'}]}]}]},
+            'empty': {'SecurityGroups': []}
+        }
+    },
+    'rds': {
+        'describe_db_instances': {
+            'compliant': {'DBInstances': [{'DBInstanceIdentifier': 'prod-db', 'AutoMinorVersionUpgrade': True}]},
+            'non_compliant': {'DBInstances': [{'DBInstanceIdentifier': 'test-db', 'AutoMinorVersionUpgrade': False}]},
+            'empty': {'DBInstances': []}
+        }
+    },
+    'ssm': {
+        'describe_instance_information': {
+            'compliant': {'InstanceInformationList': [{'InstanceId': 'i-1234567890abcdef0', 'PingStatus': 'Online'}]},
+            'non_compliant': {'InstanceInformationList': [{'InstanceId': 'i-0987654321fedcba0', 'PingStatus': 'ConnectionLost'}]},
+            'empty': {'InstanceInformationList': []}
+        }
+    }
+}
+```
+
+### Comprehensive Test Template:
+
+```python
+#!/usr/bin/env python3
+"""
+Test Cases for [COMPLIANCE_NAME] - [FUNCTION_NAME] - Scenario: [SCENARIO_TYPE]
+
+Comprehensive test coverage for [FUNCTION_NAME] compliance function.
+Auto-generated test cases based on compliance metadata and AWS API patterns.
+"""
+
+import unittest
+import sys
+import os
+from unittest.mock import patch, Mock, MagicMock
+
+# Add paths for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '..', '..'))
+
+from services_functions.[FUNCTION_NAME] import [FUNCTION_NAME], [FUNCTION_NAME]_check
+
+class Test[FUNCTION_NAME_CAMEL]_[SCENARIO_NUMBER]_[SCENARIO_TYPE](unittest.TestCase):
+    """Test [SCENARIO_TYPE] scenario for [FUNCTION_NAME] compliance function."""
+    
+    def setUp(self):
+        """Set up test fixtures with intelligent mock data."""
+        self.mock_logger = Mock()
+        
+        # Auto-generated mock responses based on API function: [USER_FUNCTION]
+        self.mock_[SCENARIO_TYPE]_response = [GENERATED_MOCK_DATA]
+        
+    def test_[FUNCTION_NAME]_[SCENARIO_TYPE]_check(self):
+        """Test [SCENARIO_TYPE] scenario returns expected compliance status."""
+        mock_client = Mock()
+        mock_client.[USER_FUNCTION_CLEAN].return_value = self.mock_[SCENARIO_TYPE]_response
+        
+        findings = [FUNCTION_NAME]_check(mock_client, 'us-east-1', 'default', self.mock_logger)
+        
+        # Scenario-specific assertions
+        [SCENARIO_SPECIFIC_ASSERTIONS]
+        
+        # Standard finding structure validation
+        for finding in findings:
+            self.assertIn('region', finding)
+            self.assertIn('profile', finding)
+            self.assertIn('resource_type', finding)
+            self.assertIn('status', finding)
+            self.assertIn('compliance_status', finding)
+    
+    def test_finding_details_structure(self):
+        """Validate detailed finding structure for [SCENARIO_TYPE] scenario."""
+        mock_client = Mock()
+        mock_client.[USER_FUNCTION_CLEAN].return_value = self.mock_[SCENARIO_TYPE]_response
+        
+        findings = [FUNCTION_NAME]_check(mock_client, 'us-east-1', 'default', self.mock_logger)
+        
+        if findings:
+            finding = findings[0]
+            # Validate required fields
+            required_fields = ['region', 'profile', 'resource_type', 'resource_id', 
+                             'status', 'compliance_status', 'risk_level', 'recommendation']
+            for field in required_fields:
+                self.assertIn(field, finding, f"Missing required field: {field}")
+                
+            # Validate details structure if present
+            if 'details' in finding:
+                self.assertIsInstance(finding['details'], dict)
+    
+    @patch('compliance_engine.ComplianceEngine')
+    def test_main_function_[SCENARIO_TYPE](self, mock_engine_class):
+        """Test main function integration with [SCENARIO_TYPE] scenario."""
+        mock_engine = Mock()
+        mock_engine_class.return_value = mock_engine
+        mock_engine.run_compliance_check.return_value = {
+            'status': '[EXPECTED_STATUS]',
+            'findings': [{'status': '[EXPECTED_FINDING_STATUS]'}],
+            'function_name': '[FUNCTION_NAME]'
+        }
+        
+        result = [FUNCTION_NAME](region_name='us-east-1')
+        
+        self.assertIsInstance(result, dict)
+        self.assertEqual(result['function_name'], '[FUNCTION_NAME]')
+        mock_engine.run_compliance_check.assert_called_once()
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+```
+
+### Test Scenario Templates:
+
+#### 1. Compliant Scenario Template:
+```python
+# Expected: All resources pass compliance checks
+# Mock Data: Resources configured according to compliance rule
+# Assertions: status='COMPLIANT', compliance_status='PASS'
+```
+
+#### 2. Non-Compliant Scenario Template:
+```python
+# Expected: Resources fail compliance checks  
+# Mock Data: Resources violating compliance rule
+# Assertions: status='NON_COMPLIANT', compliance_status='FAIL'
+```
+
+#### 3. Mixed Scenario Template:
+```python
+# Expected: Some compliant, some non-compliant resources
+# Mock Data: Mixed resource configurations
+# Assertions: Verify both PASS and FAIL findings
+```
+
+#### 4. Empty Response Template:
+```python
+# Expected: No resources found
+# Mock Data: Empty AWS API response
+# Assertions: Empty findings list
+```
+
+#### 5. API Error Template:
+```python
+# Expected: Handle AWS API errors gracefully
+# Mock Data: Exception raised during API call
+# Assertions: status='ERROR', error message captured
+```
+
+#### 6. Edge Cases Template:
+```python
+# Expected: Handle malformed/unexpected data
+# Mock Data: Missing fields, null values, unexpected structures
+# Assertions: Robust error handling, no crashes
+```
+
+### Compliance Logic Pattern Recognition:
+
+Based on compliance description and API functions, automatically determine:
+- **What makes a resource compliant vs non-compliant**
+- **Which AWS API fields to check**
+- **Realistic test data scenarios**
+- **Expected finding outcomes**
+
+### Auto-Generated Test Data Examples:
+
+For `ec2_elastic_ip_unassigned`:
+- **Compliant**: EIP with `InstanceId` present
+- **Non-Compliant**: EIP without `InstanceId` or `NetworkInterfaceId`
+- **Mixed**: Some EIPs assigned, others unassigned
+- **Empty**: No EIPs in account
+- **Error**: `describe_addresses()` throws exception
+
+Focus on implementing the specific compliance logic - the compliance_engine framework handles all the infrastructure!
+"""

@@ -1,0 +1,10 @@
+{
+  "analysis_session_id": "error_analysis_20250705_104305_04458940",
+  "analysis_timestamp": "2025-07-05T05:13:05.812033+00:00",
+  "scan_session_id": "enterprise_scan_20250705_104204_cbf84b54",
+  "total_errors_analyzed": 61,
+  "files_generated": {
+    "summary": "error_summary_20250705_104305.json",
+    "csv_export": "errors_summary_20250705_104305.csv"
+  }
+}

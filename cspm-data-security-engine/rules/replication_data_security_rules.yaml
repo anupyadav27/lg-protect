@@ -1,0 +1,194 @@
+# Replication Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: replication_source_access_restricted
+  title: Restrict access to replication sources
+  description: Ensure replication sources have proper access controls to prevent unauthorized access to sensitive data being replicated.
+  capability: access_governance
+  service: replication
+  subservice: source
+  risk: HIGH
+  existing: false
+
+- function_name: replication_destination_access_restricted
+  title: Restrict access to replication destinations
+  description: Ensure replication destinations have proper access controls to prevent unauthorized access to replicated sensitive data.
+  capability: access_governance
+  service: replication
+  subservice: destination
+  risk: HIGH
+  existing: false
+
+- function_name: replication_iam_roles_least_privilege
+  title: Enforce least privilege for replication IAM roles
+  description: Ensure replication processes use IAM roles with least privilege to minimize unauthorized data access during replication.
+  capability: access_governance
+  service: replication
+  subservice: iam
+  risk: MEDIUM
+  existing: false
+
+- function_name: replication_cross_account_access_restricted
+  title: Restrict cross-account replication access
+  description: Ensure cross-account replication is properly restricted to prevent unauthorized access to sensitive data across accounts.
+  capability: access_governance
+  service: replication
+  subservice: cross_account
+  risk: HIGH
+  existing: false
+
+- function_name: replication_monitoring_enabled
+  title: Enable monitoring for replication operations
+  description: Enable comprehensive monitoring for replication operations to detect unauthorized access or data exposure.
+  capability: access_governance
+  service: replication
+  subservice: monitoring
+  risk: MEDIUM
+  existing: false
+
+- function_name: replication_cloudtrail_logging_enabled
+  title: Enable CloudTrail logging for replication
+  description: Enable CloudTrail logging for replication operations to audit data movement and access patterns.
+  capability: access_governance
+  service: replication
+  subservice: logging
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: replication_encryption_in_transit_enabled
+  title: Enable encryption in transit for replication
+  description: Ensure replication processes use encryption in transit to protect sensitive data during transfer operations.
+  capability: data_protection
+  service: replication
+  subservice: tls
+  risk: HIGH
+  existing: false
+
+- function_name: replication_encryption_at_rest_enabled
+  title: Enable encryption at rest for replicated data
+  description: Ensure replicated data is encrypted at rest at both source and destination to protect sensitive information.
+  capability: data_protection
+  service: replication
+  subservice: encryption
+  risk: HIGH
+  existing: false
+
+- function_name: replication_kms_key_validation
+  title: Validate KMS keys for replication encryption
+  description: Ensure replication processes use appropriate KMS keys for encryption at source and destination.
+  capability: data_protection
+  service: replication
+  subservice: encryption
+  risk: HIGH
+  existing: false
+
+- function_name: replication_data_integrity_validation
+  title: Validate data integrity during replication
+  description: Implement data integrity checks during replication to ensure data is not corrupted or tampered with.
+  capability: data_protection
+  service: replication
+  subservice: integrity
+  risk: MEDIUM
+  existing: false
+
+- function_name: replication_backup_enabled
+  title: Enable backup for replication configurations
+  description: Ensure replication configurations are backed up to prevent data loss and maintain disaster recovery capabilities.
+  capability: data_protection
+  service: replication
+  subservice: backup
+  risk: MEDIUM
+  existing: false
+
+- function_name: replication_failure_handling_configured
+  title: Configure failure handling for replication
+  description: Implement proper failure handling for replication to prevent data loss and ensure data consistency.
+  capability: data_protection
+  service: replication
+  subservice: failure_handling
+  risk: MEDIUM
+  existing: false
+
+- function_name: replication_data_classification_maintained
+  title: Maintain data classification during replication
+  description: Ensure data classification tags and metadata are maintained during replication processes.
+  capability: data_protection
+  service: replication
+  subservice: classification
+  risk: LOW
+  existing: false
+
+- function_name: replication_retention_policy_enforced
+  title: Enforce retention policies for replicated data
+  description: Implement retention policies for replicated data to meet compliance requirements and manage storage costs.
+  capability: data_protection
+  service: replication
+  subservice: retention
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: replication_destination_region_compliance
+  title: Ensure replication destinations comply with region restrictions
+  description: Ensure replication destinations are located only in approved regions to meet data residency requirements.
+  capability: data_residency
+  service: replication
+  subservice: destination
+  risk: HIGH
+  existing: false
+
+- function_name: replication_source_region_compliance
+  title: Ensure replication sources comply with region restrictions
+  description: Ensure replication sources are located only in approved regions to maintain data residency compliance.
+  capability: data_residency
+  service: replication
+  subservice: source
+  risk: HIGH
+  existing: false
+
+- function_name: replication_cross_region_restricted
+  title: Restrict cross-region replication
+  description: Ensure cross-region replication is restricted to approved regions that meet data residency and sovereignty requirements.
+  capability: data_residency
+  service: replication
+  subservice: cross_region
+  risk: HIGH
+  existing: false
+
+- function_name: replication_data_sovereignty_validation
+  title: Validate data sovereignty for replication
+  description: Ensure replication processes comply with data sovereignty requirements and regulations.
+  capability: data_residency
+  service: replication
+  subservice: sovereignty
+  risk: HIGH
+  existing: false
+
+- function_name: replication_geo_tagging_enforced
+  title: Enforce geo-tagging for replication resources
+  description: Ensure replication resources are tagged with geographic information for compliance tracking and auditing.
+  capability: data_residency
+  service: replication
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: replication_transit_path_validation
+  title: Validate replication transit paths
+  description: Ensure replication data transit paths do not cross restricted regions or jurisdictions.
+  capability: data_residency
+  service: replication
+  subservice: transit
+  risk: HIGH
+  existing: false
+
+- function_name: replication_same_jurisdiction_enforcement
+  title: Enforce same jurisdiction replication
+  description: Ensure replication occurs only within the same legal jurisdiction to maintain data sovereignty compliance.
+  capability: data_residency
+  service: replication
+  subservice: jurisdiction
+  risk: HIGH
+  existing: false

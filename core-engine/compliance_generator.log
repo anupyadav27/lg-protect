@@ -1,0 +1,14 @@
+2025-07-05 11:06:40,284 - __main__ - INFO - Starting AWS Compliance Engine Generator
+2025-07-05 11:06:40,285 - __main__ - INFO - Created service-regions.json mapping
+2025-07-05 11:06:40,285 - __main__ - INFO - Processing function: ec2_instance_managed_by_ssm
+2025-07-05 11:06:40,286 - __main__ - INFO - Generated files for ec2_instance_managed_by_ssm
+2025-07-05 11:06:40,286 - __main__ - INFO - Processing function: ec2_instance_older_than_specific_days
+2025-07-05 11:06:40,286 - __main__ - INFO - Generated files for ec2_instance_older_than_specific_days
+2025-07-05 11:06:40,286 - __main__ - INFO - Processing function: ssm_managed_compliant_patching
+2025-07-05 11:06:40,287 - __main__ - INFO - Generated files for ssm_managed_compliant_patching
+2025-07-05 11:06:40,287 - __main__ - INFO - Processing function: ec2_elastic_ip_unassigned
+2025-07-05 11:06:40,288 - __main__ - INFO - Generated files for ec2_elastic_ip_unassigned
+2025-07-05 11:06:40,288 - __main__ - INFO - Processing function: rds_instance_minor_version_upgrade_enabled
+2025-07-05 11:06:40,288 - __main__ - INFO - Generated files for rds_instance_minor_version_upgrade_enabled
+2025-07-05 11:06:40,288 - __main__ - INFO - Successfully processed 5 compliance functions
+2025-07-05 11:06:40,289 - __main__ - INFO - Compliance check generation completed successfully

@@ -1,0 +1,284 @@
+# RDS Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: rds_instance_no_public_access
+  title: Ensure RDS instances are not publicly accessible
+  description: Prevent RDS instances from being publicly accessible to avoid unauthorized access to sensitive database data.
+  capability: access_governance
+  service: rds
+  subservice: access
+  risk: HIGH
+  existing: true
+
+- function_name: rds_instance_inside_vpc
+  title: Ensure RDS instances are deployed inside VPC
+  description: Deploy RDS instances within VPC to provide network isolation and prevent unauthorized access to database data.
+  capability: access_governance
+  service: rds
+  subservice: network
+  risk: HIGH
+  existing: true
+
+- function_name: rds_cluster_not_publicly_accessible
+  title: Ensure RDS clusters are not publicly accessible
+  description: Prevent RDS Aurora clusters from being publicly accessible to protect sensitive data from unauthorized internet access.
+  capability: access_governance
+  service: rds
+  subservice: access
+  risk: HIGH
+  existing: false
+
+- function_name: rds_instance_default_admin
+  title: Avoid using default admin usernames
+  description: Ensure RDS instances do not use default administrative usernames to prevent credential-based attacks on database data.
+  capability: access_governance
+  service: rds
+  subservice: credentials
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_cluster_default_admin
+  title: Avoid using default admin usernames for clusters
+  description: Ensure RDS Aurora clusters do not use default administrative usernames to prevent unauthorized database access.
+  capability: access_governance
+  service: rds
+  subservice: credentials
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_instance_iam_authentication_enabled
+  title: Enable IAM database authentication
+  description: Enable IAM database authentication for RDS instances to manage database access using AWS IAM instead of database passwords.
+  capability: access_governance
+  service: rds
+  subservice: authentication
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_cluster_iam_authentication_enabled
+  title: Enable IAM database authentication for clusters
+  description: Enable IAM database authentication for RDS Aurora clusters to centralize access control and eliminate password-based authentication.
+  capability: access_governance
+  service: rds
+  subservice: authentication
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_instance_integration_cloudwatch_logs
+  title: Enable CloudWatch logging for RDS instances
+  description: Enable CloudWatch logging for RDS instances to monitor database activities and detect unauthorized access attempts.
+  capability: access_governance
+  service: rds
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_cluster_integration_cloudwatch_logs
+  title: Enable CloudWatch logging for RDS clusters
+  description: Enable CloudWatch logging for RDS Aurora clusters to track database operations and support compliance auditing.
+  capability: access_governance
+  service: rds
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_instance_non_default_port
+  title: Use non-default ports for RDS instances
+  description: Configure RDS instances to use non-default ports to reduce automated attacks against database services.
+  capability: access_governance
+  service: rds
+  subservice: network
+  risk: LOW
+  existing: true
+
+- function_name: rds_snapshots_public_access
+  title: Ensure RDS snapshots are not publicly accessible
+  description: Prevent RDS snapshots from being publicly accessible to avoid exposure of sensitive database data through snapshot sharing.
+  capability: access_governance
+  service: rds
+  subservice: snapshots
+  risk: HIGH
+  existing: true
+
+# DATA PROTECTION Rules
+- function_name: rds_instance_storage_encrypted
+  title: Enable encryption at rest for RDS instances
+  description: Ensure RDS instances have encryption at rest enabled to protect sensitive data stored in databases and meet compliance requirements.
+  capability: data_protection
+  service: rds
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: rds_cluster_storage_encrypted
+  title: Enable encryption at rest for RDS clusters
+  description: Ensure RDS Aurora clusters have encryption at rest enabled to protect sensitive data and comply with data protection regulations.
+  capability: data_protection
+  service: rds
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: rds_instance_transport_encrypted
+  title: Enable encryption in transit for RDS instances
+  description: Ensure RDS instances enforce SSL/TLS encryption for all database connections to protect data in transit.
+  capability: data_protection
+  service: rds
+  subservice: tls
+  risk: HIGH
+  existing: true
+
+- function_name: rds_snapshots_encrypted
+  title: Ensure RDS snapshots are encrypted
+  description: Ensure RDS snapshots are encrypted to protect sensitive data during backup operations and prevent unauthorized access.
+  capability: data_protection
+  service: rds
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: rds_instance_backup_enabled
+  title: Enable automated backups for RDS instances
+  description: Enable automated backups for RDS instances to ensure data recovery capabilities and meet compliance retention requirements.
+  capability: data_protection
+  service: rds
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_cluster_backup_enabled
+  title: Enable automated backups for RDS clusters
+  description: Enable automated backups for RDS Aurora clusters to ensure data protection and business continuity.
+  capability: data_protection
+  service: rds
+  subservice: backup
+  risk: MEDIUM
+  existing: false
+
+- function_name: rds_instance_deletion_protection
+  title: Enable deletion protection for RDS instances
+  description: Enable deletion protection for RDS instances to prevent accidental data loss and ensure data integrity.
+  capability: data_protection
+  service: rds
+  subservice: protection
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_cluster_deletion_protection
+  title: Enable deletion protection for RDS clusters
+  description: Enable deletion protection for RDS Aurora clusters to prevent accidental deletion and protect critical data.
+  capability: data_protection
+  service: rds
+  subservice: protection
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_instance_copy_tags_to_snapshots
+  title: Copy tags to RDS snapshots
+  description: Enable copying tags to RDS snapshots for proper data classification and compliance tracking of backup data.
+  capability: data_protection
+  service: rds
+  subservice: tagging
+  risk: LOW
+  existing: true
+
+- function_name: rds_cluster_copy_tags_to_snapshots
+  title: Copy tags to RDS cluster snapshots
+  description: Enable copying tags to RDS Aurora cluster snapshots for data governance and compliance requirements.
+  capability: data_protection
+  service: rds
+  subservice: tagging
+  risk: LOW
+  existing: true
+
+- function_name: rds_instance_protected_by_backup_plan
+  title: Ensure RDS instances are protected by backup plans
+  description: Ensure RDS instances are included in AWS Backup plans for comprehensive data protection and compliance.
+  capability: data_protection
+  service: rds
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_cluster_protected_by_backup_plan
+  title: Ensure RDS clusters are protected by backup plans
+  description: Ensure RDS Aurora clusters are included in AWS Backup plans for enterprise-grade data protection.
+  capability: data_protection
+  service: rds
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+# DATA RESIDENCY Rules
+- function_name: rds_instance_multi_az
+  title: Enable Multi-AZ deployment for RDS instances
+  description: Enable Multi-AZ deployment for RDS instances to ensure data availability within the same region and meet resilience requirements.
+  capability: data_residency
+  service: rds
+  subservice: availability
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_cluster_multi_az
+  title: Enable Multi-AZ deployment for RDS clusters
+  description: Enable Multi-AZ deployment for RDS Aurora clusters to ensure high availability within approved regions.
+  capability: data_residency
+  service: rds
+  subservice: availability
+  risk: MEDIUM
+  existing: true
+
+- function_name: rds_instance_region_restriction_enforced
+  title: Enforce region restrictions for RDS instances
+  description: Ensure RDS instances are deployed only in approved regions to comply with data residency and sovereignty requirements.
+  capability: data_residency
+  service: rds
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: rds_cluster_region_restriction_enforced
+  title: Enforce region restrictions for RDS clusters
+  description: Ensure RDS Aurora clusters are deployed only in approved regions to meet data residency compliance.
+  capability: data_residency
+  service: rds
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: rds_cross_region_backup_restricted
+  title: Restrict cross-region backup destinations
+  description: Ensure RDS cross-region backups are only configured to approved regions that meet data residency requirements.
+  capability: data_residency
+  service: rds
+  subservice: backup
+  risk: HIGH
+  existing: false
+
+- function_name: rds_read_replica_region_compliance
+  title: Validate read replica regions for compliance
+  description: Ensure RDS read replicas are created only in regions that comply with data residency and sovereignty policies.
+  capability: data_residency
+  service: rds
+  subservice: replication
+  risk: HIGH
+  existing: false
+
+- function_name: rds_instance_data_sovereignty_tags
+  title: Tag RDS instances with data sovereignty information
+  description: Ensure RDS instances are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: rds
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: rds_cluster_data_sovereignty_tags
+  title: Tag RDS clusters with data sovereignty information
+  description: Ensure RDS Aurora clusters are tagged with data sovereignty and jurisdiction information for regulatory compliance.
+  capability: data_residency
+  service: rds
+  subservice: tagging
+  risk: LOW
+  existing: false
