@@ -1,0 +1,572 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Ensure Lambda functions are not publicly accessible",
+    "Checks": ["lambda_function_no_public_access"],
+    "function_name": "lambda_function_no_public_access",
+    "title": "Ensure Lambda functions are not publicly accessible",
+    "description": "Prevent Lambda functions from being publicly accessible to avoid unauthorized access to sensitive function data and code.",
+    "capability": "access_governance",
+    "service": "lambda",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_LAMBDA_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Prevent Lambda functions from being publicly accessible to avoid unauthorized access to sensitive function data and code.",
+        "RationaleStatement": "Public accessibility exposes Lambda functions to unauthorized invocation and potential data exposure through function outputs or logs.",
+        "ImpactStatement": "Publicly accessible Lambda functions can be invoked by unauthorized users, potentially leading to data exposure, resource abuse, or denial of service.",
+        "RemediationProcedure": "1. List function policies: ```aws lambda get-policy --function-name <function-name>```\n2. Remove public access policies: ```aws lambda remove-permission --function-name <function-name> --statement-id <statement-id>```\n3. Review resource-based policies for '*' principals\n4. Implement proper authentication and authorization\n5. Use VPC endpoints for internal access",
+        "AuditProcedure": "1. List Lambda functions: ```aws lambda list-functions```\n2. Check function policies: ```aws lambda get-policy --function-name <function-name>```\n3. Look for policies with Principal '*' or public access\n4. Review function URL configurations for public access",
+        "AdditionalInformation": "Use IAM roles and policies for controlled access instead of public permissions",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html",
+        "DefaultValue": "Lambda functions are private by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Ensure Lambda functions use IAM roles",
+    "Checks": ["lambda_function_iam_role_configured"],
+    "function_name": "lambda_function_iam_role_configured",
+    "title": "Ensure Lambda functions use IAM roles",
+    "description": "Ensure Lambda functions are configured with appropriate IAM roles to control access to AWS resources and sensitive data.",
+    "capability": "access_governance",
+    "service": "lambda",
+    "subservice": "authentication",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_LAMBDA_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda functions are configured with appropriate IAM roles to control access to AWS resources and sensitive data.",
+        "RationaleStatement": "IAM roles provide secure, temporary credentials for Lambda functions to access AWS resources without hardcoded credentials.",
+        "ImpactStatement": "Without proper IAM roles, Lambda functions may lack necessary permissions or use overly permissive access, creating security risks.",
+        "RemediationProcedure": "1. Create appropriate IAM role with least privilege principle\n2. Attach necessary policies: ```aws iam attach-role-policy --role-name <role-name> --policy-arn <policy-arn>```\n3. Update function configuration: ```aws lambda update-function-configuration --function-name <function-name> --role <role-arn>```\n4. Remove any hardcoded credentials from function code\n5. Test function with new role permissions",
+        "AuditProcedure": "1. List Lambda functions: ```aws lambda list-functions```\n2. Check Role field for each function\n3. Verify roles follow least privilege principle\n4. Review attached policies: ```aws iam list-attached-role-policies --role-name <role-name>```",
+        "AdditionalInformation": "Lambda execution role should only include permissions required for function operation",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html",
+        "DefaultValue": "Lambda functions require an execution role to be specified"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Enable VPC configuration for Lambda functions",
+    "Checks": ["lambda_function_vpc_configured"],
+    "function_name": "lambda_function_vpc_configured",
+    "title": "Enable VPC configuration for Lambda functions",
+    "description": "Configure Lambda functions to run within VPC to provide network isolation and control access to sensitive resources.",
+    "capability": "access_governance",
+    "service": "lambda",
+    "subservice": "network",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_LAMBDA_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure Lambda functions to run within VPC to provide network isolation and control access to sensitive resources.",
+        "RationaleStatement": "VPC configuration provides network-level isolation and enables secure communication with VPC resources like databases and internal services.",
+        "ImpactStatement": "Lambda functions outside VPC may have broader network access than necessary and cannot securely access VPC resources.",
+        "RemediationProcedure": "1. Identify functions requiring VPC access\n2. Create or identify appropriate subnets and security groups\n3. Update function configuration: ```aws lambda update-function-configuration --function-name <function-name> --vpc-config SubnetIds=<subnet-ids>,SecurityGroupIds=<sg-ids>```\n4. Ensure NAT Gateway or VPC endpoints for internet access if needed\n5. Test function connectivity and performance",
+        "AuditProcedure": "1. List Lambda functions: ```aws lambda list-functions```\n2. Check VpcConfig field for each function\n3. Verify appropriate functions are in VPC\n4. Review subnet and security group configurations",
+        "AdditionalInformation": "VPC configuration may impact cold start performance; use only when necessary",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html",
+        "DefaultValue": "Lambda functions run outside VPC by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Implement least privilege IAM policies for Lambda",
+    "Checks": ["lambda_function_least_privilege_policy"],
+    "function_name": "lambda_function_least_privilege_policy",
+    "title": "Implement least privilege IAM policies for Lambda",
+    "description": "Ensure Lambda function IAM policies follow the principle of least privilege to minimize access to sensitive data and resources.",
+    "capability": "access_governance",
+    "service": "lambda",
+    "subservice": "authorization",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_LAMBDA_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda function IAM policies follow the principle of least privilege to minimize access to sensitive data and resources.",
+        "RationaleStatement": "Least privilege policies reduce the potential impact of security breaches and limit access to only necessary resources and actions.",
+        "ImpactStatement": "Overly permissive policies may allow functions to access sensitive data or resources beyond their operational requirements.",
+        "RemediationProcedure": "1. Analyze function requirements and resource access patterns\n2. Create specific policies with minimal necessary permissions\n3. Remove broad permissions like '*' actions or resources\n4. Use condition keys to further restrict access\n5. Regular review and audit of function permissions",
+        "AuditProcedure": "1. Review function execution roles and attached policies\n2. Check for overly broad permissions (*, Admin policies)\n3. Verify resource-specific access requirements\n4. Use AWS Access Analyzer to identify unused permissions",
+        "AdditionalInformation": "Start with minimal permissions and add only as needed through testing",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege",
+        "DefaultValue": "Default Lambda execution role has minimal CloudWatch Logs permissions"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Enable CloudTrail logging for Lambda activities",
+    "Checks": ["lambda_function_cloudtrail_logging_enabled"],
+    "function_name": "lambda_function_cloudtrail_logging_enabled",
+    "title": "Enable CloudTrail logging for Lambda activities",
+    "description": "Ensure CloudTrail logging is enabled to monitor Lambda function activities and detect unauthorized access attempts.",
+    "capability": "access_governance",
+    "service": "lambda",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_LAMBDA_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure CloudTrail logging is enabled to monitor Lambda function activities and detect unauthorized access attempts.",
+        "RationaleStatement": "CloudTrail logging provides audit trails for Lambda management operations and helps detect unauthorized access or configuration changes.",
+        "ImpactStatement": "Without CloudTrail logging, security incidents and unauthorized Lambda activities may go undetected, hampering forensic analysis.",
+        "RemediationProcedure": "1. Enable CloudTrail if not already active: ```aws cloudtrail create-trail --name <trail-name> --s3-bucket-name <bucket-name>```\n2. Ensure Lambda events are captured (enabled by default)\n3. Configure appropriate log retention periods\n4. Set up monitoring and alerting for suspicious activities\n5. Review log aggregation and analysis tools",
+        "AuditProcedure": "1. Check CloudTrail status: ```aws cloudtrail describe-trails```\n2. Verify trails are logging Lambda events\n3. Review recent Lambda-related events: ```aws logs filter-log-events --log-group-name CloudTrail/LambdaDataEvents```\n4. Check log retention and storage configuration",
+        "AdditionalInformation": "CloudTrail captures Lambda management events by default; data events require explicit configuration",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/logging-using-cloudtrail.html",
+        "DefaultValue": "CloudTrail management events are captured if CloudTrail is enabled"
+      }
+    ]
+  },
+  {
+    "Id": "1.6",
+    "Description": "Restrict Lambda function resource access",
+    "Checks": ["lambda_function_resource_access_restricted"],
+    "function_name": "lambda_function_resource_access_restricted",
+    "title": "Restrict Lambda function resource access",
+    "description": "Ensure Lambda functions have restricted access to only necessary AWS resources to minimize potential data exposure.",
+    "capability": "access_governance",
+    "service": "lambda",
+    "subservice": "authorization",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_LAMBDA_006",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda functions have restricted access to only necessary AWS resources to minimize potential data exposure.",
+        "RationaleStatement": "Resource-specific access controls prevent functions from accessing sensitive data or resources outside their operational scope.",
+        "ImpactStatement": "Unrestricted resource access may allow functions to access sensitive data across multiple services, increasing breach impact.",
+        "RemediationProcedure": "1. Identify specific resources each function needs to access\n2. Update IAM policies to specify exact resource ARNs\n3. Remove wildcard resource permissions where possible\n4. Implement resource-based access controls\n5. Use tags and conditions to further restrict access",
+        "AuditProcedure": "1. Review function IAM policies for resource specifications\n2. Check for wildcard resource permissions (*)\n3. Verify functions only access intended resources\n4. Monitor function activity for unexpected resource access",
+        "AdditionalInformation": "Use resource ARNs and condition keys for granular access control",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_resource.html",
+        "DefaultValue": "Lambda execution roles must be explicitly configured with resource access"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable encryption at rest for Lambda environment variables",
+    "Checks": ["lambda_function_environment_variables_encrypted"],
+    "function_name": "lambda_function_environment_variables_encrypted",
+    "title": "Enable encryption at rest for Lambda environment variables",
+    "description": "Ensure Lambda function environment variables are encrypted at rest using AWS KMS to protect sensitive configuration data.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_LAMBDA_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda function environment variables are encrypted at rest using AWS KMS to protect sensitive configuration data.",
+        "RationaleStatement": "Environment variables may contain sensitive data like database passwords, API keys, and connection strings that must be protected at rest.",
+        "ImpactStatement": "Unencrypted environment variables expose sensitive configuration data to unauthorized access if the Lambda service is compromised.",
+        "RemediationProcedure": "1. Create or identify KMS key for Lambda encryption\n2. Update function configuration: ```aws lambda update-function-configuration --function-name <function-name> --kms-key-arn <kms-key-arn>```\n3. Verify encryption is enabled: ```aws lambda get-function-configuration --function-name <function-name>```\n4. Rotate any previously exposed secrets\n5. Update IAM permissions for KMS key access",
+        "AuditProcedure": "1. List Lambda functions: ```aws lambda list-functions```\n2. Check KMSKeyArn field in function configuration\n3. Verify encryption is enabled for environment variables\n4. Review KMS key policies and access permissions",
+        "AdditionalInformation": "Lambda uses AWS managed key by default; consider customer managed keys for additional control",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption",
+        "DefaultValue": "Environment variables are encrypted with AWS managed key by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Enable encryption in transit for Lambda function communications",
+    "Checks": ["lambda_function_encryption_in_transit"],
+    "function_name": "lambda_function_encryption_in_transit",
+    "title": "Enable encryption in transit for Lambda function communications",
+    "description": "Ensure Lambda functions use encrypted connections (TLS/SSL) for all external communications to protect data in transit.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda functions use encrypted connections (TLS/SSL) for all external communications to protect data in transit.",
+        "RationaleStatement": "Encryption in transit protects sensitive data from interception and tampering during transmission between Lambda functions and external services.",
+        "ImpactStatement": "Unencrypted communications expose sensitive data to man-in-the-middle attacks and eavesdropping.",
+        "RemediationProcedure": "1. Review function code for HTTP connections\n2. Update code to use HTTPS/TLS for all external calls\n3. Implement certificate validation in function code\n4. Use AWS SDK which enforces HTTPS by default\n5. Configure VPC endpoints with encryption for AWS service calls",
+        "AuditProcedure": "1. Review Lambda function source code for HTTP calls\n2. Check for proper TLS/SSL usage in external connections\n3. Verify AWS SDK usage enforces HTTPS\n4. Review VPC endpoint configurations for encryption",
+        "AdditionalInformation": "AWS SDK automatically uses HTTPS for AWS service calls",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html",
+        "DefaultValue": "Lambda functions must explicitly implement encryption in transit for external communications"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Implement secure coding practices for Lambda functions",
+    "Checks": ["lambda_function_secure_coding_practices"],
+    "function_name": "lambda_function_secure_coding_practices",
+    "title": "Implement secure coding practices for Lambda functions",
+    "description": "Ensure Lambda functions follow secure coding practices to prevent data exposure through code vulnerabilities.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "code",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda functions follow secure coding practices to prevent data exposure through code vulnerabilities.",
+        "RationaleStatement": "Secure coding practices prevent common vulnerabilities that could lead to data exposure, injection attacks, or unauthorized access.",
+        "ImpactStatement": "Insecure code may contain vulnerabilities that expose sensitive data or allow unauthorized access to AWS resources.",
+        "RemediationProcedure": "1. Implement input validation and sanitization\n2. Use parameterized queries for database operations\n3. Avoid logging sensitive data\n4. Implement proper error handling without data exposure\n5. Use static code analysis tools for vulnerability scanning\n6. Regular security code reviews",
+        "AuditProcedure": "1. Review function source code for security vulnerabilities\n2. Check for proper input validation and sanitization\n3. Verify sensitive data is not logged or exposed in error messages\n4. Review database query patterns for injection vulnerabilities\n5. Use automated security scanning tools",
+        "AdditionalInformation": "Follow OWASP guidelines for serverless security best practices",
+        "References": "https://owasp.org/www-project-serverless-top-10/",
+        "DefaultValue": "Lambda functions require explicit implementation of secure coding practices"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Enable CloudWatch Logs encryption for Lambda functions",
+    "Checks": ["lambda_function_cloudwatch_logs_encrypted"],
+    "function_name": "lambda_function_cloudwatch_logs_encrypted",
+    "title": "Enable CloudWatch Logs encryption for Lambda functions",
+    "description": "Ensure Lambda function CloudWatch Logs are encrypted at rest to protect log data containing potentially sensitive information.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda function CloudWatch Logs are encrypted at rest to protect log data containing potentially sensitive information.",
+        "RationaleStatement": "Lambda function logs may contain sensitive data from function execution and must be encrypted to prevent unauthorized access.",
+        "ImpactStatement": "Unencrypted logs may expose sensitive data if CloudWatch Logs storage is compromised or accessed by unauthorized users.",
+        "RemediationProcedure": "1. Create or identify KMS key for log encryption\n2. Create encrypted log group: ```aws logs create-log-group --log-group-name /aws/lambda/<function-name> --kms-key-id <kms-key-arn>```\n3. Update existing log groups: ```aws logs associate-kms-key --log-group-name /aws/lambda/<function-name> --kms-key-id <kms-key-arn>```\n4. Verify encryption is applied\n5. Update IAM permissions for KMS key access",
+        "AuditProcedure": "1. List Lambda log groups: ```aws logs describe-log-groups --log-group-name-prefix /aws/lambda/```\n2. Check kmsKeyId field for each log group\n3. Verify encryption is enabled for all Lambda log groups\n4. Review KMS key policies and access permissions",
+        "AdditionalInformation": "CloudWatch Logs encryption applies to all new log events; existing events remain unencrypted",
+        "References": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/encrypt-log-data-kms.html",
+        "DefaultValue": "CloudWatch Logs are not encrypted by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Implement data loss prevention for Lambda functions",
+    "Checks": ["lambda_function_data_loss_prevention"],
+    "function_name": "lambda_function_data_loss_prevention",
+    "title": "Implement data loss prevention for Lambda functions",
+    "description": "Implement data loss prevention measures in Lambda functions to prevent unauthorized data exfiltration or exposure.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "dlp",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement data loss prevention measures in Lambda functions to prevent unauthorized data exfiltration or exposure.",
+        "RationaleStatement": "DLP measures help prevent sensitive data from being accidentally or maliciously leaked through function outputs, logs, or external communications.",
+        "ImpactStatement": "Without DLP controls, Lambda functions may inadvertently expose sensitive data through various output channels.",
+        "RemediationProcedure": "1. Implement data classification and tagging in function code\n2. Add data masking and redaction for sensitive outputs\n3. Monitor function outputs for sensitive data patterns\n4. Implement egress filtering for external communications\n5. Use AWS Secrets Manager for sensitive data retrieval\n6. Regular audit of function data handling",
+        "AuditProcedure": "1. Review function code for data handling patterns\n2. Check for sensitive data in function outputs and logs\n3. Verify data masking and redaction implementations\n4. Review external communication patterns for data exfiltration risks\n5. Monitor function activity for unusual data access patterns",
+        "AdditionalInformation": "Consider using AWS Macie for automated sensitive data discovery and monitoring",
+        "References": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+        "DefaultValue": "Lambda functions require explicit implementation of DLP measures"
+      }
+    ]
+  },
+  {
+    "Id": "2.6",
+    "Description": "Enable dead letter queue encryption for Lambda functions",
+    "Checks": ["lambda_function_dlq_encrypted"],
+    "function_name": "lambda_function_dlq_encrypted",
+    "title": "Enable dead letter queue encryption for Lambda functions",
+    "description": "Ensure Lambda function dead letter queues are encrypted to protect failed event data from unauthorized access.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "encryption",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda function dead letter queues are encrypted to protect failed event data from unauthorized access.",
+        "RationaleStatement": "Dead letter queues may contain sensitive event data from failed function executions and must be encrypted to prevent data exposure.",
+        "ImpactStatement": "Unencrypted dead letter queues expose sensitive event data if the queue storage is compromised or accessed by unauthorized users.",
+        "RemediationProcedure": "1. Create encrypted SQS queue for DLQ: ```aws sqs create-queue --queue-name <dlq-name> --attributes KmsMasterKeyId=<kms-key-id>```\n2. Update function DLQ configuration: ```aws lambda update-function-configuration --function-name <function-name> --dead-letter-config TargetArn=<dlq-arn>```\n3. Verify DLQ encryption is enabled\n4. Update IAM permissions for KMS key access\n5. Configure DLQ message retention and processing",
+        "AuditProcedure": "1. List Lambda functions with DLQ configuration\n2. Check dead letter queue encryption settings\n3. Verify KMS key configuration for DLQ\n4. Review DLQ access permissions and policies",
+        "AdditionalInformation": "Both SQS and SNS can be used as dead letter queues; ensure both are encrypted",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq",
+        "DefaultValue": "Dead letter queues are not encrypted by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.7",
+    "Description": "Implement sensitive data tokenization in Lambda functions",
+    "Checks": ["lambda_function_data_tokenization"],
+    "function_name": "lambda_function_data_tokenization",
+    "title": "Implement sensitive data tokenization in Lambda functions",
+    "description": "Implement tokenization for sensitive data processed by Lambda functions to reduce data exposure risks.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "tokenization",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement tokenization for sensitive data processed by Lambda functions to reduce data exposure risks.",
+        "RationaleStatement": "Tokenization replaces sensitive data with non-sensitive tokens, reducing the risk of data exposure while maintaining functional value.",
+        "ImpactStatement": "Without tokenization, Lambda functions process and store actual sensitive data, increasing exposure risk in case of security breaches.",
+        "RemediationProcedure": "1. Identify sensitive data elements in function processing\n2. Implement tokenization service or use AWS Payment Cryptography\n3. Update function code to tokenize sensitive inputs\n4. Store tokens instead of sensitive data\n5. Implement secure token-to-data mapping service\n6. Regular audit of tokenization implementation",
+        "AuditProcedure": "1. Review function code for sensitive data handling\n2. Verify tokenization is implemented for appropriate data elements\n3. Check token generation and mapping security\n4. Review data storage patterns for token usage\n5. Audit tokenization service security and access controls",
+        "AdditionalInformation": "Consider format-preserving tokenization for maintaining data utility",
+        "References": "https://docs.aws.amazon.com/payment-cryptography/latest/userguide/what-is-payment-cryptography.html",
+        "DefaultValue": "Lambda functions require explicit implementation of tokenization"
+      }
+    ]
+  },
+  {
+    "Id": "2.8",
+    "Description": "Enable runtime security monitoring for Lambda functions",
+    "Checks": ["lambda_function_runtime_security_monitoring"],
+    "function_name": "lambda_function_runtime_security_monitoring",
+    "title": "Enable runtime security monitoring for Lambda functions",
+    "description": "Implement runtime security monitoring for Lambda functions to detect and respond to security threats during execution.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "monitoring",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement runtime security monitoring for Lambda functions to detect and respond to security threats during execution.",
+        "RationaleStatement": "Runtime security monitoring helps detect malicious activities, code injection, and abnormal behavior that could lead to data exposure.",
+        "ImpactStatement": "Without runtime monitoring, security threats during function execution may go undetected, allowing data compromise.",
+        "RemediationProcedure": "1. Enable AWS GuardDuty for Lambda protection\n2. Implement custom security monitoring in function code\n3. Configure CloudWatch alarms for suspicious activities\n4. Set up automated response mechanisms\n5. Integrate with SIEM systems for centralized monitoring\n6. Regular review of security monitoring effectiveness",
+        "AuditProcedure": "1. Verify GuardDuty is enabled for Lambda functions\n2. Review custom security monitoring implementations\n3. Check CloudWatch alarms and metrics configuration\n4. Verify automated response mechanisms are working\n5. Review SIEM integration and alerting",
+        "AdditionalInformation": "Consider third-party runtime security solutions for enhanced protection",
+        "References": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-lambda.html",
+        "DefaultValue": "Lambda functions require explicit implementation of runtime security monitoring"
+      }
+    ]
+  },
+  {
+    "Id": "2.9",
+    "Description": "Implement secrets rotation for Lambda functions",
+    "Checks": ["lambda_function_secrets_rotation"],
+    "function_name": "lambda_function_secrets_rotation",
+    "title": "Implement secrets rotation for Lambda functions",
+    "description": "Implement automatic secrets rotation for Lambda functions to minimize the risk of credential compromise and data exposure.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "secrets",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_009",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement automatic secrets rotation for Lambda functions to minimize the risk of credential compromise and data exposure.",
+        "RationaleStatement": "Regular secrets rotation reduces the window of opportunity for attackers to use compromised credentials to access sensitive data.",
+        "ImpactStatement": "Static secrets increase the risk of credential compromise and unauthorized access to sensitive data and resources.",
+        "RemediationProcedure": "1. Migrate secrets to AWS Secrets Manager\n2. Configure automatic rotation: ```aws secretsmanager update-secret --secret-id <secret-id> --rotation-lambda-arn <rotation-function-arn>```\n3. Update function code to retrieve secrets dynamically\n4. Implement rotation Lambda functions for custom secrets\n5. Set appropriate rotation schedules\n6. Monitor rotation success and failures",
+        "AuditProcedure": "1. List secrets used by Lambda functions\n2. Check rotation configuration in Secrets Manager\n3. Verify rotation schedules are appropriate\n4. Review rotation success metrics\n5. Audit function code for dynamic secret retrieval",
+        "AdditionalInformation": "AWS Secrets Manager provides automatic rotation for RDS, DocumentDB, and Redshift",
+        "References": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
+        "DefaultValue": "Secrets rotation must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "Id": "2.10",
+    "Description": "Enable memory and execution monitoring for Lambda functions",
+    "Checks": ["lambda_function_memory_execution_monitoring"],
+    "function_name": "lambda_function_memory_execution_monitoring",
+    "title": "Enable memory and execution monitoring for Lambda functions",
+    "description": "Monitor Lambda function memory usage and execution patterns to detect potential security issues and data processing anomalies.",
+    "capability": "data_protection",
+    "service": "lambda",
+    "subservice": "monitoring",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_LAMBDA_010",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Monitor Lambda function memory usage and execution patterns to detect potential security issues and data processing anomalies.",
+        "RationaleStatement": "Abnormal memory usage or execution patterns may indicate security issues, data processing errors, or potential attacks.",
+        "ImpactStatement": "Without proper monitoring, security incidents or data processing anomalies may go undetected, potentially leading to data exposure.",
+        "RemediationProcedure": "1. Enable detailed CloudWatch metrics for Lambda functions\n2. Set up CloudWatch alarms for memory usage thresholds\n3. Monitor execution duration and invocation patterns\n4. Implement custom metrics for security-relevant events\n5. Configure automated responses to anomalous behavior\n6. Regular review of monitoring data and trends",
+        "AuditProcedure": "1. Review CloudWatch metrics configuration for Lambda functions\n2. Check alarm settings for memory and execution monitoring\n3. Verify custom metrics implementation\n4. Review historical data for anomalies\n5. Test automated response mechanisms",
+        "AdditionalInformation": "AWS X-Ray can provide detailed execution tracing for Lambda functions",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-monitoring.html",
+        "DefaultValue": "Basic CloudWatch metrics are provided by default; detailed monitoring requires configuration"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Enforce region restrictions for Lambda functions",
+    "Checks": ["lambda_function_region_restriction_enforced"],
+    "function_name": "lambda_function_region_restriction_enforced",
+    "title": "Enforce region restrictions for Lambda functions",
+    "description": "Ensure Lambda functions are deployed only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "lambda",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_LAMBDA_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda functions are deployed only in approved regions to comply with data residency requirements.",
+        "RationaleStatement": "Regional restrictions ensure function execution and associated data processing occur within approved jurisdictions for compliance.",
+        "ImpactStatement": "Lambda functions in unauthorized regions may process sensitive data outside approved jurisdictions, violating data sovereignty requirements.",
+        "RemediationProcedure": "1. Identify functions in non-compliant regions\n2. Create deployment packages for approved regions\n3. Deploy functions to compliant regions: ```aws lambda create-function --function-name <name> --region <approved-region>```\n4. Update application configurations and endpoints\n5. Delete functions from non-compliant regions\n6. Implement deployment policies to prevent future violations",
+        "AuditProcedure": "1. List Lambda functions across all regions: ```aws lambda list-functions --region <region>```\n2. Compare function locations against approved regions\n3. Review function invocation patterns for cross-region calls\n4. Check application configurations for regional compliance",
+        "AdditionalInformation": "Use Service Control Policies (SCPs) to prevent deployment in unauthorized regions",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-regions.html",
+        "DefaultValue": "Lambda functions can be created in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Restrict cross-region Lambda layer usage",
+    "Checks": ["lambda_layer_cross_region_usage_restricted"],
+    "function_name": "lambda_layer_cross_region_usage_restricted",
+    "title": "Restrict cross-region Lambda layer usage",
+    "description": "Ensure Lambda layers are only used within approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "lambda",
+    "subservice": "layers",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_LAMBDA_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda layers are only used within approved regions to maintain data residency compliance.",
+        "RationaleStatement": "Lambda layers may contain code or data that must remain within approved regions to comply with data residency requirements.",
+        "ImpactStatement": "Cross-region layer usage may result in code or data being processed outside approved jurisdictions.",
+        "RemediationProcedure": "1. List layers in each region: ```aws lambda list-layers --region <region>```\n2. Review layer usage across functions\n3. Copy compliant layers to approved regions: ```aws lambda publish-layer-version --layer-name <name> --region <approved-region>```\n4. Update function configurations to use regional layers\n5. Delete layers from non-compliant regions",
+        "AuditProcedure": "1. List all Lambda layers across regions\n2. Check layer versions and their regional distribution\n3. Review function configurations for layer usage\n4. Verify layers are only used within approved regions",
+        "AdditionalInformation": "Layers are region-specific and must be published in each region where they are used",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html",
+        "DefaultValue": "Lambda layers are region-specific by design"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Tag Lambda resources with data classification",
+    "Checks": ["lambda_resources_data_classification_tags"],
+    "function_name": "lambda_resources_data_classification_tags",
+    "title": "Tag Lambda resources with data classification",
+    "description": "Ensure Lambda resources are tagged with appropriate data classification levels for governance and regional compliance tracking.",
+    "capability": "data_residency",
+    "service": "lambda",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_LAMBDA_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Lambda resources are tagged with appropriate data classification levels for governance and regional compliance tracking.",
+        "RationaleStatement": "Data classification tags enable automated compliance monitoring and help ensure appropriate handling of sensitive data based on regional requirements.",
+        "ImpactStatement": "Without proper data classification tags, it becomes difficult to track and manage data according to regional compliance requirements.",
+        "RemediationProcedure": "1. Define data classification taxonomy (Public, Internal, Confidential, Restricted)\n2. Tag Lambda functions: ```aws lambda tag-resource --resource <function-arn> --tags DataClassification=<classification>```\n3. Tag Lambda layers appropriately\n4. Implement automated tagging policies\n5. Regular audit of tagging compliance",
+        "AuditProcedure": "1. List Lambda functions and layers\n2. Check tags: ```aws lambda list-tags --resource <resource-arn>```\n3. Verify DataClassification tags are present\n4. Review tag values for consistency with data classification policy",
+        "AdditionalInformation": "Use consistent tagging strategy across all AWS resources for comprehensive governance",
+        "References": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html",
+        "DefaultValue": "Resources are created without data classification tags by default"
+      }
+    ]
+  }
+]

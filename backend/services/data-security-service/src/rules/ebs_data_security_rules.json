@@ -1,0 +1,623 @@
+[
+  {
+    "function_name": "ebs_snapshot_account_block_public_access",
+    "title": "Block public access to EBS snapshots at account level",
+    "description": "Ensure EBS snapshots are not publicly accessible at the account level to prevent unauthorized access to sensitive data.",
+    "capability": "access_governance",
+    "service": "ebs",
+    "subservice": "snapshots",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EBS_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable account-level blocking of public access to EBS snapshots to prevent unauthorized data exposure.",
+        "RationaleStatement": "Public EBS snapshots can expose sensitive data to unauthorized parties. Account-level blocking provides comprehensive protection against accidental public sharing.",
+        "ImpactStatement": "Without account-level public access blocking, snapshots could be accidentally made public, potentially exposing sensitive data, PII, or confidential business information to unauthorized users.",
+        "RemediationProcedure": "1. Open AWS EC2 Console → EBS → Account attributes.\n2. Navigate to 'Data protection and security'.\n3. Select 'Block public access for EBS snapshots in this account'.\n4. Choose 'Block all public access' and confirm.\n5. CLI: `aws ec2 enable-snapshot-block-public-access --state block-all-sharing`",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 get-snapshot-block-public-access-state` to verify that BlockPublicAccess is enabled at account level.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-snapshot-public-access.html",
+        "DefaultValue": "Disabled by default"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_public_snapshot",
+    "title": "Ensure EBS snapshots are not publicly accessible",
+    "description": "Ensure EBS snapshots are not publicly accessible to prevent unauthorized access to sensitive data stored in volumes.",
+    "capability": "access_governance",
+    "service": "ebs",
+    "subservice": "snapshots",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EBS_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure individual EBS snapshots are not configured with public access permissions.",
+        "RationaleStatement": "Public EBS snapshots expose potentially sensitive data stored on volumes to anyone on the internet, creating significant data security risks.",
+        "ImpactStatement": "Public snapshots can lead to data breaches, unauthorized access to sensitive information, intellectual property theft, and compliance violations.",
+        "RemediationProcedure": "1. Open AWS EC2 Console → EBS → Snapshots.\n2. Select public snapshots (filter by 'Public snapshots').\n3. For each public snapshot, select it and choose 'Actions' → 'Modify permissions'.\n4. Change from 'Public' to 'Private' and save.\n5. CLI: `aws ec2 modify-snapshot-attribute --snapshot-id <snapshot-id> --attribute createVolumePermission --operation-type remove --group-names all`",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?Public==`true`]'` to identify any public snapshots.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html",
+        "DefaultValue": "Private by default unless explicitly made public"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_sharing_restricted",
+    "title": "Restrict EBS snapshot sharing",
+    "description": "Ensure EBS snapshots are not shared with unauthorized accounts to prevent data exposure through snapshot access.",
+    "capability": "access_governance",
+    "service": "ebs",
+    "subservice": "sharing",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EBS_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement controls to prevent unauthorized sharing of EBS snapshots with external AWS accounts.",
+        "RationaleStatement": "Unrestricted snapshot sharing can expose sensitive data to unauthorized AWS accounts, creating significant data security and compliance risks.",
+        "ImpactStatement": "Unauthorized snapshot sharing can lead to data exposure, privacy violations, and potential misuse of sensitive information by untrusted third parties.",
+        "RemediationProcedure": "1. Review all shared snapshots: AWS CLI `aws ec2 describe-snapshots --owner-ids self`.\n2. For each snapshot, check sharing permissions: `aws ec2 describe-snapshot-attribute --snapshot-id <id> --attribute createVolumePermission`.\n3. Remove unauthorized sharing: `aws ec2 modify-snapshot-attribute --snapshot-id <id> --attribute createVolumePermission --operation-type remove --user-ids <unauthorized-account>`.\n4. Implement IAM policies to restrict snapshot sharing permissions.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[*].[SnapshotId]' --output text | xargs -I {} aws ec2 describe-snapshot-attribute --snapshot-id {} --attribute createVolumePermission` to audit all snapshot sharing permissions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html",
+        "DefaultValue": "No sharing unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_attachment_restricted",
+    "title": "Restrict EBS volume attachments",
+    "description": "Ensure EBS volumes can only be attached to authorized EC2 instances to prevent unauthorized data access.",
+    "capability": "access_governance",
+    "service": "ebs",
+    "subservice": "attachment",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EBS_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement IAM policies to control which EC2 instances can attach specific EBS volumes containing sensitive data.",
+        "RationaleStatement": "Restricting volume attachments prevents unauthorized access to sensitive data stored on EBS volumes by limiting which instances can mount them.",
+        "ImpactStatement": "Without attachment restrictions, malicious actors or unauthorized users could attach sensitive volumes to compromised or unauthorized instances, accessing confidential data.",
+        "RemediationProcedure": "1. Implement IAM policies with conditions restricting volume attachments.\n2. Use resource-based policies: Create IAM policy with `ec2:AttachVolume` action restricted by `ec2:InstanceProfile` condition.\n3. Example policy condition: `\"StringEquals\": {\"ec2:InstanceProfile\": \"arn:aws:iam::account:instance-profile/authorized-profile\"}`.\n4. Apply SCPs in AWS Organizations to enforce attachment restrictions organization-wide.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[*].[VolumeId,Attachments[*].InstanceId]'` and cross-reference with authorized instance list. Use CloudTrail to audit `AttachVolume` events.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html",
+        "DefaultValue": "Any instance can attach volumes unless restricted"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_cross_account_access_restricted",
+    "title": "Restrict cross-account access to EBS snapshots",
+    "description": "Ensure EBS snapshots do not allow unrestricted cross-account access that could lead to data exposure.",
+    "capability": "access_governance",
+    "service": "ebs",
+    "subservice": "snapshots",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EBS_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Prevent unauthorized cross-account access to EBS snapshots that could lead to data exposure.",
+        "RationaleStatement": "Unrestricted cross-account snapshot access can expose sensitive data to unauthorized AWS accounts, violating data governance principles.",
+        "ImpactStatement": "Unrestricted cross-account access could result in data exfiltration, unauthorized data access by external parties, and compliance violations.",
+        "RemediationProcedure": "1. Audit cross-account snapshot permissions: `aws ec2 describe-snapshots --owner-ids self`.\n2. For each snapshot, check cross-account access: `aws ec2 describe-snapshot-attribute --snapshot-id <id> --attribute createVolumePermission`.\n3. Remove unauthorized cross-account access: `aws ec2 modify-snapshot-attribute --snapshot-id <id> --attribute createVolumePermission --operation-type remove --user-ids <unauthorized-account>`.\n4. Implement preventive controls using IAM policies and SCPs.",
+        "AuditProcedure": "Use AWS Config rule `ebs-snapshot-public-read-prohibited` and custom rule to check cross-account sharing. CLI: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?length(CreateVolumePermissions) > `0`]'`",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html",
+        "DefaultValue": "No cross-account access unless explicitly granted"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_cloudtrail_logging_enabled",
+    "title": "Enable CloudTrail logging for EBS operations",
+    "description": "Enable CloudTrail logging for EBS operations to monitor volume and snapshot activities for compliance auditing.",
+    "capability": "access_governance",
+    "service": "ebs",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EBS_006",
+    "Attributes": [
+      {
+        "Section": "Logging & Audit",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable comprehensive CloudTrail logging for EBS operations to maintain audit trails for compliance and security monitoring.",
+        "RationaleStatement": "CloudTrail logging provides audit trails for EBS operations, enabling detection of unauthorized access attempts and compliance reporting.",
+        "ImpactStatement": "Without CloudTrail logging, unauthorized EBS operations may go undetected, hindering incident response and compliance auditing capabilities.",
+        "RemediationProcedure": "1. Open CloudTrail Console → Create trail or modify existing trail.\n2. Ensure trail covers all regions and includes data events.\n3. Configure trail to log EBS API calls: AttachVolume, DetachVolume, CreateSnapshot, DeleteSnapshot.\n4. CLI: `aws cloudtrail create-trail --name ebs-audit-trail --s3-bucket-name <bucket> --include-global-service-events --is-multi-region-trail`.\n5. Start logging: `aws cloudtrail start-logging --name ebs-audit-trail`",
+        "AuditProcedure": "Use AWS CLI: `aws cloudtrail describe-trails` and `aws cloudtrail get-trail-status --name <trail-name>` to verify CloudTrail is enabled and logging EBS events.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+        "DefaultValue": "Basic management events logged by default"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_default_encryption",
+    "title": "Enable default EBS encryption",
+    "description": "Ensure EBS default encryption is enabled to automatically encrypt all new volumes and protect data at rest.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EBS_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable account-level default encryption for EBS volumes to ensure all new volumes are automatically encrypted.",
+        "RationaleStatement": "Default EBS encryption ensures all new volumes are automatically encrypted, preventing accidental creation of unencrypted volumes containing sensitive data.",
+        "ImpactStatement": "Without default encryption, new volumes may be created unencrypted, exposing sensitive data at rest and creating compliance violations.",
+        "RemediationProcedure": "1. Open AWS EC2 Console → EBS → Account attributes.\n2. Click 'EBS encryption' and select 'Always encrypt new EBS volumes'.\n3. Choose default KMS key or specify a customer-managed key.\n4. CLI: `aws ec2 enable-ebs-encryption-by-default --region <region>`.\n5. Verify: `aws ec2 get-ebs-encryption-by-default --region <region>`",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 get-ebs-encryption-by-default --region <region>` to verify default encryption is enabled in all required regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default",
+        "DefaultValue": "Disabled by default"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_encryption",
+    "title": "Enable encryption for EBS volumes",
+    "description": "Ensure EBS volumes are encrypted to protect sensitive data at rest and meet compliance requirements.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EBS_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure all EBS volumes containing sensitive data are encrypted using AES-256 encryption.",
+        "RationaleStatement": "EBS volume encryption protects sensitive data at rest using industry-standard AES-256 encryption, essential for data security and compliance.",
+        "ImpactStatement": "Unencrypted EBS volumes expose sensitive data at rest, creating risks of data breaches and compliance violations if physical media is compromised.",
+        "RemediationProcedure": "1. Identify unencrypted volumes: `aws ec2 describe-volumes --query 'Volumes[?Encrypted==`false`]'`.\n2. Create encrypted snapshot: `aws ec2 create-snapshot --volume-id <vol-id> --description 'Pre-encryption backup'`.\n3. Copy snapshot with encryption: `aws ec2 copy-snapshot --source-snapshot-id <snap-id> --encrypted --destination-region <region>`.\n4. Create encrypted volume from snapshot and replace original volume.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[?Encrypted==`false`].VolumeId'` to identify unencrypted volumes. Use AWS Config rule `encrypted-volumes`.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html",
+        "DefaultValue": "Unencrypted unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshots_encrypted",
+    "title": "Ensure EBS snapshots are encrypted",
+    "description": "Ensure EBS snapshots are encrypted to protect sensitive data during backup and restore operations.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EBS_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure all EBS snapshots are encrypted to protect sensitive data during backup, restore, and sharing operations.",
+        "RationaleStatement": "Encrypted snapshots protect sensitive data during backup, restore, and sharing operations, maintaining data confidentiality throughout the backup lifecycle.",
+        "ImpactStatement": "Unencrypted snapshots can expose sensitive data during backup operations, data transfers, or if snapshot storage is compromised.",
+        "RemediationProcedure": "1. Identify unencrypted snapshots: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?Encrypted==`false`]'`.\n2. For each unencrypted snapshot, create encrypted copy: `aws ec2 copy-snapshot --source-snapshot-id <snap-id> --encrypted --destination-region <region>`.\n3. Delete original unencrypted snapshots after verification.\n4. Update backup policies to ensure future snapshots are encrypted.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?Encrypted==`false`].SnapshotId'` to identify unencrypted snapshots.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html#ebs-encrypt-snapshot",
+        "DefaultValue": "Inherits encryption from source volume"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_protected_by_backup_plan",
+    "title": "Protect EBS volumes with backup plans",
+    "description": "Ensure EBS volumes are protected by AWS Backup plans for comprehensive data protection and compliance.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EBS_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure critical EBS volumes are protected by centralized AWS Backup plans with appropriate schedules and retention.",
+        "RationaleStatement": "AWS Backup provides centralized, automated backup for EBS volumes, ensuring data protection, compliance, and disaster recovery capabilities.",
+        "ImpactStatement": "Without backup protection, EBS volumes are vulnerable to data loss from hardware failures, accidental deletion, or ransomware attacks.",
+        "RemediationProcedure": "1. Open AWS Backup Console → Create backup plan.\n2. Define backup frequency, retention, and lifecycle rules.\n3. Create backup selections with resource assignment tags or ARNs.\n4. CLI: `aws backup create-backup-plan --backup-plan <plan-json>` and `aws backup create-backup-selection --backup-plan-id <id> --backup-selection <selection-json>`.\n5. Tag EBS volumes appropriately for automatic inclusion.",
+        "AuditProcedure": "Use AWS CLI: `aws backup list-backup-jobs --by-resource-type EBS` and `aws backup list-protected-resources --resource-type EBS` to verify backup coverage.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/aws-backup/latest/devguide/about-backup-plans.html",
+        "DefaultValue": "No automatic backup unless configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_snapshots_exists",
+    "title": "Ensure EBS volume snapshots exist",
+    "description": "Ensure EBS volumes have regular snapshots created for data protection and disaster recovery purposes.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EBS_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Verify that EBS volumes have recent snapshots created for data protection and point-in-time recovery.",
+        "RationaleStatement": "Regular snapshots provide point-in-time recovery capabilities, protecting against data loss and enabling rapid disaster recovery.",
+        "ImpactStatement": "Without regular snapshots, data loss from volume corruption, accidental deletion, or system failures cannot be recovered, leading to business disruption.",
+        "RemediationProcedure": "1. Identify volumes without recent snapshots: `aws ec2 describe-volumes` and cross-reference with `aws ec2 describe-snapshots`.\n2. Create snapshots manually: `aws ec2 create-snapshot --volume-id <vol-id> --description 'Manual backup'`.\n3. Set up automated snapshots using Amazon Data Lifecycle Manager (DLM).\n4. Create DLM policy: `aws dlm create-lifecycle-policy --policy <policy-json>`.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[*].VolumeId'` and for each volume check recent snapshots: `aws ec2 describe-snapshots --filters Name=volume-id,Values=<vol-id> --query 'Snapshots[?StartTime>=`<date>`]'`",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html",
+        "DefaultValue": "No automatic snapshots unless configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_kms_encryption_enabled",
+    "title": "Use KMS encryption for EBS volumes",
+    "description": "Ensure EBS volumes use KMS encryption instead of default encryption for enhanced key management and audit trails.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EBS_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Use customer-managed KMS keys for EBS volume encryption to provide enhanced key management and audit capabilities.",
+        "RationaleStatement": "KMS encryption provides enhanced key management, audit trails, and access controls compared to default encryption, improving security governance.",
+        "ImpactStatement": "Default encryption without KMS limits key management capabilities and audit visibility, reducing security controls and compliance capabilities.",
+        "RemediationProcedure": "1. Create or identify KMS key: `aws kms create-key --description 'EBS encryption key'`.\n2. Set default KMS key for EBS: `aws ec2 modify-ebs-default-kms-key-id --kms-key-id <key-id>`.\n3. For existing volumes, create encrypted snapshot with KMS key: `aws ec2 copy-snapshot --source-snapshot-id <snap-id> --encrypted --kms-key-id <key-id>`.\n4. Create new volume from KMS-encrypted snapshot.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[?Encrypted==`true`].[VolumeId,KmsKeyId]'` to verify volumes use KMS keys. Check default key: `aws ec2 get-ebs-default-kms-key-id`",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_key_mgmt",
+        "DefaultValue": "AWS-managed keys used by default"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_lifecycle_management",
+    "title": "Implement EBS snapshot lifecycle management",
+    "description": "Implement lifecycle policies for EBS snapshots to automatically manage retention and reduce storage costs.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "lifecycle",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EBS_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement automated lifecycle policies for EBS snapshots to manage retention and optimize storage costs.",
+        "RationaleStatement": "Automated lifecycle management ensures consistent backup schedules, optimizes storage costs, and maintains compliance with retention requirements.",
+        "ImpactStatement": "Without lifecycle management, snapshots may accumulate indefinitely, increasing costs and making retention compliance difficult to manage.",
+        "RemediationProcedure": "1. Create Data Lifecycle Manager policy for snapshots.\n2. Define target resources using tags: `aws dlm create-lifecycle-policy --policy '{...}'`.\n3. Set retention schedule (daily/weekly/monthly).\n4. Configure cross-region copy if required.\n5. Enable policy: `aws dlm update-lifecycle-policy --policy-id <id> --state ENABLED`",
+        "AuditProcedure": "Use AWS CLI: `aws dlm get-lifecycle-policies` to list policies and `aws dlm get-lifecycle-policy --policy-id <id>` to verify policy configuration and status.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html",
+        "DefaultValue": "Manual snapshot management unless automated"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_delete_on_termination_disabled",
+    "title": "Disable delete on termination for EBS volumes",
+    "description": "Disable delete on termination for EBS volumes containing sensitive data to prevent accidental data loss.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "protection",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EBS_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Disable delete on termination for EBS volumes containing sensitive data to prevent accidental data loss during instance termination.",
+        "RationaleStatement": "Disabling delete on termination prevents accidental data loss when instances are terminated, protecting valuable data stored on EBS volumes.",
+        "ImpactStatement": "Enabled delete on termination can result in permanent data loss if instances are accidentally terminated, causing business disruption and data recovery costs.",
+        "RemediationProcedure": "1. Identify volumes with delete on termination enabled: `aws ec2 describe-instances --query 'Reservations[*].Instances[*].BlockDeviceMappings[?DeleteOnTermination==`true`]'`.\n2. Modify attribute: `aws ec2 modify-instance-attribute --instance-id <id> --block-device-mappings '[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"DeleteOnTermination\":false}}]'`.\n3. For future instances, ensure launch templates/configurations disable delete on termination.\n4. Implement IAM policies to prevent enabling delete on termination.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,BlockDeviceMappings[*].[DeviceName,Ebs.DeleteOnTermination]]'` to audit delete on termination settings.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination",
+        "DefaultValue": "Enabled for root volumes by default"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_encryption_in_transit",
+    "title": "Ensure EBS snapshot encryption in transit",
+    "description": "Ensure EBS snapshots are encrypted during transfer operations to protect data during copy and sharing.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "tls",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EBS_009",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EBS snapshots are encrypted during transfer operations to protect data during copy and sharing operations.",
+        "RationaleStatement": "Encryption in transit protects snapshot data during transfer operations, preventing interception and man-in-the-middle attacks.",
+        "ImpactStatement": "Unencrypted data in transit could be intercepted during snapshot copy operations, potentially exposing sensitive data to unauthorized parties.",
+        "RemediationProcedure": "1. Ensure all AWS API calls use HTTPS endpoints (default behavior).\n2. When copying snapshots, use encrypted endpoints: `aws ec2 copy-snapshot --source-snapshot-id <id> --encrypted --destination-region <region>`.\n3. Implement IAM policies denying HTTP-only API calls: condition `aws:SecureTransport: false`.\n4. Use VPC endpoints for EC2 API to ensure traffic stays within AWS network.",
+        "AuditProcedure": "Use CloudTrail to audit API calls and ensure all `CopySnapshot` events use secure transport. Check IAM policies for `aws:SecureTransport` conditions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/data-protection.html#encryption-transit",
+        "DefaultValue": "HTTPS used by default for AWS API calls"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_data_classification_tags",
+    "title": "Tag EBS volumes with data classification",
+    "description": "Ensure EBS volumes are tagged with appropriate data classification levels for governance and compliance tracking.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EBS_010",
+    "Attributes": [
+      {
+        "Section": "Data Classification",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Apply data classification tags to EBS volumes to support security controls, discovery, and regulatory compliance.",
+        "RationaleStatement": "Data classification tags enable proper governance, access controls, and compliance tracking based on data sensitivity levels.",
+        "ImpactStatement": "Without data classification tags, it's difficult to apply appropriate security controls, track compliance, and ensure proper handling of sensitive data.",
+        "RemediationProcedure": "1. Define data classification taxonomy (e.g., Public, Internal, Confidential, Restricted).\n2. Tag volumes: `aws ec2 create-tags --resources <vol-id> --tags Key=DataClassification,Value=Confidential Key=DataOwner,Value=<owner>`.\n3. Implement automation using Lambda functions to tag new volumes based on instance tags or patterns.\n4. Create tag policies using AWS Organizations to enforce tagging standards.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[?!Tags || !Tags[?Key==`DataClassification`]]'` to identify untagged volumes. Use AWS Config rule `required-tags`.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html",
+        "DefaultValue": "No tags unless manually applied"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_retention_policy",
+    "title": "Configure EBS snapshot retention policies",
+    "description": "Configure retention policies for EBS snapshots to meet compliance requirements and manage storage costs.",
+    "capability": "data_protection",
+    "service": "ebs",
+    "subservice": "retention",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EBS_011",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Define and implement retention policies for EBS snapshots based on compliance requirements and business needs.",
+        "RationaleStatement": "Proper retention policies ensure compliance with regulatory requirements while optimizing storage costs and maintaining data availability for required periods.",
+        "ImpactStatement": "Without retention policies, organizations may face compliance violations, excessive storage costs, or inability to recover data when needed for legal or business purposes.",
+        "RemediationProcedure": "1. Define retention requirements based on compliance needs (e.g., 7 years for financial data).\n2. Create DLM policies with appropriate retention: `aws dlm create-lifecycle-policy --policy <policy-json>`.\n3. Set up different retention periods for different data classifications.\n4. Implement snapshot tagging to support retention policies.\n5. Monitor and audit retention compliance regularly.",
+        "AuditProcedure": "Use AWS CLI: `aws dlm get-lifecycle-policies` to verify retention policies exist. Check snapshots: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?StartTime<`<retention-date>`]'`",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html",
+        "DefaultValue": "Snapshots retained indefinitely unless deleted manually"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_region_restriction_enforced",
+    "title": "Enforce region restrictions for EBS volumes",
+    "description": "Ensure EBS volumes are created only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "ebs",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EBS_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement controls to ensure EBS volumes are created only in approved regions that meet data residency requirements.",
+        "RationaleStatement": "Region restrictions ensure data remains within approved geographical boundaries to comply with data sovereignty and privacy regulations.",
+        "ImpactStatement": "Volumes in unapproved regions may violate data residency laws, GDPR, or other regulations, resulting in legal penalties and compliance violations.",
+        "RemediationProcedure": "1. Define approved regions based on data residency requirements.\n2. Implement SCPs in AWS Organizations: Create policy denying EC2 actions in unapproved regions.\n3. Use IAM policies with condition: `aws:RequestedRegion` to restrict volume creation.\n4. Example SCP: `{\"Effect\":\"Deny\",\"Action\":\"ec2:CreateVolume\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"us-east-1\",\"eu-west-1\"]}}}`",
+        "AuditProcedure": "Use AWS CLI across all regions: `aws ec2 describe-volumes --region <region>` to identify volumes in unapproved regions. Use AWS Config aggregator for multi-region compliance monitoring.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "Any region may be used unless restricted"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_cross_region_copy_restricted",
+    "title": "Restrict cross-region EBS snapshot copying",
+    "description": "Ensure EBS snapshots are copied only to approved regions that meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "ebs",
+    "subservice": "backup",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EBS_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Restrict cross-region snapshot copying to approved regions that meet data residency and sovereignty requirements.",
+        "RationaleStatement": "Restricting cross-region snapshot copying ensures backup data remains within approved jurisdictions, maintaining data residency compliance.",
+        "ImpactStatement": "Unrestricted cross-region copying could move sensitive data to jurisdictions with different privacy laws, violating data residency requirements.",
+        "RemediationProcedure": "1. Define approved destination regions for snapshot copies.\n2. Implement IAM policies restricting `ec2:CopySnapshot` action with destination region conditions.\n3. Use SCPs to enforce restrictions: `\"Condition\":{\"StringNotEquals\":{\"ec2:DestinationRegion\":[\"approved-regions\"]}}`.\n4. Monitor CloudTrail for `CopySnapshot` events to unapproved regions.\n5. Implement preventive controls in backup automation tools.",
+        "AuditProcedure": "Use CloudTrail to audit `CopySnapshot` events: `aws logs filter-log-events --log-group-name CloudTrail/EBSEvents --filter-pattern '{ $.eventName = \"CopySnapshot\" }'` and verify destination regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html",
+        "DefaultValue": "Any region may be used unless restricted"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_availability_zone_compliance",
+    "title": "Ensure EBS volumes comply with availability zone restrictions",
+    "description": "Ensure EBS volumes are created only in approved availability zones within compliant regions.",
+    "capability": "data_residency",
+    "service": "ebs",
+    "subservice": "availability",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EBS_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EBS volumes are created only in approved availability zones within compliant regions for granular location control.",
+        "RationaleStatement": "AZ restrictions provide additional granular control over data location within regions, supporting specific data center locality requirements.",
+        "ImpactStatement": "Volumes in non-compliant AZs may violate specific data center location requirements or service level agreements with regulatory bodies.",
+        "RemediationProcedure": "1. Define approved availability zones based on data center location requirements.\n2. Implement IAM policies with conditions restricting volume creation: `\"StringNotEquals\":{\"ec2:AvailabilityZone\":[\"approved-azs\"]}`.\n3. Use SCPs to enforce AZ restrictions organization-wide.\n4. Update launch templates and auto-scaling groups to use only approved AZs.\n5. Monitor compliance using AWS Config rules.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[*].[VolumeId,AvailabilityZone]'` to verify all volumes are in approved AZs. Cross-reference with approved AZ list.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
+        "DefaultValue": "Any AZ within region unless restricted"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_destination_region_compliance",
+    "title": "Validate EBS snapshot destinations for compliance",
+    "description": "Ensure EBS snapshot destinations comply with data residency and sovereignty requirements.",
+    "capability": "data_residency",
+    "service": "ebs",
+    "subservice": "backup",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EBS_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Validate that EBS snapshot destinations comply with organizational data residency and sovereignty requirements.",
+        "RationaleStatement": "Validating snapshot destinations ensures backup data movement complies with data sovereignty laws and organizational data governance policies.",
+        "ImpactStatement": "Non-compliant snapshot destinations could result in data sovereignty violations, regulatory penalties, and breach of data governance requirements.",
+        "RemediationProcedure": "1. Create compliance matrix mapping source regions to approved destination regions.\n2. Implement validation logic in backup workflows using Lambda functions.\n3. Configure DLM policies to copy snapshots only to compliant regions.\n4. Use IAM policies with region-specific conditions for `CopySnapshot` permissions.\n5. Implement automated compliance checking before snapshot operations.",
+        "AuditProcedure": "Use AWS CLI to audit snapshot copy destinations: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[*].[SnapshotId,Region]'` and validate against compliance matrix.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html",
+        "DefaultValue": "Any region may be used unless restricted"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_volume_data_sovereignty_tags",
+    "title": "Tag EBS volumes with data sovereignty information",
+    "description": "Ensure EBS volumes are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "ebs",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EBS_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Apply data sovereignty and jurisdiction tags to EBS volumes for compliance tracking and governance.",
+        "RationaleStatement": "Data sovereignty tags enable tracking and governance of data location requirements, supporting compliance with various international data protection laws.",
+        "ImpactStatement": "Without sovereignty tags, it's difficult to track compliance with data residency requirements and respond to regulatory inquiries about data location.",
+        "RemediationProcedure": "1. Define data sovereignty taxonomy (jurisdiction, legal framework, residency requirements).\n2. Tag volumes with sovereignty information: `aws ec2 create-tags --resources <vol-id> --tags Key=DataSovereignty,Value=EU-GDPR Key=Jurisdiction,Value=European-Union`.\n3. Implement automated tagging based on region and data classification.\n4. Create tag policies to enforce consistent sovereignty tagging.\n5. Use tags in IAM policies for access control based on jurisdiction.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[?!Tags || !Tags[?Key==`DataSovereignty`]]'` to identify volumes missing sovereignty tags. Use AWS Config for compliance monitoring.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html",
+        "DefaultValue": "No tags unless manually applied"
+      }
+    ]
+  },
+  {
+    "function_name": "ebs_snapshot_same_region_restriction",
+    "title": "Restrict EBS snapshots to same region",
+    "description": "Ensure EBS snapshots remain within the same region to maintain strict data residency requirements.",
+    "capability": "data_residency",
+    "service": "ebs",
+    "subservice": "backup",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EBS_006",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enforce strict same-region restrictions for EBS snapshots to maintain the highest level of data residency compliance.",
+        "RationaleStatement": "Same-region restrictions ensure the highest level of data residency compliance by preventing any cross-border data movement through snapshots.",
+        "ImpactStatement": "Cross-region snapshots could violate strict data residency requirements, potentially causing regulatory violations and compromising data sovereignty commitments.",
+        "RemediationProcedure": "1. Implement IAM policies denying `ec2:CopySnapshot` action completely for strict residency.\n2. Use SCPs to prevent cross-region snapshot operations: `{\"Effect\":\"Deny\",\"Action\":\"ec2:CopySnapshot\"}`.\n3. Configure backup solutions to create snapshots only in the source region.\n4. Implement monitoring alerts for any cross-region snapshot activities.\n5. Update operational procedures to prevent cross-region backup operations.",
+        "AuditProcedure": "Use CloudTrail to monitor for any `CopySnapshot` events: `aws logs filter-log-events --log-group-name CloudTrail/EBSEvents --filter-pattern '{ $.eventName = \"CopySnapshot\" }'`. Should return no results for strict same-region compliance.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "Cross-region copying allowed unless restricted"
+      }
+    ]
+  }
+]

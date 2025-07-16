@@ -1,0 +1,2 @@
+Check ID,Check Name,Status,Severity,Region,Account ID,Timestamp,Description
+account_maintain_current_contact_details,Account Maintain Current Contact Details,WARNING,MEDIUM,global,,2025-07-16T10:53:07.864617,"AWS Account 588989875114 has contact information, but manual verification is recommended to ensure all details are current."

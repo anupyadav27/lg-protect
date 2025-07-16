@@ -1,0 +1,902 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Ensure RDS instances are not publicly accessible",
+    "Checks": ["rds_instance_no_public_access"],
+    "function_name": "rds_instance_no_public_access",
+    "title": "Ensure RDS instances are not publicly accessible",
+    "description": "Prevent RDS instances from being publicly accessible to avoid unauthorized access to sensitive database data.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Prevent RDS instances from being publicly accessible to avoid unauthorized access to sensitive database data.",
+        "RationaleStatement": "Public accessibility exposes database instances to internet-based attacks and unauthorized access attempts, creating significant data breach risks.",
+        "ImpactStatement": "Publicly accessible RDS instances can be discovered and attacked by malicious actors, potentially leading to data theft, ransomware, or service disruption.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the database instance\n3. Click 'Modify'\n4. Under 'Connectivity', set 'Public access' to 'No'\n5. Use AWS CLI: ```aws rds modify-db-instance --db-instance-identifier <instance-id> --no-publicly-accessible```\n6. Apply changes immediately or during next maintenance window",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check PubliclyAccessible field for each instance\n3. Verify instances with PubliclyAccessible: true are intentional\n4. Review security group rules for public access (0.0.0.0/0)",
+        "AdditionalInformation": "Use VPC endpoints or bastion hosts for secure database access",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html",
+        "DefaultValue": "RDS instances can be configured as publicly accessible during creation"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Ensure RDS instances are deployed inside VPC",
+    "Checks": ["rds_instance_inside_vpc"],
+    "function_name": "rds_instance_inside_vpc",
+    "title": "Ensure RDS instances are deployed inside VPC",
+    "description": "Deploy RDS instances within VPC to provide network isolation and prevent unauthorized access to database data.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "network",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Deploy RDS instances within VPC to provide network isolation and prevent unauthorized access to database data.",
+        "RationaleStatement": "VPC deployment provides network-level isolation and enables fine-grained access control through security groups and NACLs.",
+        "ImpactStatement": "RDS instances outside VPC lack proper network isolation and may be more vulnerable to network-based attacks.",
+        "RemediationProcedure": "1. Create a DB subnet group in VPC: ```aws rds create-db-subnet-group --db-subnet-group-name <group-name> --db-subnet-group-description <description> --subnet-ids <subnet-id-1> <subnet-id-2>```\n2. Create new RDS instance in VPC: ```aws rds create-db-instance --db-instance-identifier <new-id> --db-subnet-group-name <group-name>```\n3. Migrate data from EC2-Classic instance to VPC instance\n4. Delete old EC2-Classic instance after migration",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check DBSubnetGroup field for each instance\n3. Verify instances without DBSubnetGroup are in EC2-Classic\n4. List DB subnet groups: ```aws rds describe-db-subnet-groups```",
+        "AdditionalInformation": "New AWS accounts automatically use VPC; EC2-Classic is legacy",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.html",
+        "DefaultValue": "New RDS instances are created in VPC by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Ensure RDS clusters are not publicly accessible",
+    "Checks": ["rds_cluster_not_publicly_accessible"],
+    "function_name": "rds_cluster_not_publicly_accessible",
+    "title": "Ensure RDS clusters are not publicly accessible",
+    "description": "Prevent RDS Aurora clusters from being publicly accessible to protect sensitive data from unauthorized internet access.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_RDS_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Prevent RDS Aurora clusters from being publicly accessible to protect sensitive data from unauthorized internet access.",
+        "RationaleStatement": "Public accessibility of Aurora clusters exposes multiple database instances to internet-based threats and unauthorized access attempts.",
+        "ImpactStatement": "Publicly accessible Aurora clusters provide attackers with multiple entry points and can lead to widespread data compromise across cluster instances.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the Aurora cluster\n3. Click 'Modify'\n4. Under 'Network settings', ensure 'Public access' is set to 'No'\n5. Use AWS CLI: ```aws rds modify-db-cluster --db-cluster-identifier <cluster-id> --no-publicly-accessible```\n6. Apply changes to all cluster instances",
+        "AuditProcedure": "1. List RDS clusters: ```aws rds describe-db-clusters```\n2. Check PubliclyAccessible field for each cluster\n3. Verify cluster instances: ```aws rds describe-db-instances --filters Name=db-cluster-id,Values=<cluster-id>```\n4. Review security group configurations for public access",
+        "AdditionalInformation": "Aurora clusters inherit accessibility settings from their instances",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.html",
+        "DefaultValue": "Aurora clusters can be configured as publicly accessible"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Avoid using default admin usernames",
+    "Checks": ["rds_instance_default_admin"],
+    "function_name": "rds_instance_default_admin",
+    "title": "Avoid using default admin usernames",
+    "description": "Ensure RDS instances do not use default administrative usernames to prevent credential-based attacks on database data.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "credentials",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS instances do not use default administrative usernames to prevent credential-based attacks on database data.",
+        "RationaleStatement": "Default usernames are well-known and frequently targeted in brute force and credential stuffing attacks against databases.",
+        "ImpactStatement": "Using default usernames makes databases more vulnerable to automated attacks and reduces the effectiveness of access monitoring.",
+        "RemediationProcedure": "1. Create new admin user with custom username\n2. Grant necessary privileges to new user\n3. Update applications to use new credentials\n4. Disable or delete default admin user\n5. For new instances: ```aws rds create-db-instance --master-username <custom-username>```",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check MasterUsername field for default values (admin, root, postgres, etc.)\n3. Review database-specific default usernames for each engine type\n4. Verify custom usernames are being used",
+        "AdditionalInformation": "Common default usernames: admin (MySQL), postgres (PostgreSQL), root (MySQL), sa (SQL Server)",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.Security.html",
+        "DefaultValue": "Default usernames vary by database engine (admin, postgres, root, etc.)"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Avoid using default admin usernames for clusters",
+    "Checks": ["rds_cluster_default_admin"],
+    "function_name": "rds_cluster_default_admin",
+    "title": "Avoid using default admin usernames for clusters",
+    "description": "Ensure RDS Aurora clusters do not use default administrative usernames to prevent unauthorized database access.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "credentials",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS Aurora clusters do not use default administrative usernames to prevent unauthorized database access.",
+        "RationaleStatement": "Default cluster usernames are predictable and commonly targeted in automated attacks against Aurora databases.",
+        "ImpactStatement": "Default usernames in Aurora clusters can lead to cluster-wide compromise if credentials are breached through automated attacks.",
+        "RemediationProcedure": "1. Create new Aurora cluster with custom master username\n2. Use AWS CLI: ```aws rds create-db-cluster --master-username <custom-username>```\n3. Migrate data from existing cluster if necessary\n4. Update application connection strings\n5. Delete old cluster with default username",
+        "AuditProcedure": "1. List Aurora clusters: ```aws rds describe-db-clusters```\n2. Check MasterUsername field for default values\n3. Verify custom usernames are used across all clusters\n4. Review cluster instance configurations for consistency",
+        "AdditionalInformation": "Aurora clusters share master credentials across all cluster instances",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.html",
+        "DefaultValue": "Aurora clusters use engine-specific default usernames"
+      }
+    ]
+  },
+  {
+    "Id": "1.6",
+    "Description": "Enable IAM database authentication",
+    "Checks": ["rds_instance_iam_authentication_enabled"],
+    "function_name": "rds_instance_iam_authentication_enabled",
+    "title": "Enable IAM database authentication",
+    "description": "Enable IAM database authentication for RDS instances to manage database access using AWS IAM instead of database passwords.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "authentication",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_006",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable IAM database authentication for RDS instances to manage database access using AWS IAM instead of database passwords.",
+        "RationaleStatement": "IAM database authentication eliminates the need to store database passwords and provides centralized access control through AWS IAM policies.",
+        "ImpactStatement": "Without IAM authentication, database access relies on static passwords that may be compromised or difficult to rotate regularly.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the database instance\n3. Click 'Modify'\n4. Enable 'IAM DB authentication'\n5. Use AWS CLI: ```aws rds modify-db-instance --db-instance-identifier <instance-id> --enable-iam-database-authentication```\n6. Create database users mapped to IAM users/roles",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check IAMDatabaseAuthenticationEnabled field\n3. Verify it's set to true for instances requiring IAM auth\n4. Review database users configured for IAM authentication",
+        "AdditionalInformation": "Supported engines: MySQL, PostgreSQL, and Aurora MySQL/PostgreSQL",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html",
+        "DefaultValue": "IAM database authentication is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.7",
+    "Description": "Enable IAM database authentication for clusters",
+    "Checks": ["rds_cluster_iam_authentication_enabled"],
+    "function_name": "rds_cluster_iam_authentication_enabled",
+    "title": "Enable IAM database authentication for clusters",
+    "description": "Enable IAM database authentication for RDS Aurora clusters to centralize access control and eliminate password-based authentication.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "authentication",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_007",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable IAM database authentication for RDS Aurora clusters to centralize access control and eliminate password-based authentication.",
+        "RationaleStatement": "IAM authentication for Aurora clusters provides consistent access control across all cluster instances and eliminates password management overhead.",
+        "ImpactStatement": "Without IAM authentication, Aurora clusters rely on shared passwords that create security risks and complicate access management at scale.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the Aurora cluster\n3. Click 'Modify'\n4. Enable 'IAM DB authentication'\n5. Use AWS CLI: ```aws rds modify-db-cluster --db-cluster-identifier <cluster-id> --enable-iam-database-authentication```\n6. Configure IAM policies for database access",
+        "AuditProcedure": "1. List Aurora clusters: ```aws rds describe-db-clusters```\n2. Check IAMDatabaseAuthenticationEnabled field\n3. Verify all cluster instances inherit the setting\n4. Review IAM policies granting rds-db:connect permissions",
+        "AdditionalInformation": "IAM authentication applies to all instances in the Aurora cluster",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html",
+        "DefaultValue": "IAM database authentication is disabled by default for Aurora clusters"
+      }
+    ]
+  },
+  {
+    "Id": "1.8",
+    "Description": "Enable CloudWatch logging for RDS instances",
+    "Checks": ["rds_instance_integration_cloudwatch_logs"],
+    "function_name": "rds_instance_integration_cloudwatch_logs",
+    "title": "Enable CloudWatch logging for RDS instances",
+    "description": "Enable CloudWatch logging for RDS instances to monitor database activities and detect unauthorized access attempts.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_008",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable CloudWatch logging for RDS instances to monitor database activities and detect unauthorized access attempts.",
+        "RationaleStatement": "CloudWatch logging provides visibility into database operations, enabling detection of suspicious activities and compliance monitoring.",
+        "ImpactStatement": "Without proper logging, security incidents and unauthorized database access may go undetected, hampering incident response and forensics.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the database instance\n3. Click 'Modify'\n4. Enable relevant log types (error, general, slow query)\n5. Use AWS CLI: ```aws rds modify-db-instance --db-instance-identifier <instance-id> --cloudwatch-logs-configuration '{\"LogTypesToEnable\":[\"error\",\"general\",\"slowquery\"]}'```",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check EnabledCloudwatchLogsExports field\n3. Verify appropriate log types are enabled for each engine\n4. Check CloudWatch log groups: ```aws logs describe-log-groups --log-group-name-prefix /aws/rds/```",
+        "AdditionalInformation": "Available log types vary by database engine (MySQL, PostgreSQL, MariaDB, etc.)",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html",
+        "DefaultValue": "CloudWatch logging is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.9",
+    "Description": "Enable CloudWatch logging for RDS clusters",
+    "Checks": ["rds_cluster_integration_cloudwatch_logs"],
+    "function_name": "rds_cluster_integration_cloudwatch_logs",
+    "title": "Enable CloudWatch logging for RDS clusters",
+    "description": "Enable CloudWatch logging for RDS Aurora clusters to track database operations and support compliance auditing.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_009",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable CloudWatch logging for RDS Aurora clusters to track database operations and support compliance auditing.",
+        "RationaleStatement": "Aurora cluster logging provides comprehensive visibility across all cluster instances and enables centralized monitoring of database activities.",
+        "ImpactStatement": "Without cluster-level logging, monitoring database activities across multiple Aurora instances becomes fragmented and may miss security events.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the Aurora cluster\n3. Click 'Modify'\n4. Enable appropriate log types for Aurora engine\n5. Use AWS CLI: ```aws rds modify-db-cluster --db-cluster-identifier <cluster-id> --cloudwatch-logs-configuration '{\"LogTypesToEnable\":[\"audit\",\"error\",\"general\",\"slowquery\"]}'```",
+        "AuditProcedure": "1. List Aurora clusters: ```aws rds describe-db-clusters```\n2. Check EnabledCloudwatchLogsExports field\n3. Verify log types appropriate for Aurora engine\n4. Review log retention settings in CloudWatch",
+        "AdditionalInformation": "Aurora supports audit logs, error logs, general logs, and slow query logs",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html",
+        "DefaultValue": "CloudWatch logging is disabled by default for Aurora clusters"
+      }
+    ]
+  },
+  {
+    "Id": "1.10",
+    "Description": "Use non-default ports for RDS instances",
+    "Checks": ["rds_instance_non_default_port"],
+    "function_name": "rds_instance_non_default_port",
+    "title": "Use non-default ports for RDS instances",
+    "description": "Configure RDS instances to use non-default ports to reduce automated attacks against database services.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "network",
+    "risk": "LOW",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_010",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure RDS instances to use non-default ports to reduce automated attacks against database services.",
+        "RationaleStatement": "Non-default ports reduce exposure to automated port scanning and attacks that target well-known database ports.",
+        "ImpactStatement": "Using default ports makes databases easier targets for automated attacks and increases the likelihood of discovery by malicious scanners.",
+        "RemediationProcedure": "1. Plan port change during maintenance window\n2. Update security groups to allow new port\n3. Modify RDS instance: ```aws rds modify-db-instance --db-instance-identifier <instance-id> --db-port-number <custom-port>```\n4. Update application connection strings\n5. Remove old port from security groups",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check DbInstancePort field for each instance\n3. Compare against default ports: MySQL(3306), PostgreSQL(5432), Oracle(1521), SQL Server(1433)\n4. Verify custom ports are being used",
+        "AdditionalInformation": "Coordinate port changes with application teams and update monitoring systems",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html",
+        "DefaultValue": "RDS instances use engine-specific default ports"
+      }
+    ]
+  },
+  {
+    "Id": "1.11",
+    "Description": "Ensure RDS snapshots are not publicly accessible",
+    "Checks": ["rds_snapshots_public_access"],
+    "function_name": "rds_snapshots_public_access",
+    "title": "Ensure RDS snapshots are not publicly accessible",
+    "description": "Prevent RDS snapshots from being publicly accessible to avoid exposure of sensitive database data through snapshot sharing.",
+    "capability": "access_governance",
+    "service": "rds",
+    "subservice": "snapshots",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_RDS_011",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Prevent RDS snapshots from being publicly accessible to avoid exposure of sensitive database data through snapshot sharing.",
+        "RationaleStatement": "Public snapshots can expose entire database contents to unauthorized users, creating significant data breach risks.",
+        "ImpactStatement": "Publicly accessible snapshots allow anyone to restore databases containing sensitive data, leading to massive data exposure.",
+        "RemediationProcedure": "1. List public snapshots: ```aws rds describe-db-snapshots --snapshot-type public```\n2. Modify snapshot attributes: ```aws rds modify-db-snapshot-attribute --db-snapshot-identifier <snapshot-id> --attribute-name restore --values-to-remove all```\n3. Review and restrict snapshot sharing policies\n4. Implement automated monitoring for public snapshots",
+        "AuditProcedure": "1. List all snapshots: ```aws rds describe-db-snapshots```\n2. Check snapshot attributes: ```aws rds describe-db-snapshot-attributes --db-snapshot-identifier <snapshot-id>```\n3. Verify no snapshots have 'all' in restore attribute\n4. Review manual snapshots for unintended sharing",
+        "AdditionalInformation": "Automated snapshots cannot be made public, only manual snapshots",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ShareSnapshot.html",
+        "DefaultValue": "Snapshots are private by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable encryption at rest for RDS instances",
+    "Checks": ["rds_instance_storage_encrypted"],
+    "function_name": "rds_instance_storage_encrypted",
+    "title": "Enable encryption at rest for RDS instances",
+    "description": "Ensure RDS instances have encryption at rest enabled to protect sensitive data stored in databases and meet compliance requirements.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_RDS_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS instances have encryption at rest enabled to protect sensitive data stored in databases and meet compliance requirements.",
+        "RationaleStatement": "Encryption at rest protects sensitive database contents from unauthorized access in case of physical media compromise or unauthorized access to storage systems.",
+        "ImpactStatement": "Unencrypted RDS instances expose sensitive data to unauthorized access if storage media is compromised or accessed by unauthorized personnel.",
+        "RemediationProcedure": "1. Create encrypted snapshot: ```aws rds create-db-snapshot --db-instance-identifier <instance-id> --db-snapshot-identifier <snapshot-id>```\n2. Copy snapshot with encryption: ```aws rds copy-db-snapshot --source-db-snapshot-identifier <snapshot-id> --target-db-snapshot-identifier <encrypted-snapshot-id> --kms-key-id <kms-key-id>```\n3. Restore from encrypted snapshot: ```aws rds restore-db-instance-from-db-snapshot --db-instance-identifier <new-instance-id> --db-snapshot-identifier <encrypted-snapshot-id>```\n4. Update applications to use new encrypted instance\n5. Delete old unencrypted instance",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check StorageEncrypted field for each instance\n3. Verify encryption is enabled (StorageEncrypted: true)\n4. Check KmsKeyId for customer-managed keys if required",
+        "AdditionalInformation": "Encryption cannot be enabled on existing unencrypted instances; requires migration through snapshots",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
+        "DefaultValue": "Encryption at rest is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Enable encryption at rest for RDS clusters",
+    "Checks": ["rds_cluster_storage_encrypted"],
+    "function_name": "rds_cluster_storage_encrypted",
+    "title": "Enable encryption at rest for RDS clusters",
+    "description": "Ensure RDS Aurora clusters have encryption at rest enabled to protect sensitive data and comply with data protection regulations.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_RDS_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS Aurora clusters have encryption at rest enabled to protect sensitive data and comply with data protection regulations.",
+        "RationaleStatement": "Aurora cluster encryption protects all cluster instances and ensures comprehensive data protection across the entire cluster infrastructure.",
+        "ImpactStatement": "Unencrypted Aurora clusters expose sensitive data across multiple instances, amplifying the risk of data breaches and compliance violations.",
+        "RemediationProcedure": "1. Create cluster snapshot: ```aws rds create-db-cluster-snapshot --db-cluster-identifier <cluster-id> --db-cluster-snapshot-identifier <snapshot-id>```\n2. Copy with encryption: ```aws rds copy-db-cluster-snapshot --source-db-cluster-snapshot-identifier <snapshot-id> --target-db-cluster-snapshot-identifier <encrypted-snapshot-id> --kms-key-id <kms-key-id>```\n3. Restore encrypted cluster: ```aws rds restore-db-cluster-from-snapshot --db-cluster-identifier <new-cluster-id> --snapshot-identifier <encrypted-snapshot-id>```\n4. Create cluster instances from encrypted cluster",
+        "AuditProcedure": "1. List Aurora clusters: ```aws rds describe-db-clusters```\n2. Check StorageEncrypted field for each cluster\n3. Verify all cluster instances inherit encryption\n4. Check KmsKeyId for encryption key details",
+        "AdditionalInformation": "All instances in an encrypted Aurora cluster are automatically encrypted",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Overview.Encryption.html",
+        "DefaultValue": "Encryption at rest is disabled by default for Aurora clusters"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Enable encryption in transit for RDS instances",
+    "Checks": ["rds_instance_transport_encrypted"],
+    "function_name": "rds_instance_transport_encrypted",
+    "title": "Enable encryption in transit for RDS instances",
+    "description": "Ensure RDS instances enforce SSL/TLS encryption for all database connections to protect data in transit.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "tls",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_RDS_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS instances enforce SSL/TLS encryption for all database connections to protect data in transit.",
+        "RationaleStatement": "Encryption in transit prevents interception and eavesdropping of sensitive data during transmission between applications and databases.",
+        "ImpactStatement": "Unencrypted database connections expose sensitive data to network-based attacks, man-in-the-middle attacks, and packet sniffing.",
+        "RemediationProcedure": "1. Enable SSL on RDS instance (varies by engine)\n2. For MySQL: Set rds.force_ssl parameter to 1\n3. For PostgreSQL: Set rds.force_ssl parameter to 1\n4. Use AWS CLI: ```aws rds modify-db-parameter-group --db-parameter-group-name <group-name> --parameters ParameterName=rds.force_ssl,ParameterValue=1```\n5. Update application connection strings to use SSL\n6. Restart database instance to apply changes",
+        "AuditProcedure": "1. Check parameter groups: ```aws rds describe-db-parameter-groups```\n2. Review SSL parameters: ```aws rds describe-db-parameters --db-parameter-group-name <group-name> --source user```\n3. Verify rds.force_ssl is enabled\n4. Test application connections with SSL enforcement",
+        "AdditionalInformation": "SSL enforcement methods vary by database engine; some require parameter group changes",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html",
+        "DefaultValue": "SSL/TLS is available but not enforced by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Ensure RDS snapshots are encrypted",
+    "Checks": ["rds_snapshots_encrypted"],
+    "function_name": "rds_snapshots_encrypted",
+    "title": "Ensure RDS snapshots are encrypted",
+    "description": "Ensure RDS snapshots are encrypted to protect sensitive data during backup operations and prevent unauthorized access.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_RDS_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS snapshots are encrypted to protect sensitive data during backup operations and prevent unauthorized access.",
+        "RationaleStatement": "Encrypted snapshots protect backup data from unauthorized access and ensure data remains secure throughout the backup lifecycle.",
+        "ImpactStatement": "Unencrypted snapshots can expose sensitive database contents if backup storage is compromised or accessed by unauthorized users.",
+        "RemediationProcedure": "1. For existing unencrypted snapshots, copy with encryption: ```aws rds copy-db-snapshot --source-db-snapshot-identifier <source-snapshot> --target-db-snapshot-identifier <encrypted-snapshot> --kms-key-id <kms-key-id>```\n2. For automated backups, ensure source instance is encrypted\n3. For manual snapshots, create from encrypted instances\n4. Delete unencrypted snapshots after verification",
+        "AuditProcedure": "1. List all snapshots: ```aws rds describe-db-snapshots```\n2. Check Encrypted field for each snapshot\n3. Verify encrypted snapshots have KmsKeyId\n4. Review automated backup encryption status",
+        "AdditionalInformation": "Snapshots from encrypted instances are automatically encrypted with the same key",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html",
+        "DefaultValue": "Snapshot encryption depends on source instance encryption status"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Enable automated backups for RDS instances",
+    "Checks": ["rds_instance_backup_enabled"],
+    "function_name": "rds_instance_backup_enabled",
+    "title": "Enable automated backups for RDS instances",
+    "description": "Enable automated backups for RDS instances to ensure data recovery capabilities and meet compliance retention requirements.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_RDS_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable automated backups for RDS instances to ensure data recovery capabilities and meet compliance retention requirements.",
+        "RationaleStatement": "Automated backups provide point-in-time recovery capabilities and protect against data loss due to corruption, deletion, or system failures.",
+        "ImpactStatement": "Without automated backups, data loss incidents could result in permanent loss of critical business data and inability to meet recovery objectives.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the database instance\n3. Click 'Modify'\n4. Set 'Backup retention period' to desired value (1-35 days)\n5. Use AWS CLI: ```aws rds modify-db-instance --db-instance-identifier <instance-id> --backup-retention-period <days>```\n6. Configure backup window if needed",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check BackupRetentionPeriod field\n3. Verify retention period is greater than 0\n4. Review PreferredBackupWindow settings",
+        "AdditionalInformation": "Backup retention period of 0 disables automated backups",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html",
+        "DefaultValue": "Automated backups are enabled by default with 7-day retention"
+      }
+    ]
+  },
+  {
+    "Id": "2.6",
+    "Description": "Enable automated backups for RDS clusters",
+    "Checks": ["rds_cluster_backup_enabled"],
+    "function_name": "rds_cluster_backup_enabled",
+    "title": "Enable automated backups for RDS clusters",
+    "description": "Enable automated backups for RDS Aurora clusters to ensure data protection and business continuity.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_RDS_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable automated backups for RDS Aurora clusters to ensure data protection and business continuity.",
+        "RationaleStatement": "Aurora cluster backups provide continuous backup capabilities and enable point-in-time recovery across the entire cluster infrastructure.",
+        "ImpactStatement": "Without automated cluster backups, data loss could affect multiple instances simultaneously, creating significant business continuity risks.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the Aurora cluster\n3. Click 'Modify'\n4. Set 'Backup retention period' (1-35 days)\n5. Use AWS CLI: ```aws rds modify-db-cluster --db-cluster-identifier <cluster-id> --backup-retention-period <days>```\n6. Configure backup window for cluster",
+        "AuditProcedure": "1. List Aurora clusters: ```aws rds describe-db-clusters```\n2. Check BackupRetentionPeriod field\n3. Verify retention period is appropriate for business needs\n4. Review PreferredBackupWindow configuration",
+        "AdditionalInformation": "Aurora provides continuous backup with 1-second granularity point-in-time recovery",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html",
+        "DefaultValue": "Aurora clusters have automated backups enabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.7",
+    "Description": "Enable deletion protection for RDS instances",
+    "Checks": ["rds_instance_deletion_protection"],
+    "function_name": "rds_instance_deletion_protection",
+    "title": "Enable deletion protection for RDS instances",
+    "description": "Enable deletion protection for RDS instances to prevent accidental data loss and ensure data integrity.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "protection",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_RDS_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable deletion protection for RDS instances to prevent accidental data loss and ensure data integrity.",
+        "RationaleStatement": "Deletion protection prevents accidental or unauthorized deletion of database instances, protecting against irreversible data loss.",
+        "ImpactStatement": "Without deletion protection, database instances can be accidentally deleted, resulting in permanent data loss and service disruption.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the database instance\n3. Click 'Modify'\n4. Enable 'Deletion protection'\n5. Use AWS CLI: ```aws rds modify-db-instance --db-instance-identifier <instance-id> --deletion-protection```\n6. Apply changes immediately",
+        "AuditProcedure": "1. List RDS instances: ```aws rds describe-db-instances```\n2. Check DeletionProtection field\n3. Verify it's set to true for production instances\n4. Review instances without deletion protection",
+        "AdditionalInformation": "Deletion protection must be disabled before instance can be deleted",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html",
+        "DefaultValue": "Deletion protection is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.8",
+    "Description": "Enable deletion protection for RDS clusters",
+    "Checks": ["rds_cluster_deletion_protection"],
+    "function_name": "rds_cluster_deletion_protection",
+    "title": "Enable deletion protection for RDS clusters",
+    "description": "Enable deletion protection for RDS Aurora clusters to prevent accidental deletion and protect critical data.",
+    "capability": "data_protection",
+    "service": "rds",
+    "subservice": "protection",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_RDS_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable deletion protection for RDS Aurora clusters to prevent accidental deletion and protect critical data.",
+        "RationaleStatement": "Cluster deletion protection prevents accidental deletion of entire Aurora clusters, protecting multiple instances and critical data simultaneously.",
+        "ImpactStatement": "Without cluster deletion protection, entire Aurora clusters can be accidentally deleted, causing massive data loss and extended service outages.",
+        "RemediationProcedure": "1. Navigate to RDS Console\n2. Select the Aurora cluster\n3. Click 'Modify'\n4. Enable 'Deletion protection'\n5. Use AWS CLI: ```aws rds modify-db-cluster --db-cluster-identifier <cluster-id> --deletion-protection```\n6. Apply protection to all critical clusters",
+        "AuditProcedure": "1. List Aurora clusters: ```aws rds describe-db-clusters```\n2. Check DeletionProtection field\n3. Verify protection is enabled for production clusters\n4. Review cluster instances for consistent protection",
+        "AdditionalInformation": "Cluster deletion protection applies to the entire cluster and all its instances",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html",
+        "DefaultValue": "Deletion protection is disabled by default for Aurora clusters"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Enforce region restrictions for RDS instances",
+    "Checks": ["rds_instance_region_restriction_enforced"],
+    "function_name": "rds_instance_region_restriction_enforced",
+    "title": "Enforce region restrictions for RDS instances",
+    "description": "Ensure RDS instances are deployed only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS instances are deployed only in approved regions to comply with data residency requirements.",
+        "RationaleStatement": "Regional restrictions ensure database data remains within approved jurisdictions to meet data sovereignty and compliance requirements.",
+        "ImpactStatement": "RDS instances in unauthorized regions may violate data residency regulations and result in compliance penalties.",
+        "RemediationProcedure": "1. Identify RDS instances in non-compliant regions\n2. Create snapshots of non-compliant instances: ```aws rds create-db-snapshot --db-instance-identifier <instance-id> --db-snapshot-identifier <snapshot-id>```\n3. Copy snapshots to approved regions: ```aws rds copy-db-snapshot --source-db-snapshot-identifier <snapshot-arn> --target-db-snapshot-identifier <new-snapshot-id> --source-region <source-region>```\n4. Restore instances in compliant regions\n5. Update applications and delete non-compliant instances",
+        "AuditProcedure": "1. List all RDS instances: ```aws rds describe-db-instances --region <region>```\n2. Check AvailabilityZone field to determine instance regions\n3. Compare against approved regions list\n4. Review cross-region read replicas for compliance",
+        "AdditionalInformation": "Consider using Service Control Policies (SCPs) to prevent deployment in unauthorized regions",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html",
+        "DefaultValue": "RDS instances can be created in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Enforce region restrictions for RDS clusters",
+    "Checks": ["rds_cluster_region_restriction_enforced"],
+    "function_name": "rds_cluster_region_restriction_enforced",
+    "title": "Enforce region restrictions for RDS clusters",
+    "description": "Ensure RDS Aurora clusters are deployed only in approved regions to meet data residency compliance requirements.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS Aurora clusters are deployed only in approved regions to meet data residency compliance requirements.",
+        "RationaleStatement": "Aurora cluster regional restrictions ensure all cluster instances and data remain within approved jurisdictions for compliance.",
+        "ImpactStatement": "Aurora clusters in non-compliant regions may process sensitive data outside approved jurisdictions, violating data sovereignty requirements.",
+        "RemediationProcedure": "1. Identify non-compliant Aurora clusters\n2. Create cluster snapshots: ```aws rds create-db-cluster-snapshot --db-cluster-identifier <cluster-id> --db-cluster-snapshot-identifier <snapshot-id>```\n3. Copy to approved regions: ```aws rds copy-db-cluster-snapshot --source-db-cluster-snapshot-identifier <snapshot-arn> --target-db-cluster-snapshot-identifier <new-snapshot>```\n4. Restore clusters in compliant regions\n5. Migrate applications and decommission non-compliant clusters",
+        "AuditProcedure": "1. List Aurora clusters: ```aws rds describe-db-clusters --region <region>```\n2. Check AvailabilityZones for cluster instances\n3. Verify all clusters are in approved regions\n4. Review Aurora Global Database configurations for regional compliance",
+        "AdditionalInformation": "Aurora Global Database spans multiple regions; ensure secondary regions are also compliant",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+        "DefaultValue": "Aurora clusters can be created in any supported region"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Restrict cross-region automated backups",
+    "Checks": ["rds_cross_region_backup_restricted"],
+    "function_name": "rds_cross_region_backup_restricted",
+    "title": "Restrict cross-region automated backups",
+    "description": "Ensure RDS automated backups are not replicated to unauthorized regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS automated backups are not replicated to unauthorized regions to maintain data residency compliance.",
+        "RationaleStatement": "Cross-region backup replication can move sensitive data outside approved jurisdictions, violating data residency requirements.",
+        "ImpactStatement": "Unauthorized cross-region backup replication may result in sensitive data being stored in non-compliant jurisdictions.",
+        "RemediationProcedure": "1. Review cross-region automated backup configurations\n2. Disable unauthorized cross-region backups: ```aws rds delete-db-instance-automated-backup --dbi-resource-id <resource-id> --region <unauthorized-region>```\n3. Configure backups only in approved regions\n4. Update backup policies to restrict cross-region replication\n5. Monitor for new cross-region backup configurations",
+        "AuditProcedure": "1. List automated backups by region: ```aws rds describe-db-instance-automated-backups --region <region>```\n2. Check backup locations against approved regions\n3. Review cross-region backup replication settings\n4. Verify backup retention policies comply with regional requirements",
+        "AdditionalInformation": "Cross-region automated backups are separate from regular automated backups",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.CrossRegion",
+        "DefaultValue": "Cross-region automated backups are not enabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.4",
+    "Description": "Restrict cross-region read replicas",
+    "Checks": ["rds_cross_region_read_replica_restricted"],
+    "function_name": "rds_cross_region_read_replica_restricted",
+    "title": "Restrict cross-region read replicas",
+    "description": "Ensure RDS read replicas are not created in unauthorized regions to prevent data residency violations.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "replication",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS read replicas are not created in unauthorized regions to prevent data residency violations.",
+        "RationaleStatement": "Cross-region read replicas replicate sensitive data to other regions, which may violate data sovereignty and residency requirements.",
+        "ImpactStatement": "Read replicas in non-compliant regions create copies of sensitive data outside approved jurisdictions, violating compliance requirements.",
+        "RemediationProcedure": "1. Identify cross-region read replicas: ```aws rds describe-db-instances --query 'DBInstances[?ReadReplicaSourceDBInstanceIdentifier]'```\n2. Review replica regions against compliance requirements\n3. Delete non-compliant replicas: ```aws rds delete-db-instance --db-instance-identifier <replica-id> --skip-final-snapshot```\n4. Create compliant replicas in approved regions if needed\n5. Update application read patterns",
+        "AuditProcedure": "1. List all read replicas: ```aws rds describe-db-instances```\n2. Check ReadReplicaSourceDBInstanceIdentifier field\n3. Compare replica regions with source instance regions\n4. Verify all replicas are in approved regions",
+        "AdditionalInformation": "Consider performance impact when restricting cross-region read replicas",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html#USER_ReadRepl.XRgn",
+        "DefaultValue": "Cross-region read replicas must be explicitly created"
+      }
+    ]
+  },
+  {
+    "Id": "3.5",
+    "Description": "Ensure RDS parameter groups comply with regional requirements",
+    "Checks": ["rds_parameter_group_regional_compliance"],
+    "function_name": "rds_parameter_group_regional_compliance",
+    "title": "Ensure RDS parameter groups comply with regional requirements",
+    "description": "Ensure RDS parameter groups are configured appropriately for regional compliance and data residency requirements.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "configuration",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS parameter groups are configured appropriately for regional compliance and data residency requirements.",
+        "RationaleStatement": "Parameter group configurations may affect data handling and must comply with regional data protection and residency requirements.",
+        "ImpactStatement": "Non-compliant parameter group settings may result in data handling that violates regional compliance requirements.",
+        "RemediationProcedure": "1. Review parameter groups: ```aws rds describe-db-parameter-groups```\n2. Check parameters for compliance-related settings (timezone, character sets, logging)\n3. Modify parameters as needed: ```aws rds modify-db-parameter-group --db-parameter-group-name <name> --parameters ParameterName=<name>,ParameterValue=<value>```\n4. Apply parameter groups to appropriate instances\n5. Document compliance justifications for parameter settings",
+        "AuditProcedure": "1. List parameter groups: ```aws rds describe-db-parameter-groups```\n2. Review parameters: ```aws rds describe-db-parameters --db-parameter-group-name <name>```\n3. Check timezone, logging, and character set parameters\n4. Verify compliance with regional data handling requirements",
+        "AdditionalInformation": "Parameter requirements may vary by jurisdiction and compliance framework",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html",
+        "DefaultValue": "Default parameter groups use standard AWS settings"
+      }
+    ]
+  },
+  {
+    "Id": "3.6",
+    "Description": "Tag RDS resources with data classification",
+    "Checks": ["rds_resources_data_classification_tags"],
+    "function_name": "rds_resources_data_classification_tags",
+    "title": "Tag RDS resources with data classification",
+    "description": "Ensure RDS resources are tagged with appropriate data classification levels for governance and regional compliance tracking.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_006",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS resources are tagged with appropriate data classification levels for governance and regional compliance tracking.",
+        "RationaleStatement": "Data classification tags enable automated compliance monitoring and help ensure appropriate handling of sensitive data based on regional requirements.",
+        "ImpactStatement": "Without proper data classification tags, it becomes difficult to track and manage data according to regional compliance requirements.",
+        "RemediationProcedure": "1. Define data classification taxonomy (Public, Internal, Confidential, Restricted)\n2. Tag RDS instances: ```aws rds add-tags-to-resource --resource-name <instance-arn> --tags Key=DataClassification,Value=<classification>```\n3. Tag clusters: ```aws rds add-tags-to-resource --resource-name <cluster-arn> --tags Key=DataClassification,Value=<classification>```\n4. Tag snapshots with appropriate classifications\n5. Implement automated tagging policies",
+        "AuditProcedure": "1. List RDS resources: ```aws rds describe-db-instances```\n2. Check tags: ```aws rds list-tags-for-resource --resource-name <resource-arn>```\n3. Verify DataClassification tags are present\n4. Review tag values for consistency with data classification policy",
+        "AdditionalInformation": "Use consistent tagging strategy across all AWS resources for comprehensive governance",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html",
+        "DefaultValue": "Resources are created without data classification tags by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.7",
+    "Description": "Ensure RDS subnet groups comply with regional requirements",
+    "Checks": ["rds_subnet_group_regional_compliance"],
+    "function_name": "rds_subnet_group_regional_compliance",
+    "title": "Ensure RDS subnet groups comply with regional requirements",
+    "description": "Ensure RDS subnet groups are configured only with subnets in approved regions for data residency compliance.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "network",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_007",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS subnet groups are configured only with subnets in approved regions for data residency compliance.",
+        "RationaleStatement": "Subnet group configuration determines where RDS instances can be deployed, which must align with data residency requirements.",
+        "ImpactStatement": "Subnet groups with subnets in non-compliant regions may allow database deployment outside approved jurisdictions.",
+        "RemediationProcedure": "1. List DB subnet groups: ```aws rds describe-db-subnet-groups```\n2. Check subnet locations: ```aws ec2 describe-subnets --subnet-ids <subnet-id>```\n3. Create compliant subnet groups: ```aws rds create-db-subnet-group --db-subnet-group-name <name> --db-subnet-group-description <desc> --subnet-ids <compliant-subnets>```\n4. Modify instances to use compliant subnet groups\n5. Delete non-compliant subnet groups",
+        "AuditProcedure": "1. List all DB subnet groups: ```aws rds describe-db-subnet-groups```\n2. For each group, check subnet regions and availability zones\n3. Verify all subnets are in approved regions\n4. Review RDS instances using each subnet group",
+        "AdditionalInformation": "Subnet groups must have subnets in at least two availability zones",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html",
+        "DefaultValue": "Subnet groups can include subnets from any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.8",
+    "Description": "Restrict Aurora Global Database to approved regions",
+    "Checks": ["rds_aurora_global_database_regional_restriction"],
+    "function_name": "rds_aurora_global_database_regional_restriction",
+    "title": "Restrict Aurora Global Database to approved regions",
+    "description": "Ensure Aurora Global Database secondary regions are only in approved locations to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "global",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_008",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Aurora Global Database secondary regions are only in approved locations to maintain data residency compliance.",
+        "RationaleStatement": "Aurora Global Database replicates data across regions, which must comply with data residency and sovereignty requirements.",
+        "ImpactStatement": "Global Database secondary regions in non-compliant locations create copies of sensitive data outside approved jurisdictions.",
+        "RemediationProcedure": "1. List Global Database clusters: ```aws rds describe-global-clusters```\n2. Review secondary cluster regions against compliance requirements\n3. Remove non-compliant secondary clusters: ```aws rds remove-from-global-cluster --global-cluster-identifier <global-id> --db-cluster-identifier <secondary-cluster>```\n4. Add compliant secondary clusters if needed\n5. Update disaster recovery procedures",
+        "AuditProcedure": "1. List all Global Database clusters: ```aws rds describe-global-clusters```\n2. Check GlobalClusterMembers for regional distribution\n3. Verify all secondary regions are approved\n4. Review cross-region data replication patterns",
+        "AdditionalInformation": "Global Database provides sub-second cross-region replication",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+        "DefaultValue": "Global Database secondary regions must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "Id": "3.9",
+    "Description": "Ensure RDS monitoring compliance with regional requirements",
+    "Checks": ["rds_monitoring_regional_compliance"],
+    "function_name": "rds_monitoring_regional_compliance",
+    "title": "Ensure RDS monitoring compliance with regional requirements",
+    "description": "Ensure RDS monitoring and logging data is stored only in approved regions to meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "monitoring",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_009",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS monitoring and logging data is stored only in approved regions to meet data residency requirements.",
+        "RationaleStatement": "Monitoring and logging data may contain sensitive information and must be stored in regions that comply with data residency requirements.",
+        "ImpactStatement": "Monitoring data stored in non-compliant regions may violate data residency requirements for operational data.",
+        "RemediationProcedure": "1. Review CloudWatch log groups: ```aws logs describe-log-groups --log-group-name-prefix /aws/rds/```\n2. Check Performance Insights regional settings\n3. Verify Enhanced Monitoring storage locations\n4. Configure monitoring to use only approved regions\n5. Move existing monitoring data if necessary",
+        "AuditProcedure": "1. Check CloudWatch logs: ```aws logs describe-log-groups --region <region>```\n2. Review Performance Insights configuration: ```aws pi describe-dimension-keys```\n3. Verify Enhanced Monitoring settings\n4. Check that all monitoring data is in approved regions",
+        "AdditionalInformation": "Monitoring data retention policies should align with regional compliance requirements",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html",
+        "DefaultValue": "Monitoring data is stored in the same region as the RDS resource"
+      }
+    ]
+  },
+  {
+    "Id": "3.10",
+    "Description": "Tag RDS resources with data sovereignty information",
+    "Checks": ["rds_resources_data_sovereignty_tags"],
+    "function_name": "rds_resources_data_sovereignty_tags",
+    "title": "Tag RDS resources with data sovereignty information",
+    "description": "Ensure RDS resources are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_010",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS resources are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+        "RationaleStatement": "Data sovereignty tags help track jurisdictional requirements and ensure appropriate handling of data based on legal and regulatory requirements.",
+        "ImpactStatement": "Without sovereignty tags, it becomes difficult to track and enforce jurisdictional requirements for data handling and storage.",
+        "RemediationProcedure": "1. Define data sovereignty taxonomy (EU, US, APAC, etc.)\n2. Tag instances: ```aws rds add-tags-to-resource --resource-name <instance-arn> --tags Key=DataSovereignty,Value=<jurisdiction>```\n3. Tag clusters and snapshots appropriately\n4. Implement governance policies based on sovereignty tags\n5. Monitor compliance with jurisdictional requirements",
+        "AuditProcedure": "1. List RDS resources and check sovereignty tags\n2. Verify tag values align with actual resource locations\n3. Review compliance with jurisdictional data handling requirements\n4. Check that governance policies are enforced based on tags",
+        "AdditionalInformation": "Sovereignty tags should be consistent with actual data location and applicable regulations",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html",
+        "DefaultValue": "Resources are created without sovereignty tags by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.11",
+    "Description": "Ensure RDS option groups comply with regional requirements",
+    "Checks": ["rds_option_group_regional_compliance"],
+    "function_name": "rds_option_group_regional_compliance",
+    "title": "Ensure RDS option groups comply with regional requirements",
+    "description": "Ensure RDS option groups are configured to comply with regional data handling and compliance requirements.",
+    "capability": "data_residency",
+    "service": "rds",
+    "subservice": "configuration",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_RDS_011",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure RDS option groups are configured to comply with regional data handling and compliance requirements.",
+        "RationaleStatement": "Option group configurations may affect data processing and storage patterns, which must comply with regional requirements.",
+        "ImpactStatement": "Non-compliant option group settings may result in data handling that violates regional compliance and residency requirements.",
+        "RemediationProcedure": "1. Review option groups: ```aws rds describe-option-groups```\n2. Check options for compliance implications (timezone databases, character sets)\n3. Modify option groups: ```aws rds modify-option-group --option-group-name <name> --options-to-include <options>```\n4. Apply compliant option groups to instances\n5. Document compliance justifications for option settings",
+        "AuditProcedure": "1. List option groups: ```aws rds describe-option-groups```\n2. Review option configurations for regional compliance\n3. Check timezone and localization settings\n4. Verify options comply with jurisdictional requirements",
+        "AdditionalInformation": "Option requirements may vary by database engine and regional compliance framework",
+        "References": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html",
+        "DefaultValue": "Default option groups use standard AWS configurations"
+      }
+    ]
+  }
+]

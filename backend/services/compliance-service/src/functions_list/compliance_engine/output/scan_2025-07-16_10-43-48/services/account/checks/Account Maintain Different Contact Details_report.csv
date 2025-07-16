@@ -1,0 +1,2 @@
+Check ID,Check Name,Status,Severity,Region,Account ID,Timestamp,Description
+account_maintain_different_contact_details_to_security_billing_and_operations,Account Maintain Different Contact Details,MANUAL,MEDIUM,global,,2025-07-16T10:43:48.105714,"AWS Account 588989875114 may not have different contact details for all types. Manual verification required. Login to the AWS Console. Choose your account name on the top right of the window -> My Account -> Alternate Contacts -> Configure different contacts for Security, Billing, and Operations."

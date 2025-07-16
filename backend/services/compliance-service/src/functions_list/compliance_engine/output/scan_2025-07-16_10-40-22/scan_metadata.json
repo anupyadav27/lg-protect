@@ -1,0 +1,25 @@
+{
+  "scan_id": "eb7f9932-1462-4c9d-83fa-8c84d22b5f3e",
+  "scan_timestamp": "2025-07-16T10:40:05.531365",
+  "account_id": "588989875114",
+  "regions": [
+    "us-east-1"
+  ],
+  "services_scanned": [
+    "acm",
+    "account"
+  ],
+  "total_findings": 7,
+  "compliance_score": 28.57,
+  "execution_time_ms": 16929,
+  "output_structure": {
+    "overall": "Overall scan results and summary",
+    "services": "Service-specific reports and findings",
+    "checks": "Individual check function reports within each service"
+  },
+  "hierarchy": {
+    "level_1": "Overall compliance summary and cross-service findings",
+    "level_2": "Service-specific reports (e.g., ACM, Account, S3)",
+    "level_3": "Individual check function reports within each service"
+  }
+}

@@ -1,0 +1,674 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Ensure Glue Data Catalogs are not publicly accessible",
+    "Checks": [
+      "glue_data_catalogs_not_publicly_accessible"
+    ],
+    "function_name": "glue_data_catalogs_not_publicly_accessible",
+    "title": "Ensure Glue Data Catalogs are not publicly accessible",
+    "description": "Ensure Glue Data Catalogs are not publicly accessible to prevent unauthorized access to data metadata and schemas.",
+    "capability": "access_governance",
+    "service": "glue",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_GLUE_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue Data Catalogs are not publicly accessible to prevent unauthorized access to data metadata and schemas.",
+        "RationaleStatement": "Public access to Glue Data Catalogs can expose sensitive data schemas, table structures, and metadata to unauthorized users, leading to potential data breaches.",
+        "ImpactStatement": "Publicly accessible data catalogs can reveal data structure, column names, and metadata that attackers can use to craft targeted attacks or gain unauthorized access to sensitive data.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Go to Data Catalog > Databases\n3. Select each database and review permissions\n4. Remove any public access policies\n5. Use AWS CLI: ```aws glue put-resource-policy --policy-input '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Deny\",\"Principal\":\"*\",\"Action\":\"glue:*\",\"Resource\":\"*\",\"Condition\":{\"StringNotEquals\":{\"aws:PrincipalAccount\":\"YOUR_ACCOUNT_ID\"}}}]}'```",
+        "AuditProcedure": "1. Use AWS CLI: ```aws glue get-resource-policy```\n2. Verify no wildcard principals (*) are allowed\n3. Check for specific account restrictions\n4. Use: ```aws glue get-databases``` and verify access controls",
+        "AdditionalInformation": "Implement resource-based policies to control access",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/glue-resource-policies.html",
+        "DefaultValue": "Data Catalogs may have public access by default in some configurations"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Enable SSL for Glue database connections",
+    "Checks": [
+      "glue_database_connections_ssl_enabled"
+    ],
+    "function_name": "glue_database_connections_ssl_enabled",
+    "title": "Enable SSL for Glue database connections",
+    "description": "Ensure Glue database connections use SSL to protect data in transit during ETL operations.",
+    "capability": "access_governance",
+    "service": "glue",
+    "subservice": "ssl",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_GLUE_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue database connections use SSL to protect data in transit during ETL operations.",
+        "RationaleStatement": "SSL encryption for database connections ensures data confidentiality and integrity during transmission between Glue and data sources.",
+        "ImpactStatement": "Unencrypted database connections expose sensitive data to interception, man-in-the-middle attacks, and unauthorized access during data transfer.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Go to Data Catalog > Connections\n3. Edit each connection\n4. Enable 'Require SSL connection' option\n5. Update connection properties with SSL parameters\n6. Use AWS CLI: ```aws glue update-connection --connection-input '{\"Name\":\"connection-name\",\"ConnectionType\":\"JDBC\",\"ConnectionProperties\":{\"JDBC_CONNECTION_URL\":\"jdbc:mysql://host:port/db?useSSL=true\"}}'```",
+        "AuditProcedure": "1. Use AWS CLI: ```aws glue get-connections```\n2. Check ConnectionProperties for SSL settings\n3. Verify JDBC URLs contain SSL parameters\n4. Use: ```aws glue get-connection --name <connection-name>``` for detailed review",
+        "AdditionalInformation": "SSL should be enforced for all database connection types",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/connection-properties.html",
+        "DefaultValue": "SSL may not be enabled by default for connections"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Enforce least privilege for Glue crawler IAM roles",
+    "Checks": [
+      "glue_crawler_iam_least_privilege"
+    ],
+    "function_name": "glue_crawler_iam_least_privilege",
+    "title": "Enforce least privilege for Glue crawler IAM roles",
+    "description": "Ensure Glue crawlers use IAM roles with least privilege to minimize unauthorized access to data sources.",
+    "capability": "access_governance",
+    "service": "glue",
+    "subservice": "iam",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_GLUE_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue crawlers use IAM roles with least privilege to minimize unauthorized access to data sources.",
+        "RationaleStatement": "Least privilege access ensures crawlers only have necessary permissions, reducing the attack surface and potential for privilege escalation.",
+        "ImpactStatement": "Overprivileged crawler roles can lead to unauthorized data access, data exfiltration, or unintended modifications to data sources.",
+        "RemediationProcedure": "1. Review current crawler IAM roles\n2. Create specific policies for each crawler's data sources\n3. Remove overly broad permissions like s3:*\n4. Use AWS CLI: ```aws iam create-policy --policy-name GlueCrawlerSpecificPolicy --policy-document file://crawler-policy.json```\n5. Attach specific policies: ```aws iam attach-role-policy --role-name GlueCrawlerRole --policy-arn arn:aws:iam::account:policy/GlueCrawlerSpecificPolicy```",
+        "AuditProcedure": "1. Use AWS CLI: ```aws glue get-crawlers```\n2. For each crawler, check: ```aws iam get-role --role-name <crawler-role>```\n3. Review attached policies: ```aws iam list-attached-role-policies --role-name <crawler-role>```\n4. Verify permissions are minimal and specific to data sources",
+        "AdditionalInformation": "Regularly review and update crawler permissions",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/create-an-iam-role.html",
+        "DefaultValue": "Default roles may have broader permissions than necessary"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Enforce least privilege for Glue job IAM roles",
+    "Checks": [
+      "glue_job_iam_least_privilege"
+    ],
+    "function_name": "glue_job_iam_least_privilege",
+    "title": "Enforce least privilege for Glue job IAM roles",
+    "description": "Ensure Glue jobs use IAM roles with least privilege to minimize unauthorized access to data during processing.",
+    "capability": "access_governance",
+    "service": "glue",
+    "subservice": "iam",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_GLUE_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue jobs use IAM roles with least privilege to minimize unauthorized access to data during processing.",
+        "RationaleStatement": "Least privilege for Glue jobs prevents unauthorized data access and ensures jobs only interact with intended data sources and destinations.",
+        "ImpactStatement": "Overprivileged job roles can lead to data breaches, unauthorized data modifications, or access to sensitive resources beyond job requirements.",
+        "RemediationProcedure": "1. Audit existing Glue job IAM roles\n2. Create job-specific IAM policies\n3. Limit S3 access to specific buckets/prefixes\n4. Use AWS CLI: ```aws iam create-policy --policy-name GlueJobSpecificPolicy --policy-document file://job-policy.json```\n5. Update job role: ```aws glue update-job --job-name <job-name> --job-update '{\"Role\":\"arn:aws:iam::account:role/GlueJobSpecificRole\"}'```",
+        "AuditProcedure": "1. List all Glue jobs: ```aws glue get-jobs```\n2. For each job, check role: ```aws iam get-role --role-name <job-role>```\n3. Review policies: ```aws iam list-attached-role-policies --role-name <job-role>```\n4. Verify permissions match job requirements only",
+        "AdditionalInformation": "Use separate roles for different job types and data sensitivity levels",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/create-an-iam-role.html",
+        "DefaultValue": "Default job roles may have excessive permissions"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Restrict access to Glue workflows",
+    "Checks": [
+      "glue_workflow_access_restricted"
+    ],
+    "function_name": "glue_workflow_access_restricted",
+    "title": "Restrict access to Glue workflows",
+    "description": "Ensure Glue workflows have proper access controls to prevent unauthorized modification of data processing pipelines.",
+    "capability": "access_governance",
+    "service": "glue",
+    "subservice": "workflow",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_GLUE_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue workflows have proper access controls to prevent unauthorized modification of data processing pipelines.",
+        "RationaleStatement": "Restricted workflow access prevents unauthorized users from modifying ETL pipelines, which could lead to data corruption or security bypasses.",
+        "ImpactStatement": "Unrestricted workflow access can result in malicious pipeline modifications, data processing disruption, or injection of malicious code into ETL processes.",
+        "RemediationProcedure": "1. Create workflow-specific IAM policies\n2. Implement resource-based access controls\n3. Use AWS CLI: ```aws iam create-policy --policy-name GlueWorkflowRestrictedAccess --policy-document file://workflow-policy.json```\n4. Apply tags for access control: ```aws glue tag-resource --resource-arn <workflow-arn> --tags-to-add AccessLevel=Restricted```\n5. Use condition-based policies for fine-grained control",
+        "AuditProcedure": "1. List workflows: ```aws glue get-workflows```\n2. Check workflow permissions in IAM policies\n3. Review resource-based policies: ```aws glue get-resource-policy```\n4. Verify only authorized users can modify workflows: ```aws iam simulate-principal-policy --policy-source-arn <user-arn> --action-names glue:UpdateWorkflow --resource-arns <workflow-arn>```",
+        "AdditionalInformation": "Implement approval workflows for production pipeline changes",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/workflows_overview.html",
+        "DefaultValue": "Workflows may inherit broad permissions from default policies"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable metadata encryption for Glue Data Catalogs",
+    "Checks": [
+      "glue_data_catalogs_metadata_encryption_enabled"
+    ],
+    "function_name": "glue_data_catalogs_metadata_encryption_enabled",
+    "title": "Enable metadata encryption for Glue Data Catalogs",
+    "description": "Ensure Glue Data Catalogs have metadata encryption enabled to protect data schema information.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue Data Catalogs have metadata encryption enabled to protect data schema information.",
+        "RationaleStatement": "Metadata encryption protects sensitive schema information, table structures, and data classification details from unauthorized access.",
+        "ImpactStatement": "Unencrypted metadata can expose database schemas, column names, and data patterns, providing attackers with valuable information for targeted attacks.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Go to Settings > Data Catalog settings\n3. Enable 'Metadata encryption'\n4. Select or create a KMS key\n5. Use AWS CLI: ```aws glue put-data-catalog-encryption-settings --data-catalog-encryption-settings '{\"EncryptionAtRest\":{\"CatalogEncryptionMode\":\"SSE-KMS\",\"SseAwsKmsKeyId\":\"arn:aws:kms:region:account:key/key-id\"}}'```",
+        "AuditProcedure": "1. Use AWS CLI: ```aws glue get-data-catalog-encryption-settings```\n2. Verify EncryptionAtRest is configured\n3. Check CatalogEncryptionMode is SSE-KMS\n4. Confirm KMS key is specified and accessible",
+        "AdditionalInformation": "Use customer-managed KMS keys for enhanced control",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/encrypt-glue-data-catalog.html",
+        "DefaultValue": "Metadata encryption is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Enable connection password encryption for Glue",
+    "Checks": [
+      "glue_data_catalogs_connection_passwords_encryption_enabled"
+    ],
+    "function_name": "glue_data_catalogs_connection_passwords_encryption_enabled",
+    "title": "Enable connection password encryption for Glue",
+    "description": "Ensure Glue Data Catalog connection passwords are encrypted to protect database credentials.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue Data Catalog connection passwords are encrypted to protect database credentials.",
+        "RationaleStatement": "Connection password encryption prevents exposure of database credentials, which are critical for maintaining data source security.",
+        "ImpactStatement": "Unencrypted connection passwords can be accessed by unauthorized users, leading to database breaches and unauthorized data access.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Go to Settings > Data Catalog settings\n3. Enable 'Connection password encryption'\n4. Select or create a KMS key for password encryption\n5. Use AWS CLI: ```aws glue put-data-catalog-encryption-settings --data-catalog-encryption-settings '{\"ConnectionPasswordEncryption\":{\"ReturnConnectionPasswordEncrypted\":true,\"AwsKmsKeyId\":\"arn:aws:kms:region:account:key/key-id\"}}'```",
+        "AuditProcedure": "1. Use AWS CLI: ```aws glue get-data-catalog-encryption-settings```\n2. Verify ConnectionPasswordEncryption is enabled\n3. Check ReturnConnectionPasswordEncrypted is true\n4. Confirm KMS key is specified for password encryption",
+        "AdditionalInformation": "Regularly rotate KMS keys used for password encryption",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/encrypt-connection-passwords.html",
+        "DefaultValue": "Connection password encryption is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Enable S3 encryption for Glue ETL jobs",
+    "Checks": [
+      "glue_etl_jobs_amazon_s3_encryption_enabled"
+    ],
+    "function_name": "glue_etl_jobs_amazon_s3_encryption_enabled",
+    "title": "Enable S3 encryption for Glue ETL jobs",
+    "description": "Ensure Glue ETL jobs use S3 encryption to protect data during extract, transform, and load operations.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue ETL jobs use S3 encryption to protect data during extract, transform, and load operations.",
+        "RationaleStatement": "S3 encryption for ETL jobs ensures that temporary files, intermediate results, and final outputs are protected from unauthorized access.",
+        "ImpactStatement": "Unencrypted S3 data in ETL processes can expose sensitive information during processing, creating data breach risks.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Edit ETL job configuration\n3. Go to Security configuration\n4. Enable S3 encryption and select encryption mode (SSE-S3, SSE-KMS, or CSE-KMS)\n5. Use AWS CLI: ```aws glue update-job --job-name <job-name> --job-update '{\"SecurityConfiguration\":\"<security-config-name>\"}'```\n6. Create security configuration: ```aws glue create-security-configuration --name <config-name> --encryption-configuration '{\"S3Encryption\":[{\"S3EncryptionMode\":\"SSE-KMS\",\"KmsKeyArn\":\"arn:aws:kms:region:account:key/key-id\"}]}'```",
+        "AuditProcedure": "1. List all jobs: ```aws glue get-jobs```\n2. Check security configuration: ```aws glue get-security-configuration --name <config-name>```\n3. Verify S3 encryption is enabled in job configurations\n4. Confirm KMS keys are properly configured",
+        "AdditionalInformation": "Use different encryption keys for different data sensitivity levels",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html",
+        "DefaultValue": "S3 encryption may not be enabled by default for ETL jobs"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Enable CloudWatch logs encryption for Glue ETL jobs",
+    "Checks": [
+      "glue_etl_jobs_cloudwatch_logs_encryption_enabled"
+    ],
+    "function_name": "glue_etl_jobs_cloudwatch_logs_encryption_enabled",
+    "title": "Enable CloudWatch logs encryption for Glue ETL jobs",
+    "description": "Ensure Glue ETL job logs are encrypted in CloudWatch to protect sensitive information in log data.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue ETL job logs are encrypted in CloudWatch to protect sensitive information in log data.",
+        "RationaleStatement": "CloudWatch logs encryption protects sensitive information that may be logged during ETL operations, including data samples and error details.",
+        "ImpactStatement": "Unencrypted logs can expose sensitive data elements, connection strings, or processing details to unauthorized users with CloudWatch access.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Edit job security configuration\n3. Enable CloudWatch encryption\n4. Select or create KMS key for log encryption\n5. Use AWS CLI: ```aws glue create-security-configuration --name <config-name> --encryption-configuration '{\"CloudWatchEncryption\":{\"CloudWatchEncryptionMode\":\"SSE-KMS\",\"KmsKeyArn\":\"arn:aws:kms:region:account:key/key-id\"}}'```",
+        "AuditProcedure": "1. Check security configurations: ```aws glue get-security-configurations```\n2. Verify CloudWatch encryption is enabled\n3. Confirm KMS key is specified\n4. Check job assignments: ```aws glue get-job --job-name <job-name>``` and verify SecurityConfiguration",
+        "AdditionalInformation": "Consider log retention policies for encrypted logs",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/monitor-cloudwatch-logs.html",
+        "DefaultValue": "CloudWatch logs encryption is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Enable job bookmark encryption for Glue ETL jobs",
+    "Checks": [
+      "glue_etl_jobs_job_bookmark_encryption_enabled"
+    ],
+    "function_name": "glue_etl_jobs_job_bookmark_encryption_enabled",
+    "title": "Enable job bookmark encryption for Glue ETL jobs",
+    "description": "Ensure Glue ETL job bookmarks are encrypted to protect job state information.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue ETL job bookmarks are encrypted to protect job state information.",
+        "RationaleStatement": "Job bookmark encryption protects processing state information that could reveal data patterns, processing schedules, and operational details.",
+        "ImpactStatement": "Unencrypted job bookmarks can expose processing patterns and operational metadata that attackers could use to understand data flows.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Configure job security settings\n3. Enable job bookmark encryption\n4. Select KMS key for bookmark encryption\n5. Use AWS CLI: ```aws glue create-security-configuration --name <config-name> --encryption-configuration '{\"JobBookmarksEncryption\":{\"JobBookmarksEncryptionMode\":\"SSE-KMS\",\"KmsKeyArn\":\"arn:aws:kms:region:account:key/key-id\"}}'```",
+        "AuditProcedure": "1. Check security configurations: ```aws glue get-security-configurations```\n2. Verify JobBookmarksEncryption is configured\n3. Check encryption mode is SSE-KMS\n4. Validate KMS key accessibility",
+        "AdditionalInformation": "Job bookmarks help track processed data and prevent reprocessing",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html",
+        "DefaultValue": "Job bookmark encryption is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.6",
+    "Description": "Enable logging for Glue ETL jobs",
+    "Checks": [
+      "glue_etl_jobs_logging_enabled"
+    ],
+    "function_name": "glue_etl_jobs_logging_enabled",
+    "title": "Enable logging for Glue ETL jobs",
+    "description": "Enable comprehensive logging for Glue ETL jobs to monitor data processing activities and detect anomalies.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable comprehensive logging for Glue ETL jobs to monitor data processing activities and detect anomalies.",
+        "RationaleStatement": "Comprehensive logging enables monitoring of data processing activities, error detection, and security incident investigation.",
+        "ImpactStatement": "Without proper logging, security incidents, data processing errors, or unauthorized activities may go undetected.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Edit job configuration\n3. Enable 'Job metrics' and 'Continuous logging'\n4. Configure CloudWatch log groups\n5. Use AWS CLI: ```aws glue update-job --job-name <job-name> --job-update '{\"DefaultArguments\":{\"--enable-metrics\":\"\",\"--enable-continuous-cloudwatch-log\":\"true\",\"--enable-spark-ui\":\"true\"}}'```",
+        "AuditProcedure": "1. Check job configurations: ```aws glue get-job --job-name <job-name>```\n2. Verify logging is enabled in DefaultArguments\n3. Check CloudWatch log groups exist: ```aws logs describe-log-groups --log-group-name-prefix /aws-glue/```\n4. Verify log retention policies are set",
+        "AdditionalInformation": "Configure appropriate log retention periods based on compliance requirements",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/monitor-cloudwatch-logs.html",
+        "DefaultValue": "Detailed logging may be disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.7",
+    "Description": "Enable encryption at rest for Glue ML transforms",
+    "Checks": [
+      "glue_ml_transform_encrypted_at_rest"
+    ],
+    "function_name": "glue_ml_transform_encrypted_at_rest",
+    "title": "Enable encryption at rest for Glue ML transforms",
+    "description": "Ensure Glue ML transforms have encryption at rest enabled to protect machine learning model data.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue ML transforms have encryption at rest enabled to protect machine learning model data.",
+        "RationaleStatement": "ML transform encryption protects training data, model artifacts, and transformation results from unauthorized access.",
+        "ImpactStatement": "Unencrypted ML transforms can expose sensitive training data and intellectual property embedded in machine learning models.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Go to ML transforms section\n3. Configure security settings for transforms\n4. Enable encryption for transform artifacts\n5. Use AWS CLI: ```aws glue create-ml-transform --name <transform-name> --input-record-tables <input-tables> --parameters <transform-parameters> --encryption-at-rest '{\"MlUserDataEncryption\":{\"MlUserDataEncryptionMode\":\"SSE-KMS\",\"KmsKeyId\":\"arn:aws:kms:region:account:key/key-id\"}}'```",
+        "AuditProcedure": "1. List ML transforms: ```aws glue get-ml-transforms```\n2. Check encryption settings: ```aws glue get-ml-transform --transform-id <transform-id>```\n3. Verify EncryptionAtRest configuration\n4. Confirm KMS key is properly configured",
+        "AdditionalInformation": "Consider separate encryption keys for different ML transform sensitivity levels",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/machine-learning.html",
+        "DefaultValue": "ML transform encryption may be disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.8",
+    "Description": "Enable S3 encryption for Glue development endpoints",
+    "Checks": [
+      "glue_development_endpoints_s3_encryption_enabled"
+    ],
+    "function_name": "glue_development_endpoints_s3_encryption_enabled",
+    "title": "Enable S3 encryption for Glue development endpoints",
+    "description": "Ensure Glue development endpoints use S3 encryption to protect data during development and testing.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue development endpoints use S3 encryption to protect data during development and testing.",
+        "RationaleStatement": "Development endpoints often work with production-like data, requiring the same encryption standards to prevent data exposure.",
+        "ImpactStatement": "Unencrypted development data can expose sensitive information to developers and increase the risk of data breaches during testing.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Go to Dev endpoints section\n3. Edit endpoint security configuration\n4. Enable S3 encryption settings\n5. Use AWS CLI: ```aws glue create-dev-endpoint --endpoint-name <endpoint-name> --role-arn <role-arn> --security-configuration <security-config-name>```\n6. Ensure security configuration includes S3 encryption",
+        "AuditProcedure": "1. List development endpoints: ```aws glue get-dev-endpoints```\n2. Check security configuration for each endpoint\n3. Verify S3 encryption is enabled: ```aws glue get-security-configuration --name <config-name>```\n4. Confirm KMS keys are properly configured",
+        "AdditionalInformation": "Development endpoints should use the same security standards as production",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/dev-endpoint.html",
+        "DefaultValue": "Development endpoint encryption may be disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.9",
+    "Description": "Enable CloudWatch logs encryption for Glue development endpoints",
+    "Checks": [
+      "glue_development_endpoints_cloudwatch_logs_encryption_enabled"
+    ],
+    "function_name": "glue_development_endpoints_cloudwatch_logs_encryption_enabled",
+    "title": "Enable CloudWatch logs encryption for Glue development endpoints",
+    "description": "Ensure Glue development endpoint logs are encrypted in CloudWatch to protect sensitive development data.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_009",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue development endpoint logs are encrypted in CloudWatch to protect sensitive development data.",
+        "RationaleStatement": "Development endpoint logs may contain sensitive data samples, debugging information, and development patterns that require protection.",
+        "ImpactStatement": "Unencrypted development logs can expose sensitive data elements and development practices to unauthorized users.",
+        "RemediationProcedure": "1. Configure security configuration for development endpoints\n2. Enable CloudWatch logs encryption\n3. Use AWS CLI: ```aws glue create-security-configuration --name <dev-config-name> --encryption-configuration '{\"CloudWatchEncryption\":{\"CloudWatchEncryptionMode\":\"SSE-KMS\",\"KmsKeyArn\":\"arn:aws:kms:region:account:key/key-id\"}}'```\n4. Apply to endpoints: ```aws glue update-dev-endpoint --endpoint-name <endpoint-name> --update-dev-endpoint-request '{\"SecurityConfiguration\":\"<dev-config-name>\"}'```",
+        "AuditProcedure": "1. Check development endpoint configurations: ```aws glue get-dev-endpoints```\n2. Verify security configuration includes CloudWatch encryption\n3. Check log group encryption: ```aws logs describe-log-groups --log-group-name-prefix /aws-glue/```\n4. Confirm KMS key accessibility",
+        "AdditionalInformation": "Development logs should have appropriate retention policies",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/dev-endpoint.html",
+        "DefaultValue": "Development endpoint log encryption is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.10",
+    "Description": "Enable job bookmark encryption for Glue development endpoints",
+    "Checks": [
+      "glue_development_endpoints_job_bookmark_encryption_enabled"
+    ],
+    "function_name": "glue_development_endpoints_job_bookmark_encryption_enabled",
+    "title": "Enable job bookmark encryption for Glue development endpoints",
+    "description": "Ensure Glue development endpoint job bookmarks are encrypted to protect development state information.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "encryption",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_010",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue development endpoint job bookmarks are encrypted to protect development state information.",
+        "RationaleStatement": "Development job bookmarks contain processing state and patterns that could reveal development practices and data structures.",
+        "ImpactStatement": "Unencrypted development bookmarks can expose development workflows and data processing patterns to unauthorized users.",
+        "RemediationProcedure": "1. Configure security configuration for development endpoints\n2. Enable job bookmark encryption\n3. Use AWS CLI: ```aws glue create-security-configuration --name <dev-config-name> --encryption-configuration '{\"JobBookmarksEncryption\":{\"JobBookmarksEncryptionMode\":\"SSE-KMS\",\"KmsKeyArn\":\"arn:aws:kms:region:account:key/key-id\"}}'```\n4. Apply to development endpoints",
+        "AuditProcedure": "1. Check development endpoint security configurations\n2. Verify job bookmark encryption is enabled\n3. Confirm KMS key configuration\n4. Test bookmark functionality with encryption",
+        "AdditionalInformation": "Development bookmarks help maintain state during iterative development",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/dev-endpoint.html",
+        "DefaultValue": "Development endpoint bookmark encryption is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.11",
+    "Description": "Configure data quality rules for Glue",
+    "Checks": [
+      "glue_data_quality_rules_configured"
+    ],
+    "function_name": "glue_data_quality_rules_configured",
+    "title": "Configure data quality rules for Glue",
+    "description": "Implement data quality rules in Glue to ensure data integrity and detect anomalies in processed data.",
+    "capability": "data_protection",
+    "service": "glue",
+    "subservice": "quality",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_GLUE_011",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement data quality rules in Glue to ensure data integrity and detect anomalies in processed data.",
+        "RationaleStatement": "Data quality rules help detect data corruption, unauthorized modifications, and anomalies that could indicate security incidents.",
+        "ImpactStatement": "Without data quality monitoring, corrupted or tampered data may go undetected, leading to compromised analytics and decision-making.",
+        "RemediationProcedure": "1. Navigate to AWS Glue Console\n2. Go to Data quality section\n3. Create data quality rules for critical datasets\n4. Configure anomaly detection\n5. Use AWS CLI: ```aws glue create-data-quality-ruleset --name <ruleset-name> --ruleset 'Rules = [IsComplete \"column_name\", IsUnique \"id_column\"]' --target-table '{\"TableName\":\"table_name\",\"DatabaseName\":\"database_name\"}'```\n6. Schedule regular quality checks",
+        "AuditProcedure": "1. List data quality rulesets: ```aws glue list-data-quality-rulesets```\n2. Check rule execution results: ```aws glue get-data-quality-result --result-id <result-id>```\n3. Review quality metrics and alerts\n4. Verify rules cover critical data elements",
+        "AdditionalInformation": "Implement alerts for data quality failures",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/glue-data-quality.html",
+        "DefaultValue": "Data quality rules are not configured by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Enforce region restrictions for Glue jobs",
+    "Checks": [
+      "glue_job_region_restriction_enforced"
+    ],
+    "function_name": "glue_job_region_restriction_enforced",
+    "title": "Enforce region restrictions for Glue jobs",
+    "description": "Ensure Glue jobs are executed only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "glue",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_GLUE_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue jobs are executed only in approved regions to comply with data residency requirements.",
+        "RationaleStatement": "Regional restrictions ensure data processing complies with jurisdictional requirements and data sovereignty laws.",
+        "ImpactStatement": "Processing data in unauthorized regions can violate data residency regulations and expose organizations to legal and compliance risks.",
+        "RemediationProcedure": "1. Define approved regions for data processing\n2. Implement IAM policies with region conditions\n3. Use AWS CLI: ```aws iam create-policy --policy-name GlueRegionRestriction --policy-document '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Deny\",\"Action\":\"glue:*\",\"Resource\":\"*\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"us-east-1\",\"eu-west-1\"]}}}]}'```\n4. Apply policy to Glue users and roles\n5. Monitor region usage with CloudTrail",
+        "AuditProcedure": "1. Review CloudTrail logs for Glue API calls: ```aws logs filter-log-events --log-group-name CloudTrail/GlueAPI --filter-pattern '{ $.awsRegion != \"approved-region\" }'```\n2. Check IAM policies for region restrictions\n3. Verify job execution regions: ```aws glue get-job-runs --job-name <job-name>```\n4. Monitor cross-region data access patterns",
+        "AdditionalInformation": "Implement automated monitoring for region compliance violations",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html",
+        "DefaultValue": "No regional restrictions are enforced by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Ensure Glue crawlers comply with region restrictions",
+    "Checks": [
+      "glue_crawler_region_compliance"
+    ],
+    "function_name": "glue_crawler_region_compliance",
+    "title": "Ensure Glue crawlers comply with region restrictions",
+    "description": "Ensure Glue crawlers operate only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "glue",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_GLUE_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue crawlers operate only in approved regions to maintain data residency compliance.",
+        "RationaleStatement": "Crawler region compliance ensures metadata collection and data discovery activities comply with jurisdictional data residency requirements.",
+        "ImpactStatement": "Cross-region crawler operations can result in metadata and data patterns being processed in unauthorized jurisdictions.",
+        "RemediationProcedure": "1. Audit existing crawler regions\n2. Implement region-specific IAM policies\n3. Use AWS CLI: ```aws iam attach-role-policy --role-name GlueCrawlerRole --policy-arn arn:aws:iam::account:policy/GlueRegionRestriction```\n4. Configure organizational SCPs for region enforcement\n5. Migrate non-compliant crawlers to approved regions",
+        "AuditProcedure": "1. List all crawlers: ```aws glue get-crawlers```\n2. Check crawler execution regions\n3. Review CloudTrail for crawler API calls in unauthorized regions\n4. Verify data source access patterns comply with regional restrictions",
+        "AdditionalInformation": "Consider data source locations when planning crawler regions",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html",
+        "DefaultValue": "Crawlers can be created in any available region by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Restrict Glue Data Catalog to approved regions",
+    "Checks": [
+      "glue_data_catalog_region_restriction"
+    ],
+    "function_name": "glue_data_catalog_region_restriction",
+    "title": "Restrict Glue Data Catalog to approved regions",
+    "description": "Ensure Glue Data Catalog resources are created only in approved regions for data residency compliance.",
+    "capability": "data_residency",
+    "service": "glue",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_GLUE_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue Data Catalog resources are created only in approved regions for data residency compliance.",
+        "RationaleStatement": "Data Catalog region restrictions ensure metadata and schema information is stored in jurisdictionally compliant locations.",
+        "ImpactStatement": "Data Catalog resources in unauthorized regions can result in metadata sovereignty violations and compliance failures.",
+        "RemediationProcedure": "1. Identify approved regions for metadata storage\n2. Implement preventive IAM policies\n3. Use AWS CLI: ```aws iam create-policy --policy-name DataCatalogRegionRestriction --policy-document '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Deny\",\"Action\":[\"glue:CreateDatabase\",\"glue:CreateTable\"],\"Resource\":\"*\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"approved-region-1\",\"approved-region-2\"]}}}]}'```\n4. Audit existing Data Catalog resources\n5. Migrate non-compliant resources if necessary",
+        "AuditProcedure": "1. List databases in all regions: ```aws glue get-databases```\n2. Check table locations and regions\n3. Review resource creation patterns in CloudTrail\n4. Verify compliance with regional data residency policies",
+        "AdditionalInformation": "Consider cross-region replication needs for disaster recovery",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html",
+        "DefaultValue": "Data Catalog resources can be created in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.4",
+    "Description": "Tag Glue resources with data sovereignty information",
+    "Checks": [
+      "glue_data_sovereignty_tags"
+    ],
+    "function_name": "glue_data_sovereignty_tags",
+    "title": "Tag Glue resources with data sovereignty information",
+    "description": "Ensure Glue resources are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "glue",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_GLUE_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue resources are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+        "RationaleStatement": "Data sovereignty tags enable tracking and management of resources based on jurisdictional requirements and compliance obligations.",
+        "ImpactStatement": "Without proper tagging, it becomes difficult to track compliance with data residency requirements and manage resources accordingly.",
+        "RemediationProcedure": "1. Define data sovereignty tagging strategy\n2. Create standardized tags for jurisdiction, data classification, and residency requirements\n3. Use AWS CLI: ```aws glue tag-resource --resource-arn <resource-arn> --tags-to-add DataSovereignty=EU,Jurisdiction=GDPR,Classification=Sensitive```\n4. Implement automated tagging policies\n5. Use AWS Config rules to enforce tagging compliance",
+        "AuditProcedure": "1. Check resource tags: ```aws glue list-tags-for-resource --resource-arn <resource-arn>```\n2. Generate compliance reports using AWS Config\n3. Review tagging coverage across all Glue resources\n4. Verify tags align with data classification policies",
+        "AdditionalInformation": "Implement automated tagging workflows for new resources",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html",
+        "DefaultValue": "Resources are not tagged with sovereignty information by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.5",
+    "Description": "Restrict cross-region data access in Glue",
+    "Checks": [
+      "glue_cross_region_data_access_restricted"
+    ],
+    "function_name": "glue_cross_region_data_access_restricted",
+    "title": "Restrict cross-region data access in Glue",
+    "description": "Ensure Glue jobs do not access data sources across regions unless approved for data residency compliance.",
+    "capability": "data_residency",
+    "service": "glue",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_GLUE_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Glue jobs do not access data sources across regions unless approved for data residency compliance.",
+        "RationaleStatement": "Cross-region data access restrictions prevent unauthorized data movement across jurisdictional boundaries, maintaining compliance with data residency laws.",
+        "ImpactStatement": "Unrestricted cross-region data access can result in inadvertent data sovereignty violations and regulatory non-compliance.",
+        "RemediationProcedure": "1. Audit current cross-region data access patterns\n2. Implement IAM policies restricting cross-region S3 access\n3. Use AWS CLI: ```aws iam create-policy --policy-name GlueCrossRegionRestriction --policy-document '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Deny\",\"Action\":\"s3:GetObject\",\"Resource\":\"*\",\"Condition\":{\"StringNotEquals\":{\"s3:ExistingObjectTag/DataResidency\":\"approved-region\"}}}]}'```\n4. Configure VPC endpoints for regional data access\n5. Monitor data access patterns with CloudTrail",
+        "AuditProcedure": "1. Review job configurations for data source locations\n2. Check CloudTrail for cross-region S3 access: ```aws logs filter-log-events --log-group-name CloudTrail/S3DataAccess --filter-pattern '{ $.awsRegion != $.recipientAccountId }'```\n3. Verify VPC endpoint usage for data access\n4. Monitor data transfer patterns and volumes",
+        "AdditionalInformation": "Consider data replication strategies for regional compliance",
+        "References": "https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-connect.html",
+        "DefaultValue": "Cross-region data access is not restricted by default"
+      }
+    ]
+  }
+]

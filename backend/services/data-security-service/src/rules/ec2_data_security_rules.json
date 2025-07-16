@@ -1,0 +1,758 @@
+[
+  {
+    "function_name": "ec2_instance_public_ip_disabled",
+    "title": "Disable public IP assignment for EC2 instances",
+    "description": "Ensure EC2 instances do not have public IP addresses assigned to prevent direct internet access to sensitive data.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "network",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EC2 instances do not have public IP addresses assigned to reduce attack surface and prevent direct internet access.",
+        "RationaleStatement": "Public IP addresses expose EC2 instances directly to the internet, increasing attack surface and potential for unauthorized access to sensitive data stored on instances.",
+        "ImpactStatement": "Instances with public IPs are directly accessible from the internet, making them vulnerable to attacks, data breaches, and unauthorized access to sensitive workloads.",
+        "RemediationProcedure": "1. Open AWS EC2 Console \u2192 Instances.\n2. For existing instances with public IPs, create new instances without public IP assignment.\n3. Update Auto Scaling groups: modify launch templates to disable 'Auto-assign Public IP'.\n4. CLI: Modify subnet default behavior: `aws ec2 modify-subnet-attribute --subnet-id <subnet-id> --no-map-public-ip-on-launch`.\n5. Update launch templates: `aws ec2 modify-launch-template --launch-template-id <id> --version-description 'Remove public IP' --launch-template-data '{\"NetworkInterfaces\":[{\"AssociatePublicIpAddress\":false}]}'`",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[?PublicIpAddress!=null].[InstanceId,PublicIpAddress]'` to identify instances with public IP addresses.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses",
+        "DefaultValue": "Depends on subnet configuration"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_public_access_restricted",
+    "title": "Restrict public access to EC2 instances",
+    "description": "Ensure EC2 instances are not publicly accessible to prevent unauthorized access to sensitive data and applications.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement controls to prevent public access to EC2 instances through security group and network configuration.",
+        "RationaleStatement": "Public access to EC2 instances bypasses network security controls and exposes sensitive applications and data directly to internet-based threats.",
+        "ImpactStatement": "Publicly accessible instances are prime targets for attackers, potentially leading to data breaches, malware infections, and unauthorized access to sensitive business data.",
+        "RemediationProcedure": "1. Review security groups attached to instances: `aws ec2 describe-security-groups`.\n2. Remove rules allowing 0.0.0.0/0 access: `aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol tcp --port <port> --cidr 0.0.0.0/0`.\n3. Replace with specific IP ranges or use NAT Gateway for outbound access.\n4. Place instances in private subnets and use Application Load Balancer for web access.\n5. Implement bastion hosts or AWS Systems Manager Session Manager for administrative access.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?IpRanges[?CidrIp==`0.0.0.0/0`]]].[GroupId,GroupName]'` to identify security groups allowing public access.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html",
+        "DefaultValue": "Restrictive by default unless explicitly opened"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22",
+    "title": "Restrict SSH access from internet",
+    "description": "Ensure security groups do not allow SSH access from the internet to protect against unauthorized access to instance data.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "security_groups",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Prevent unrestricted SSH access from the internet to protect against brute force attacks and unauthorized access.",
+        "RationaleStatement": "Open SSH access from the internet is a common attack vector that can lead to unauthorized access to EC2 instances and sensitive data stored on them.",
+        "ImpactStatement": "Unrestricted SSH access allows attackers to attempt brute force attacks, potentially gaining access to instances and any sensitive data or applications running on them.",
+        "RemediationProcedure": "1. Identify security groups allowing SSH from 0.0.0.0/0: `aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?FromPort==`22` && IpRanges[?CidrIp==`0.0.0.0/0`]]]'`.\n2. Remove the rule: `aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol tcp --port 22 --cidr 0.0.0.0/0`.\n3. Add specific IP ranges: `aws ec2 authorize-security-group-ingress --group-id <sg-id> --protocol tcp --port 22 --cidr <specific-ip>/32`.\n4. Implement AWS Systems Manager Session Manager for secure access without SSH.\n5. Use bastion hosts in public subnets for administrative access to private instances.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?FromPort==`22` && IpRanges[?CidrIp==`0.0.0.0/0`]]].[GroupId,GroupName]'` to identify non-compliant security groups.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html",
+        "DefaultValue": "SSH access blocked unless explicitly allowed"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389",
+    "title": "Restrict RDP access from internet",
+    "description": "Ensure security groups do not allow RDP access from the internet to protect Windows instances from unauthorized access.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "security_groups",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Prevent unrestricted RDP access from the internet to protect Windows instances from remote desktop attacks.",
+        "RationaleStatement": "Open RDP access exposes Windows instances to internet-based attacks and unauthorized access attempts that could compromise sensitive data.",
+        "ImpactStatement": "Unrestricted RDP access makes Windows instances vulnerable to brute force attacks and remote code execution, potentially exposing sensitive business data and applications.",
+        "RemediationProcedure": "1. Identify security groups allowing RDP from 0.0.0.0/0: `aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?FromPort==`3389` && IpRanges[?CidrIp==`0.0.0.0/0`]]]'`.\n2. Remove the rule: `aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol tcp --port 3389 --cidr 0.0.0.0/0`.\n3. Add specific IP ranges: `aws ec2 authorize-security-group-ingress --group-id <sg-id> --protocol tcp --port 3389 --cidr <admin-ip>/32`.\n4. Use AWS Systems Manager Session Manager for secure Windows management.\n5. Consider using AWS WorkSpaces or RD Gateway for secure remote desktop access.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?FromPort==`3389` && IpRanges[?CidrIp==`0.0.0.0/0`]]].[GroupId,GroupName]'` to identify non-compliant security groups.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/authorizing-access-to-an-instance.html",
+        "DefaultValue": "RDP access blocked unless explicitly allowed"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_securitygroup_default_restrict_traffic",
+    "title": "Restrict default security group traffic",
+    "description": "Ensure default security groups do not allow unrestricted traffic to prevent unauthorized access to EC2 instances.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "security_groups",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure default security groups have restrictive rules and are not used for production workloads.",
+        "RationaleStatement": "Default security groups often accumulate permissive rules over time and are shared across resources, creating unnecessary exposure for sensitive workloads.",
+        "ImpactStatement": "Permissive default security groups can provide unintended access paths to sensitive instances, potentially leading to data exposure and security breaches.",
+        "RemediationProcedure": "1. Identify default security groups: `aws ec2 describe-security-groups --query 'SecurityGroups[?GroupName==`default`]'`.\n2. Remove all inbound rules: `aws ec2 revoke-security-group-ingress --group-id <sg-id> --ip-permissions <existing-rules>`.\n3. Remove all outbound rules except necessary ones: `aws ec2 revoke-security-group-egress --group-id <sg-id> --ip-permissions <existing-rules>`.\n4. Create specific security groups for each use case instead of using default.\n5. Regularly audit and ensure no instances use default security groups.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-security-groups --query 'SecurityGroups[?GroupName==`default` && (length(IpPermissions) > `0` || length(IpPermissionsEgress) > `1`)]'` to identify default security groups with rules.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/default-custom-security-groups.html",
+        "DefaultValue": "Default allows all outbound, no inbound traffic"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_profile_attached",
+    "title": "Attach IAM instance profiles to EC2 instances",
+    "description": "Ensure EC2 instances have IAM instance profiles attached for secure access to AWS services without hardcoded credentials.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "iam",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_006",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EC2 instances use IAM instance profiles for AWS service access instead of hardcoded credentials.",
+        "RationaleStatement": "Instance profiles provide secure, temporary credentials for accessing AWS services, eliminating the need for hardcoded credentials that could expose sensitive data.",
+        "ImpactStatement": "Without instance profiles, applications may use hardcoded credentials that could be extracted from code or configuration, leading to unauthorized access to sensitive AWS resources.",
+        "RemediationProcedure": "1. Create IAM role with necessary permissions: `aws iam create-role --role-name EC2-DataAccess-Role --assume-role-policy-document <policy>`.\n2. Create instance profile: `aws iam create-instance-profile --instance-profile-name EC2-DataAccess-Profile`.\n3. Add role to profile: `aws iam add-role-to-instance-profile --instance-profile-name EC2-DataAccess-Profile --role-name EC2-DataAccess-Role`.\n4. Attach to instance: `aws ec2 associate-iam-instance-profile --instance-id <instance-id> --iam-instance-profile Name=EC2-DataAccess-Profile`.\n5. Remove any hardcoded credentials from applications and use AWS SDK with instance profile.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[?!IamInstanceProfile].[InstanceId,State.Name]'` to identify instances without instance profiles.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html",
+        "DefaultValue": "No instance profile attached unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_managed_by_ssm",
+    "title": "Ensure EC2 instances are managed by Systems Manager",
+    "description": "Ensure EC2 instances are managed by AWS Systems Manager for secure remote access and patch management.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "ssm",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_007",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EC2 instances are managed by AWS Systems Manager for secure administration and patch management.",
+        "RationaleStatement": "Systems Manager provides secure remote access without SSH/RDP, patch management, and compliance monitoring, reducing attack surface for sensitive instances.",
+        "ImpactStatement": "Without SSM management, instances may lack proper patch management and secure access methods, increasing vulnerability to security exploits and data breaches.",
+        "RemediationProcedure": "1. Install SSM Agent on instances (pre-installed on Amazon Linux 2, Ubuntu 16.04+, Windows Server 2016+).\n2. Create IAM role with AmazonSSMManagedInstanceCore policy: `aws iam create-role --role-name SSMInstanceRole --assume-role-policy-document <policy>`.\n3. Attach policy: `aws iam attach-role-policy --role-name SSMInstanceRole --policy-arn arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore`.\n4. Create and attach instance profile: `aws iam create-instance-profile --instance-profile-name SSMInstanceProfile`.\n5. Verify instances appear in Systems Manager console \u2192 Managed Instances.",
+        "AuditProcedure": "Use AWS CLI: `aws ssm describe-instance-information --query 'InstanceInformationList[*].[InstanceId,PingStatus]'` to verify instances are managed by SSM.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html",
+        "DefaultValue": "Not managed unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_imdsv2_enabled",
+    "title": "Enable IMDSv2 for EC2 instances",
+    "description": "Ensure EC2 instances use Instance Metadata Service v2 to prevent SSRF attacks and protect instance credentials.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "metadata",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EC2_008",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enforce Instance Metadata Service v2 (IMDSv2) to protect against SSRF attacks and unauthorized credential access.",
+        "RationaleStatement": "IMDSv2 prevents SSRF attacks that could expose instance credentials and sensitive metadata, protecting against unauthorized access to AWS services.",
+        "ImpactStatement": "Without IMDSv2, SSRF vulnerabilities in applications could be exploited to steal instance credentials, leading to unauthorized access to AWS resources and data.",
+        "RemediationProcedure": "1. Enable IMDSv2 for existing instances: `aws ec2 modify-instance-metadata-options --instance-id <instance-id> --http-tokens required --http-put-response-hop-limit 1`.\n2. Verify configuration: `aws ec2 describe-instances --instance-ids <instance-id> --query 'Reservations[*].Instances[*].MetadataOptions'`.\n3. Update launch templates: `aws ec2 modify-launch-template --launch-template-id <id> --launch-template-data '{\"MetadataOptions\":{\"HttpTokens\":\"required\"}}'`.\n4. Test applications to ensure they work with token-based metadata access.\n5. Update Auto Scaling groups to use updated launch templates.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[?MetadataOptions.HttpTokens!=`required`].[InstanceId,MetadataOptions.HttpTokens]'` to identify instances not using IMDSv2.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html",
+        "DefaultValue": "IMDSv1 enabled by default on older instances"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_launch_template_imdsv2_required",
+    "title": "Require IMDSv2 in launch templates",
+    "description": "Ensure EC2 launch templates require IMDSv2 to protect against metadata service attacks on new instances.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "metadata",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EC2_009",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Require IMDSv2 in launch templates to ensure all new instances are protected against metadata service attacks.",
+        "RationaleStatement": "Launch templates with IMDSv2 requirements ensure all new instances are protected against metadata service attacks from the moment they launch.",
+        "ImpactStatement": "Launch templates without IMDSv2 requirements create new instances vulnerable to SSRF attacks that could expose credentials and compromise sensitive data access.",
+        "RemediationProcedure": "1. List all launch templates: `aws ec2 describe-launch-templates`.\n2. For each template, create new version with IMDSv2: `aws ec2 create-launch-template-version --launch-template-id <id> --launch-template-data '{\"MetadataOptions\":{\"HttpTokens\":\"required\",\"HttpPutResponseHopLimit\":1}}'`.\n3. Set new version as default: `aws ec2 modify-launch-template --launch-template-id <id> --default-version <new-version>`.\n4. Update Auto Scaling groups to use latest template version.\n5. Verify no launch templates allow IMDSv1.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-launch-template-versions --query 'LaunchTemplateVersions[?LaunchTemplateData.MetadataOptions.HttpTokens!=`required`].[LaunchTemplateId,Version]'` to identify non-compliant templates.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#launch-templates-imds",
+        "DefaultValue": "IMDSv1 allowed by default"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_secrets_user_data",
+    "title": "Avoid secrets in EC2 user data",
+    "description": "Ensure EC2 instances do not contain secrets in user data scripts to prevent credential exposure.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "userdata",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EC2_010",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Avoid storing secrets in EC2 user data to prevent exposure through instance metadata.",
+        "RationaleStatement": "User data is stored in plaintext and can be accessed by anyone with EC2 permissions, making it unsuitable for storing sensitive credentials or secrets.",
+        "ImpactStatement": "Secrets in user data can be extracted by authorized users or attackers who gain access to EC2 metadata, leading to unauthorized access to databases and other sensitive resources.",
+        "RemediationProcedure": "1. Review user data for all instances: `aws ec2 describe-instance-attribute --instance-id <instance-id> --attribute userData`.\n2. Identify and remove any hardcoded secrets, passwords, or API keys.\n3. Replace secrets with AWS Systems Manager Parameter Store references: `aws ssm get-parameter --name '/app/database/password' --with-decryption`.\n4. Use AWS Secrets Manager for database credentials: `aws secretsmanager get-secret-value --secret-id 'prod/database/credentials'`.\n5. Update user data scripts to retrieve secrets from secure sources during instance startup.",
+        "AuditProcedure": "Use AWS CLI and manual review: `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId]' | xargs -I {} aws ec2 describe-instance-attribute --instance-id {} --attribute userData` and scan for common secret patterns.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-security",
+        "DefaultValue": "No secrets should be present in user data"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_launch_template_no_secrets",
+    "title": "Avoid secrets in launch templates",
+    "description": "Ensure EC2 launch templates do not contain hardcoded secrets that could be exposed to unauthorized users.",
+    "capability": "access_governance",
+    "service": "ec2",
+    "subservice": "userdata",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EC2_011",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Avoid storing hardcoded secrets in launch templates to prevent exposure through instance creation.",
+        "RationaleStatement": "Launch templates are shared resources that can be accessed by multiple users, making them inappropriate for storing sensitive credentials or secrets.",
+        "ImpactStatement": "Secrets in launch templates can be accessed by any user with template permissions, potentially exposing sensitive credentials to unauthorized individuals and compromising data security.",
+        "RemediationProcedure": "1. Review all launch template versions: `aws ec2 describe-launch-template-versions --query 'LaunchTemplateVersions[*].[LaunchTemplateId,Version,LaunchTemplateData.UserData]'`.\n2. Decode base64 user data and scan for secrets: `echo '<user-data>' | base64 -d`.\n3. Create new template versions without secrets, using Parameter Store or Secrets Manager instead.\n4. Update references to use secure credential retrieval: `aws ssm get-parameter --name '/app/config/api-key' --with-decryption`.\n5. Set new versions as default and update Auto Scaling groups.",
+        "AuditProcedure": "Use AWS CLI with manual review: `aws ec2 describe-launch-template-versions --query 'LaunchTemplateVersions[*].[LaunchTemplateId,Version]'` and examine user data for hardcoded secrets, passwords, or API keys.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#launch-template-security",
+        "DefaultValue": "No secrets should be present in launch templates"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_default_encryption",
+    "title": "Enable default EBS encryption",
+    "description": "Ensure EBS default encryption is enabled to protect data at rest on all new volumes automatically.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EC2_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable default encryption for EBS volumes to protect data at rest using AWS managed keys.",
+        "RationaleStatement": "Default EBS encryption ensures all new volumes are automatically encrypted, preventing accidental creation of unencrypted volumes that could expose sensitive data.",
+        "ImpactStatement": "Without default encryption, new EBS volumes may be created unencrypted, exposing sensitive data at rest and creating compliance violations.",
+        "RemediationProcedure": "1. Enable default EBS encryption for each region: `aws ec2 enable-ebs-encryption-by-default --region <region>`.\n2. Set default KMS key: `aws ec2 modify-ebs-default-kms-key-id --kms-key-id <key-id> --region <region>`.\n3. Verify setting: `aws ec2 get-ebs-encryption-by-default --region <region>`.\n4. Repeat for all regions where EC2 instances are launched.\n5. Update organizational policies to require default encryption in new accounts.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 get-ebs-encryption-by-default --region <region>` to verify default encryption is enabled in all active regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default",
+        "DefaultValue": "Enabled for new volumes in regions where configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_volume_encryption",
+    "title": "Enable EBS volume encryption",
+    "description": "Ensure EBS volumes are encrypted to protect sensitive data at rest and meet compliance requirements.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EC2_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Encrypt EBS volumes to protect sensitive data at rest using industry-standard AES-256 encryption.",
+        "RationaleStatement": "EBS volume encryption protects sensitive data at rest using industry-standard AES-256 encryption, essential for data security and compliance requirements.",
+        "ImpactStatement": "Unencrypted EBS volumes expose sensitive data at rest, creating risks of data breaches and compliance violations if storage media is compromised.",
+        "RemediationProcedure": "1. Identify unencrypted volumes: `aws ec2 describe-volumes --query 'Volumes[?Encrypted==`false`]'`.\n2. Create encrypted snapshot: `aws ec2 create-snapshot --volume-id <vol-id> --description 'Pre-encryption backup'`.\n3. Copy snapshot with encryption: `aws ec2 copy-snapshot --source-snapshot-id <snap-id> --encrypted --destination-region <region>`.\n4. Create encrypted volume from snapshot: `aws ec2 create-volume --snapshot-id <encrypted-snap-id> --availability-zone <az>`.\n5. Stop instance, detach old volume, attach new encrypted volume, and restart instance.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[?Encrypted==`false`].VolumeId'` to identify unencrypted volumes.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html",
+        "DefaultValue": "Encrypted volumes are the goal; unencrypted volumes are non-compliant"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_snapshots_encrypted",
+    "title": "Ensure EBS snapshots are encrypted",
+    "description": "Ensure EBS snapshots are encrypted to protect sensitive data during backup operations.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EC2_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Encrypt EBS snapshots to protect sensitive data during backup, restore, and sharing operations.",
+        "RationaleStatement": "Encrypted snapshots protect sensitive data during backup, restore, and sharing operations, maintaining data confidentiality throughout the backup lifecycle.",
+        "ImpactStatement": "Unencrypted snapshots can expose sensitive data during backup operations, data transfers, or if snapshot storage is compromised.",
+        "RemediationProcedure": "1. Identify unencrypted snapshots: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?Encrypted==`false`]'`.\n2. Create encrypted copies: `aws ec2 copy-snapshot --source-snapshot-id <snap-id> --encrypted --destination-region <region> --description 'Encrypted copy'`.\n3. Update backup automation to create encrypted snapshots: `aws ec2 create-snapshot --volume-id <vol-id> --encrypted`.\n4. Delete original unencrypted snapshots after verification.\n5. Implement policies requiring encryption for all new snapshots.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?Encrypted==`false`].SnapshotId'` to identify unencrypted snapshots.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html#ebs-encrypt-snapshot",
+        "DefaultValue": "Encrypted snapshots are the goal; unencrypted snapshots are non-compliant"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_volume_protected_by_backup_plan",
+    "title": "Protect EBS volumes with backup plans",
+    "description": "Ensure EBS volumes are protected by AWS Backup plans for data protection and compliance requirements.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EC2_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Protect EBS volumes with AWS Backup plans to ensure data is regularly backed up and recoverable.",
+        "RationaleStatement": "AWS Backup provides centralized, automated backup for EBS volumes, ensuring data protection, compliance, and disaster recovery capabilities.",
+        "ImpactStatement": "Without backup protection, EBS volumes are vulnerable to data loss from hardware failures, accidental deletion, or ransomware attacks.",
+        "RemediationProcedure": "1. Create backup plan: `aws backup create-backup-plan --backup-plan <plan-json>` with appropriate schedule and retention.\n2. Create backup selection: `aws backup create-backup-selection --backup-plan-id <plan-id> --backup-selection <selection-json>`.\n3. Tag EBS volumes for backup: `aws ec2 create-tags --resources <vol-id> --tags Key=BackupPlan,Value=Production`.\n4. Verify backup jobs: `aws backup list-backup-jobs --by-resource-type EBS`.\n5. Test restore procedures regularly to ensure backup integrity.",
+        "AuditProcedure": "Use AWS CLI: `aws backup list-protected-resources --resource-type EBS` and `aws ec2 describe-volumes` to verify all critical volumes are protected by backup plans.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/aws-backup/latest/devguide/about-backup-plans.html",
+        "DefaultValue": "All critical volumes should be protected by backup plans"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_volume_snapshots_exists",
+    "title": "Ensure EBS volume snapshots exist",
+    "description": "Ensure EBS volumes have regular snapshots created for data protection and disaster recovery.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EC2_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure regular snapshots are taken of EBS volumes to protect against data loss.",
+        "RationaleStatement": "Regular snapshots provide point-in-time recovery capabilities, protecting against data loss and enabling rapid disaster recovery for sensitive data.",
+        "ImpactStatement": "Without regular snapshots, data loss from volume corruption, accidental deletion, or system failures cannot be recovered, leading to business disruption.",
+        "RemediationProcedure": "1. Identify volumes without recent snapshots: `aws ec2 describe-volumes --query 'Volumes[*].VolumeId'`.\n2. For each volume, check snapshots: `aws ec2 describe-snapshots --filters Name=volume-id,Values=<vol-id> --query 'Snapshots[?StartTime>=`<recent-date>`]'`.\n3. Create snapshots for volumes without recent backups: `aws ec2 create-snapshot --volume-id <vol-id> --description 'Manual backup'`.\n4. Set up automated snapshots using Data Lifecycle Manager: `aws dlm create-lifecycle-policy --policy <policy-json>`.\n5. Tag volumes appropriately for automated snapshot policies.",
+        "AuditProcedure": "Use AWS CLI: Compare volumes with recent snapshots: `aws ec2 describe-volumes` and `aws ec2 describe-snapshots --owner-ids self --query 'Snapshots[?StartTime>=`<30-days-ago>`]'`",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html",
+        "DefaultValue": "All volumes should have recent snapshots"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_termination_protection_enabled",
+    "title": "Enable termination protection for EC2 instances",
+    "description": "Enable termination protection for EC2 instances to prevent accidental data loss from instance termination.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "protection",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EC2_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable termination protection for critical instances to prevent accidental termination and data loss.",
+        "RationaleStatement": "Termination protection prevents accidental deletion of EC2 instances containing sensitive data or critical applications, protecting against data loss.",
+        "ImpactStatement": "Without termination protection, critical instances can be accidentally terminated, resulting in permanent data loss and service disruption.",
+        "RemediationProcedure": "1. Enable termination protection for critical instances: `aws ec2 modify-instance-attribute --instance-id <instance-id> --disable-api-termination`.\n2. Verify protection: `aws ec2 describe-instance-attribute --instance-id <instance-id> --attribute disableApiTermination`.\n3. Update launch templates to enable protection by default: `aws ec2 modify-launch-template --launch-template-id <id> --launch-template-data '{\"DisableApiTermination\":true}'`.\n4. Implement IAM policies requiring termination protection for production instances.\n5. Document procedures for disabling protection when termination is needed.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[?DisableApiTermination!=`true`].[InstanceId,Tags[?Key==`Environment`].Value]'` to identify unprotected instances.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination",
+        "DefaultValue": "Enabled for critical instances"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_detailed_monitoring_enabled",
+    "title": "Enable detailed monitoring for EC2 instances",
+    "description": "Enable detailed monitoring for EC2 instances to track performance and detect anomalies that could indicate data access issues.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "monitoring",
+    "risk": "LOW",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EC2_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable detailed monitoring for EC2 instances to enhance visibility into performance and security.",
+        "RationaleStatement": "Detailed monitoring provides enhanced visibility into instance performance and behavior, enabling detection of anomalies that could indicate security incidents or data access issues.",
+        "ImpactStatement": "Without detailed monitoring, performance anomalies or security incidents affecting sensitive instances may go undetected, delaying incident response.",
+        "RemediationProcedure": "1. Enable detailed monitoring for instances: `aws ec2 monitor-instances --instance-ids <instance-id>`.\n2. Verify monitoring: `aws ec2 describe-instances --instance-ids <instance-id> --query 'Reservations[*].Instances[*].Monitoring'`.\n3. Update launch templates: `aws ec2 modify-launch-template --launch-template-id <id> --launch-template-data '{\"Monitoring\":{\"Enabled\":true}}'`.\n4. Set up CloudWatch alarms for critical metrics: CPU, memory, disk I/O, network traffic.\n5. Configure notifications for anomalous behavior that could indicate security issues.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[?Monitoring.State!=`enabled`].[InstanceId,Monitoring.State]'` to identify instances without detailed monitoring.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html",
+        "DefaultValue": "Disabled by default; must be enabled per instance"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_volume_kms_encryption_enabled",
+    "title": "Use KMS encryption for EBS volumes",
+    "description": "Ensure EBS volumes use KMS encryption instead of default encryption for better key management and audit trails.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EC2_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Use KMS-managed keys for EBS volume encryption to enhance key management and auditing capabilities.",
+        "RationaleStatement": "KMS encryption provides enhanced key management, audit trails, and granular access controls compared to default encryption, improving security governance for sensitive data.",
+        "ImpactStatement": "Default encryption without KMS limits key management capabilities and audit visibility, reducing security controls and compliance capabilities for sensitive data.",
+        "RemediationProcedure": "1. Create or identify appropriate KMS key: `aws kms create-key --description 'EBS encryption key for sensitive data'`.\n2. Set KMS key as default for EBS: `aws ec2 modify-ebs-default-kms-key-id --kms-key-id <key-id>`.\n3. For existing volumes, create KMS-encrypted snapshots: `aws ec2 copy-snapshot --source-snapshot-id <snap-id> --encrypted --kms-key-id <key-id>`.\n4. Create new volumes from KMS-encrypted snapshots.\n5. Update launch templates to specify KMS key: `aws ec2 modify-launch-template --launch-template-data '{\"BlockDeviceMappings\":[{\"Ebs\":{\"Encrypted\":true,\"KmsKeyId\":\"<key-id>\"}}]}'`",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-volumes --query 'Volumes[?Encrypted==`true`].[VolumeId,KmsKeyId]'` to verify volumes use customer-managed KMS keys instead of default encryption.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_key_mgmt",
+        "DefaultValue": "Default encryption method; KMS key must be specified for each volume"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_data_classification_tags",
+    "title": "Tag EC2 instances with data classification",
+    "description": "Ensure EC2 instances are tagged with appropriate data classification levels for governance and compliance tracking.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EC2_009",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Tag EC2 instances with data classification levels to enable governance and compliance tracking.",
+        "RationaleStatement": "Data classification tags enable proper governance, access controls, and compliance tracking based on the sensitivity of data processed by each instance.",
+        "ImpactStatement": "Without data classification tags, it's difficult to apply appropriate security controls, track compliance, and ensure proper handling of sensitive data across EC2 instances.",
+        "RemediationProcedure": "1. Define data classification taxonomy (e.g., Public, Internal, Confidential, Restricted).\n2. Tag instances with classification: `aws ec2 create-tags --resources <instance-id> --tags Key=DataClassification,Value=Confidential Key=DataOwner,Value=<owner-email>`.\n3. Implement automated tagging using Lambda functions triggered by instance launch events.\n4. Create tag policies in AWS Organizations to enforce classification tagging.\n5. Use tags in IAM policies to control access based on data classification levels.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[?!Tags || !Tags[?Key==`DataClassification`]].[InstanceId,Tags]'` to identify instances missing classification tags.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html",
+        "DefaultValue": "No default value; must be explicitly set for each instance"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_volume_lifecycle_management",
+    "title": "Implement EBS volume lifecycle management",
+    "description": "Implement lifecycle policies for EBS volumes to automatically manage data retention and reduce storage costs.",
+    "capability": "data_protection",
+    "service": "ec2",
+    "subservice": "lifecycle",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EC2_010",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement lifecycle policies for EBS volumes to automate snapshot management and reduce manual effort.",
+        "RationaleStatement": "Automated lifecycle management ensures consistent data protection schedules, optimizes storage costs, and maintains compliance with data retention requirements.",
+        "ImpactStatement": "Without lifecycle management, data retention policies may be inconsistent, leading to compliance violations or excessive storage costs for sensitive data backups.",
+        "RemediationProcedure": "1. Create Data Lifecycle Manager policies for volume snapshots: `aws dlm create-lifecycle-policy --policy <policy-json>`.\n2. Define target resources using tags: set resource type to 'VOLUME' and target tags.\n3. Configure schedule: daily, weekly, or monthly snapshot creation.\n4. Set retention rules based on compliance requirements: 30 days, 1 year, 7 years.\n5. Enable cross-region copy if required for disaster recovery: specify destination regions.",
+        "AuditProcedure": "Use AWS CLI: `aws dlm get-lifecycle-policies` to verify policies exist and `aws dlm get-lifecycle-policy --policy-id <id>` to check policy configuration and status.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html",
+        "DefaultValue": "No lifecycle policies are in place by default"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_region_restriction_enforced",
+    "title": "Enforce region restrictions for EC2 instances",
+    "description": "Ensure EC2 instances are launched only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "ec2",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EC2_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enforce region restrictions for EC2 instance launches to comply with organizational data residency requirements.",
+        "RationaleStatement": "Region restrictions ensure sensitive data and applications remain within approved geographical boundaries to comply with data sovereignty and privacy regulations.",
+        "ImpactStatement": "Instances in unapproved regions may violate data residency laws, GDPR, or other regulations, resulting in legal penalties and compliance violations.",
+        "RemediationProcedure": "1. Define approved regions based on data residency requirements.\n2. Create Service Control Policies (SCPs) in AWS Organizations: `{\"Effect\":\"Deny\",\"Action\":\"ec2:RunInstances\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"us-east-1\",\"eu-west-1\"]}}}`.\n3. Apply SCPs to organizational units containing sensitive workloads.\n4. Use IAM policies with region conditions for additional enforcement.\n5. Monitor CloudTrail for EC2 launch events in unapproved regions.",
+        "AuditProcedure": "Use AWS CLI across all regions: `aws ec2 describe-instances --region <region> --query 'Reservations[*].Instances[*].[InstanceId,Placement.AvailabilityZone]'` to identify instances in unapproved regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "No default region restrictions; must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ebs_volume_region_compliance",
+    "title": "Ensure EBS volumes comply with region restrictions",
+    "description": "Ensure EBS volumes are created only in approved regions to meet data residency and sovereignty requirements.",
+    "capability": "data_residency",
+    "service": "ec2",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EC2_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EBS volumes are created in compliance with region restrictions to meet data residency requirements.",
+        "RationaleStatement": "EBS volume region compliance ensures data storage adheres to sovereignty laws and organizational data governance policies regarding geographic data location.",
+        "ImpactStatement": "Volumes in non-compliant regions may violate data residency requirements, expose organizations to regulatory penalties, and breach data sovereignty commitments.",
+        "RemediationProcedure": "1. Identify approved regions for data storage based on regulatory requirements.\n2. Implement SCPs restricting EBS volume creation: `{\"Effect\":\"Deny\",\"Action\":[\"ec2:CreateVolume\"],\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"approved-regions\"]}}}`.\n3. Audit existing volumes across all regions: `aws ec2 describe-volumes --region <region>`.\n4. Migrate volumes in non-compliant regions by creating encrypted snapshots and copying to approved regions.\n5. Update backup and disaster recovery procedures to respect region restrictions.",
+        "AuditProcedure": "Use AWS CLI to check volumes in all regions: `aws ec2 describe-volumes --region <region> --query 'Volumes[*].[VolumeId,AvailabilityZone]'` and compare against approved regions list.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html",
+        "DefaultValue": "No default region compliance; must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_ami_region_restriction_enforced",
+    "title": "Restrict AMI usage to approved regions",
+    "description": "Ensure AMIs are shared and used only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "ec2",
+    "subservice": "region",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EC2_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Restrict AMI sharing and usage to approved regions to comply with data residency requirements.",
+        "RationaleStatement": "AMI region restrictions prevent inadvertent data movement through image sharing and ensure sensitive system configurations remain within approved jurisdictions.",
+        "ImpactStatement": "Unrestricted AMI sharing could result in sensitive system images being used in unapproved regions, potentially violating data residency requirements.",
+        "RemediationProcedure": "1. Audit AMI sharing permissions: `aws ec2 describe-images --owners self --query 'Images[*].[ImageId,Public,Name]'`.\n2. Review cross-region AMI copies: `aws ec2 describe-images --owners self --region <region>`.\n3. Remove AMI sharing to unapproved regions: `aws ec2 modify-image-attribute --image-id <ami-id> --launch-permission '{\"Remove\":[{\"Group\":\"all\"}]}'`.\n4. Implement policies preventing AMI copying to unapproved regions.\n5. Use SCPs to restrict AMI operations: `{\"Effect\":\"Deny\",\"Action\":\"ec2:CopyImage\",\"Condition\":{\"StringNotEquals\":{\"ec2:DestinationRegion\":[\"approved-regions\"]}}}`",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-images --owners self --region <region>` for each region and verify AMIs exist only in approved regions. Check sharing: `aws ec2 describe-image-attribute --image-id <ami-id> --attribute launchPermission`",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#ami-launch-permissions",
+        "DefaultValue": "No default restrictions; must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_snapshot_cross_region_copy_restricted",
+    "title": "Restrict cross-region snapshot copying",
+    "description": "Ensure EBS snapshots are copied only to approved regions that meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "ec2",
+    "subservice": "backup",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EC2_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Restrict cross-region copying of EBS snapshots to approved regions to comply with data residency requirements.",
+        "RationaleStatement": "Restricting cross-region snapshot copying ensures backup data remains within approved jurisdictions, maintaining data residency compliance for sensitive information.",
+        "ImpactStatement": "Unrestricted snapshot copying could move sensitive data to jurisdictions with different privacy laws, violating data residency requirements and regulatory compliance.",
+        "RemediationProcedure": "1. Define approved destination regions for snapshot copies based on data residency requirements.\n2. Implement IAM policies restricting snapshot copying: `{\"Effect\":\"Deny\",\"Action\":\"ec2:CopySnapshot\",\"Condition\":{\"StringNotEquals\":{\"ec2:DestinationRegion\":[\"approved-regions\"]}}}`.\n3. Use SCPs for organization-wide enforcement of snapshot copy restrictions.\n4. Monitor CloudTrail for `CopySnapshot` events to unapproved regions.\n5. Update backup automation tools to respect region restrictions for disaster recovery copies.",
+        "AuditProcedure": "Use CloudTrail to audit snapshot copy operations: `aws logs filter-log-events --log-group-name CloudTrail/EC2Events --filter-pattern '{ $.eventName = \"CopySnapshot\" }'` and verify destination regions are approved.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html",
+        "DefaultValue": "No default restrictions; must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_instance_data_sovereignty_tags",
+    "title": "Tag EC2 instances with data sovereignty information",
+    "description": "Ensure EC2 instances are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "ec2",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EC2_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Tag EC2 instances with data sovereignty information to enable compliance tracking and governance.",
+        "RationaleStatement": "Data sovereignty tags enable tracking and governance of instance location requirements, supporting compliance with international data protection laws and regulations.",
+        "ImpactStatement": "Without sovereignty tags, it's difficult to track compliance with data residency requirements and respond to regulatory inquiries about data location and jurisdiction.",
+        "RemediationProcedure": "1. Define data sovereignty taxonomy (jurisdiction, legal framework, residency requirements).\n2. Tag instances with sovereignty information: `aws ec2 create-tags --resources <instance-id> --tags Key=DataSovereignty,Value=EU-GDPR Key=Jurisdiction,Value=European-Union Key=DataResidency,Value=EU-Only`.\n3. Implement automated tagging based on region and instance purpose using Lambda functions.\n4. Create tag policies in AWS Organizations to enforce sovereignty tagging standards.\n5. Use sovereignty tags in IAM policies to control access based on jurisdiction requirements.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-instances --query 'Reservations[*].Instances[?!Tags || !Tags[?Key==`DataSovereignty`]].[InstanceId,Placement.AvailabilityZone]'` to identify instances missing sovereignty tags.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html",
+        "DefaultValue": "No default value; must be explicitly set for each instance"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_placement_group_region_compliance",
+    "title": "Ensure placement groups comply with region restrictions",
+    "description": "Ensure EC2 placement groups are created only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "ec2",
+    "subservice": "region",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EC2_006",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EC2 placement groups are created in compliance with region restrictions to meet data residency requirements.",
+        "RationaleStatement": "Placement group region compliance ensures that tightly coupled instances remain within approved geographical boundaries, supporting data residency requirements.",
+        "ImpactStatement": "Placement groups in unapproved regions could violate data locality requirements for high-performance computing workloads processing sensitive data.",
+        "RemediationProcedure": "1. Audit existing placement groups across all regions: `aws ec2 describe-placement-groups --region <region>`.\n2. Identify placement groups in unapproved regions and plan migration if necessary.\n3. Implement SCPs restricting placement group creation: `{\"Effect\":\"Deny\",\"Action\":\"ec2:CreatePlacementGroup\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"approved-regions\"]}}}`.\n4. Update infrastructure as code templates to create placement groups only in approved regions.\n5. Monitor new placement group creation through CloudTrail events.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-placement-groups --region <region> --query 'PlacementGroups[*].[GroupName,GroupId,AvailabilityZone]'` for each region to verify compliance with approved regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html",
+        "DefaultValue": "No default region compliance; must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "ec2_dedicated_host_region_compliance",
+    "title": "Ensure dedicated hosts comply with region restrictions",
+    "description": "Ensure EC2 dedicated hosts are allocated only in approved regions to meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "ec2",
+    "subservice": "region",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EC2_007",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EC2 dedicated hosts are allocated in compliance with region restrictions to meet data residency requirements.",
+        "RationaleStatement": "Dedicated host region compliance ensures that isolated computing resources for sensitive workloads remain within approved geographical and legal jurisdictions.",
+        "ImpactStatement": "Dedicated hosts in unapproved regions could violate strict data residency requirements for regulated workloads requiring physical isolation and specific geographic location.",
+        "RemediationProcedure": "1. Audit dedicated hosts across all regions: `aws ec2 describe-hosts --region <region>`.\n2. Identify hosts in unapproved regions and plan migration or termination.\n3. Implement SCPs restricting dedicated host allocation: `{\"Effect\":\"Deny\",\"Action\":\"ec2:AllocateHosts\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"approved-regions\"]}}}`.\n4. Release hosts in non-compliant regions: `aws ec2 release-hosts --host-ids <host-id>`.\n5. Update capacity reservation and dedicated hosting strategies to use only approved regions.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-hosts --region <region> --query 'Hosts[*].[HostId,AvailabilityZone,State]'` for each region to verify dedicated hosts are only in approved regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
+        "DefaultValue": "No default region compliance; must be explicitly configured"
+      }
+    ]
+  }
+]

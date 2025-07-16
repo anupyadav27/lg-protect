@@ -1,0 +1,197 @@
+{
+  "scan_id": "eb7f9932-1462-4c9d-83fa-8c84d22b5f3e",
+  "scan_timestamp": "2025-07-16T10:40:05.531365",
+  "account_id": "588989875114",
+  "regions": [
+    "us-east-1"
+  ],
+  "summary": {
+    "checks_run": 4,
+    "checks_passed": 0,
+    "checks_failed": 0,
+    "checks_error": 0,
+    "checks_warning": 1,
+    "checks_skipped": 0,
+    "execution_time_ms": 0
+  },
+  "findings": [
+    {
+      "check_id": "account_maintain_current_contact_details",
+      "check_name": "Account Maintain Current Contact Details",
+      "status": "WARNING",
+      "status_extended": "AWS Account 588989875114 has contact information, but manual verification is recommended to ensure all details are current.",
+      "severity": "MEDIUM",
+      "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+      "resource": {
+        "resource": "{'account_id': '588989875114', 'account_arn': 'arn:aws:iam::588989875114:user/administrator', 'contact_info': {'AddressLine1': 'cyber park', 'City': 'Gurgaon', 'CompanyName': 'LG Tech', 'CountryCode': 'IN', 'FullName': 'Anup', 'PhoneNumber': '9871585677', 'PostalCode': '201301', 'StateOrRegion': 'Haryana'}}"
+      },
+      "region": "global",
+      "account_id": null,
+      "timestamp": "2025-07-16T10:40:14.562200",
+      "execution_time_ms": 2728,
+      "error_details": null,
+      "evidence": {
+        "account_id": "588989875114",
+        "account_arn": "arn:aws:iam::588989875114:user/administrator",
+        "has_contact_info": true,
+        "contact_info_available": true
+      },
+      "metadata": {
+        "check_id": "account_maintain_current_contact_details",
+        "check_name": "Account Maintain Current Contact Details",
+        "description": "Ensure AWS account maintains current contact details for billing and security notifications",
+        "severity": "MEDIUM",
+        "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+        "category": "Account Management",
+        "tags": [
+          "account",
+          "contact",
+          "billing",
+          "security",
+          "notifications"
+        ],
+        "remediation": "Login to the AWS Console. Choose your account name on the top right of the window -> My Account -> Contact Information.",
+        "references": [
+          "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html",
+          "https://aws.amazon.com/premiumsupport/knowledge-center/update-account-contact-information/"
+        ],
+        "version": "1.0",
+        "created_date": "2025-07-16T10:40:11.833714"
+      }
+    },
+    {
+      "check_id": "account_security_contact_information_is_registered",
+      "check_name": "Account Security Contact Information Is Registered",
+      "status": "MANUAL",
+      "status_extended": "AWS Account 588989875114 security contact information requires manual verification. Login to the AWS Console. Choose your account name on the top right of the window -> My Account -> Alternate Contacts -> Security Section.",
+      "severity": "MEDIUM",
+      "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+      "resource": {
+        "resource": "{'account_id': '588989875114', 'account_arn': 'arn:aws:iam::588989875114:user/administrator', 'security_contact': None}"
+      },
+      "region": "global",
+      "account_id": null,
+      "timestamp": "2025-07-16T10:40:16.831401",
+      "execution_time_ms": 2269,
+      "error_details": null,
+      "evidence": {
+        "account_id": "588989875114",
+        "account_arn": "arn:aws:iam::588989875114:user/administrator",
+        "has_security_contact": false,
+        "security_contact_available": false
+      },
+      "metadata": {
+        "check_id": "account_security_contact_information_is_registered",
+        "check_name": "Account Security Contact Information Is Registered",
+        "description": "Ensure AWS account has security contact information registered for security notifications",
+        "severity": "MEDIUM",
+        "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+        "category": "Account Management",
+        "tags": [
+          "account",
+          "security",
+          "contact",
+          "notifications"
+        ],
+        "remediation": "Login to the AWS Console. Choose your account name on the top right of the window -> My Account -> Alternate Contacts -> Security Section.",
+        "references": [
+          "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html",
+          "https://aws.amazon.com/premiumsupport/knowledge-center/update-account-contact-information/"
+        ],
+        "version": "1.0",
+        "created_date": "2025-07-16T10:40:14.562348"
+      }
+    },
+    {
+      "check_id": "account_security_questions_are_registered_in_the_aws_account",
+      "check_name": "Account Security Questions Are Registered",
+      "status": "MANUAL",
+      "status_extended": "AWS Account 588989875114 security questions require manual verification. Login to the AWS Console as root. Choose your account name on the top right of the window -> My Account -> Configure Security Challenge Questions.",
+      "severity": "MEDIUM",
+      "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+      "resource": {
+        "resource": "{'account_id': '588989875114', 'account_arn': 'arn:aws:iam::588989875114:user/administrator', 'security_questions': None}"
+      },
+      "region": "global",
+      "account_id": null,
+      "timestamp": "2025-07-16T10:40:18.404005",
+      "execution_time_ms": 1572,
+      "error_details": null,
+      "evidence": {
+        "account_id": "588989875114",
+        "account_arn": "arn:aws:iam::588989875114:user/administrator",
+        "security_questions_verification": "manual_required"
+      },
+      "metadata": {
+        "check_id": "account_security_questions_are_registered_in_the_aws_account",
+        "check_name": "Account Security Questions Are Registered",
+        "description": "Ensure AWS account has security questions registered for account recovery",
+        "severity": "MEDIUM",
+        "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+        "category": "Account Management",
+        "tags": [
+          "account",
+          "security",
+          "questions",
+          "recovery"
+        ],
+        "remediation": "Login to the AWS Console as root. Choose your account name on the top right of the window -> My Account -> Configure Security Challenge Questions.",
+        "references": [
+          "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html",
+          "https://aws.amazon.com/premiumsupport/knowledge-center/update-account-contact-information/"
+        ],
+        "version": "1.0",
+        "created_date": "2025-07-16T10:40:16.831543"
+      }
+    },
+    {
+      "check_id": "account_maintain_different_contact_details_to_security_billing_and_operations",
+      "check_name": "Account Maintain Different Contact Details",
+      "status": "MANUAL",
+      "status_extended": "AWS Account 588989875114 may not have different contact details for all types. Manual verification required. Login to the AWS Console. Choose your account name on the top right of the window -> My Account -> Alternate Contacts -> Configure different contacts for Security, Billing, and Operations.",
+      "severity": "MEDIUM",
+      "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+      "resource": {
+        "resource": "{'account_id': '588989875114', 'account_arn': 'arn:aws:iam::588989875114:user/administrator', 'contacts': {'primary': {'AddressLine1': 'cyber park', 'City': 'Gurgaon', 'CompanyName': 'LG Tech', 'CountryCode': 'IN', 'FullName': 'Anup', 'PhoneNumber': '9871585677', 'PostalCode': '201301', 'StateOrRegion': 'Haryana'}, 'security': None, 'billing': None, 'operations': None}}"
+      },
+      "region": "global",
+      "account_id": null,
+      "timestamp": "2025-07-16T10:40:22.469048",
+      "execution_time_ms": 4064,
+      "error_details": null,
+      "evidence": {
+        "account_id": "588989875114",
+        "account_arn": "arn:aws:iam::588989875114:user/administrator",
+        "has_contacts": true,
+        "contact_types_available": [
+          "primary",
+          "security",
+          "billing",
+          "operations"
+        ]
+      },
+      "metadata": {
+        "check_id": "account_maintain_different_contact_details_to_security_billing_and_operations",
+        "check_name": "Account Maintain Different Contact Details",
+        "description": "Ensure AWS account maintains different contact details for security, billing, and operations",
+        "severity": "MEDIUM",
+        "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+        "category": "Account Management",
+        "tags": [
+          "account",
+          "contact",
+          "security",
+          "billing",
+          "operations"
+        ],
+        "remediation": "Login to the AWS Console. Choose your account name on the top right of the window -> My Account -> Alternate Contacts -> Configure different contacts for Security, Billing, and Operations.",
+        "references": [
+          "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html",
+          "https://aws.amazon.com/premiumsupport/knowledge-center/update-account-contact-information/"
+        ],
+        "version": "1.0",
+        "created_date": "2025-07-16T10:40:18.404290"
+      }
+    }
+  ]
+}

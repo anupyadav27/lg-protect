@@ -1,0 +1,642 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Ensure default security group restricts all traffic",
+    "Checks": [
+      "vpc_default_security_group_closed"
+    ],
+    "function_name": "vpc_default_security_group_closed",
+    "title": "Ensure default security group restricts all traffic",
+    "description": "Ensure default VPC security group restricts all traffic to prevent unauthorized access to data resources.",
+    "capability": "access_governance",
+    "service": "vpc",
+    "subservice": "security_groups",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_VPC_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure default VPC security group restricts all traffic to prevent unauthorized access to data resources.",
+        "RationaleStatement": "Default security groups with open access rules create unnecessary attack vectors and can lead to unauthorized access to sensitive data resources.",
+        "ImpactStatement": "Open default security groups can allow unauthorized network access to EC2 instances and other resources containing sensitive data.",
+        "RemediationProcedure": "1. Identify default security groups:\n```aws ec2 describe-security-groups --filters Name=group-name,Values=default```\n2. Remove all inbound and outbound rules from default security groups:\n```aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol all --port all --source-group <sg-id>```\n3. Create specific security groups for required access patterns\n4. Update EC2 instances to use specific security groups instead of default",
+        "AuditProcedure": "1. List all default security groups:\n```aws ec2 describe-security-groups --filters Name=group-name,Values=default```\n2. Check for any inbound or outbound rules:\n```aws ec2 describe-security-groups --group-ids <sg-id> --query 'SecurityGroups[].{GroupId:GroupId,IpPermissions:IpPermissions,IpPermissionsEgress:IpPermissionsEgress}'```\n3. Verify no EC2 instances are using default security groups with open rules",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html",
+        "DefaultValue": "Default security groups allow all traffic within the group"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Enable VPC Flow Logs",
+    "Checks": [
+      "vpc_flow_logs_enabled"
+    ],
+    "function_name": "vpc_flow_logs_enabled",
+    "title": "Enable VPC Flow Logs",
+    "description": "Enable VPC Flow Logs to monitor network traffic and detect unauthorized access attempts to data resources.",
+    "capability": "access_governance",
+    "service": "vpc",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_VPC_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable VPC Flow Logs to monitor network traffic and detect unauthorized access attempts to data resources.",
+        "RationaleStatement": "VPC Flow Logs provide visibility into network traffic patterns, enabling detection of suspicious activities and unauthorized access attempts to data resources.",
+        "ImpactStatement": "Without VPC Flow Logs, security teams cannot monitor network traffic patterns or detect potential data exfiltration or unauthorized access attempts.",
+        "RemediationProcedure": "1. Enable VPC Flow Logs for all VPCs:\n```aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-type ALL --log-destination-type cloud-watch-logs --log-group-name VPCFlowLogs```\n2. Configure appropriate log retention policies\n3. Set up monitoring and alerting for suspicious traffic patterns\n4. Configure log analysis for security monitoring",
+        "AuditProcedure": "1. Check VPC Flow Logs status:\n```aws ec2 describe-flow-logs --filter Name=resource-type,Values=VPC```\n2. Verify flow logs are capturing all traffic types\n3. Check log retention and storage configuration:\n```aws logs describe-log-groups --log-group-name-prefix VPCFlowLogs```\n4. Verify monitoring and alerting configuration",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html",
+        "DefaultValue": "VPC Flow Logs are disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Restrict VPC endpoint service principals",
+    "Checks": [
+      "vpc_endpoint_services_allowed_principals_trust_boundaries"
+    ],
+    "function_name": "vpc_endpoint_services_allowed_principals_trust_boundaries",
+    "title": "Restrict VPC endpoint service principals",
+    "description": "Ensure VPC endpoint services have proper principal restrictions to prevent unauthorized access to data services.",
+    "capability": "access_governance",
+    "service": "vpc",
+    "subservice": "endpoints",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_VPC_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC endpoint services have proper principal restrictions to prevent unauthorized access to data services.",
+        "RationaleStatement": "Unrestricted VPC endpoint service principals can allow unauthorized accounts or services to access private data services through VPC endpoints.",
+        "ImpactStatement": "Without proper principal restrictions, malicious actors could potentially access sensitive data services through VPC endpoints from unauthorized accounts.",
+        "RemediationProcedure": "1. Review VPC endpoint service configurations:\n```aws ec2 describe-vpc-endpoint-services --service-names <service-name>```\n2. Update VPC endpoint service permissions to restrict principals:\n```aws ec2 modify-vpc-endpoint-service-permissions --service-id <service-id> --add-allowed-principals <principal-arn>```\n3. Remove overly permissive principals\n4. Implement regular reviews of endpoint service permissions",
+        "AuditProcedure": "1. List VPC endpoint services:\n```aws ec2 describe-vpc-endpoint-services```\n2. Check allowed principals for each service:\n```aws ec2 describe-vpc-endpoint-service-permissions --service-id <service-id>```\n3. Verify principals align with trust boundaries\n4. Review for wildcard or overly broad principal permissions",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html",
+        "DefaultValue": "No principal restrictions by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Validate VPC endpoint connection trust boundaries",
+    "Checks": [
+      "vpc_endpoint_connections_trust_boundaries"
+    ],
+    "function_name": "vpc_endpoint_connections_trust_boundaries",
+    "title": "Validate VPC endpoint connection trust boundaries",
+    "description": "Ensure VPC endpoint connections maintain proper trust boundaries to prevent unauthorized data access.",
+    "capability": "access_governance",
+    "service": "vpc",
+    "subservice": "endpoints",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_VPC_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC endpoint connections maintain proper trust boundaries to prevent unauthorized data access.",
+        "RationaleStatement": "VPC endpoint connections that cross trust boundaries without proper validation can create unauthorized access paths to sensitive data services.",
+        "ImpactStatement": "Improper trust boundary validation can lead to unauthorized access to data services from untrusted networks or accounts.",
+        "RemediationProcedure": "1. Review all VPC endpoint connections:\n```aws ec2 describe-vpc-endpoints```\n2. Validate each connection against trust boundaries\n3. Update endpoint policies to enforce trust boundaries:\n```aws ec2 modify-vpc-endpoint --vpc-endpoint-id <endpoint-id> --policy-document file://trust-boundary-policy.json```\n4. Implement connection monitoring and alerting",
+        "AuditProcedure": "1. List all VPC endpoints and their connections:\n```aws ec2 describe-vpc-endpoints --query 'VpcEndpoints[].{Id:VpcEndpointId,Service:ServiceName,VpcId:VpcId}'```\n2. Review endpoint policies for trust boundary enforcement\n3. Check connection logs for unauthorized access attempts\n4. Verify endpoint connections align with security architecture",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-access.html",
+        "DefaultValue": "No automatic trust boundary validation"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Ensure VPC peering routing follows least privilege",
+    "Checks": [
+      "vpc_peering_routing_tables_with_least_privilege"
+    ],
+    "function_name": "vpc_peering_routing_tables_with_least_privilege",
+    "title": "Ensure VPC peering routing follows least privilege",
+    "description": "Ensure VPC peering routing tables follow least privilege principles to minimize unauthorized data access.",
+    "capability": "access_governance",
+    "service": "vpc",
+    "subservice": "peering",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_VPC_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC peering routing tables follow least privilege principles to minimize unauthorized data access.",
+        "RationaleStatement": "Overly broad routing in VPC peering connections can expose data resources to unnecessary network segments, increasing attack surface.",
+        "ImpactStatement": "Broad routing rules in VPC peering can allow unauthorized access to data resources from unintended network segments.",
+        "RemediationProcedure": "1. Review VPC peering connection route tables:\n```aws ec2 describe-route-tables --filters Name=route.vpc-peering-connection-id,Values=<pcx-id>```\n2. Identify overly broad CIDR blocks in routes\n3. Update routes to use specific CIDR blocks:\n```aws ec2 replace-route --route-table-id <rt-id> --destination-cidr-block <specific-cidr> --vpc-peering-connection-id <pcx-id>```\n4. Remove unnecessary routes and implement regular reviews",
+        "AuditProcedure": "1. List all VPC peering connections:\n```aws ec2 describe-vpc-peering-connections```\n2. Check route tables for each peering connection:\n```aws ec2 describe-route-tables --filters Name=route.vpc-peering-connection-id,Values=<pcx-id>```\n3. Verify routes follow least privilege principles\n4. Check for overly broad CIDR blocks (0.0.0.0/0, large /8 networks)",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/peering/peering-configurations-full-access.html",
+        "DefaultValue": "Routes must be manually configured"
+      }
+    ]
+  },
+  {
+    "Id": "1.6",
+    "Description": "Restrict VPC NACL ingress rules",
+    "Checks": [
+      "vpc_nacl_ingress_restrictions"
+    ],
+    "function_name": "vpc_nacl_ingress_restrictions",
+    "title": "Restrict VPC NACL ingress rules",
+    "description": "Ensure VPC Network ACLs have restrictive ingress rules to prevent unauthorized access to data subnets.",
+    "capability": "access_governance",
+    "service": "vpc",
+    "subservice": "nacl",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_VPC_006",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC Network ACLs have restrictive ingress rules to prevent unauthorized access to data subnets.",
+        "RationaleStatement": "Overly permissive NACL ingress rules can allow unauthorized network access to subnets containing sensitive data resources.",
+        "ImpactStatement": "Broad NACL ingress rules can bypass security group restrictions and allow unauthorized access to data resources in protected subnets.",
+        "RemediationProcedure": "1. Review current NACL ingress rules:\n```aws ec2 describe-network-acls --query 'NetworkAcls[].{Id:NetworkAclId,Entries:Entries[?Egress==`false`]}'```\n2. Identify overly permissive rules (0.0.0.0/0 sources)\n3. Replace broad rules with specific CIDR blocks:\n```aws ec2 replace-network-acl-entry --network-acl-id <nacl-id> --rule-number <rule-num> --protocol tcp --port-range From=443,To=443 --cidr-block <specific-cidr>```\n4. Implement deny-by-default approach",
+        "AuditProcedure": "1. List all Network ACLs:\n```aws ec2 describe-network-acls```\n2. Check ingress rules for overly broad permissions:\n```aws ec2 describe-network-acls --query 'NetworkAcls[].Entries[?Egress==`false` && CidrBlock==`0.0.0.0/0`]'```\n3. Verify rules follow least privilege principles\n4. Check for unnecessary allow rules",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
+        "DefaultValue": "Default NACL allows all traffic"
+      }
+    ]
+  },
+  {
+    "Id": "1.7",
+    "Description": "Enforce least privilege for VPC security groups",
+    "Checks": [
+      "vpc_security_group_least_privilege"
+    ],
+    "function_name": "vpc_security_group_least_privilege",
+    "title": "Enforce least privilege for VPC security groups",
+    "description": "Ensure VPC security groups follow least privilege principles to minimize unauthorized access to data resources.",
+    "capability": "access_governance",
+    "service": "vpc",
+    "subservice": "security_groups",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_VPC_007",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC security groups follow least privilege principles to minimize unauthorized access to data resources.",
+        "RationaleStatement": "Security groups with overly broad permissions increase attack surface and can allow unauthorized access to sensitive data resources.",
+        "ImpactStatement": "Permissive security group rules can allow unauthorized network access to EC2 instances and other resources containing sensitive data.",
+        "RemediationProcedure": "1. Audit all security groups for overly broad rules:\n```aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?IpRanges[?CidrIp==`0.0.0.0/0`]]]'```\n2. Replace 0.0.0.0/0 sources with specific CIDR blocks\n3. Remove unnecessary ports and protocols:\n```aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol tcp --port 22 --cidr 0.0.0.0/0```\n4. Implement regular security group reviews",
+        "AuditProcedure": "1. List security groups with broad permissions:\n```aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?IpRanges[?CidrIp==`0.0.0.0/0`]]].{GroupId:GroupId,GroupName:GroupName}'```\n2. Check for unnecessary open ports (SSH, RDP from internet)\n3. Verify business justification for broad access rules\n4. Review security group usage and associations",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#SecurityGroupRules",
+        "DefaultValue": "Security groups deny all traffic by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable encryption for VPC Flow Logs",
+    "Checks": [
+      "vpc_flow_logs_encryption_enabled"
+    ],
+    "function_name": "vpc_flow_logs_encryption_enabled",
+    "title": "Enable encryption for VPC Flow Logs",
+    "description": "Ensure VPC Flow Logs are encrypted to protect network traffic data from unauthorized access.",
+    "capability": "data_protection",
+    "service": "vpc",
+    "subservice": "encryption",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_VPC_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC Flow Logs are encrypted to protect network traffic data from unauthorized access.",
+        "RationaleStatement": "VPC Flow Logs contain network traffic metadata that could reveal sensitive information about data access patterns and should be encrypted at rest.",
+        "ImpactStatement": "Unencrypted VPC Flow Logs can expose network traffic patterns and potentially reveal sensitive information about data access to unauthorized parties.",
+        "RemediationProcedure": "1. Create KMS key for VPC Flow Logs encryption:\n```aws kms create-key --description 'VPC Flow Logs encryption key'```\n2. Update existing flow logs to use encryption:\n```aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-type ALL --log-destination-type cloud-watch-logs --log-group-name VPCFlowLogsEncrypted --kms-key-id <key-id>```\n3. Verify encryption is enabled for all flow logs\n4. Configure key rotation and access policies",
+        "AuditProcedure": "1. Check VPC Flow Logs encryption status:\n```aws ec2 describe-flow-logs --query 'FlowLogs[].{FlowLogId:FlowLogId,LogDestination:LogDestination,KmsKeyId:KmsKeyId}'```\n2. Verify KMS key configuration for flow logs:\n```aws logs describe-log-groups --log-group-name-prefix VPCFlowLogs --query 'logGroups[].kmsKeyId'```\n3. Check key rotation and access policies",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-cwl.html#flow-logs-cwl-encryption",
+        "DefaultValue": "VPC Flow Logs are not encrypted by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Configure VPC endpoint policies for data protection",
+    "Checks": [
+      "vpc_endpoint_policy_data_protection"
+    ],
+    "function_name": "vpc_endpoint_policy_data_protection",
+    "title": "Configure VPC endpoint policies for data protection",
+    "description": "Configure VPC endpoint policies to ensure only authorized data operations are permitted.",
+    "capability": "data_protection",
+    "service": "vpc",
+    "subservice": "endpoints",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_VPC_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure VPC endpoint policies to ensure only authorized data operations are permitted.",
+        "RationaleStatement": "VPC endpoint policies control what actions can be performed through the endpoint, providing an additional layer of data protection for sensitive operations.",
+        "ImpactStatement": "Without proper endpoint policies, unauthorized data operations could be performed through VPC endpoints, potentially leading to data exposure or exfiltration.",
+        "RemediationProcedure": "1. Review current VPC endpoint policies:\n```aws ec2 describe-vpc-endpoints --query 'VpcEndpoints[].{Id:VpcEndpointId,Policy:PolicyDocument}'```\n2. Create restrictive endpoint policies that allow only necessary data operations\n3. Update endpoint policies:\n```aws ec2 modify-vpc-endpoint --vpc-endpoint-id <endpoint-id> --policy-document file://restrictive-endpoint-policy.json```\n4. Test access to ensure legitimate operations still work",
+        "AuditProcedure": "1. List all VPC endpoints and their policies:\n```aws ec2 describe-vpc-endpoints```\n2. Review endpoint policies for data protection controls\n3. Verify policies restrict sensitive operations appropriately\n4. Check for overly permissive policies (full access statements)",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-access.html#vpc-endpoint-policies",
+        "DefaultValue": "Full access policy by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Enable DNS resolution logging for VPC",
+    "Checks": [
+      "vpc_dns_resolution_logging_enabled"
+    ],
+    "function_name": "vpc_dns_resolution_logging_enabled",
+    "title": "Enable DNS resolution logging for VPC",
+    "description": "Enable DNS resolution logging to monitor DNS queries that could indicate data access patterns.",
+    "capability": "data_protection",
+    "service": "vpc",
+    "subservice": "dns",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_VPC_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable DNS resolution logging to monitor DNS queries that could indicate data access patterns.",
+        "RationaleStatement": "DNS query logs can reveal data access patterns and help detect unauthorized attempts to resolve data service endpoints.",
+        "ImpactStatement": "Without DNS logging, suspicious DNS queries that could indicate data exfiltration attempts or unauthorized service access may go undetected.",
+        "RemediationProcedure": "1. Enable Route 53 Resolver query logging:\n```aws route53resolver create-resolver-query-log-config --name VPCDNSLogs --destination-arn <cloudwatch-log-group-arn>```\n2. Associate query log config with VPC:\n```aws route53resolver associate-resolver-query-log-config --resolver-query-log-config-id <config-id> --resource-id <vpc-id>```\n3. Configure log analysis and monitoring\n4. Set up alerts for suspicious DNS patterns",
+        "AuditProcedure": "1. Check Route 53 Resolver query logging status:\n```aws route53resolver list-resolver-query-log-configs```\n2. Verify VPC associations:\n```aws route53resolver list-resolver-query-log-config-associations```\n3. Review DNS query logs for suspicious patterns\n4. Check monitoring and alerting configuration",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html",
+        "DefaultValue": "DNS resolution logging is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Configure VPC traffic mirroring for monitoring",
+    "Checks": [
+      "vpc_traffic_mirroring_configured"
+    ],
+    "function_name": "vpc_traffic_mirroring_configured",
+    "title": "Configure VPC traffic mirroring for monitoring",
+    "description": "Configure VPC traffic mirroring to monitor network traffic for data security analysis.",
+    "capability": "data_protection",
+    "service": "vpc",
+    "subservice": "mirroring",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_VPC_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure VPC traffic mirroring to monitor network traffic for data security analysis.",
+        "RationaleStatement": "Traffic mirroring enables deep packet inspection and analysis of network traffic for advanced security monitoring and data protection.",
+        "ImpactStatement": "Without traffic mirroring, advanced security analysis and detection of sophisticated data exfiltration attempts may not be possible.",
+        "RemediationProcedure": "1. Create traffic mirror target:\n```aws ec2 create-traffic-mirror-target --network-interface-id <target-eni-id>```\n2. Create traffic mirror filter:\n```aws ec2 create-traffic-mirror-filter --description 'Data security monitoring filter'```\n3. Create traffic mirror session:\n```aws ec2 create-traffic-mirror-session --network-interface-id <source-eni-id> --traffic-mirror-target-id <target-id> --traffic-mirror-filter-id <filter-id>```\n4. Configure analysis tools for mirrored traffic",
+        "AuditProcedure": "1. List traffic mirror sessions:\n```aws ec2 describe-traffic-mirror-sessions```\n2. Check traffic mirror targets and filters:\n```aws ec2 describe-traffic-mirror-targets```\n3. Verify monitoring and analysis configuration\n4. Review traffic analysis reports",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html",
+        "DefaultValue": "Traffic mirroring is not configured by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Validate VPC subnet route tables for security",
+    "Checks": [
+      "vpc_subnet_route_table_validation"
+    ],
+    "function_name": "vpc_subnet_route_table_validation",
+    "title": "Validate VPC subnet route tables for security",
+    "description": "Ensure VPC subnet route tables do not expose data resources to unauthorized networks.",
+    "capability": "data_protection",
+    "service": "vpc",
+    "subservice": "routing",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_VPC_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC subnet route tables do not expose data resources to unauthorized networks.",
+        "RationaleStatement": "Improper routing configurations can expose data resources to unintended networks, creating potential data access paths outside security boundaries.",
+        "ImpactStatement": "Misconfigured route tables can create unintended network paths that allow unauthorized access to data resources from untrusted networks.",
+        "RemediationProcedure": "1. Review all route tables associated with data subnets:\n```aws ec2 describe-route-tables --filters Name=association.subnet-id,Values=<subnet-id>```\n2. Identify routes that expose data subnets to public internet\n3. Remove or restrict overly broad routes:\n```aws ec2 delete-route --route-table-id <rt-id> --destination-cidr-block 0.0.0.0/0```\n4. Implement route table validation automation",
+        "AuditProcedure": "1. List all route tables and their routes:\n```aws ec2 describe-route-tables```\n2. Check for routes to internet gateways from private subnets\n3. Verify routes align with network security architecture\n4. Check for unnecessary or overly broad routing rules",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html",
+        "DefaultValue": "Main route table allows local VPC traffic only"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Ensure VPCs are deployed in different regions",
+    "Checks": [
+      "vpc_different_regions"
+    ],
+    "function_name": "vpc_different_regions",
+    "title": "Ensure VPCs are deployed in different regions",
+    "description": "Ensure VPCs are deployed across different approved regions to meet data residency and availability requirements.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "region",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DR_VPC_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPCs are deployed across different approved regions to meet data residency and availability requirements.",
+        "RationaleStatement": "Distributing VPCs across multiple regions ensures compliance with data residency requirements while providing disaster recovery capabilities.",
+        "ImpactStatement": "Concentrating all VPCs in a single region can violate data residency requirements and create single points of failure for data availability.",
+        "RemediationProcedure": "1. Review current VPC regional distribution:\n```aws ec2 describe-regions --regions <region1> <region2> --query 'Regions[].RegionName' && aws ec2 describe-vpcs --region <region> --query 'Vpcs[].{VpcId:VpcId,Region:Region}'```\n2. Identify approved regions for data residency compliance\n3. Plan VPC deployment across approved regions\n4. Migrate or create VPCs in compliant regions as needed",
+        "AuditProcedure": "1. List VPCs in all regions:\n```for region in $(aws ec2 describe-regions --query 'Regions[].RegionName' --output text); do echo \"Region: $region\"; aws ec2 describe-vpcs --region $region --query 'Vpcs[].VpcId'; done```\n2. Verify regional distribution meets requirements\n3. Check approved regions list against current deployment\n4. Review data residency compliance documentation",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/general/latest/gr/rande.html",
+        "DefaultValue": "VPCs can be created in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Ensure VPC subnets are in different availability zones",
+    "Checks": [
+      "vpc_subnet_different_az"
+    ],
+    "function_name": "vpc_subnet_different_az",
+    "title": "Ensure VPC subnets are in different availability zones",
+    "description": "Ensure VPC subnets are distributed across different availability zones within approved regions.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "availability",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DR_VPC_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC subnets are distributed across different availability zones within approved regions.",
+        "RationaleStatement": "Distributing subnets across multiple availability zones ensures high availability and disaster recovery while maintaining data residency within the region.",
+        "ImpactStatement": "Concentrating all subnets in a single AZ creates single points of failure and may not meet high availability requirements for data services.",
+        "RemediationProcedure": "1. Review current subnet AZ distribution:\n```aws ec2 describe-subnets --query 'Subnets[].{SubnetId:SubnetId,AvailabilityZone:AvailabilityZone,VpcId:VpcId}'```\n2. Identify VPCs with subnets in only one AZ\n3. Create additional subnets in different AZs:\n```aws ec2 create-subnet --vpc-id <vpc-id> --cidr-block <cidr> --availability-zone <different-az>```\n4. Update applications to use multi-AZ deployment patterns",
+        "AuditProcedure": "1. Check subnet distribution across AZs:\n```aws ec2 describe-subnets --query 'Subnets[].{VpcId:VpcId,AvailabilityZone:AvailabilityZone}' | jq 'group_by(.VpcId)'```\n2. Verify each VPC has subnets in multiple AZs\n3. Check critical data services are deployed across AZs\n4. Review high availability architecture compliance",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-subnet-basics",
+        "DefaultValue": "Subnets can be created in any AZ within the region"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Disable public IP assignment by default in VPC subnets",
+    "Checks": [
+      "vpc_subnet_no_public_ip_by_default"
+    ],
+    "function_name": "vpc_subnet_no_public_ip_by_default",
+    "title": "Disable public IP assignment by default in VPC subnets",
+    "description": "Ensure VPC subnets do not assign public IP addresses by default to maintain data residency controls.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "subnets",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DR_VPC_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC subnets do not assign public IP addresses by default to maintain data residency controls.",
+        "RationaleStatement": "Automatic public IP assignment can expose data resources to the internet and create unintended data egress paths that may violate residency requirements.",
+        "ImpactStatement": "Automatic public IP assignment can lead to unintended internet exposure of data resources and potential data residency violations.",
+        "RemediationProcedure": "1. Check current subnet public IP assignment settings:\n```aws ec2 describe-subnets --query 'Subnets[?MapPublicIpOnLaunch==`true`].{SubnetId:SubnetId,VpcId:VpcId}'```\n2. Disable auto-assign public IP for subnets containing data resources:\n```aws ec2 modify-subnet-attribute --subnet-id <subnet-id> --no-map-public-ip-on-launch```\n3. Review and update launch templates and configurations\n4. Implement policies to prevent auto-assignment",
+        "AuditProcedure": "1. List subnets with auto-assign public IP enabled:\n```aws ec2 describe-subnets --query 'Subnets[?MapPublicIpOnLaunch==`true`]'```\n2. Verify data subnets do not auto-assign public IPs\n3. Check EC2 instances for unexpected public IP assignments\n4. Review subnet configurations against data residency requirements",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html#subnet-public-ip",
+        "DefaultValue": "Auto-assign public IP is disabled by default for new subnets"
+      }
+    ]
+  },
+  {
+    "Id": "3.4",
+    "Description": "Separate private and public subnets in VPC",
+    "Checks": [
+      "vpc_subnet_separate_private_public"
+    ],
+    "function_name": "vpc_subnet_separate_private_public",
+    "title": "Separate private and public subnets in VPC",
+    "description": "Ensure VPC has separate private and public subnets to maintain data residency and security boundaries.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "subnets",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DR_VPC_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC has separate private and public subnets to maintain data residency and security boundaries.",
+        "RationaleStatement": "Separating private and public subnets creates clear security boundaries and helps ensure data resources remain within controlled network segments.",
+        "ImpactStatement": "Mixing public and private resources in the same subnet can create security vulnerabilities and complicate data residency compliance.",
+        "RemediationProcedure": "1. Review current subnet architecture:\n```aws ec2 describe-subnets --query 'Subnets[].{SubnetId:SubnetId,VpcId:VpcId}' && aws ec2 describe-route-tables --query 'RouteTables[].{RouteTableId:RouteTableId,Routes:Routes[?GatewayId && starts_with(GatewayId, `igw-`)]}'```\n2. Identify subnets with internet gateway routes (public subnets)\n3. Create separate private subnets for data resources\n4. Migrate data resources to private subnets",
+        "AuditProcedure": "1. Identify public subnets (with internet gateway routes):\n```aws ec2 describe-route-tables --query 'RouteTables[?Routes[?GatewayId && starts_with(GatewayId, `igw-`)]].Associations[].SubnetId'```\n2. Verify data resources are not in public subnets\n3. Check subnet tagging and naming conventions\n4. Review network architecture documentation",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario2.html",
+        "DefaultValue": "Subnet privacy depends on route table configuration"
+      }
+    ]
+  },
+  {
+    "Id": "3.5",
+    "Description": "Enforce region restrictions for VPC resources",
+    "Checks": [
+      "vpc_region_restriction_enforced"
+    ],
+    "function_name": "vpc_region_restriction_enforced",
+    "title": "Enforce region restrictions for VPC resources",
+    "description": "Ensure VPC resources are created only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_VPC_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC resources are created only in approved regions to comply with data residency requirements.",
+        "RationaleStatement": "Region restrictions prevent accidental creation of VPC resources in non-compliant regions that could violate data residency requirements.",
+        "ImpactStatement": "Without region restrictions, VPC resources could be inadvertently created in regions that violate data sovereignty or compliance requirements.",
+        "RemediationProcedure": "1. Define approved regions for VPC resources\n2. Implement Service Control Policies (SCPs) to restrict VPC creation:\n```aws organizations create-policy --name VPCRegionRestriction --type SERVICE_CONTROL_POLICY --content file://vpc-region-restriction-scp.json```\n3. Attach SCP to organizational units\n4. Configure IAM policies with region conditions",
+        "AuditProcedure": "1. Review current SCP policies:\n```aws organizations list-policies --filter SERVICE_CONTROL_POLICY```\n2. Check VPC resources in all regions:\n```for region in $(aws ec2 describe-regions --query 'Regions[].RegionName' --output text); do echo \"$region:\"; aws ec2 describe-vpcs --region $region; done```\n3. Verify region restrictions are enforced\n4. Test resource creation in restricted regions",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "No region restrictions by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.6",
+    "Description": "Ensure VPC peering complies with region restrictions",
+    "Checks": [
+      "vpc_peering_region_compliance"
+    ],
+    "function_name": "vpc_peering_region_compliance",
+    "title": "Ensure VPC peering complies with region restrictions",
+    "description": "Ensure VPC peering connections are established only between approved regions for data residency compliance.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "peering",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_VPC_006",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC peering connections are established only between approved regions for data residency compliance.",
+        "RationaleStatement": "Cross-region VPC peering can create data transit paths between regions, which must be carefully controlled to maintain data residency compliance.",
+        "ImpactStatement": "Unauthorized cross-region VPC peering can create data paths that violate data residency requirements and regulatory compliance.",
+        "RemediationProcedure": "1. Review all VPC peering connections:\n```aws ec2 describe-vpc-peering-connections --query 'VpcPeeringConnections[].{ConnectionId:VpcPeeringConnectionId,RequesterVpc:RequesterVpcInfo,AccepterVpc:AccepterVpcInfo}'```\n2. Identify cross-region peering connections\n3. Validate connections against approved region pairs\n4. Remove non-compliant peering connections\n5. Implement approval process for new peering",
+        "AuditProcedure": "1. List all VPC peering connections and their regions:\n```aws ec2 describe-vpc-peering-connections```\n2. Check for cross-region peering connections\n3. Verify connections are between approved regions\n4. Review peering connection approval documentation\n5. Check routing tables for cross-region data paths",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html",
+        "DefaultValue": "VPC peering can be created between any regions"
+      }
+    ]
+  },
+  {
+    "Id": "3.7",
+    "Description": "Ensure VPC endpoints comply with region restrictions",
+    "Checks": [
+      "vpc_endpoint_region_compliance"
+    ],
+    "function_name": "vpc_endpoint_region_compliance",
+    "title": "Ensure VPC endpoints comply with region restrictions",
+    "description": "Ensure VPC endpoints are created only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "endpoints",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_VPC_007",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC endpoints are created only in approved regions to maintain data residency compliance.",
+        "RationaleStatement": "VPC endpoints in non-approved regions can create data access paths that violate data residency requirements and regulatory compliance.",
+        "ImpactStatement": "VPC endpoints in restricted regions can allow data access from non-compliant geographic locations, violating data residency laws.",
+        "RemediationProcedure": "1. Review VPC endpoints in all regions:\n```for region in $(aws ec2 describe-regions --query 'Regions[].RegionName' --output text); do echo \"Region: $region\"; aws ec2 describe-vpc-endpoints --region $region; done```\n2. Identify endpoints in non-approved regions\n3. Delete non-compliant VPC endpoints:\n```aws ec2 delete-vpc-endpoints --vpc-endpoint-ids <endpoint-id>```\n4. Implement region restrictions for endpoint creation",
+        "AuditProcedure": "1. List VPC endpoints in all regions:\n```for region in $(aws ec2 describe-regions --query 'Regions[].RegionName' --output text); do echo \"$region:\"; aws ec2 describe-vpc-endpoints --region $region --query 'VpcEndpoints[].VpcEndpointId'; done```\n2. Check endpoints against approved regions list\n3. Verify endpoint policies comply with data residency\n4. Review endpoint creation logs and approvals",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html",
+        "DefaultValue": "VPC endpoints can be created in any region"
+      }
+    ]
+  },
+  {
+    "Id": "3.8",
+    "Description": "Tag VPC resources with data sovereignty information",
+    "Checks": [
+      "vpc_data_sovereignty_tags"
+    ],
+    "function_name": "vpc_data_sovereignty_tags",
+    "title": "Tag VPC resources with data sovereignty information",
+    "description": "Ensure VPC resources are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "vpc",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_VPC_008",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure VPC resources are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+        "RationaleStatement": "Data sovereignty tags enable tracking and auditing of VPC resources for compliance with geographic and jurisdictional data requirements.",
+        "ImpactStatement": "Without proper tagging, it becomes difficult to track VPC resources for data sovereignty compliance and respond to regulatory inquiries.",
+        "RemediationProcedure": "1. Define data sovereignty tagging standards\n2. Tag existing VPC resources:\n```aws ec2 create-tags --resources <vpc-id> --tags Key=DataSovereignty,Value=<jurisdiction> Key=DataClassification,Value=<classification>```\n3. Implement automated tagging for new resources\n4. Set up tag compliance monitoring and reporting",
+        "AuditProcedure": "1. Check VPC resource tags:\n```aws ec2 describe-vpcs --query 'Vpcs[].{VpcId:VpcId,Tags:Tags}'```\n2. Verify data sovereignty tags are present\n3. Check tag values against approved jurisdictions\n4. Review tag compliance across all VPC resources",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html",
+        "DefaultValue": "No tags are applied by default"
+      }
+    ]
+  }
+]

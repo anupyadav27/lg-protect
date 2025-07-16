@@ -1,0 +1,434 @@
+[
+  {
+    "function_name": "efs_not_publicly_accessible",
+    "title": "Ensure EFS file systems are not publicly accessible",
+    "description": "Ensure EFS file systems are not publicly accessible to prevent unauthorized access to sensitive data.",
+    "capability": "access_governance",
+    "service": "efs",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EFS_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EFS file systems are not publicly accessible through security group and mount target configurations.",
+        "RationaleStatement": "Public EFS access exposes sensitive file data to the internet, creating significant security risks and potential data breaches.",
+        "ImpactStatement": "Publicly accessible EFS file systems can lead to unauthorized data access, data exfiltration, compliance violations, and exposure of sensitive business information.",
+        "RemediationProcedure": "1. Review EFS mount targets: `aws efs describe-mount-targets --file-system-id <fs-id>`.\n2. Check security groups attached to mount targets: `aws ec2 describe-security-groups --group-ids <sg-id>`.\n3. Remove public access rules: `aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol tcp --port 2049 --cidr 0.0.0.0/0`.\n4. Ensure NFS port 2049 is only accessible from authorized VPC CIDR blocks.\n5. Configure VPC endpoints for EFS access if needed.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-file-systems` then for each file system, check mount targets and associated security groups: `aws efs describe-mount-targets --file-system-id <fs-id>` and verify no security groups allow 0.0.0.0/0 access to port 2049.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/security-considerations.html",
+        "DefaultValue": "Private by default unless security groups allow public access"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_access_point_enforce_root_directory",
+    "title": "Enforce root directory restrictions on EFS access points",
+    "description": "Ensure EFS access points enforce root directory restrictions to limit data access to authorized paths only.",
+    "capability": "access_governance",
+    "service": "efs",
+    "subservice": "access_point",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EFS_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure EFS access points with root directory restrictions to limit file system access to specific paths.",
+        "RationaleStatement": "Root directory restrictions prevent users from accessing unauthorized directories within the EFS file system, enforcing data segregation and access controls.",
+        "ImpactStatement": "Without root directory restrictions, users may access sensitive data in unauthorized directories, leading to data exposure and privilege escalation.",
+        "RemediationProcedure": "1. List EFS access points: `aws efs describe-access-points --file-system-id <fs-id>`.\n2. For each access point, verify RootDirectory configuration.\n3. Create new access points with restricted paths: `aws efs create-access-point --file-system-id <fs-id> --root-directory Path=/<restricted-path>,CreationInfo='{\"OwnerUid\":1000,\"OwnerGid\":1000,\"Permissions\":\"755\"}'`.\n4. Update applications to use access points instead of direct file system mounts.\n5. Remove overly permissive access points.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-access-points --file-system-id <fs-id> --query 'AccessPoints[?!RootDirectory || RootDirectory.Path==`/`]'` to identify access points without proper root directory restrictions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html",
+        "DefaultValue": "Root directory (/) unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_access_point_enforce_user_identity",
+    "title": "Enforce user identity on EFS access points",
+    "description": "Ensure EFS access points enforce POSIX user identity to control data access permissions.",
+    "capability": "access_governance",
+    "service": "efs",
+    "subservice": "access_point",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_EFS_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure EFS access points to enforce POSIX user identity for consistent file system permissions.",
+        "RationaleStatement": "POSIX user identity enforcement ensures consistent access controls and prevents privilege escalation through file system permissions.",
+        "ImpactStatement": "Without user identity enforcement, applications may access files with unintended permissions, potentially accessing sensitive data belonging to other users or applications.",
+        "RemediationProcedure": "1. Review access points for POSIX configuration: `aws efs describe-access-points --file-system-id <fs-id>`.\n2. For each access point, verify PosixUser configuration exists.\n3. Update access points to enforce user identity: `aws efs modify-access-point --access-point-id <ap-id> --posix-user Uid=<uid>,Gid=<gid>`.\n4. Test file access with enforced user identity.\n5. Update application configurations to work with enforced identities.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-access-points --file-system-id <fs-id> --query 'AccessPoints[?!PosixUser]'` to identify access points without POSIX user identity enforcement.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html#enforce-identity-access-points",
+        "DefaultValue": "No user identity enforcement unless configured"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_vpc_endpoint_access_only",
+    "title": "Restrict EFS access to VPC endpoints only",
+    "description": "Ensure EFS file systems are accessible only through VPC endpoints to prevent data exposure.",
+    "capability": "access_governance",
+    "service": "efs",
+    "subservice": "network",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EFS_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure EFS to use VPC endpoints exclusively to prevent internet-based access and maintain network isolation.",
+        "RationaleStatement": "VPC endpoint access ensures EFS traffic remains within the AWS network, reducing exposure to internet-based threats and providing better network control.",
+        "ImpactStatement": "Without VPC endpoint restrictions, EFS traffic may traverse the internet, increasing risk of data interception and unauthorized network access.",
+        "RemediationProcedure": "1. Create VPC endpoint for EFS: `aws ec2 create-vpc-endpoint --vpc-id <vpc-id> --service-name com.amazonaws.<region>.elasticfilesystem --vpc-endpoint-type Interface`.\n2. Configure security groups for VPC endpoint to allow NFS traffic.\n3. Update EFS mount targets to use VPC endpoint DNS names.\n4. Implement IAM policies to restrict EFS access to VPC endpoint sources only.\n5. Test connectivity through VPC endpoint.",
+        "AuditProcedure": "Use AWS CLI: `aws ec2 describe-vpc-endpoints --filters Name=service-name,Values=com.amazonaws.<region>.elasticfilesystem` to verify VPC endpoints exist for EFS. Check EFS access patterns in CloudTrail for non-VPC endpoint access.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/efs-vpc-endpoints.html",
+        "DefaultValue": "Internet gateway access unless VPC endpoints configured"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_mount_target_security_groups_restricted",
+    "title": "Restrict EFS mount target security groups",
+    "description": "Ensure EFS mount targets have properly configured security groups to limit unauthorized access.",
+    "capability": "access_governance",
+    "service": "efs",
+    "subservice": "security_groups",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_EFS_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure restrictive security groups for EFS mount targets to limit access to authorized sources only.",
+        "RationaleStatement": "Properly configured security groups provide network-level access control for EFS, preventing unauthorized access from untrusted sources.",
+        "ImpactStatement": "Overly permissive security groups can allow unauthorized network access to EFS file systems, potentially exposing sensitive data to attackers.",
+        "RemediationProcedure": "1. Review mount target security groups: `aws efs describe-mount-targets --file-system-id <fs-id>`.\n2. Check security group rules: `aws ec2 describe-security-groups --group-ids <sg-id>`.\n3. Remove overly permissive rules: `aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol tcp --port 2049 --cidr 0.0.0.0/0`.\n4. Add specific CIDR blocks: `aws ec2 authorize-security-group-ingress --group-id <sg-id> --protocol tcp --port 2049 --cidr <authorized-cidr>`.\n5. Implement principle of least privilege for NFS access.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-mount-targets --file-system-id <fs-id>` then check each security group for overly permissive rules allowing 0.0.0.0/0 or large CIDR blocks on port 2049.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/network-access.html",
+        "DefaultValue": "Default security group unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_encryption_at_rest_enabled",
+    "title": "Enable encryption at rest for EFS file systems",
+    "description": "Ensure EFS file systems have encryption at rest enabled to protect sensitive data stored in files.",
+    "capability": "data_protection",
+    "service": "efs",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EFS_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable encryption at rest for EFS file systems to protect sensitive data using AWS KMS encryption.",
+        "RationaleStatement": "Encryption at rest protects sensitive file data from unauthorized access if the underlying storage is compromised, meeting compliance requirements.",
+        "ImpactStatement": "Unencrypted EFS file systems expose sensitive data at rest, violating compliance requirements and creating risk of data exposure if storage media is compromised.",
+        "RemediationProcedure": "1. Check current encryption status: `aws efs describe-file-systems --file-system-id <fs-id>`.\n2. For unencrypted file systems, create new encrypted file system: `aws efs create-file-system --encrypted --kms-key-id <key-id>`.\n3. Use AWS DataSync to migrate data: `aws datasync create-task --source-location-arn <source> --destination-location-arn <dest>`.\n4. Update applications to use new encrypted file system.\n5. Delete old unencrypted file system after migration.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-file-systems --query 'FileSystems[?Encrypted==`false`]'` to identify unencrypted EFS file systems.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/encryption.html",
+        "DefaultValue": "Unencrypted unless explicitly enabled during creation"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_encryption_in_transit_enabled",
+    "title": "Enable encryption in transit for EFS",
+    "description": "Ensure EFS file systems use encryption in transit to protect data during file operations.",
+    "capability": "data_protection",
+    "service": "efs",
+    "subservice": "tls",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EFS_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure EFS mounts to use encryption in transit via TLS to protect data during network transmission.",
+        "RationaleStatement": "Encryption in transit protects sensitive file data from interception during network transmission between EFS clients and the file system.",
+        "ImpactStatement": "Without encryption in transit, file data transmitted over the network can be intercepted by attackers, potentially exposing sensitive information.",
+        "RemediationProcedure": "1. Install amazon-efs-utils on EC2 instances: `sudo yum install amazon-efs-utils`.\n2. Mount EFS with TLS encryption: `sudo mount -t efs -o tls <fs-id>:/ /mnt/efs`.\n3. Update /etc/fstab for persistent mounts: `<fs-id>.efs.<region>.amazonaws.com:/ /mnt/efs efs defaults,_netdev,tls`.\n4. Verify TLS connections using EFS mount helper.\n5. Update all EFS mounts to use TLS encryption.",
+        "AuditProcedure": "Check mount options on EC2 instances: `mount | grep efs` and verify 'tls' option is present. Use CloudTrail to monitor EFS API calls and ensure stunnel/TLS is being used.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/encryption-in-transit.html",
+        "DefaultValue": "Unencrypted unless TLS mount option specified"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_have_backup_enabled",
+    "title": "Enable backup for EFS file systems",
+    "description": "Ensure EFS file systems have backup enabled to protect against data loss and meet compliance requirements.",
+    "capability": "data_protection",
+    "service": "efs",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_EFS_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable automatic backup for EFS file systems to ensure data protection and disaster recovery capabilities.",
+        "RationaleStatement": "Regular backups protect against data loss from accidental deletion, corruption, or system failures, supporting business continuity and compliance requirements.",
+        "ImpactStatement": "Without backups, EFS data loss from corruption, deletion, or disasters cannot be recovered, potentially causing significant business disruption and data loss.",
+        "RemediationProcedure": "1. Check current backup policy: `aws efs describe-backup-policy --file-system-id <fs-id>`.\n2. Enable automatic backups: `aws efs put-backup-policy --file-system-id <fs-id> --backup-policy Status=ENABLED`.\n3. Configure AWS Backup for advanced backup policies: `aws backup create-backup-plan --backup-plan <plan-json>`.\n4. Create backup selections: `aws backup create-backup-selection --backup-plan-id <plan-id> --backup-selection <selection-json>`.\n5. Monitor backup jobs and verify successful completion.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-backup-policy --file-system-id <fs-id>` to verify backup policy status is ENABLED. Check AWS Backup: `aws backup list-backup-jobs --by-resource-type EFS`.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html",
+        "DefaultValue": "Disabled unless explicitly enabled"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_lifecycle_policy_configured",
+    "title": "Configure lifecycle policies for EFS",
+    "description": "Configure EFS lifecycle policies to automatically transition files and optimize storage costs while maintaining data integrity.",
+    "capability": "data_protection",
+    "service": "efs",
+    "subservice": "lifecycle",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EFS_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure EFS lifecycle policies to automatically manage file transitions between storage classes for cost optimization.",
+        "RationaleStatement": "Lifecycle policies optimize storage costs by automatically transitioning infrequently accessed files to lower-cost storage classes while maintaining data accessibility.",
+        "ImpactStatement": "Without lifecycle policies, all files remain in standard storage, leading to higher costs and inefficient storage utilization for infrequently accessed data.",
+        "RemediationProcedure": "1. Analyze file access patterns to determine appropriate transition policies.\n2. Configure lifecycle policy: `aws efs put-lifecycle-configuration --file-system-id <fs-id> --lifecycle-policies TransitionToIA=AFTER_30_DAYS,TransitionToPrimaryStorageClass=AFTER_1_ACCESS`.\n3. Monitor storage metrics: `aws cloudwatch get-metric-statistics --namespace AWS/EFS --metric-name StorageBytes`.\n4. Adjust policies based on access patterns and cost analysis.\n5. Document lifecycle policy decisions for compliance.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-lifecycle-configuration --file-system-id <fs-id>` to verify lifecycle policies are configured. Monitor CloudWatch metrics for storage class transitions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html",
+        "DefaultValue": "No lifecycle policies unless configured"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_performance_mode_optimized",
+    "title": "Optimize EFS performance mode for data access",
+    "description": "Configure appropriate EFS performance mode to ensure optimal data access patterns and security.",
+    "capability": "data_protection",
+    "service": "efs",
+    "subservice": "performance",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EFS_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure EFS performance mode based on workload requirements to balance performance and latency.",
+        "RationaleStatement": "Optimal performance mode configuration ensures efficient data access while maintaining security controls and preventing performance-related security issues.",
+        "ImpactStatement": "Incorrect performance mode can lead to poor application performance, potential timeouts, and degraded user experience with data access operations.",
+        "RemediationProcedure": "1. Analyze workload requirements: file size, concurrent connections, latency sensitivity.\n2. For low latency needs, use General Purpose mode (default).\n3. For high concurrent access, create file system with Max I/O mode: `aws efs create-file-system --performance-mode maxIO`.\n4. Monitor performance metrics: `aws cloudwatch get-metric-statistics --namespace AWS/EFS --metric-name PercentIOLimit`.\n5. Migrate to appropriate mode if needed using backup/restore process.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-file-systems --file-system-id <fs-id> --query 'FileSystems[*].PerformanceMode'` to verify performance mode configuration matches workload requirements.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes",
+        "DefaultValue": "General Purpose mode"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_throughput_mode_configured",
+    "title": "Configure EFS throughput mode appropriately",
+    "description": "Configure EFS throughput mode to balance performance and security for sensitive data access.",
+    "capability": "data_protection",
+    "service": "efs",
+    "subservice": "throughput",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_EFS_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure EFS throughput mode to match workload requirements and prevent performance-related security issues.",
+        "RationaleStatement": "Proper throughput configuration ensures consistent performance for data access operations, preventing potential security issues from performance degradation.",
+        "ImpactStatement": "Incorrect throughput configuration can lead to performance bottlenecks, application timeouts, and potential security vulnerabilities from degraded system performance.",
+        "RemediationProcedure": "1. Analyze throughput requirements and access patterns.\n2. For consistent high throughput, use Provisioned mode: `aws efs modify-file-system --file-system-id <fs-id> --throughput-mode provisioned --provisioned-throughput-in-mibps <value>`.\n3. For variable workloads, use Bursting mode (default).\n4. Monitor throughput metrics: `aws cloudwatch get-metric-statistics --namespace AWS/EFS --metric-name TotalIOBytes`.\n5. Adjust provisioned throughput based on utilization patterns.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-file-systems --file-system-id <fs-id>` to verify ThroughputMode and ProvisionedThroughputInMibps configuration matches workload requirements.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/performance.html#throughput-modes",
+        "DefaultValue": "Bursting mode"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_multi_az_enabled",
+    "title": "Enable Multi-AZ for EFS file systems",
+    "description": "Enable Multi-AZ deployment for EFS file systems to ensure data availability within approved regions.",
+    "capability": "data_residency",
+    "service": "efs",
+    "subservice": "availability",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EFS_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Deploy EFS file systems across multiple availability zones within approved regions for high availability and data residency compliance.",
+        "RationaleStatement": "Multi-AZ deployment ensures high availability while maintaining data within regional boundaries, supporting both business continuity and data residency requirements.",
+        "ImpactStatement": "Single-AZ deployment creates availability risks and may not meet resilience requirements for sensitive data that must remain within specific geographic boundaries.",
+        "RemediationProcedure": "1. Review current mount targets: `aws efs describe-mount-targets --file-system-id <fs-id>`.\n2. Create mount targets in additional AZs: `aws efs create-mount-target --file-system-id <fs-id> --subnet-id <subnet-id> --security-groups <sg-id>`.\n3. Ensure mount targets exist in all required AZs within the approved region.\n4. Test connectivity from each AZ.\n5. Update application configurations for multi-AZ access.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-mount-targets --file-system-id <fs-id>` to verify mount targets exist in multiple availability zones within approved regions only.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-conceptual",
+        "DefaultValue": "Single AZ unless mount targets created in multiple AZs"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_region_restriction_enforced",
+    "title": "Enforce region restrictions for EFS file systems",
+    "description": "Ensure EFS file systems are created only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "efs",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EFS_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement controls to ensure EFS file systems are created only in approved regions that meet data residency requirements.",
+        "RationaleStatement": "Region restrictions ensure sensitive data remains within approved geographical boundaries to comply with data sovereignty and privacy regulations.",
+        "ImpactStatement": "EFS file systems in unapproved regions may violate data residency laws, GDPR, or other regulations, resulting in legal penalties and compliance violations.",
+        "RemediationProcedure": "1. Define approved regions based on data residency requirements.\n2. Implement SCPs in AWS Organizations: `{\"Effect\":\"Deny\",\"Action\":\"elasticfilesystem:CreateFileSystem\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"approved-regions\"]}}}`.\n3. Use IAM policies with region conditions for EFS actions.\n4. Audit existing file systems: `aws efs describe-file-systems --region <region>` across all regions.\n5. Migrate data from non-compliant regions using AWS DataSync.",
+        "AuditProcedure": "Use AWS CLI across all regions: `aws efs describe-file-systems --region <region>` to identify EFS file systems in unapproved regions. Use AWS Config aggregator for multi-region compliance monitoring.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "Any region may be used unless restricted"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_cross_region_replication_restricted",
+    "title": "Restrict EFS cross-region replication",
+    "description": "Ensure EFS replication is configured only to approved regions that meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "efs",
+    "subservice": "replication",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EFS_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Restrict EFS replication destinations to approved regions to maintain data residency compliance.",
+        "RationaleStatement": "Restricting replication destinations ensures backup and disaster recovery data remains within approved jurisdictions, maintaining data sovereignty compliance.",
+        "ImpactStatement": "Unrestricted cross-region replication could move sensitive data to jurisdictions with different privacy laws, violating data residency requirements.",
+        "RemediationProcedure": "1. Review existing replication configurations: `aws efs describe-replication-configurations`.\n2. Delete non-compliant replications: `aws efs delete-replication-configuration --source-file-system-id <fs-id>`.\n3. Implement IAM policies restricting replication destinations: `{\"Effect\":\"Deny\",\"Action\":\"elasticfilesystem:CreateReplicationConfiguration\",\"Condition\":{\"StringNotEquals\":{\"elasticfilesystem:ReplicationDestinationRegion\":[\"approved-regions\"]}}}`.\n4. Create compliant replication: `aws efs create-replication-configuration --source-file-system-id <fs-id> --destinations Region=<approved-region>`.\n5. Monitor replication status and compliance.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-replication-configurations` to verify all replication destinations are in approved regions. Check IAM policies for replication restrictions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html",
+        "DefaultValue": "No replication unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_data_sovereignty_tags",
+    "title": "Tag EFS file systems with data sovereignty information",
+    "description": "Ensure EFS file systems are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "efs",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EFS_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Apply data sovereignty and jurisdiction tags to EFS file systems for compliance tracking and governance.",
+        "RationaleStatement": "Data sovereignty tags enable tracking and governance of data location requirements, supporting compliance with various international data protection laws.",
+        "ImpactStatement": "Without sovereignty tags, it's difficult to track compliance with data residency requirements and respond to regulatory inquiries about data location.",
+        "RemediationProcedure": "1. Define data sovereignty taxonomy (jurisdiction, legal framework, residency requirements).\n2. Tag file systems: `aws efs create-tags --file-system-id <fs-id> --tags Key=DataSovereignty,Value=EU-GDPR Key=Jurisdiction,Value=European-Union Key=DataClassification,Value=Sensitive`.\n3. Implement automated tagging based on region and data classification.\n4. Create tag policies to enforce consistent sovereignty tagging.\n5. Use tags in IAM policies for access control based on jurisdiction.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-file-systems --query 'FileSystems[?!Tags || !Tags[?Key==`DataSovereignty`]]'` to identify file systems missing sovereignty tags. Use AWS Config for compliance monitoring.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/using-tags.html",
+        "DefaultValue": "No tags unless manually applied"
+      }
+    ]
+  },
+  {
+    "function_name": "efs_mount_target_region_compliance",
+    "title": "Ensure EFS mount targets comply with region restrictions",
+    "description": "Ensure EFS mount targets are created only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "efs",
+    "subservice": "region",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_EFS_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure EFS mount targets are created only in approved regions and availability zones that meet data residency requirements.",
+        "RationaleStatement": "Mount target location compliance ensures data access points remain within approved geographical boundaries, maintaining comprehensive data residency control.",
+        "ImpactStatement": "Mount targets in non-compliant regions could provide unauthorized data access paths, potentially violating data residency requirements and regulatory compliance.",
+        "RemediationProcedure": "1. Audit all mount targets across regions: `aws efs describe-mount-targets --file-system-id <fs-id>`.\n2. Identify mount targets in non-compliant regions or AZs.\n3. Delete non-compliant mount targets: `aws efs delete-mount-target --mount-target-id <mt-id>`.\n4. Create replacement mount targets in compliant regions: `aws efs create-mount-target --file-system-id <fs-id> --subnet-id <compliant-subnet-id>`.\n5. Update application configurations to use compliant mount targets only.",
+        "AuditProcedure": "Use AWS CLI: `aws efs describe-mount-targets` and verify all mount targets are in approved regions and availability zones. Cross-reference with approved region/AZ list.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/efs/latest/ug/accessing-fs.html",
+        "DefaultValue": "Mount targets created in same region as file system"
+      }
+    ]
+  }
+]

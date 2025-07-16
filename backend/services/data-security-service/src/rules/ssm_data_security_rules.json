@@ -1,0 +1,242 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Ensure Parameter Store parameters are not publicly accessible",
+    "Checks": ["ssm_parameter_not_publicly_accessible"],
+    "function_name": "ssm_parameter_not_publicly_accessible",
+    "title": "Ensure Parameter Store parameters are not publicly accessible",
+    "description": "Ensure Systems Manager Parameter Store parameters do not have resource policies that grant public access.",
+    "capability": "access_governance",
+    "service": "ssm",
+    "subservice": "access",
+    "risk": "CRITICAL",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SSM_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure Systems Manager Parameter Store parameters do not have resource policies that grant public access.",
+        "RationaleStatement": "Publicly accessible parameters expose sensitive configuration data and credentials to unauthorized users, leading to potential security breaches.",
+        "ImpactStatement": "Public access to parameters could allow attackers to obtain sensitive configuration data, API keys, and other critical system information.",
+        "RemediationProcedure": "1. List all parameters: ```aws ssm describe-parameters```\n2. Check for resource policies with public access\n3. Remove public access from parameter policies\n4. Update IAM policies to use least privilege access\n5. Verify parameters are accessible only to authorized entities\n6. Monitor parameter access through CloudTrail",
+        "AuditProcedure": "1. Review all Parameter Store parameters\n2. Check resource policies for public access patterns\n3. Verify IAM policies follow least privilege\n4. Review CloudTrail logs for unauthorized access attempts\n5. Validate parameter access is properly restricted",
+        "AdditionalInformation": "Use IAM policies and resource-based policies to control parameter access",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-access.html",
+        "DefaultValue": "Parameter Store parameters are not publicly accessible by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Enforce least privilege for Parameter Store access",
+    "Checks": ["ssm_parameter_least_privilege_access"],
+    "function_name": "ssm_parameter_least_privilege_access",
+    "title": "Enforce least privilege for Parameter Store access",
+    "description": "Ensure Parameter Store access follows least privilege principles with granular permissions.",
+    "capability": "access_governance",
+    "service": "ssm",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SSM_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Parameter Store access follows least privilege principles with granular permissions.",
+        "RationaleStatement": "Least privilege access minimizes the potential impact of compromised credentials and reduces unauthorized access to sensitive parameters.",
+        "ImpactStatement": "Excessive permissions could allow unauthorized access to sensitive configuration data and credentials stored in Parameter Store.",
+        "RemediationProcedure": "1. Review IAM policies for Parameter Store permissions\n2. Analyze actual parameter usage patterns\n3. Create granular policies based on parameter hierarchies\n4. Implement path-based access controls\n5. Remove unused or excessive permissions\n6. Regular review and cleanup of parameter access",
+        "AuditProcedure": "1. Review IAM policies granting Parameter Store access\n2. Analyze CloudTrail logs for parameter access patterns\n3. Identify over-privileged users and roles\n4. Verify path-based restrictions are implemented\n5. Check for unused permissions and excessive access",
+        "AdditionalInformation": "Use parameter hierarchies and path-based policies for granular access control",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-hierarchies.html",
+        "DefaultValue": "Default IAM policies may grant broad access to parameters"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Restrict cross-account parameter access",
+    "Checks": ["ssm_parameter_cross_account_access_restricted"],
+    "function_name": "ssm_parameter_cross_account_access_restricted",
+    "title": "Restrict cross-account parameter access",
+    "description": "Ensure Parameter Store parameters have appropriate restrictions for cross-account access.",
+    "capability": "access_governance",
+    "service": "ssm",
+    "subservice": "cross_account",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SSM_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Parameter Store parameters have appropriate restrictions for cross-account access.",
+        "RationaleStatement": "Unrestricted cross-account access could expose sensitive parameters to unauthorized external parties.",
+        "ImpactStatement": "Uncontrolled cross-account access could allow external accounts to access sensitive configuration data and credentials.",
+        "RemediationProcedure": "1. Review cross-account parameter sharing configurations\n2. Validate business justification for cross-account access\n3. Implement specific account restrictions\n4. Use condition-based access controls\n5. Monitor cross-account parameter access\n6. Regular review of cross-account permissions",
+        "AuditProcedure": "1. Review parameter policies for external account access\n2. Verify business justification for cross-account sharing\n3. Check for appropriate conditions and restrictions\n4. Review CloudTrail logs for cross-account access\n5. Validate cross-account access patterns",
+        "AdditionalInformation": "Use aws:SourceAccount condition to restrict cross-account access",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-access.html",
+        "DefaultValue": "Cross-account access must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable encryption for SecureString parameters",
+    "Checks": ["ssm_parameter_securestring_encrypted"],
+    "function_name": "ssm_parameter_securestring_encrypted",
+    "title": "Enable encryption for SecureString parameters",
+    "description": "Ensure all sensitive parameters are stored as SecureString type with customer managed KMS encryption.",
+    "capability": "data_protection",
+    "service": "ssm",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_SSM_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure all sensitive parameters are stored as SecureString type with customer managed KMS encryption.",
+        "RationaleStatement": "Encryption protects sensitive parameter values from unauthorized access and provides additional security controls through KMS.",
+        "ImpactStatement": "Unencrypted sensitive parameters could be exposed if AWS storage systems are compromised or accessed by unauthorized personnel.",
+        "RemediationProcedure": "1. Identify parameters containing sensitive data\n2. Create customer managed KMS key for Parameter Store\n3. Update parameters to SecureString type: ```aws ssm put-parameter --name <name> --value <value> --type SecureString --key-id <key-id>```\n4. Update applications to handle SecureString parameters\n5. Delete old unencrypted parameters\n6. Verify encryption configuration",
+        "AuditProcedure": "1. List all parameters and check their types\n2. Identify sensitive parameters not using SecureString\n3. Verify customer managed KMS keys are used\n4. Check KMS key policies for appropriate access\n5. Review parameter access patterns in CloudTrail",
+        "AdditionalInformation": "SecureString parameters are automatically encrypted at rest and in transit",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-securestring.html",
+        "DefaultValue": "String and StringList parameters are not encrypted by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Implement parameter value validation",
+    "Checks": ["ssm_parameter_value_validation"],
+    "function_name": "ssm_parameter_value_validation",
+    "title": "Implement parameter value validation",
+    "description": "Ensure Parameter Store parameters have appropriate value validation and format checking.",
+    "capability": "data_protection",
+    "service": "ssm",
+    "subservice": "validation",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_SSM_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Parameter Store parameters have appropriate value validation and format checking.",
+        "RationaleStatement": "Parameter validation ensures data integrity and prevents injection of malicious or malformed configuration values.",
+        "ImpactStatement": "Invalid parameter values could cause application failures or security vulnerabilities if malicious data is injected.",
+        "RemediationProcedure": "1. Define validation patterns for different parameter types\n2. Implement parameter validation in creation workflows\n3. Use allowed patterns for parameter values\n4. Validate parameter updates against defined schemas\n5. Implement automated testing for parameter formats\n6. Monitor parameter validation failures",
+        "AuditProcedure": "1. Review parameter creation and update procedures\n2. Check for validation pattern implementation\n3. Verify parameter values meet format requirements\n4. Review failed validation attempts\n5. Validate automated testing coverage",
+        "AdditionalInformation": "Use allowed patterns and policies to enforce parameter value formats",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html",
+        "DefaultValue": "No default value validation is enforced"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Enable parameter versioning and change tracking",
+    "Checks": ["ssm_parameter_versioning_enabled"],
+    "function_name": "ssm_parameter_versioning_enabled",
+    "title": "Enable parameter versioning and change tracking",
+    "description": "Ensure Parameter Store parameters have versioning enabled and changes are properly tracked.",
+    "capability": "data_protection",
+    "service": "ssm",
+    "subservice": "versioning",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_SSM_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure Parameter Store parameters have versioning enabled and changes are properly tracked.",
+        "RationaleStatement": "Parameter versioning enables rollback capabilities and provides audit trails for configuration changes.",
+        "ImpactStatement": "Without versioning, it may be difficult to recover from incorrect parameter changes or track configuration modifications.",
+        "RemediationProcedure": "1. Enable parameter history retention\n2. Configure maximum number of versions to retain\n3. Implement change approval workflows\n4. Monitor parameter version usage\n5. Set up alerts for parameter changes\n6. Regular cleanup of old parameter versions",
+        "AuditProcedure": "1. Check parameter history configuration\n2. Verify version retention policies\n3. Review parameter change patterns\n4. Validate change approval processes\n5. Monitor version usage and cleanup",
+        "AdditionalInformation": "Parameter Store automatically maintains version history for up to 100 versions",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-versions.html",
+        "DefaultValue": "Parameter versioning is enabled by default with automatic version management"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Ensure parameters are stored in compliant regions",
+    "Checks": ["ssm_parameter_region_compliance"],
+    "function_name": "ssm_parameter_region_compliance",
+    "title": "Ensure parameters are stored in compliant regions",
+    "description": "Ensure Parameter Store parameters are stored only in regions that meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "ssm",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SSM_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Parameter Store parameters are stored only in regions that meet data residency requirements.",
+        "RationaleStatement": "Parameters in unauthorized regions may violate data residency requirements and expose the organization to compliance penalties.",
+        "ImpactStatement": "Parameters stored in non-compliant regions could violate data sovereignty laws and regulatory requirements.",
+        "RemediationProcedure": "1. Identify parameters in non-compliant regions\n2. Create replacement parameters in approved regions\n3. Update service configurations to use new parameters\n4. Test applications with new parameter locations\n5. Delete parameters from non-compliant regions\n6. Implement SCPs to prevent parameter creation in unauthorized regions",
+        "AuditProcedure": "1. List parameters across all regions\n2. Compare parameter locations against approved regions\n3. Review data residency requirements for each parameter\n4. Check SCPs for regional restrictions\n5. Verify all applications use compliant parameters",
+        "AdditionalInformation": "Use Service Control Policies to prevent parameter creation in unauthorized regions",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html",
+        "DefaultValue": "Parameters can be created in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Tag parameters with data sovereignty information",
+    "Checks": ["ssm_parameter_data_sovereignty_tags"],
+    "function_name": "ssm_parameter_data_sovereignty_tags",
+    "title": "Tag parameters with data sovereignty information",
+    "description": "Ensure Parameter Store parameters are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "ssm",
+    "subservice": "tagging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SSM_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Parameter Store parameters are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+        "RationaleStatement": "Data sovereignty tags enable automated compliance monitoring and ensure parameters are properly classified for regulatory requirements.",
+        "ImpactStatement": "Without proper tagging, it becomes difficult to track compliance with data residency requirements and identify non-compliant parameters.",
+        "RemediationProcedure": "1. Define data sovereignty tagging taxonomy\n2. Tag parameters: ```aws ssm add-tags-to-resource --resource-type Parameter --resource-id <parameter-name> --tags Key=DataSovereignty,Value=<jurisdiction>```\n3. Implement automated tagging for new parameters\n4. Create compliance monitoring based on tags\n5. Regular audit of tagging compliance\n6. Update tags when jurisdiction requirements change",
+        "AuditProcedure": "1. List all parameters and their tags\n2. Verify data sovereignty tags are present and accurate\n3. Check consistency with data residency policies\n4. Review automated tagging implementation\n5. Validate compliance monitoring based on tags",
+        "AdditionalInformation": "Use consistent tagging strategy across all AWS resources for comprehensive governance",
+        "References": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-labels.html",
+        "DefaultValue": "Parameters are created without data sovereignty tags by default"
+      }
+    ]
+  }
+]

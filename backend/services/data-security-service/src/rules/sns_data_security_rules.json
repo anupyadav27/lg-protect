@@ -1,0 +1,299 @@
+[
+  {
+    "function_name": "sns_topic_encryption_enabled",
+    "title": "Enable encryption for SNS topics",
+    "description": "Ensure SNS topics use server-side encryption to protect message data at rest and in transit.",
+    "capability": "data_protection",
+    "service": "sns",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_SNS_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable server-side encryption for SNS topics to protect sensitive message data using AWS KMS.",
+        "RationaleStatement": "SNS encryption protects sensitive message data from unauthorized access, ensuring compliance with data protection requirements.",
+        "ImpactStatement": "Unencrypted SNS topics expose sensitive message data, violating compliance requirements and creating data exposure risks.",
+        "RemediationProcedure": "1. Enable topic encryption: `aws sns set-topic-attributes --topic-arn <arn> --attribute-name KmsMasterKeyId --attribute-value <key-id>`.\n2. Configure customer-managed KMS keys for enhanced control.\n3. Update publishers to handle encrypted topics.\n4. Test message publishing and delivery.\n5. Monitor encryption status.",
+        "AuditProcedure": "Use AWS CLI: `aws sns get-topic-attributes --topic-arn <arn>` and check for KmsMasterKeyId attribute to verify encryption.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html",
+        "DefaultValue": "Encryption disabled by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_policy_secure",
+    "title": "Implement secure access policies for SNS topics",
+    "description": "Ensure SNS topics have restrictive access policies that follow principle of least privilege.",
+    "capability": "access_governance",
+    "service": "sns",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SNS_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure restrictive access policies for SNS topics that grant minimum necessary permissions to specific principals.",
+        "RationaleStatement": "Restrictive topic policies prevent unauthorized access to message data and ensure only authorized services can publish or subscribe.",
+        "ImpactStatement": "Overly permissive topic policies allow unauthorized access to sensitive message data and enable potential data exfiltration.",
+        "RemediationProcedure": "1. Review current topic policies: `aws sns get-topic-attributes --topic-arn <arn>`.\n2. Remove wildcard principals and actions.\n3. Apply principle of least privilege.\n4. Use condition blocks for additional security.\n5. Test access with restricted policies.",
+        "AuditProcedure": "Review SNS topic policies for overly permissive statements, wildcard principals, or unrestricted access.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-access-policy-use-cases.html",
+        "DefaultValue": "Default policy allows topic owner full access"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_public_access_blocked",
+    "title": "Block public access to SNS topics",
+    "description": "Ensure SNS topics are not publicly accessible and restrict access to authorized principals only.",
+    "capability": "access_governance",
+    "service": "sns",
+    "subservice": "access",
+    "risk": "CRITICAL",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SNS_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure topic policies to prevent public access and restrict access to specific AWS accounts and principals.",
+        "RationaleStatement": "Blocking public access prevents unauthorized access to sensitive message data and reduces attack surface.",
+        "ImpactStatement": "Publicly accessible topics expose sensitive message data to unauthorized access and potential data exfiltration.",
+        "RemediationProcedure": "1. Review topic policies for public access.\n2. Remove statements with Principal: '*'.\n3. Specify explicit principals and accounts.\n4. Use condition blocks for additional restrictions.\n5. Test access with restricted policies.",
+        "AuditProcedure": "Review SNS topic policies for statements allowing public access (Principal: '*' without restrictive conditions).",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-security-best-practices.html",
+        "DefaultValue": "Topic accessible by account owner by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_cross_account_access_controlled",
+    "title": "Control cross-account access to SNS topics",
+    "description": "Ensure cross-account access to SNS topics is properly controlled and monitored.",
+    "capability": "access_governance",
+    "service": "sns",
+    "subservice": "cross-account",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SNS_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Review and control cross-account access to SNS topics to ensure only authorized external accounts can access topic resources.",
+        "RationaleStatement": "Controlled cross-account access ensures external access is intentional, authorized, and properly monitored.",
+        "ImpactStatement": "Uncontrolled cross-account access can lead to unauthorized data access from external AWS accounts.",
+        "RemediationProcedure": "1. Review topic policies for cross-account statements.\n2. Verify external account IDs are authorized.\n3. Use condition blocks to restrict access further.\n4. Document approved cross-account relationships.\n5. Regularly audit external access.",
+        "AuditProcedure": "Review SNS topic policies for cross-account access and verify all external account IDs are authorized.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-tutorial-publish-message-to-topic.html",
+        "DefaultValue": "No cross-account access by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_https_only",
+    "title": "Enforce HTTPS-only access for SNS topics",
+    "description": "Ensure SNS topics enforce HTTPS/TLS encryption for all API communications.",
+    "capability": "data_protection",
+    "service": "sns",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_SNS_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure topic policies to deny requests that are not made over HTTPS to ensure encryption in transit.",
+        "RationaleStatement": "HTTPS-only access protects sensitive message data from interception and tampering during transmission.",
+        "ImpactStatement": "Unencrypted communications expose message data to interception and man-in-the-middle attacks.",
+        "RemediationProcedure": "1. Add HTTPS-only policy to topic.\n2. Use condition aws:SecureTransport in topic policy.\n3. Update applications to use HTTPS endpoints.\n4. Test connectivity with HTTPS enforcement.\n5. Monitor for rejected HTTP requests.",
+        "AuditProcedure": "Review SNS topic policies for aws:SecureTransport conditions that deny HTTP requests.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-security-best-practices.html",
+        "DefaultValue": "Both HTTP and HTTPS allowed by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_subscription_confirmation_authenticated",
+    "title": "Require authentication for SNS subscription confirmations",
+    "description": "Ensure SNS subscription confirmations are properly authenticated to prevent unauthorized subscriptions.",
+    "capability": "access_governance",
+    "service": "sns",
+    "subservice": "subscription",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SNS_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement controls to ensure subscription confirmations are properly authenticated and authorized.",
+        "RationaleStatement": "Authenticated subscriptions prevent unauthorized parties from receiving sensitive message data.",
+        "ImpactStatement": "Unauthenticated subscriptions could allow unauthorized access to sensitive notification data.",
+        "RemediationProcedure": "1. Review subscription confirmation processes.\n2. Implement endpoint verification.\n3. Use topic policies to restrict subscriptions.\n4. Monitor subscription activities.\n5. Regularly audit active subscriptions.",
+        "AuditProcedure": "Review SNS subscription policies and confirmation procedures to ensure proper authentication is required.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-message-and-json-formats.html",
+        "DefaultValue": "Basic confirmation required by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_delivery_status_logging",
+    "title": "Enable delivery status logging for SNS topics",
+    "description": "Enable delivery status logging for SNS topics to monitor message delivery and detect failures.",
+    "capability": "data_protection",
+    "service": "sns",
+    "subservice": "logging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_SNS_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure delivery status logging to monitor message delivery success and failure rates.",
+        "RationaleStatement": "Delivery status logging provides visibility into message delivery and helps detect delivery failures or issues.",
+        "ImpactStatement": "Without delivery logging, message delivery failures cannot be properly monitored and troubleshooted.",
+        "RemediationProcedure": "1. Configure delivery status logging attributes.\n2. Set up CloudWatch logs for delivery status.\n3. Configure success and failure sampling rates.\n4. Monitor delivery metrics.\n5. Set up alerts for delivery failures.",
+        "AuditProcedure": "Use AWS CLI: `aws sns get-topic-attributes --topic-arn <arn>` to check for delivery status logging configuration.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-topic-attributes.html",
+        "DefaultValue": "Delivery status logging disabled by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_access_logging_enabled",
+    "title": "Enable access logging for SNS topics",
+    "description": "Ensure SNS topic access is logged through CloudTrail for security monitoring and compliance.",
+    "capability": "access_governance",
+    "service": "sns",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SNS_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure CloudTrail to log SNS API calls for security monitoring and compliance auditing.",
+        "RationaleStatement": "Access logging provides audit trails for security investigations and helps detect unauthorized access attempts.",
+        "ImpactStatement": "Without access logging, security incidents cannot be properly investigated and compliance requirements may not be met.",
+        "RemediationProcedure": "1. Enable CloudTrail in all regions.\n2. Configure data events for SNS if needed.\n3. Ensure logs are stored securely.\n4. Set up log analysis and alerting.\n5. Regularly review access patterns.",
+        "AuditProcedure": "Verify CloudTrail is enabled and capturing SNS API calls. Review log retention and analysis capabilities.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-logging-using-cloudtrail.html",
+        "DefaultValue": "CloudTrail must be explicitly enabled"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_region_compliance",
+    "title": "Ensure SNS topics are deployed in compliant regions",
+    "description": "Verify SNS topics are created only in approved regions to meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "sns",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SNS_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure all SNS topics are created in approved regions that meet organizational data residency requirements.",
+        "RationaleStatement": "Regional compliance ensures message data remains within approved geographic boundaries, meeting regulatory and organizational requirements.",
+        "ImpactStatement": "Topics in non-approved regions violate data residency requirements and may expose data to unauthorized jurisdictions.",
+        "RemediationProcedure": "1. Identify topics in non-compliant regions.\n2. Plan migration to approved regions.\n3. Create topics in compliant regions.\n4. Update applications to use new topic ARNs.\n5. Delete topics in non-compliant regions.",
+        "AuditProcedure": "Use AWS CLI: `aws sns list-topics --region <region>` across all regions to identify topic locations.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/general/latest/gr/sns.html",
+        "DefaultValue": "Topics created in region specified during creation"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_cross_region_access_restricted",
+    "title": "Restrict cross-region access to SNS topics",
+    "description": "Ensure SNS topics cannot be accessed from non-approved regions through policy controls.",
+    "capability": "data_residency",
+    "service": "sns",
+    "subservice": "access",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SNS_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Use topic policies and IAM conditions to restrict access to topics from approved regions only.",
+        "RationaleStatement": "Regional access restrictions ensure message data is only accessed from approved geographic locations.",
+        "ImpactStatement": "Cross-region access may violate data residency requirements and enable data access from unauthorized locations.",
+        "RemediationProcedure": "1. Add aws:RequestedRegion conditions to topic policies.\n2. Specify approved regions in condition values.\n3. Test access from different regions.\n4. Monitor for access violations.\n5. Update policies as requirements change.",
+        "AuditProcedure": "Review SNS topic policies for aws:RequestedRegion conditions that restrict access to approved regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html",
+        "DefaultValue": "No regional access restrictions by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sns_topic_data_classification_tagged",
+    "title": "Tag SNS topics with data classification",
+    "description": "Ensure SNS topics are properly tagged with data classification levels to support data residency and governance.",
+    "capability": "data_residency",
+    "service": "sns",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SNS_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Tag SNS topics with appropriate data classification and residency requirements to support governance and compliance.",
+        "RationaleStatement": "Proper tagging enables automated compliance checking and helps ensure appropriate handling of sensitive message data.",
+        "ImpactStatement": "Untagged topics cannot be properly governed and may not receive appropriate security controls based on data sensitivity.",
+        "RemediationProcedure": "1. Define data classification taxonomy.\n2. Tag topics: `aws sns tag-resource --resource-arn <arn> --tags Key=DataClassification,Value=<level>`.\n3. Include residency requirements in tags.\n4. Implement tag-based policies.\n5. Regularly audit tag compliance.",
+        "AuditProcedure": "Use AWS CLI: `aws sns list-tags-for-resource --resource-arn <arn>` to verify proper data classification tagging.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html",
+        "DefaultValue": "No tags applied by default"
+      }
+    ]
+  }
+]

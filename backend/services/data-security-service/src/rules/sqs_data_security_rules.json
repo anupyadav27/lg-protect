@@ -1,0 +1,299 @@
+[
+  {
+    "function_name": "sqs_queue_encryption_enabled",
+    "title": "Enable encryption for SQS queues",
+    "description": "Ensure SQS queues use server-side encryption to protect message data at rest.",
+    "capability": "data_protection",
+    "service": "sqs",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_SQS_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable server-side encryption for SQS queues to protect sensitive message data at rest using AWS KMS.",
+        "RationaleStatement": "SQS encryption protects sensitive message data from unauthorized access, ensuring compliance with data protection requirements.",
+        "ImpactStatement": "Unencrypted SQS queues expose sensitive message data at rest, violating compliance requirements and creating data exposure risks.",
+        "RemediationProcedure": "1. Enable SQS encryption: `aws sqs set-queue-attributes --queue-url <url> --attributes KmsMasterKeyId=<key-id>`.\n2. Configure customer-managed KMS keys for enhanced control.\n3. Update applications to handle encrypted messages.\n4. Test message processing with encryption enabled.\n5. Monitor encryption status.",
+        "AuditProcedure": "Use AWS CLI: `aws sqs get-queue-attributes --queue-url <url> --attribute-names KmsMasterKeyId` to verify encryption is enabled.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html",
+        "DefaultValue": "Encryption disabled by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_policy_secure",
+    "title": "Implement secure access policies for SQS queues",
+    "description": "Ensure SQS queues have restrictive access policies that follow principle of least privilege.",
+    "capability": "access_governance",
+    "service": "sqs",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SQS_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure restrictive access policies for SQS queues that grant minimum necessary permissions to specific principals.",
+        "RationaleStatement": "Restrictive queue policies prevent unauthorized access to message data and ensure only authorized services can send or receive messages.",
+        "ImpactStatement": "Overly permissive queue policies allow unauthorized access to sensitive message data and enable potential data exfiltration.",
+        "RemediationProcedure": "1. Review current queue policies: `aws sqs get-queue-attributes --queue-url <url> --attribute-names Policy`.\n2. Remove wildcard principals and actions.\n3. Apply principle of least privilege.\n4. Use condition blocks for additional security.\n5. Test access with restricted policies.",
+        "AuditProcedure": "Review SQS queue policies for overly permissive statements, wildcard principals, or unrestricted access.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html",
+        "DefaultValue": "Default policy allows queue owner full access"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_dlq_configured",
+    "title": "Configure dead letter queues for SQS",
+    "description": "Configure dead letter queues to prevent message loss and enable monitoring of failed message processing.",
+    "capability": "data_protection",
+    "service": "sqs",
+    "subservice": "reliability",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_SQS_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure dead letter queues to capture and retain failed messages for analysis and reprocessing.",
+        "RationaleStatement": "Dead letter queues prevent message loss and provide visibility into processing failures, supporting data integrity and system reliability.",
+        "ImpactStatement": "Without dead letter queues, failed messages are lost permanently, potentially causing data loss and making troubleshooting difficult.",
+        "RemediationProcedure": "1. Create dead letter queue: `aws sqs create-queue --queue-name <dlq-name>`.\n2. Configure source queue redrive policy: `aws sqs set-queue-attributes --queue-url <url> --attributes RedrivePolicy=<policy>`.\n3. Set appropriate maxReceiveCount.\n4. Monitor dead letter queue metrics.\n5. Implement DLQ processing workflows.",
+        "AuditProcedure": "Use AWS CLI: `aws sqs get-queue-attributes --queue-url <url> --attribute-names RedrivePolicy` to verify DLQ configuration.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
+        "DefaultValue": "No dead letter queue configured by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_message_retention_appropriate",
+    "title": "Configure appropriate message retention for SQS queues",
+    "description": "Set appropriate message retention periods to balance data availability with storage costs and compliance requirements.",
+    "capability": "data_protection",
+    "service": "sqs",
+    "subservice": "retention",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_SQS_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure message retention periods based on business requirements and compliance needs.",
+        "RationaleStatement": "Appropriate retention periods ensure messages are available for processing while meeting compliance requirements for data retention and deletion.",
+        "ImpactStatement": "Inappropriate retention periods can lead to premature message deletion or excessive storage costs and compliance violations.",
+        "RemediationProcedure": "1. Review business requirements for message retention.\n2. Set retention period: `aws sqs set-queue-attributes --queue-url <url> --attributes MessageRetentionPeriod=<seconds>`.\n3. Consider compliance requirements.\n4. Monitor storage costs.\n5. Document retention policies.",
+        "AuditProcedure": "Use AWS CLI: `aws sqs get-queue-attributes --queue-url <url> --attribute-names MessageRetentionPeriod` to verify retention settings.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-queue-parameters.html",
+        "DefaultValue": "4 days (345,600 seconds)"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_in_transit_encryption",
+    "title": "Enforce encryption in transit for SQS queues",
+    "description": "Ensure SQS queues enforce HTTPS/TLS encryption for all client communications.",
+    "capability": "data_protection",
+    "service": "sqs",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_SQS_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure queue policies to deny requests that are not made over HTTPS to ensure encryption in transit.",
+        "RationaleStatement": "Encryption in transit protects sensitive message data from interception and tampering during transmission.",
+        "ImpactStatement": "Unencrypted communications expose message data to interception and man-in-the-middle attacks.",
+        "RemediationProcedure": "1. Add HTTPS-only policy to queue.\n2. Use condition aws:SecureTransport in queue policy.\n3. Update applications to use HTTPS endpoints.\n4. Test connectivity with HTTPS enforcement.\n5. Monitor for rejected HTTP requests.",
+        "AuditProcedure": "Review SQS queue policies for aws:SecureTransport conditions that deny HTTP requests.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-security-best-practices.html",
+        "DefaultValue": "Both HTTP and HTTPS allowed by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_public_access_blocked",
+    "title": "Block public access to SQS queues",
+    "description": "Ensure SQS queues are not publicly accessible and restrict access to authorized principals only.",
+    "capability": "access_governance",
+    "service": "sqs",
+    "subservice": "access",
+    "risk": "CRITICAL",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SQS_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure queue policies to prevent public access and restrict access to specific AWS accounts and principals.",
+        "RationaleStatement": "Blocking public access prevents unauthorized access to sensitive message data and reduces attack surface.",
+        "ImpactStatement": "Publicly accessible queues expose sensitive message data to unauthorized access and potential data exfiltration.",
+        "RemediationProcedure": "1. Review queue policies for public access.\n2. Remove statements with Principal: '*'.\n3. Specify explicit principals and accounts.\n4. Use condition blocks for additional restrictions.\n5. Test access with restricted policies.",
+        "AuditProcedure": "Review SQS queue policies for statements allowing public access (Principal: '*' without restrictive conditions).",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-security-best-practices.html",
+        "DefaultValue": "Queue accessible by account owner by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_cross_account_access_controlled",
+    "title": "Control cross-account access to SQS queues",
+    "description": "Ensure cross-account access to SQS queues is properly controlled and monitored.",
+    "capability": "access_governance",
+    "service": "sqs",
+    "subservice": "cross-account",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SQS_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Review and control cross-account access to SQS queues to ensure only authorized external accounts can access queue resources.",
+        "RationaleStatement": "Controlled cross-account access ensures external access is intentional, authorized, and properly monitored.",
+        "ImpactStatement": "Uncontrolled cross-account access can lead to unauthorized data access from external AWS accounts.",
+        "RemediationProcedure": "1. Review queue policies for cross-account statements.\n2. Verify external account IDs are authorized.\n3. Use condition blocks to restrict access further.\n4. Document approved cross-account relationships.\n5. Regularly audit external access.",
+        "AuditProcedure": "Review SQS queue policies for cross-account access and verify all external account IDs are authorized.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html",
+        "DefaultValue": "No cross-account access by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_access_logging_enabled",
+    "title": "Enable access logging for SQS queues",
+    "description": "Ensure SQS queue access is logged through CloudTrail for security monitoring and compliance.",
+    "capability": "access_governance",
+    "service": "sqs",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_SQS_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure CloudTrail to log SQS API calls for security monitoring and compliance auditing.",
+        "RationaleStatement": "Access logging provides audit trails for security investigations and helps detect unauthorized access attempts.",
+        "ImpactStatement": "Without access logging, security incidents cannot be properly investigated and compliance requirements may not be met.",
+        "RemediationProcedure": "1. Enable CloudTrail in all regions.\n2. Configure data events for SQS if needed.\n3. Ensure logs are stored securely.\n4. Set up log analysis and alerting.\n5. Regularly review access patterns.",
+        "AuditProcedure": "Verify CloudTrail is enabled and capturing SQS API calls. Review log retention and analysis capabilities.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html",
+        "DefaultValue": "CloudTrail must be explicitly enabled"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_region_compliance",
+    "title": "Ensure SQS queues are deployed in compliant regions",
+    "description": "Verify SQS queues are created only in approved regions to meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "sqs",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SQS_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure all SQS queues are created in approved regions that meet organizational data residency requirements.",
+        "RationaleStatement": "Regional compliance ensures message data remains within approved geographic boundaries, meeting regulatory and organizational requirements.",
+        "ImpactStatement": "Queues in non-approved regions violate data residency requirements and may expose data to unauthorized jurisdictions.",
+        "RemediationProcedure": "1. Identify queues in non-compliant regions.\n2. Plan migration to approved regions.\n3. Create queues in compliant regions.\n4. Update applications to use new queue URLs.\n5. Delete queues in non-compliant regions.",
+        "AuditProcedure": "Use AWS CLI: `aws sqs list-queues --region <region>` across all regions to identify queue locations.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/general/latest/gr/sqs-service.html",
+        "DefaultValue": "Queues created in region specified during creation"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_cross_region_access_restricted",
+    "title": "Restrict cross-region access to SQS queues",
+    "description": "Ensure SQS queues cannot be accessed from non-approved regions through policy controls.",
+    "capability": "data_residency",
+    "service": "sqs",
+    "subservice": "access",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SQS_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Use queue policies and IAM conditions to restrict access to queues from approved regions only.",
+        "RationaleStatement": "Regional access restrictions ensure message data is only accessed from approved geographic locations.",
+        "ImpactStatement": "Cross-region access may violate data residency requirements and enable data access from unauthorized locations.",
+        "RemediationProcedure": "1. Add aws:RequestedRegion conditions to queue policies.\n2. Specify approved regions in condition values.\n3. Test access from different regions.\n4. Monitor for access violations.\n5. Update policies as requirements change.",
+        "AuditProcedure": "Review SQS queue policies for aws:RequestedRegion conditions that restrict access to approved regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html",
+        "DefaultValue": "No regional access restrictions by default"
+      }
+    ]
+  },
+  {
+    "function_name": "sqs_queue_data_classification_tagged",
+    "title": "Tag SQS queues with data classification",
+    "description": "Ensure SQS queues are properly tagged with data classification levels to support data residency and governance.",
+    "capability": "data_residency",
+    "service": "sqs",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_SQS_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Tag SQS queues with appropriate data classification and residency requirements to support governance and compliance.",
+        "RationaleStatement": "Proper tagging enables automated compliance checking and helps ensure appropriate handling of sensitive message data.",
+        "ImpactStatement": "Untagged queues cannot be properly governed and may not receive appropriate security controls based on data sensitivity.",
+        "RemediationProcedure": "1. Define data classification taxonomy.\n2. Tag queues: `aws sqs tag-queue --queue-url <url> --tags DataClassification=<level>`.\n3. Include residency requirements in tags.\n4. Implement tag-based policies.\n5. Regularly audit tag compliance.",
+        "AuditProcedure": "Use AWS CLI: `aws sqs list-queue-tags --queue-url <url>` to verify proper data classification tagging.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html",
+        "DefaultValue": "No tags applied by default"
+      }
+    ]
+  }
+]

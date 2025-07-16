@@ -1,0 +1,80 @@
+{
+  "scan_id": "e9919647-bcc8-4d99-a450-7ff5ec0bfb1f",
+  "scan_timestamp": "2025-07-16T10:52:54.506176",
+  "account_id": null,
+  "regions": [
+    "us-east-1"
+  ],
+  "summary": {
+    "checks_run": 1,
+    "checks_passed": 0,
+    "checks_failed": 1,
+    "checks_error": 0,
+    "checks_warning": 0,
+    "checks_skipped": 0,
+    "execution_time_ms": 0
+  },
+  "findings": [
+    {
+      "check_id": "acm_certificates_expiration_check",
+      "check_name": "ACM Certificates Expiration Check",
+      "status": "FAIL",
+      "status_extended": "ACM Certificate 466bf8a6-a11e-46e8-be3f-22f5050ea1fc for www.lgtech.in has expired (2394 days ago).",
+      "severity": "HIGH",
+      "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+      "resource": {
+        "arn": "arn:aws:acm:us-east-1:588989875114:certificate/466bf8a6-a11e-46e8-be3f-22f5050ea1fc",
+        "name": "www.lgtech.in",
+        "id": "466bf8a6-a11e-46e8-be3f-22f5050ea1fc",
+        "type": "AMAZON_ISSUED",
+        "key_algorithm": "RSA-2048",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "lgtech.in"
+          }
+        ],
+        "expiration_days": -2394,
+        "in_use": true,
+        "transparency_logging": true,
+        "region": "us-east-1"
+      },
+      "region": "us-east-1",
+      "account_id": null,
+      "timestamp": "2025-07-16T10:52:54.506420",
+      "execution_time_ms": 0,
+      "error_details": null,
+      "evidence": {
+        "certificate_id": "466bf8a6-a11e-46e8-be3f-22f5050ea1fc",
+        "certificate_name": "www.lgtech.in",
+        "expiration_days": -2394,
+        "is_expired": true,
+        "is_expiring_soon": false,
+        "expiration_threshold": 30,
+        "in_use": true
+      },
+      "metadata": {
+        "check_id": "acm_certificates_expiration_check",
+        "check_name": "ACM Certificates Expiration Check",
+        "description": "Check if ACM certificates are about to expire in specific days or less",
+        "severity": "HIGH",
+        "compliance_standard": "AWS_Foundational_Security_Best_Practices",
+        "category": "Data Protection",
+        "tags": [
+          "acm",
+          "certificates",
+          "expiration",
+          "availability",
+          "security"
+        ],
+        "remediation": "Monitor certificate expiration and take automated action to renew, replace or remove. Use AWS Config managed rule: acm-certificate-expiration-check",
+        "references": [
+          "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html",
+          "https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html"
+        ],
+        "version": "1.0",
+        "created_date": "2025-07-16T10:52:54.506393"
+      }
+    }
+  ]
+}
