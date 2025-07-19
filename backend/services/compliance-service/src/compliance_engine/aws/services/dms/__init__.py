@@ -1,0 +1,32 @@
+"""
+AWS Dms Service Module
+
+Centralized imports for AWS Dms compliance checks.
+"""
+
+# Import the service class
+from .dms_service import DMSService
+
+# Import individual checks
+from .dms_endpoint_mongodb_authentication_enabled.dms_endpoint_mongodb_authentication_enabled import dms_endpoint_mongodb_authentication_enabled
+from .dms_endpoint_neptune_iam_authorization_enabled.dms_endpoint_neptune_iam_authorization_enabled import dms_endpoint_neptune_iam_authorization_enabled
+from .dms_endpoint_redis_in_transit_encryption_enabled.dms_endpoint_redis_in_transit_encryption_enabled import dms_endpoint_redis_in_transit_encryption_enabled
+from .dms_endpoint_ssl_enabled.dms_endpoint_ssl_enabled import dms_endpoint_ssl_enabled
+from .dms_instance_minor_version_upgrade_enabled.dms_instance_minor_version_upgrade_enabled import dms_instance_minor_version_upgrade_enabled
+from .dms_instance_multi_az_enabled.dms_instance_multi_az_enabled import dms_instance_multi_az_enabled
+from .dms_instance_no_public_access.dms_instance_no_public_access import dms_instance_no_public_access
+from .dms_replication_task_source_logging_enabled.dms_replication_task_source_logging_enabled import dms_replication_task_source_logging_enabled
+from .dms_replication_task_target_logging_enabled.dms_replication_task_target_logging_enabled import dms_replication_task_target_logging_enabled
+
+__all__ = [
+    'DMSService',
+    'dms_endpoint_mongodb_authentication_enabled',
+    'dms_endpoint_neptune_iam_authorization_enabled',
+    'dms_endpoint_redis_in_transit_encryption_enabled',
+    'dms_endpoint_ssl_enabled',
+    'dms_instance_minor_version_upgrade_enabled',
+    'dms_instance_multi_az_enabled',
+    'dms_instance_no_public_access',
+    'dms_replication_task_source_logging_enabled',
+    'dms_replication_task_target_logging_enabled',
+]

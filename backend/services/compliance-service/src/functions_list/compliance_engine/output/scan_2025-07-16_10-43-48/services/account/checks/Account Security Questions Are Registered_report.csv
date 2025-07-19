@@ -1,2 +1,0 @@
-Check ID,Check Name,Status,Severity,Region,Account ID,Timestamp,Description
-account_security_questions_are_registered_in_the_aws_account,Account Security Questions Are Registered,MANUAL,MEDIUM,global,,2025-07-16T10:43:43.764933,AWS Account 588989875114 security questions require manual verification. Login to the AWS Console as root. Choose your account name on the top right of the window -> My Account -> Configure Security Challenge Questions.

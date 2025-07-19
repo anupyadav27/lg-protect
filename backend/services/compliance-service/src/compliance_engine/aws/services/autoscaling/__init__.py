@@ -1,0 +1,30 @@
+"""
+Auto Scaling Service Module
+
+Centralized imports for Auto Scaling compliance checks.
+"""
+
+# Import the service class
+from .autoscaling_service import AutoScalingService
+
+# Import individual checks
+from .autoscaling_find_secrets_ec2_launch_configuration.autoscaling_find_secrets_ec2_launch_configuration import autoscaling_find_secrets_ec2_launch_configuration
+from .autoscaling_group_capacity_rebalance_enabled.autoscaling_group_capacity_rebalance_enabled import autoscaling_group_capacity_rebalance_enabled
+from .autoscaling_group_elb_health_check_enabled.autoscaling_group_elb_health_check_enabled import autoscaling_group_elb_health_check_enabled
+from .autoscaling_group_launch_configuration_no_public_ip.autoscaling_group_launch_configuration_no_public_ip import autoscaling_group_launch_configuration_no_public_ip
+from .autoscaling_group_launch_configuration_requires_imdsv2.autoscaling_group_launch_configuration_requires_imdsv2 import autoscaling_group_launch_configuration_requires_imdsv2
+from .autoscaling_group_multiple_az.autoscaling_group_multiple_az import autoscaling_group_multiple_az
+from .autoscaling_group_multiple_instance_types.autoscaling_group_multiple_instance_types import autoscaling_group_multiple_instance_types
+from .autoscaling_group_using_ec2_launch_template.autoscaling_group_using_ec2_launch_template import autoscaling_group_using_ec2_launch_template
+
+__all__ = [
+    'AutoScalingService',
+    'autoscaling_find_secrets_ec2_launch_configuration',
+    'autoscaling_group_capacity_rebalance_enabled',
+    'autoscaling_group_elb_health_check_enabled',
+    'autoscaling_group_launch_configuration_no_public_ip',
+    'autoscaling_group_launch_configuration_requires_imdsv2',
+    'autoscaling_group_multiple_az',
+    'autoscaling_group_multiple_instance_types',
+    'autoscaling_group_using_ec2_launch_template'
+]

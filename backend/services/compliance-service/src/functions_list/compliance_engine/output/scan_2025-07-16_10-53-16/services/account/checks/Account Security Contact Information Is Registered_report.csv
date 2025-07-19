@@ -1,2 +1,0 @@
-Check ID,Check Name,Status,Severity,Region,Account ID,Timestamp,Description
-account_security_contact_information_is_registered,Account Security Contact Information Is Registered,MANUAL,MEDIUM,global,,2025-07-16T10:53:10.780052,AWS Account 588989875114 security contact information requires manual verification. Login to the AWS Console. Choose your account name on the top right of the window -> My Account -> Alternate Contacts -> Security Section.

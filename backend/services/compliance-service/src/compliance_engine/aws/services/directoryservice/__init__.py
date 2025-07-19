@@ -1,0 +1,26 @@
+"""
+AWS Directoryservice Service Module
+
+Centralized imports for AWS Directoryservice compliance checks.
+"""
+
+# Import the service class
+from .directoryservice_service import DirectoryService
+
+# Import individual checks
+from .directoryservice_directory_log_forwarding_enabled.directoryservice_directory_log_forwarding_enabled import directoryservice_directory_log_forwarding_enabled
+from .directoryservice_directory_monitor_notifications.directoryservice_directory_monitor_notifications import directoryservice_directory_monitor_notifications
+from .directoryservice_directory_snapshots_limit.directoryservice_directory_snapshots_limit import directoryservice_directory_snapshots_limit
+from .directoryservice_ldap_certificate_expiration.directoryservice_ldap_certificate_expiration import directoryservice_ldap_certificate_expiration
+from .directoryservice_radius_server_security_protocol.directoryservice_radius_server_security_protocol import directoryservice_radius_server_security_protocol
+from .directoryservice_supported_mfa_radius_enabled.directoryservice_supported_mfa_radius_enabled import directoryservice_supported_mfa_radius_enabled
+
+__all__ = [
+    'DirectoryService',
+    'directoryservice_directory_log_forwarding_enabled',
+    'directoryservice_directory_monitor_notifications',
+    'directoryservice_directory_snapshots_limit',
+    'directoryservice_ldap_certificate_expiration',
+    'directoryservice_radius_server_security_protocol',
+    'directoryservice_supported_mfa_radius_enabled',
+]

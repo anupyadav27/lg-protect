@@ -1,0 +1,54 @@
+{
+  "scan_id": "simple_scan_20250718_110732",
+  "scan_timestamp": "2025-07-18T11:07:32.364619",
+  "account_id": "588989875114",
+  "account_arn": "arn:aws:iam::588989875114:user/administrator",
+  "summary": {
+    "total_findings": 3,
+    "passed": 0,
+    "failed": 2,
+    "warnings": 1,
+    "compliance_score": 0.0
+  },
+  "findings": [
+    {
+      "check_name": "acm_certificates_expiration_check",
+      "status": "FAIL",
+      "status_extended": "Certificate expires in -2396 days",
+      "resource": {
+        "certificate_arn": "arn:aws:acm:us-east-1:588989875114:certificate/466bf8a6-a11e-46e8-be3f-22f5050ea1fc",
+        "domain_name": "www.lgtech.in",
+        "expiration_date": "2018-12-26T17:30:00+05:30",
+        "days_until_expiration": -2396
+      },
+      "evidence": {
+        "certificate_id": "466bf8a6-a11e-46e8-be3f-22f5050ea1fc",
+        "key_algorithm": "RSA-2048"
+      }
+    },
+    {
+      "check_name": "accessanalyzer_enabled",
+      "status": "FAIL",
+      "status_extended": "No Access Analyzers found in us-east-1",
+      "resource": {
+        "region": "us-east-1",
+        "analyzer_status": "DISABLED"
+      },
+      "evidence": {
+        "analyzers_found": 0
+      }
+    },
+    {
+      "check_name": "account_security_contact_information_is_registered",
+      "status": "WARNING",
+      "status_extended": "Could not verify security contact information: An error occurred (ResourceNotFoundException) when",
+      "resource": {
+        "account_id": "588989875114"
+      },
+      "evidence": {
+        "contact_info_verified": false,
+        "error": "An error occurred (ResourceNotFoundException) when calling the GetAlternateContact operation: No contact of the inputted alternate contact type found."
+      }
+    }
+  ]
+}

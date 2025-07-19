@@ -1,0 +1,26 @@
+"""
+AWS Shield Service Module
+
+Centralized imports for AWS Shield compliance checks.
+"""
+
+# Import the service class
+from .shield_service import ShieldService
+
+# Import individual checks
+from .shield_advanced_protection_in_associated_elastic_ips.shield_advanced_protection_in_associated_elastic_ips import shield_advanced_protection_in_associated_elastic_ips
+from .shield_advanced_protection_in_classic_load_balancers.shield_advanced_protection_in_classic_load_balancers import shield_advanced_protection_in_classic_load_balancers
+from .shield_advanced_protection_in_cloudfront_distributions.shield_advanced_protection_in_cloudfront_distributions import shield_advanced_protection_in_cloudfront_distributions
+from .shield_advanced_protection_in_global_accelerators.shield_advanced_protection_in_global_accelerators import shield_advanced_protection_in_global_accelerators
+from .shield_advanced_protection_in_internet_facing_load_balancers.shield_advanced_protection_in_internet_facing_load_balancers import shield_advanced_protection_in_internet_facing_load_balancers
+from .shield_advanced_protection_in_route53_hosted_zones.shield_advanced_protection_in_route53_hosted_zones import shield_advanced_protection_in_route53_hosted_zones
+
+__all__ = [
+    'ShieldService',
+    'shield_advanced_protection_in_associated_elastic_ips',
+    'shield_advanced_protection_in_classic_load_balancers',
+    'shield_advanced_protection_in_cloudfront_distributions',
+    'shield_advanced_protection_in_global_accelerators',
+    'shield_advanced_protection_in_internet_facing_load_balancers',
+    'shield_advanced_protection_in_route53_hosted_zones',
+]

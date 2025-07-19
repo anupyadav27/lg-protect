@@ -1,0 +1,32 @@
+"""
+AWS Lambda Service Module
+
+Centralized imports for AWS Lambda compliance checks.
+"""
+
+# Import the service class
+from .awslambda_service import LambdaService
+
+# Import individual checks
+from .awslambda_function_inside_vpc.awslambda_function_inside_vpc import awslambda_function_inside_vpc
+from .awslambda_function_invoke_api_operations_cloudtrail_logging_enabled.awslambda_function_invoke_api_operations_cloudtrail_logging_enabled import awslambda_function_invoke_api_operations_cloudtrail_logging_enabled
+from .awslambda_function_no_secrets_in_code.awslambda_function_no_secrets_in_code import awslambda_function_no_secrets_in_code
+from .awslambda_function_no_secrets_in_variables.awslambda_function_no_secrets_in_variables import awslambda_function_no_secrets_in_variables
+from .awslambda_function_not_publicly_accessible.awslambda_function_not_publicly_accessible import awslambda_function_not_publicly_accessible
+from .awslambda_function_url_cors_policy.awslambda_function_url_cors_policy import awslambda_function_url_cors_policy
+from .awslambda_function_url_public.awslambda_function_url_public import awslambda_function_url_public
+from .awslambda_function_using_supported_runtimes.awslambda_function_using_supported_runtimes import awslambda_function_using_supported_runtimes
+from .awslambda_function_vpc_multi_az.awslambda_function_vpc_multi_az import awslambda_function_vpc_multi_az
+
+__all__ = [
+    'LambdaService',
+    'awslambda_function_inside_vpc',
+    'awslambda_function_invoke_api_operations_cloudtrail_logging_enabled',
+    'awslambda_function_no_secrets_in_code',
+    'awslambda_function_no_secrets_in_variables',
+    'awslambda_function_not_publicly_accessible',
+    'awslambda_function_url_cors_policy',
+    'awslambda_function_url_public',
+    'awslambda_function_using_supported_runtimes',
+    'awslambda_function_vpc_multi_az'
+]

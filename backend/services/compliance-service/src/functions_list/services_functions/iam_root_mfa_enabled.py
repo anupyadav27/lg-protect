@@ -1,1 +1,0 @@
-# IAM MFA template - to be implemented with proper logic
