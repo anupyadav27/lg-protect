@@ -1,0 +1,176 @@
+# CloudTrail Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: cloudtrail_logs_s3_bucket_is_not_publicly_accessible
+  title: Ensure CloudTrail logs S3 bucket is not publicly accessible
+  description: Ensure CloudTrail logs S3 bucket is not publicly accessible to prevent unauthorized access to audit logs containing sensitive data access information.
+  capability: access_governance
+  service: cloudtrail
+  subservice: access
+  risk: HIGH
+  existing: true
+
+- function_name: cloudtrail_logs_s3_bucket_access_logging_enabled
+  title: Enable access logging for CloudTrail logs S3 bucket
+  description: Enable S3 access logging for CloudTrail logs bucket to track who accesses audit logs containing sensitive data activity.
+  capability: access_governance
+  service: cloudtrail
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: cloudtrail_bucket_requires_mfa_delete
+  title: Require MFA delete for CloudTrail logs S3 bucket
+  description: Require MFA delete for CloudTrail logs S3 bucket to prevent unauthorized deletion of audit logs.
+  capability: access_governance
+  service: cloudtrail
+  subservice: mfa
+  risk: MEDIUM
+  existing: true
+
+- function_name: cloudtrail_s3_dataevents_read_enabled
+  title: Enable CloudTrail S3 data events for read operations
+  description: Enable CloudTrail logging for S3 data events (read operations) to monitor access to sensitive data in S3 buckets.
+  capability: access_governance
+  service: cloudtrail
+  subservice: data_events
+  risk: MEDIUM
+  existing: true
+
+- function_name: cloudtrail_s3_dataevents_write_enabled
+  title: Enable CloudTrail S3 data events for write operations
+  description: Enable CloudTrail logging for S3 data events (write operations) to monitor modifications to sensitive data in S3 buckets.
+  capability: access_governance
+  service: cloudtrail
+  subservice: data_events
+  risk: MEDIUM
+  existing: true
+
+- function_name: cloudtrail_threat_detection_enumeration
+  title: Enable threat detection for enumeration activities
+  description: Enable CloudTrail threat detection to identify enumeration activities that could indicate reconnaissance for data access.
+  capability: access_governance
+  service: cloudtrail
+  subservice: threat_detection
+  risk: HIGH
+  existing: true
+
+- function_name: cloudtrail_threat_detection_privilege_escalation
+  title: Enable threat detection for privilege escalation
+  description: Enable CloudTrail threat detection to identify privilege escalation attempts that could lead to unauthorized data access.
+  capability: access_governance
+  service: cloudtrail
+  subservice: threat_detection
+  risk: HIGH
+  existing: true
+
+- function_name: cloudtrail_cloudwatch_integration_enabled
+  title: Enable CloudWatch integration for CloudTrail
+  description: Enable CloudWatch integration for CloudTrail to monitor and alert on suspicious data access patterns.
+  capability: access_governance
+  service: cloudtrail
+  subservice: monitoring
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: cloudtrail_kms_encryption_enabled
+  title: Enable KMS encryption for CloudTrail logs
+  description: Ensure CloudTrail logs are encrypted using KMS to protect sensitive audit information from unauthorized access.
+  capability: data_protection
+  service: cloudtrail
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: cloudtrail_log_file_validation_enabled
+  title: Enable log file validation for CloudTrail
+  description: Enable CloudTrail log file validation to ensure integrity of audit logs and detect tampering.
+  capability: data_protection
+  service: cloudtrail
+  subservice: validation
+  risk: HIGH
+  existing: true
+
+- function_name: cloudtrail_cloudwatch_logging_enabled
+  title: Enable CloudWatch logging for CloudTrail
+  description: Enable CloudWatch logging for CloudTrail to ensure audit logs are properly delivered and monitored.
+  capability: data_protection
+  service: cloudtrail
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: cloudtrail_insights_exist
+  title: Enable CloudTrail Insights for anomaly detection
+  description: Enable CloudTrail Insights to detect unusual data access patterns and potential security incidents.
+  capability: data_protection
+  service: cloudtrail
+  subservice: insights
+  risk: MEDIUM
+  existing: true
+
+- function_name: cloudtrail_log_retention_configured
+  title: Configure appropriate log retention for CloudTrail
+  description: Configure appropriate retention periods for CloudTrail logs to meet compliance requirements for audit data.
+  capability: data_protection
+  service: cloudtrail
+  subservice: retention
+  risk: MEDIUM
+  existing: false
+
+- function_name: cloudtrail_log_backup_enabled
+  title: Enable backup for CloudTrail logs
+  description: Enable backup for CloudTrail logs to ensure audit data is protected against accidental deletion or corruption.
+  capability: data_protection
+  service: cloudtrail
+  subservice: backup
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: cloudtrail_multi_region_enabled
+  title: Enable multi-region CloudTrail
+  description: Enable multi-region CloudTrail to ensure comprehensive audit coverage across all approved regions.
+  capability: data_residency
+  service: cloudtrail
+  subservice: region
+  risk: HIGH
+  existing: true
+
+- function_name: cloudtrail_region_restriction_enforced
+  title: Enforce region restrictions for CloudTrail
+  description: Ensure CloudTrail is configured only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: cloudtrail
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: cloudtrail_log_destination_region_compliance
+  title: Ensure CloudTrail log destinations comply with region restrictions
+  description: Ensure CloudTrail log destinations (S3 buckets, CloudWatch) are in approved regions for data residency compliance.
+  capability: data_residency
+  service: cloudtrail
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: cloudtrail_data_sovereignty_tags
+  title: Tag CloudTrail resources with data sovereignty information
+  description: Ensure CloudTrail resources are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: cloudtrail
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: cloudtrail_cross_region_delivery_restricted
+  title: Restrict cross-region CloudTrail log delivery
+  description: Ensure CloudTrail logs are not delivered across regions unless approved for data residency compliance.
+  capability: data_residency
+  service: cloudtrail
+  subservice: delivery
+  risk: HIGH
+  existing: false

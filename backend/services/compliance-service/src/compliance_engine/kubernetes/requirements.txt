@@ -1,0 +1,9 @@
+# Python dependencies for multi-cloud Kubernetes cluster scanning and discovery
+kubernetes>=26.1.0
+boto3>=1.28.0
+azure-cli>=2.53.0
+# For GCP, use the gcloud CLI (not a Python package)
+# For OCP, use ocm, rosa, and oc CLIs (not Python packages)
+
+# Optional: For JSON/YAML handling and subprocess
+PyYAML>=6.0 

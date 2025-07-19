@@ -1,0 +1,149 @@
+# Step Functions Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: stepfunctions_statemachine_public_access_restricted
+  title: Restrict public access to Step Functions state machines
+  description: Ensure Step Functions state machines are not publicly accessible to prevent unauthorized access to workflow data.
+  capability: access_governance
+  service: stepfunctions
+  subservice: access
+  risk: HIGH
+  existing: false
+
+- function_name: stepfunctions_statemachine_iam_least_privilege
+  title: Enforce least privilege for Step Functions IAM roles
+  description: Ensure Step Functions state machines use IAM roles with least privilege to minimize unauthorized data access.
+  capability: access_governance
+  service: stepfunctions
+  subservice: iam
+  risk: MEDIUM
+  existing: false
+
+- function_name: stepfunctions_statemachine_resource_policy_restricted
+  title: Restrict Step Functions resource policies
+  description: Ensure Step Functions state machines have restrictive resource policies to prevent unauthorized workflow execution.
+  capability: access_governance
+  service: stepfunctions
+  subservice: policy
+  risk: MEDIUM
+  existing: false
+
+- function_name: stepfunctions_statemachine_cross_account_access_restricted
+  title: Restrict cross-account access to Step Functions
+  description: Ensure Step Functions state machines do not allow unrestricted cross-account access to workflow data.
+  capability: access_governance
+  service: stepfunctions
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: stepfunctions_statemachine_execution_monitoring
+  title: Monitor Step Functions executions for anomalies
+  description: Implement monitoring for Step Functions executions to detect unusual patterns that could indicate data security issues.
+  capability: access_governance
+  service: stepfunctions
+  subservice: monitoring
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: stepfunctions_statemachine_logging_enabled
+  title: Enable logging for Step Functions state machines
+  description: Enable comprehensive logging for Step Functions state machines to track workflow executions and data processing activities.
+  capability: data_protection
+  service: stepfunctions
+  subservice: logging
+  risk: MEDIUM
+  existing: true
+
+- function_name: stepfunctions_statemachine_encryption_enabled
+  title: Enable encryption for Step Functions state machines
+  description: Ensure Step Functions state machines use encryption to protect sensitive data in workflow executions.
+  capability: data_protection
+  service: stepfunctions
+  subservice: encryption
+  risk: HIGH
+  existing: false
+
+- function_name: stepfunctions_statemachine_secrets_management
+  title: Use proper secrets management in Step Functions
+  description: Ensure Step Functions state machines use AWS Secrets Manager or Parameter Store instead of hardcoded secrets.
+  capability: data_protection
+  service: stepfunctions
+  subservice: secrets
+  risk: HIGH
+  existing: false
+
+- function_name: stepfunctions_statemachine_input_validation
+  title: Implement input validation for Step Functions
+  description: Implement proper input validation in Step Functions state machines to prevent data injection attacks.
+  capability: data_protection
+  service: stepfunctions
+  subservice: validation
+  risk: MEDIUM
+  existing: false
+
+- function_name: stepfunctions_statemachine_error_handling
+  title: Configure error handling for Step Functions
+  description: Implement proper error handling in Step Functions to prevent sensitive data exposure in error messages.
+  capability: data_protection
+  service: stepfunctions
+  subservice: error_handling
+  risk: MEDIUM
+  existing: false
+
+- function_name: stepfunctions_statemachine_data_classification_tags
+  title: Tag Step Functions with data classification
+  description: Ensure Step Functions state machines are tagged with appropriate data classification for governance tracking.
+  capability: data_protection
+  service: stepfunctions
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: stepfunctions_statemachine_region_restriction_enforced
+  title: Enforce region restrictions for Step Functions
+  description: Ensure Step Functions state machines are created only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: stepfunctions
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: stepfunctions_statemachine_cross_region_execution_restricted
+  title: Restrict cross-region executions for Step Functions
+  description: Ensure Step Functions state machines do not execute workflows across regions unless approved for data residency.
+  capability: data_residency
+  service: stepfunctions
+  subservice: execution
+  risk: HIGH
+  existing: false
+
+- function_name: stepfunctions_statemachine_data_sovereignty_tags
+  title: Tag Step Functions with data sovereignty information
+  description: Ensure Step Functions state machines are tagged with data sovereignty and jurisdiction information for compliance.
+  capability: data_residency
+  service: stepfunctions
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: stepfunctions_statemachine_integrated_service_region_compliance
+  title: Ensure integrated services comply with region restrictions
+  description: Ensure Step Functions integrated services operate only in approved regions to maintain data residency compliance.
+  capability: data_residency
+  service: stepfunctions
+  subservice: integration
+  risk: MEDIUM
+  existing: false
+
+- function_name: stepfunctions_statemachine_execution_history_region_compliance
+  title: Ensure execution history complies with region restrictions
+  description: Ensure Step Functions execution history is stored only in approved regions for data residency compliance.
+  capability: data_residency
+  service: stepfunctions
+  subservice: history
+  risk: MEDIUM
+  existing: false

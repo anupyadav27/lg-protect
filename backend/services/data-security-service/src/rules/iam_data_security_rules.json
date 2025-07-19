@@ -1,0 +1,992 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Enable MFA for IAM users with console access",
+    "Checks": ["iam_user_mfa_enabled_console_access"],
+    "function_name": "iam_user_mfa_enabled_console_access",
+    "title": "Enable MFA for IAM users with console access",
+    "description": "Ensure IAM users with console access have multi-factor authentication enabled to prevent unauthorized access to sensitive data.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "mfa",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM users with console access have multi-factor authentication enabled to prevent unauthorized access to sensitive data.",
+        "RationaleStatement": "MFA provides an additional layer of security beyond passwords, significantly reducing the risk of unauthorized access to AWS resources and sensitive data.",
+        "ImpactStatement": "Without MFA, compromised passwords can lead to unauthorized access to AWS resources, potential data breaches, and compliance violations.",
+        "RemediationProcedure": "1. Navigate to IAM Console\n2. Select Users\n3. For each user with console access, select the user\n4. Go to Security credentials tab\n5. Click 'Manage' next to 'Assigned MFA device'\n6. Use AWS CLI: ```aws iam enable-mfa-device --user-name <username> --serial-number <device-arn> --authentication-code-1 <code1> --authentication-code-2 <code2>```",
+        "AuditProcedure": "1. Use AWS CLI: ```aws iam get-account-summary``` and check MFADevices count\n2. List users without MFA: ```aws iam list-users --query 'Users[?not_null(PasswordLastUsed)]'```\n3. Check MFA status: ```aws iam list-mfa-devices --user-name <username>```",
+        "AdditionalInformation": "Consider using hardware MFA devices for privileged users",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
+        "DefaultValue": "MFA is not enabled by default for IAM users"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Enable MFA for root account",
+    "Checks": ["iam_root_mfa_enabled"],
+    "function_name": "iam_root_mfa_enabled",
+    "title": "Enable MFA for root account",
+    "description": "Ensure root account has multi-factor authentication enabled to protect against unauthorized access to all AWS resources and data.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "mfa",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure root account has multi-factor authentication enabled to protect against unauthorized access to all AWS resources and data.",
+        "RationaleStatement": "The root account has unrestricted access to all AWS resources. MFA protection is critical to prevent unauthorized access that could compromise all data and services.",
+        "ImpactStatement": "Compromised root account credentials without MFA can result in complete account takeover, data loss, service disruption, and significant financial impact.",
+        "RemediationProcedure": "1. Sign in to AWS Console as root user\n2. Navigate to 'My Security Credentials'\n3. Expand 'Multi-factor authentication (MFA)' section\n4. Click 'Activate MFA'\n5. Choose MFA device type and follow setup instructions\n6. Test MFA device before completing setup",
+        "AuditProcedure": "1. Use AWS CLI: ```aws iam get-account-summary``` and verify AccountMFAEnabled is 1\n2. Check root account usage: ```aws iam generate-credential-report``` then ```aws iam get-credential-report```\n3. Review CloudTrail for root account sign-in events",
+        "AdditionalInformation": "Hardware MFA is strongly recommended for root accounts",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user_manage_mfa",
+        "DefaultValue": "MFA is not enabled by default for root account"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Enable hardware MFA for privileged users",
+    "Checks": ["iam_user_hardware_mfa_enabled"],
+    "function_name": "iam_user_hardware_mfa_enabled",
+    "title": "Enable hardware MFA for privileged users",
+    "description": "Ensure privileged IAM users use hardware MFA devices for enhanced security when accessing sensitive data and systems.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "mfa",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure privileged IAM users use hardware MFA devices for enhanced security when accessing sensitive data and systems.",
+        "RationaleStatement": "Hardware MFA devices provide stronger security than virtual MFA for privileged users who have access to critical systems and sensitive data.",
+        "ImpactStatement": "Without hardware MFA, privileged accounts using virtual MFA could be compromised through mobile device attacks or social engineering.",
+        "RemediationProcedure": "1. Procure hardware MFA devices (FIDO security keys or hardware TOTP tokens)\n2. Navigate to IAM Console > Users\n3. Select privileged user\n4. Go to Security credentials tab\n5. Remove existing virtual MFA if present\n6. Add hardware MFA device using device serial number",
+        "AuditProcedure": "1. List users with admin policies: ```aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess```\n2. Check MFA device type: ```aws iam list-mfa-devices --user-name <username>```\n3. Verify hardware device serial numbers start with physical device identifiers",
+        "AdditionalInformation": "FIDO U2F/WebAuthn security keys provide the highest level of phishing resistance",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_physical.html",
+        "DefaultValue": "Virtual MFA is typically used by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Enable hardware MFA for root account",
+    "Checks": ["iam_root_hardware_mfa_enabled"],
+    "function_name": "iam_root_hardware_mfa_enabled",
+    "title": "Enable hardware MFA for root account",
+    "description": "Ensure root account uses hardware MFA device for maximum security when accessing critical AWS resources.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "mfa",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure root account uses hardware MFA device for maximum security when accessing critical AWS resources.",
+        "RationaleStatement": "Hardware MFA for root accounts provides the highest level of protection against account compromise, given the unlimited access privileges of the root account.",
+        "ImpactStatement": "Root account compromise without hardware MFA protection could result in complete AWS environment takeover and catastrophic data loss.",
+        "RemediationProcedure": "1. Sign in as root user\n2. Navigate to 'My Security Credentials'\n3. Remove existing virtual MFA if present\n4. Click 'Activate MFA' and select 'Hardware MFA device'\n5. Enter hardware device serial number and authentication codes\n6. Store hardware device in secure location",
+        "AuditProcedure": "1. Sign in as root and check MFA device type in security credentials\n2. Use AWS CLI: ```aws iam get-account-summary``` to verify MFA is enabled\n3. Review device serial number to confirm it's a hardware device",
+        "AdditionalInformation": "Store hardware MFA device in a secure, accessible location with backup procedures",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_physical.html",
+        "DefaultValue": "No MFA is configured by default for root account"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Ensure no root access keys exist",
+    "Checks": ["iam_no_root_access_key"],
+    "function_name": "iam_no_root_access_key",
+    "title": "Ensure no root access keys exist",
+    "description": "Ensure root account does not have access keys to prevent programmatic access that could lead to data exposure.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "keys",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure root account does not have access keys to prevent programmatic access that could lead to data exposure.",
+        "RationaleStatement": "Root access keys provide unlimited programmatic access to AWS resources and are difficult to monitor and rotate, creating significant security risks.",
+        "ImpactStatement": "Root access keys, if compromised, can be used for automated attacks, data exfiltration, and service disruption without user interaction.",
+        "RemediationProcedure": "1. Sign in as root user\n2. Navigate to 'My Security Credentials'\n3. In 'Access keys' section, delete any existing access keys\n4. Create IAM users with appropriate permissions for programmatic access instead\n5. Use IAM roles for AWS service access",
+        "AuditProcedure": "1. Sign in as root user and check 'My Security Credentials' for access keys\n2. Generate credential report: ```aws iam generate-credential-report```\n3. Get credential report: ```aws iam get-credential-report``` and check root user access key status",
+        "AdditionalInformation": "Use IAM users or roles with least privilege for programmatic access",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#lock-away-credentials",
+        "DefaultValue": "No access keys exist by default for root account"
+      }
+    ]
+  },
+  {
+    "Id": "1.6",
+    "Description": "Limit users to one active access key",
+    "Checks": ["iam_user_two_active_access_key"],
+    "function_name": "iam_user_two_active_access_key",
+    "title": "Limit users to one active access key",
+    "description": "Ensure IAM users do not have multiple active access keys to reduce the risk of credential compromise and unauthorized data access.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "keys",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_006",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM users do not have multiple active access keys to reduce the risk of credential compromise and unauthorized data access.",
+        "RationaleStatement": "Multiple active access keys increase the attack surface and make key rotation more complex, potentially leading to overlooked or forgotten credentials.",
+        "ImpactStatement": "Multiple access keys increase the risk of credential exposure and make it difficult to track which keys are being used for data access.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Users\n2. For each user, check Security credentials tab\n3. Identify users with multiple active access keys\n4. Deactivate or delete unused access keys\n5. Use AWS CLI: ```aws iam list-access-keys --user-name <username>``` then ```aws iam delete-access-key --user-name <username> --access-key-id <key-id>```",
+        "AuditProcedure": "1. List all users: ```aws iam list-users```\n2. For each user, check access keys: ```aws iam list-access-keys --user-name <username>```\n3. Identify users with multiple active keys where Status is 'Active'",
+        "AdditionalInformation": "Keep only the most recently used access key active",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
+        "DefaultValue": "Users can have up to 2 access keys by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.7",
+    "Description": "Rotate access keys every 90 days",
+    "Checks": ["iam_rotate_access_key_90_days"],
+    "function_name": "iam_rotate_access_key_90_days",
+    "title": "Rotate access keys every 90 days",
+    "description": "Ensure IAM user access keys are rotated every 90 days to minimize the risk of compromised credentials accessing sensitive data.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "keys",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_007",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM user access keys are rotated every 90 days to minimize the risk of compromised credentials accessing sensitive data.",
+        "RationaleStatement": "Regular key rotation limits the window of exposure if credentials are compromised and ensures credentials remain fresh and secure.",
+        "ImpactStatement": "Old access keys increase the risk of credential compromise and may violate compliance requirements for credential management.",
+        "RemediationProcedure": "1. Generate credential report: ```aws iam generate-credential-report```\n2. Review access key ages: ```aws iam get-credential-report```\n3. For keys older than 90 days, create new keys: ```aws iam create-access-key --user-name <username>```\n4. Update applications with new keys\n5. Delete old keys: ```aws iam delete-access-key --user-name <username> --access-key-id <old-key-id>```",
+        "AuditProcedure": "1. Generate and get credential report: ```aws iam generate-credential-report && aws iam get-credential-report```\n2. Check access_key_1_last_rotated and access_key_2_last_rotated fields\n3. Identify keys older than 90 days",
+        "AdditionalInformation": "Implement automated key rotation using AWS Secrets Manager for applications",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_RotateAccessKey",
+        "DefaultValue": "Access keys do not rotate automatically"
+      }
+    ]
+  },
+  {
+    "Id": "1.8",
+    "Description": "Remove unused access keys",
+    "Checks": ["iam_user_accesskey_unused"],
+    "function_name": "iam_user_accesskey_unused",
+    "title": "Remove unused access keys",
+    "description": "Ensure unused IAM access keys are removed to prevent potential unauthorized access to AWS resources and data.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "keys",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_008",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure unused IAM access keys are removed to prevent potential unauthorized access to AWS resources and data.",
+        "RationaleStatement": "Unused access keys represent unnecessary security risks and increase the attack surface without providing any business value.",
+        "ImpactStatement": "Unused access keys can be compromised and used for unauthorized access without being detected due to lack of monitoring.",
+        "RemediationProcedure": "1. Generate credential report: ```aws iam generate-credential-report```\n2. Review last used dates: ```aws iam get-credential-report```\n3. Identify keys not used in 90+ days\n4. Verify with application owners before deletion\n5. Delete unused keys: ```aws iam delete-access-key --user-name <username> --access-key-id <key-id>```",
+        "AuditProcedure": "1. Generate credential report: ```aws iam generate-credential-report```\n2. Get report: ```aws iam get-credential-report```\n3. Check access_key_1_last_used_date and access_key_2_last_used_date\n4. For each user: ```aws iam get-access-key-last-used --access-key-id <key-id>```",
+        "AdditionalInformation": "Consider a 60-90 day grace period before removing keys to avoid service disruption",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_finding-unused.html",
+        "DefaultValue": "Unused access keys remain active until manually removed"
+      }
+    ]
+  },
+  {
+    "Id": "1.9",
+    "Description": "Restrict AWS managed policies with admin privileges",
+    "Checks": ["iam_aws_attached_policy_no_administrative_privileges"],
+    "function_name": "iam_aws_attached_policy_no_administrative_privileges",
+    "title": "Restrict AWS managed policies with admin privileges",
+    "description": "Ensure AWS managed policies do not grant administrative privileges unnecessarily to prevent unauthorized access to sensitive data.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_009",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure AWS managed policies do not grant administrative privileges unnecessarily to prevent unauthorized access to sensitive data.",
+        "RationaleStatement": "Administrative privileges provide unrestricted access to all AWS resources and should only be granted when absolutely necessary for job functions.",
+        "ImpactStatement": "Excessive administrative privileges increase the risk of accidental or malicious data exposure, deletion, or modification.",
+        "RemediationProcedure": "1. List entities with administrative policies: ```aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess```\n2. Review each entity's need for admin access\n3. Replace with least-privilege policies: ```aws iam detach-user-policy --user-name <username> --policy-arn arn:aws:iam::aws:policy/AdministratorAccess```\n4. Attach specific policies: ```aws iam attach-user-policy --user-name <username> --policy-arn <specific-policy-arn>```",
+        "AuditProcedure": "1. List AWS managed policies: ```aws iam list-policies --scope AWS --only-attached```\n2. Check for administrative policies: ```aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess```\n3. Review other broad policies like PowerUserAccess",
+        "AdditionalInformation": "Use break-glass procedures for emergency administrative access",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege",
+        "DefaultValue": "Administrative policies must be explicitly attached"
+      }
+    ]
+  },
+  {
+    "Id": "1.10",
+    "Description": "Restrict customer managed policies with admin privileges",
+    "Checks": ["iam_customer_attached_policy_no_administrative_privileges"],
+    "function_name": "iam_customer_attached_policy_no_administrative_privileges",
+    "title": "Restrict customer managed policies with admin privileges",
+    "description": "Ensure customer managed policies do not grant administrative privileges unnecessarily to minimize data exposure risks.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_010",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure customer managed policies do not grant administrative privileges unnecessarily to minimize data exposure risks.",
+        "RationaleStatement": "Custom policies with broad permissions can inadvertently grant excessive access to sensitive data and resources.",
+        "ImpactStatement": "Overly permissive custom policies can lead to privilege escalation and unauthorized access to sensitive data across AWS services.",
+        "RemediationProcedure": "1. List customer managed policies: ```aws iam list-policies --scope Local```\n2. Review each policy document: ```aws iam get-policy-version --policy-arn <policy-arn> --version-id <version-id>```\n3. Identify policies with Effect: Allow and Resource: * and Action: *\n4. Refactor policies to use specific actions and resources\n5. Update policy versions with restricted permissions",
+        "AuditProcedure": "1. List customer policies: ```aws iam list-policies --scope Local```\n2. For each policy: ```aws iam get-policy-version --policy-arn <arn> --version-id <version>```\n3. Check for wildcard permissions (Action: *, Resource: *)\n4. Use IAM Access Analyzer to review policy permissions",
+        "AdditionalInformation": "Use IAM policy simulator to test policy changes before deployment",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_understand-policy-summary.html",
+        "DefaultValue": "Customer policies are created with user-defined permissions"
+      }
+    ]
+  },
+  {
+    "Id": "1.11",
+    "Description": "Restrict inline policies with admin privileges",
+    "Checks": ["iam_inline_policy_no_administrative_privileges"],
+    "function_name": "iam_inline_policy_no_administrative_privileges",
+    "title": "Restrict inline policies with admin privileges",
+    "description": "Ensure inline policies do not grant administrative privileges to prevent unauthorized access to sensitive data and resources.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_011",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure inline policies do not grant administrative privileges to prevent unauthorized access to sensitive data and resources.",
+        "RationaleStatement": "Inline policies with administrative privileges are harder to audit and manage, potentially creating security blind spots in access control.",
+        "ImpactStatement": "Administrative inline policies can grant excessive permissions that are difficult to track and may lead to unauthorized data access.",
+        "RemediationProcedure": "1. List users with inline policies: ```aws iam list-users --query 'Users[?UserPolicyList]'```\n2. For each user: ```aws iam list-user-policies --user-name <username>```\n3. Get policy document: ```aws iam get-user-policy --user-name <username> --policy-name <policy-name>```\n4. Review for administrative permissions and replace with managed policies\n5. Delete administrative inline policies: ```aws iam delete-user-policy --user-name <username> --policy-name <policy-name>```",
+        "AuditProcedure": "1. List all users: ```aws iam list-users```\n2. Check inline policies: ```aws iam list-user-policies --user-name <username>```\n3. Review policy documents for wildcard permissions\n4. Check roles and groups for inline policies as well",
+        "AdditionalInformation": "Use managed policies instead of inline policies for better governance",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_inline-vs-managed.html",
+        "DefaultValue": "No inline policies are created by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.12",
+    "Description": "Attach policies only to groups or roles",
+    "Checks": ["iam_policy_attached_only_to_group_or_roles"],
+    "function_name": "iam_policy_attached_only_to_group_or_roles",
+    "title": "Attach policies only to groups or roles",
+    "description": "Ensure IAM policies are attached only to groups or roles rather than individual users for better access governance.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_012",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM policies are attached only to groups or roles rather than individual users for better access governance.",
+        "RationaleStatement": "Attaching policies to groups and roles instead of individual users simplifies permission management and reduces the risk of permission creep.",
+        "ImpactStatement": "Direct policy attachments to users make it difficult to manage permissions at scale and can lead to inconsistent access controls.",
+        "RemediationProcedure": "1. List users with attached policies: ```aws iam list-users```\n2. For each user: ```aws iam list-attached-user-policies --user-name <username>```\n3. Create appropriate groups: ```aws iam create-group --group-name <group-name>```\n4. Attach policies to groups: ```aws iam attach-group-policy --group-name <group-name> --policy-arn <policy-arn>```\n5. Add users to groups: ```aws iam add-user-to-group --user-name <username> --group-name <group-name>```\n6. Detach policies from users: ```aws iam detach-user-policy --user-name <username> --policy-arn <policy-arn>```",
+        "AuditProcedure": "1. List all users: ```aws iam list-users```\n2. Check attached policies: ```aws iam list-attached-user-policies --user-name <username>```\n3. Identify users with direct policy attachments\n4. Review group membership: ```aws iam get-groups-for-user --user-name <username>```",
+        "AdditionalInformation": "Use groups for job functions and roles for cross-account or service access",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#use-groups-for-permissions",
+        "DefaultValue": "Policies can be attached directly to users by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.13",
+    "Description": "Prevent confused deputy attacks in IAM roles",
+    "Checks": ["iam_role_cross_service_confused_deputy_prevention"],
+    "function_name": "iam_role_cross_service_confused_deputy_prevention",
+    "title": "Prevent confused deputy attacks in IAM roles",
+    "description": "Ensure IAM roles include condition keys to prevent confused deputy attacks that could lead to unauthorized data access.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_IAM_013",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM roles include condition keys to prevent confused deputy attacks that could lead to unauthorized data access.",
+        "RationaleStatement": "Confused deputy attacks exploit AWS services to access resources on behalf of malicious actors, potentially leading to unauthorized data access.",
+        "ImpactStatement": "Without proper condition keys, attackers can trick AWS services into accessing resources they shouldn't have access to, leading to data breaches.",
+        "RemediationProcedure": "1. List IAM roles: ```aws iam list-roles```\n2. For cross-service roles, get trust policy: ```aws iam get-role --role-name <role-name>```\n3. Add condition keys like aws:SourceAccount or aws:SourceArn\n4. Update trust policy: ```aws iam update-assume-role-policy --role-name <role-name> --policy-document file://trust-policy.json```\n5. Include conditions like: ```{\"StringEquals\":{\"aws:SourceAccount\":\"123456789012\"}}```",
+        "AuditProcedure": "1. List all roles: ```aws iam list-roles```\n2. Check trust policies: ```aws iam get-role --role-name <role-name>```\n3. Look for roles without condition keys in trust relationships\n4. Focus on roles used by AWS services like Lambda, S3, etc.",
+        "AdditionalInformation": "Use aws:SourceAccount and aws:SourceArn conditions for service-linked roles",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html",
+        "DefaultValue": "Roles are created without confused deputy protection by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.14",
+    "Description": "Enforce least privilege for data access policies",
+    "Checks": ["iam_data_access_policies_least_privilege"],
+    "function_name": "iam_data_access_policies_least_privilege",
+    "title": "Enforce least privilege for data access policies",
+    "description": "Ensure IAM policies follow least privilege principles when granting access to data storage services like S3, RDS, and DynamoDB.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_IAM_014",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM policies follow least privilege principles when granting access to data storage services like S3, RDS, and DynamoDB.",
+        "RationaleStatement": "Least privilege access to data services ensures users and applications can only access the specific data required for their function, minimizing exposure risks.",
+        "ImpactStatement": "Overly broad data access permissions can lead to unauthorized access to sensitive data, data exfiltration, or accidental data modification.",
+        "RemediationProcedure": "1. Audit data service permissions in policies\n2. Use AWS Access Analyzer: ```aws accessanalyzer list-findings --analyzer-arn <analyzer-arn>```\n3. Replace broad permissions like s3:* with specific actions\n4. Use resource-level restrictions: ```arn:aws:s3:::specific-bucket/*```\n5. Implement condition keys for additional restrictions",
+        "AuditProcedure": "1. List policies with data service actions: ```aws iam list-policies --scope All```\n2. Review policy documents for S3, RDS, DynamoDB permissions\n3. Check for wildcard resources and actions\n4. Use IAM policy simulator to test access scenarios",
+        "AdditionalInformation": "Regularly review and refine data access permissions based on actual usage patterns",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege",
+        "DefaultValue": "Policies must be explicitly configured with appropriate data access restrictions"
+      }
+    ]
+  },
+  {
+    "Id": "1.15",
+    "Description": "Restrict cross-account data access",
+    "Checks": ["iam_cross_account_data_access_restricted"],
+    "function_name": "iam_cross_account_data_access_restricted",
+    "title": "Restrict cross-account data access",
+    "description": "Ensure IAM policies do not allow unrestricted cross-account access to sensitive data resources.",
+    "capability": "access_governance",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_IAM_015",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM policies do not allow unrestricted cross-account access to sensitive data resources.",
+        "RationaleStatement": "Unrestricted cross-account access can lead to data exposure to unauthorized external accounts and bypass intended security boundaries.",
+        "ImpactStatement": "Broad cross-account permissions can result in data breaches, compliance violations, and loss of data sovereignty control.",
+        "RemediationProcedure": "1. Review resource-based policies on S3 buckets, KMS keys, etc.\n2. Check for wildcard principals: ```aws s3api get-bucket-policy --bucket <bucket-name>```\n3. Replace wildcard principals with specific account IDs\n4. Add condition keys for additional validation\n5. Use AWS Config rules to monitor cross-account access",
+        "AuditProcedure": "1. Check S3 bucket policies: ```aws s3api get-bucket-policy --bucket <bucket-name>```\n2. Review KMS key policies: ```aws kms get-key-policy --key-id <key-id> --policy-name default```\n3. Look for Principal: \"*\" or broad account access\n4. Use AWS Access Analyzer to identify external access",
+        "AdditionalInformation": "Implement external access monitoring and alerting",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_deny-except-specified-account.html",
+        "DefaultValue": "Cross-account access must be explicitly configured"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enforce minimum password length of 14 characters",
+    "Checks": ["iam_password_policy_minimum_length_14"],
+    "function_name": "iam_password_policy_minimum_length_14",
+    "title": "Enforce minimum password length of 14 characters",
+    "description": "Ensure IAM password policy requires minimum 14 characters to protect against brute force attacks on accounts accessing sensitive data.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "password",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM password policy requires minimum 14 characters to protect against brute force attacks on accounts accessing sensitive data.",
+        "RationaleStatement": "Longer passwords provide exponentially greater resistance to brute force attacks, protecting accounts that may have access to sensitive data.",
+        "ImpactStatement": "Weak password length requirements increase the risk of successful brute force attacks against user accounts, potentially leading to data breaches.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Account settings\n2. Edit password policy\n3. Set minimum password length to 14 characters\n4. Use AWS CLI: ```aws iam update-account-password-policy --minimum-password-length 14```",
+        "AuditProcedure": "1. Check current password policy: ```aws iam get-account-password-policy```\n2. Verify MinimumPasswordLength is set to 14 or higher\n3. Review policy settings in IAM Console",
+        "AdditionalInformation": "Consider implementing even longer password requirements for privileged accounts",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+        "DefaultValue": "Default minimum password length is 6 characters"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Require uppercase letters in passwords",
+    "Checks": ["iam_password_policy_uppercase"],
+    "function_name": "iam_password_policy_uppercase",
+    "title": "Require uppercase letters in passwords",
+    "description": "Ensure IAM password policy requires uppercase letters to strengthen password complexity for data protection.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "password",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM password policy requires uppercase letters to strengthen password complexity for data protection.",
+        "RationaleStatement": "Requiring uppercase letters increases password complexity and resistance to dictionary and brute force attacks.",
+        "ImpactStatement": "Without uppercase letter requirements, passwords may be easier to crack using common attack methods.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Account settings\n2. Edit password policy\n3. Enable 'Require at least one uppercase letter'\n4. Use AWS CLI: ```aws iam update-account-password-policy --require-uppercase-characters```",
+        "AuditProcedure": "1. Check password policy: ```aws iam get-account-password-policy```\n2. Verify RequireUppercaseCharacters is true\n3. Test policy by attempting to create a password without uppercase letters",
+        "AdditionalInformation": "Combine with other complexity requirements for maximum security",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+        "DefaultValue": "Uppercase letters are not required by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Require lowercase letters in passwords",
+    "Checks": ["iam_password_policy_lowercase"],
+    "function_name": "iam_password_policy_lowercase",
+    "title": "Require lowercase letters in passwords",
+    "description": "Ensure IAM password policy requires lowercase letters to strengthen password complexity for securing data access.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "password",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM password policy requires lowercase letters to strengthen password complexity for securing data access.",
+        "RationaleStatement": "Requiring lowercase letters as part of password complexity helps protect against common password attack vectors.",
+        "ImpactStatement": "Lack of lowercase letter requirements reduces password strength and increases vulnerability to automated attacks.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Account settings\n2. Edit password policy\n3. Enable 'Require at least one lowercase letter'\n4. Use AWS CLI: ```aws iam update-account-password-policy --require-lowercase-characters```",
+        "AuditProcedure": "1. Check password policy: ```aws iam get-account-password-policy```\n2. Verify RequireLowercaseCharacters is true\n3. Validate policy enforcement during password creation",
+        "AdditionalInformation": "Part of comprehensive password complexity requirements",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+        "DefaultValue": "Lowercase letters are not explicitly required by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Require numbers in passwords",
+    "Checks": ["iam_password_policy_number"],
+    "function_name": "iam_password_policy_number",
+    "title": "Require numbers in passwords",
+    "description": "Ensure IAM password policy requires numbers to strengthen password complexity for protecting sensitive data access.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "password",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM password policy requires numbers to strengthen password complexity for protecting sensitive data access.",
+        "RationaleStatement": "Including numeric characters in passwords significantly increases the character space and makes brute force attacks more difficult.",
+        "ImpactStatement": "Passwords without numeric requirements are more susceptible to dictionary attacks and reduce overall account security.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Account settings\n2. Edit password policy\n3. Enable 'Require at least one number'\n4. Use AWS CLI: ```aws iam update-account-password-policy --require-numbers```",
+        "AuditProcedure": "1. Check password policy: ```aws iam get-account-password-policy```\n2. Verify RequireNumbers is true\n3. Test password creation without numbers to confirm enforcement",
+        "AdditionalInformation": "Numeric requirements should be combined with other character types",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+        "DefaultValue": "Numbers are not required by default in passwords"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Require symbols in passwords",
+    "Checks": ["iam_password_policy_symbol"],
+    "function_name": "iam_password_policy_symbol",
+    "title": "Require symbols in passwords",
+    "description": "Ensure IAM password policy requires symbols to strengthen password complexity for securing access to sensitive data.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "password",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM password policy requires symbols to strengthen password complexity for securing access to sensitive data.",
+        "RationaleStatement": "Symbol requirements maximize password complexity by requiring special characters, making passwords significantly harder to crack.",
+        "ImpactStatement": "Without symbol requirements, passwords miss a crucial complexity component that helps defend against sophisticated attack methods.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Account settings\n2. Edit password policy\n3. Enable 'Require at least one non-alphanumeric character'\n4. Use AWS CLI: ```aws iam update-account-password-policy --require-symbols```",
+        "AuditProcedure": "1. Check password policy: ```aws iam get-account-password-policy```\n2. Verify RequireSymbols is true\n3. Attempt password creation without symbols to verify enforcement",
+        "AdditionalInformation": "Symbols include characters like !@#$%^&*()_+-=[]{}|;:,.<>?",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+        "DefaultValue": "Symbols are not required by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.6",
+    "Description": "Prevent password reuse for 24 generations",
+    "Checks": ["iam_password_policy_reuse_24"],
+    "function_name": "iam_password_policy_reuse_24",
+    "title": "Prevent password reuse for 24 generations",
+    "description": "Ensure IAM password policy prevents reuse of last 24 passwords to maintain strong authentication for data access.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "password",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM password policy prevents reuse of last 24 passwords to maintain strong authentication for data access.",
+        "RationaleStatement": "Password reuse prevention ensures users create new, unique passwords and prevents attackers from exploiting previously compromised credentials.",
+        "ImpactStatement": "Without password reuse prevention, users may cycle through weak passwords, reducing the effectiveness of password rotation policies.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Account settings\n2. Edit password policy\n3. Set 'Prevent password reuse' to 24\n4. Use AWS CLI: ```aws iam update-account-password-policy --password-reuse-prevention 24```",
+        "AuditProcedure": "1. Check password policy: ```aws iam get-account-password-policy```\n2. Verify PasswordReusePrevention is set to 24\n3. Test by attempting to reuse a recent password",
+        "AdditionalInformation": "24 generations provides robust protection while remaining manageable for users",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+        "DefaultValue": "Password reuse prevention is not enabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.7",
+    "Description": "Expire passwords within 90 days",
+    "Checks": ["iam_password_policy_expires_passwords_within_90_days_or_less"],
+    "function_name": "iam_password_policy_expires_passwords_within_90_days_or_less",
+    "title": "Expire passwords within 90 days",
+    "description": "Ensure IAM password policy expires passwords within 90 days to maintain strong authentication for accessing sensitive data.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "password",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM password policy expires passwords within 90 days to maintain strong authentication for accessing sensitive data.",
+        "RationaleStatement": "Regular password expiration limits the window of exposure if credentials are compromised and ensures fresh authentication credentials.",
+        "ImpactStatement": "Long-lived passwords increase the risk that compromised credentials will remain undetected and exploitable for extended periods.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Account settings\n2. Edit password policy\n3. Set 'Password expires in' to 90 days or less\n4. Use AWS CLI: ```aws iam update-account-password-policy --max-password-age 90```",
+        "AuditProcedure": "1. Check password policy: ```aws iam get-account-password-policy```\n2. Verify MaxPasswordAge is 90 or less\n3. Review user password ages in credential report",
+        "AdditionalInformation": "Balance security with user experience to avoid password fatigue",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+        "DefaultValue": "Passwords do not expire by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.8",
+    "Description": "Remove expired server certificates",
+    "Checks": ["iam_no_expired_server_certificates_stored"],
+    "function_name": "iam_no_expired_server_certificates_stored",
+    "title": "Remove expired server certificates",
+    "description": "Ensure expired server certificates are removed from IAM to prevent potential security vulnerabilities in data transmission.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "certificates",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_IAM_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure expired server certificates are removed from IAM to prevent potential security vulnerabilities in data transmission.",
+        "RationaleStatement": "Expired certificates can create security vulnerabilities and may be inadvertently used, compromising SSL/TLS encryption for data in transit.",
+        "ImpactStatement": "Retained expired certificates increase the risk of misconfiguration that could compromise encrypted data transmission.",
+        "RemediationProcedure": "1. List server certificates: ```aws iam list-server-certificates```\n2. Check expiration dates in the output\n3. Remove expired certificates: ```aws iam delete-server-certificate --server-certificate-name <cert-name>```\n4. Verify no services are using expired certificates before deletion",
+        "AuditProcedure": "1. List all server certificates: ```aws iam list-server-certificates```\n2. Compare expiration dates with current date\n3. Check certificate usage: ```aws iam get-server-certificate --server-certificate-name <cert-name>```\n4. Verify certificates in use by services like ELB, CloudFront",
+        "AdditionalInformation": "Implement automated certificate lifecycle management",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html",
+        "DefaultValue": "Expired certificates remain stored until manually removed"
+      }
+    ]
+  },
+  {
+    "Id": "2.9",
+    "Description": "Enable automatic server certificate rotation",
+    "Checks": ["iam_server_certificate_rotation_enabled"],
+    "function_name": "iam_server_certificate_rotation_enabled",
+    "title": "Enable automatic server certificate rotation",
+    "description": "Ensure IAM server certificates are automatically rotated to maintain secure data transmission and prevent certificate expiration.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "certificates",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_IAM_009",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM server certificates are automatically rotated to maintain secure data transmission and prevent certificate expiration.",
+        "RationaleStatement": "Automatic certificate rotation ensures continuous secure communications and prevents service disruptions due to expired certificates.",
+        "ImpactStatement": "Manual certificate management can lead to expired certificates, service outages, and compromised data transmission security.",
+        "RemediationProcedure": "1. Implement AWS Certificate Manager (ACM) for automatic rotation\n2. Migrate IAM certificates to ACM: ```aws acm import-certificate --certificate file://cert.pem --private-key file://key.pem```\n3. Update services to use ACM certificates\n4. Set up monitoring for certificate expiration\n5. Implement automated renewal workflows",
+        "AuditProcedure": "1. List IAM certificates: ```aws iam list-server-certificates```\n2. Check which certificates could be migrated to ACM\n3. Review certificate rotation procedures and automation\n4. Verify monitoring is in place for certificate lifecycle",
+        "AdditionalInformation": "AWS Certificate Manager provides automatic rotation for supported services",
+        "References": "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
+        "DefaultValue": "Certificate rotation must be manually implemented"
+      }
+    ]
+  },
+  {
+    "Id": "2.10",
+    "Description": "Monitor IAM credential reports for anomalies",
+    "Checks": ["iam_user_credential_report_monitoring"],
+    "function_name": "iam_user_credential_report_monitoring",
+    "title": "Monitor IAM credential reports for anomalies",
+    "description": "Regularly monitor IAM credential reports to detect unusual access patterns that could indicate unauthorized data access.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "monitoring",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_IAM_010",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Regularly monitor IAM credential reports to detect unusual access patterns that could indicate unauthorized data access.",
+        "RationaleStatement": "Regular monitoring of credential reports helps identify compromised accounts, unused credentials, and access pattern anomalies.",
+        "ImpactStatement": "Without credential monitoring, compromised accounts or credential misuse may go undetected, leading to prolonged unauthorized access.",
+        "RemediationProcedure": "1. Set up automated credential report generation: ```aws iam generate-credential-report```\n2. Create monitoring scripts to analyze report data\n3. Implement alerting for anomalies like unusual access patterns\n4. Schedule regular reviews of credential usage\n5. Integrate with SIEM systems for comprehensive monitoring",
+        "AuditProcedure": "1. Generate credential report: ```aws iam generate-credential-report```\n2. Retrieve and analyze report: ```aws iam get-credential-report```\n3. Check for anomalies in access patterns, key usage, and password ages\n4. Verify monitoring systems are processing credential data",
+        "AdditionalInformation": "Implement automated anomaly detection for large environments",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html",
+        "DefaultValue": "Credential monitoring must be manually implemented"
+      }
+    ]
+  },
+  {
+    "Id": "2.11",
+    "Description": "Enable IAM Access Analyzer",
+    "Checks": ["iam_access_analyzer_enabled"],
+    "function_name": "iam_access_analyzer_enabled",
+    "title": "Enable IAM Access Analyzer",
+    "description": "Enable IAM Access Analyzer to identify resources that are shared with external entities and could lead to unintended data exposure.",
+    "capability": "data_protection",
+    "service": "iam",
+    "subservice": "analyzer",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_IAM_011",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable IAM Access Analyzer to identify resources that are shared with external entities and could lead to unintended data exposure.",
+        "RationaleStatement": "Access Analyzer helps identify unintended external access to resources, preventing data exposure through misconfigured policies.",
+        "ImpactStatement": "Without Access Analyzer, unintended external access to sensitive resources may go undetected, creating data exposure risks.",
+        "RemediationProcedure": "1. Navigate to IAM Console > Access analyzer\n2. Create analyzer: ```aws accessanalyzer create-analyzer --analyzer-name <name> --type ACCOUNT```\n3. Review findings regularly: ```aws accessanalyzer list-findings --analyzer-arn <analyzer-arn>```\n4. Address identified external access issues\n5. Set up automated monitoring of new findings",
+        "AuditProcedure": "1. Check if analyzer exists: ```aws accessanalyzer list-analyzers```\n2. Review current findings: ```aws accessanalyzer list-findings --analyzer-arn <analyzer-arn>```\n3. Verify analyzer is actively scanning resources\n4. Check that findings are being addressed promptly",
+        "AdditionalInformation": "Access Analyzer uses provable security to mathematically verify access policies",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html",
+        "DefaultValue": "Access Analyzer is not enabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Restrict SAML providers to approved regions",
+    "Checks": ["iam_saml_provider_regional_restriction"],
+    "function_name": "iam_saml_provider_regional_restriction",
+    "title": "Restrict SAML providers to approved regions",
+    "description": "Ensure SAML identity providers are configured only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "iam",
+    "subservice": "saml",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_IAM_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure SAML identity providers are configured only in approved regions to comply with data residency requirements.",
+        "RationaleStatement": "SAML provider locations determine where authentication metadata and tokens are processed, which must comply with data residency regulations.",
+        "ImpactStatement": "SAML providers in unauthorized regions may result in authentication data being processed outside of approved jurisdictions.",
+        "RemediationProcedure": "1. List SAML providers: ```aws iam list-saml-providers```\n2. Review provider regions and compliance requirements\n3. Delete providers in non-compliant regions: ```aws iam delete-saml-provider --saml-provider-arn <provider-arn>```\n4. Recreate providers in approved regions\n5. Update federation configurations to use compliant providers",
+        "AuditProcedure": "1. List all SAML providers: ```aws iam list-saml-providers```\n2. Check provider ARNs to identify regions\n3. Verify all providers are in approved regions\n4. Review federation usage and authentication flows",
+        "AdditionalInformation": "Consider regional disaster recovery requirements when planning SAML provider placement",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html",
+        "DefaultValue": "SAML providers can be created in any region by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Restrict OIDC providers to approved regions",
+    "Checks": ["iam_oidc_provider_regional_restriction"],
+    "function_name": "iam_oidc_provider_regional_restriction",
+    "title": "Restrict OIDC providers to approved regions",
+    "description": "Ensure OIDC identity providers are configured only in approved regions to meet data residency compliance requirements.",
+    "capability": "data_residency",
+    "service": "iam",
+    "subservice": "oidc",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_IAM_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure OIDC identity providers are configured only in approved regions to meet data residency compliance requirements.",
+        "RationaleStatement": "OIDC provider placement affects where identity tokens and authentication metadata are processed, impacting data residency compliance.",
+        "ImpactStatement": "OIDC providers in non-compliant regions may process authentication data outside approved jurisdictions, violating data sovereignty requirements.",
+        "RemediationProcedure": "1. List OIDC providers: ```aws iam list-open-id-connect-providers```\n2. Review provider regions against compliance requirements\n3. Delete non-compliant providers: ```aws iam delete-open-id-connect-provider --open-id-connect-provider-arn <provider-arn>```\n4. Create providers in approved regions\n5. Update applications to use compliant OIDC providers",
+        "AuditProcedure": "1. List all OIDC providers: ```aws iam list-open-id-connect-providers```\n2. Check ARNs to determine provider regions\n3. Verify compliance with regional requirements\n4. Review connected applications and services",
+        "AdditionalInformation": "Coordinate with application teams when migrating OIDC providers between regions",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html",
+        "DefaultValue": "OIDC providers can be created in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Enforce region restrictions in IAM roles",
+    "Checks": ["iam_role_region_restriction_enforced"],
+    "function_name": "iam_role_region_restriction_enforced",
+    "title": "Enforce region restrictions in IAM roles",
+    "description": "Ensure IAM roles include condition keys to restrict access to resources in approved regions only for data residency compliance.",
+    "capability": "data_residency",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_IAM_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM roles include condition keys to restrict access to resources in approved regions only for data residency compliance.",
+        "RationaleStatement": "Regional restrictions in IAM roles prevent data processing activities from occurring in unauthorized jurisdictions.",
+        "ImpactStatement": "Without regional restrictions, roles may be used to access or process data in regions that violate data residency requirements.",
+        "RemediationProcedure": "1. List IAM roles: ```aws iam list-roles```\n2. Review role policies for regional restrictions\n3. Add condition keys to role policies: ```{\"StringEquals\":{\"aws:RequestedRegion\":[\"us-east-1\",\"eu-west-1\"]}}```\n4. Update role policies: ```aws iam put-role-policy --role-name <role-name> --policy-name <policy-name> --policy-document file://policy.json```\n5. Test role functionality in approved regions",
+        "AuditProcedure": "1. List all roles: ```aws iam list-roles```\n2. Check role policies: ```aws iam list-role-policies --role-name <role-name>```\n3. Review policy documents for aws:RequestedRegion conditions\n4. Verify attached managed policies also include regional restrictions",
+        "AdditionalInformation": "Use Service Control Policies (SCPs) for organization-wide regional enforcement",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-requestedregion",
+        "DefaultValue": "Roles do not include regional restrictions by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.4",
+    "Description": "Enforce region restrictions for IAM users",
+    "Checks": ["iam_user_region_restriction_enforced"],
+    "function_name": "iam_user_region_restriction_enforced",
+    "title": "Enforce region restrictions for IAM users",
+    "description": "Ensure IAM user policies include condition keys to restrict access to resources in approved regions for data sovereignty.",
+    "capability": "data_residency",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_IAM_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM user policies include condition keys to restrict access to resources in approved regions for data sovereignty.",
+        "RationaleStatement": "User-level regional restrictions ensure individual access patterns comply with data residency requirements across all user activities.",
+        "ImpactStatement": "Users without regional restrictions may inadvertently access or create resources in unauthorized regions, violating data sovereignty policies.",
+        "RemediationProcedure": "1. List IAM users: ```aws iam list-users```\n2. Review user policies and group memberships\n3. Add regional conditions to user policies or group policies\n4. Use deny policies for unauthorized regions: ```{\"Effect\":\"Deny\",\"Action\":\"*\",\"Resource\":\"*\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"approved-region\"]}}}```\n5. Test user access in approved and restricted regions",
+        "AuditProcedure": "1. List all users: ```aws iam list-users```\n2. Check user policies: ```aws iam list-user-policies --user-name <username>```\n3. Review group policies: ```aws iam get-groups-for-user --user-name <username>```\n4. Verify regional condition keys are present in relevant policies",
+        "AdditionalInformation": "Consider emergency access procedures for disaster recovery scenarios",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-requestedregion",
+        "DefaultValue": "User policies do not include regional restrictions by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.5",
+    "Description": "Include data residency conditions in policies",
+    "Checks": ["iam_policy_data_residency_conditions"],
+    "function_name": "iam_policy_data_residency_conditions",
+    "title": "Include data residency conditions in policies",
+    "description": "Ensure IAM policies include condition keys to enforce data residency requirements for accessing sensitive data.",
+    "capability": "data_residency",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_IAM_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM policies include condition keys to enforce data residency requirements for accessing sensitive data.",
+        "RationaleStatement": "Data residency conditions in policies ensure that data access and processing activities comply with jurisdictional requirements.",
+        "ImpactStatement": "Policies without data residency conditions may allow data access patterns that violate regulatory compliance requirements.",
+        "RemediationProcedure": "1. Audit existing policies for data service access\n2. Identify policies that access sensitive data services (S3, RDS, DynamoDB)\n3. Add regional conditions: ```{\"StringEquals\":{\"aws:RequestedRegion\":\"approved-region\"}}```\n4. Add resource-based conditions for data classification\n5. Update policies: ```aws iam create-policy-version --policy-arn <arn> --policy-document file://updated-policy.json```",
+        "AuditProcedure": "1. List policies with data service permissions\n2. Review policy documents for regional conditions\n3. Check for resource-based restrictions on sensitive data\n4. Verify condition keys are properly implemented for data access",
+        "AdditionalInformation": "Combine regional restrictions with data classification tags for comprehensive control",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_home-directory-console.html",
+        "DefaultValue": "Policies must be explicitly configured with data residency conditions"
+      }
+    ]
+  },
+  {
+    "Id": "3.6",
+    "Description": "Ensure CloudTrail logs comply with data residency",
+    "Checks": ["iam_cloudtrail_data_residency_compliance"],
+    "function_name": "iam_cloudtrail_data_residency_compliance",
+    "title": "Ensure CloudTrail logs comply with data residency",
+    "description": "Ensure CloudTrail logs for IAM activities are stored in regions that comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "iam",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_IAM_006",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure CloudTrail logs for IAM activities are stored in regions that comply with data residency requirements.",
+        "RationaleStatement": "CloudTrail logs contain sensitive access patterns and user activities that must be stored in jurisdictionally compliant locations.",
+        "ImpactStatement": "CloudTrail logs stored in non-compliant regions may violate data residency requirements for audit and security data.",
+        "RemediationProcedure": "1. List CloudTrail trails: ```aws cloudtrail describe-trails```\n2. Check S3 bucket locations for log storage\n3. Verify bucket regions comply with data residency requirements\n4. Migrate non-compliant trails to approved regions\n5. Update trail configurations: ```aws cloudtrail update-trail --name <trail-name> --s3-bucket-name <compliant-bucket>```",
+        "AuditProcedure": "1. List all CloudTrail trails: ```aws cloudtrail describe-trails```\n2. Check S3 bucket regions: ```aws s3api get-bucket-location --bucket <bucket-name>```\n3. Verify IAM events are being logged in compliant regions\n4. Review log retention and cross-region replication settings",
+        "AdditionalInformation": "Consider data lifecycle policies for long-term log retention compliance",
+        "References": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-trails",
+        "DefaultValue": "CloudTrail logs are stored in the region where the trail is configured"
+      }
+    ]
+  },
+  {
+    "Id": "3.7",
+    "Description": "Restrict cross-region assume role operations",
+    "Checks": ["iam_cross_region_assume_role_restricted"],
+    "function_name": "iam_cross_region_assume_role_restricted",
+    "title": "Restrict cross-region assume role operations",
+    "description": "Ensure IAM roles cannot be assumed across regions unless explicitly required for approved data residency use cases.",
+    "capability": "data_residency",
+    "service": "iam",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_IAM_007",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure IAM roles cannot be assumed across regions unless explicitly required for approved data residency use cases.",
+        "RationaleStatement": "Cross-region role assumption can lead to data processing activities in unauthorized jurisdictions, violating data residency requirements.",
+        "ImpactStatement": "Unrestricted cross-region role assumption may result in sensitive operations being performed in non-compliant regions.",
+        "RemediationProcedure": "1. Review role trust policies for regional restrictions\n2. Add regional conditions to trust policies: ```{\"StringEquals\":{\"aws:RequestedRegion\":\"approved-region\"}}```\n3. Update trust policies: ```aws iam update-assume-role-policy --role-name <role-name> --policy-document file://trust-policy.json```\n4. Test role assumption from different regions\n5. Monitor role assumption patterns with CloudTrail",
+        "AuditProcedure": "1. List all IAM roles: ```aws iam list-roles```\n2. Check trust policies: ```aws iam get-role --role-name <role-name>```\n3. Look for regional condition keys in trust relationships\n4. Review CloudTrail logs for cross-region AssumeRole events",
+        "AdditionalInformation": "Implement monitoring alerts for unauthorized cross-region role assumptions",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html",
+        "DefaultValue": "Roles can be assumed from any region by default"
+      }
+    ]
+  }
+]

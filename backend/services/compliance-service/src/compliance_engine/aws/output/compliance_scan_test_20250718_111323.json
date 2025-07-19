@@ -1,0 +1,14 @@
+{
+  "scan_id": "config_test_scan",
+  "scan_timestamp": "2025-07-18T11:13:23.175689",
+  "configuration_test": true,
+  "profiles_tested": 4,
+  "sample_finding": {
+    "check_name": "configuration_test",
+    "status": "PASS",
+    "status_extended": "Configuration manager working correctly",
+    "account_name": "test",
+    "region": "us-east-1",
+    "service": "config"
+  }
+}

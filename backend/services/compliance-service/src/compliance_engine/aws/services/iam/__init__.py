@@ -1,0 +1,100 @@
+"""
+AWS Iam Service Module
+
+Centralized imports for AWS Iam compliance checks.
+"""
+
+# Import the service class
+from .iam_service import IAMService
+
+# Import individual checks
+from .iam_administrator_access_with_mfa.iam_administrator_access_with_mfa import iam_administrator_access_with_mfa
+from .iam_avoid_root_usage.iam_avoid_root_usage import iam_avoid_root_usage
+from .iam_aws_attached_policy_no_administrative_privileges.iam_aws_attached_policy_no_administrative_privileges import iam_aws_attached_policy_no_administrative_privileges
+from .iam_check_saml_providers_sts.iam_check_saml_providers_sts import iam_check_saml_providers_sts
+from .iam_customer_attached_policy_no_administrative_privileges.iam_customer_attached_policy_no_administrative_privileges import iam_customer_attached_policy_no_administrative_privileges
+from .iam_customer_unattached_policy_no_administrative_privileges.iam_customer_unattached_policy_no_administrative_privileges import iam_customer_unattached_policy_no_administrative_privileges
+from .iam_group_administrator_access_policy.iam_group_administrator_access_policy import iam_group_administrator_access_policy
+from .iam_inline_policy_allows_privilege_escalation.iam_inline_policy_allows_privilege_escalation import iam_inline_policy_allows_privilege_escalation
+from .iam_inline_policy_no_administrative_privileges.iam_inline_policy_no_administrative_privileges import iam_inline_policy_no_administrative_privileges
+from .iam_inline_policy_no_full_access_to_cloudtrail.iam_inline_policy_no_full_access_to_cloudtrail import iam_inline_policy_no_full_access_to_cloudtrail
+from .iam_inline_policy_no_full_access_to_kms.iam_inline_policy_no_full_access_to_kms import iam_inline_policy_no_full_access_to_kms
+from .iam_no_custom_policy_permissive_role_assumption.iam_no_custom_policy_permissive_role_assumption import iam_no_custom_policy_permissive_role_assumption
+from .iam_no_expired_server_certificates_stored.iam_no_expired_server_certificates_stored import iam_no_expired_server_certificates_stored
+from .iam_no_root_access_key.iam_no_root_access_key import iam_no_root_access_key
+from .iam_password_policy_expires_passwords_within_90_days_or_less.iam_password_policy_expires_passwords_within_90_days_or_less import iam_password_policy_expires_passwords_within_90_days_or_less
+from .iam_password_policy_lowercase.iam_password_policy_lowercase import iam_password_policy_lowercase
+from .iam_password_policy_minimum_length_14.iam_password_policy_minimum_length_14 import iam_password_policy_minimum_length_14
+from .iam_password_policy_number.iam_password_policy_number import iam_password_policy_number
+from .iam_password_policy_reuse_24.iam_password_policy_reuse_24 import iam_password_policy_reuse_24
+from .iam_password_policy_symbol.iam_password_policy_symbol import iam_password_policy_symbol
+from .iam_password_policy_uppercase.iam_password_policy_uppercase import iam_password_policy_uppercase
+from .iam_policy_allows_privilege_escalation.iam_policy_allows_privilege_escalation import iam_policy_allows_privilege_escalation
+from .iam_policy_attached_only_to_group_or_roles.iam_policy_attached_only_to_group_or_roles import iam_policy_attached_only_to_group_or_roles
+from .iam_policy_cloudshell_admin_not_attached.iam_policy_cloudshell_admin_not_attached import iam_policy_cloudshell_admin_not_attached
+from .iam_policy_no_full_access_to_cloudtrail.iam_policy_no_full_access_to_cloudtrail import iam_policy_no_full_access_to_cloudtrail
+from .iam_policy_no_full_access_to_kms.iam_policy_no_full_access_to_kms import iam_policy_no_full_access_to_kms
+from .iam_role_administratoraccess_policy.iam_role_administratoraccess_policy import iam_role_administratoraccess_policy
+from .iam_role_cross_account_readonlyaccess_policy.iam_role_cross_account_readonlyaccess_policy import iam_role_cross_account_readonlyaccess_policy
+from .iam_role_cross_service_confused_deputy_prevention.iam_role_cross_service_confused_deputy_prevention import iam_role_cross_service_confused_deputy_prevention
+from .iam_root_credentials_management_enabled.iam_root_credentials_management_enabled import iam_root_credentials_management_enabled
+from .iam_root_hardware_mfa_enabled.iam_root_hardware_mfa_enabled import iam_root_hardware_mfa_enabled
+from .iam_root_mfa_enabled.iam_root_mfa_enabled import iam_root_mfa_enabled
+from .iam_rotate_access_key_90_days.iam_rotate_access_key_90_days import iam_rotate_access_key_90_days
+from .iam_securityaudit_role_created.iam_securityaudit_role_created import iam_securityaudit_role_created
+from .iam_support_role_created.iam_support_role_created import iam_support_role_created
+from .iam_user_accesskey_unused.iam_user_accesskey_unused import iam_user_accesskey_unused
+from .iam_user_administrator_access_policy.iam_user_administrator_access_policy import iam_user_administrator_access_policy
+from .iam_user_console_access_unused.iam_user_console_access_unused import iam_user_console_access_unused
+from .iam_user_hardware_mfa_enabled.iam_user_hardware_mfa_enabled import iam_user_hardware_mfa_enabled
+from .iam_user_mfa_enabled_console_access.iam_user_mfa_enabled_console_access import iam_user_mfa_enabled_console_access
+from .iam_user_no_setup_initial_access_key.iam_user_no_setup_initial_access_key import iam_user_no_setup_initial_access_key
+from .iam_user_two_active_access_key.iam_user_two_active_access_key import iam_user_two_active_access_key
+from .iam_user_with_temporary_credentials.iam_user_with_temporary_credentials import iam_user_with_temporary_credentials
+
+__all__ = [
+    'IAMService',
+    'iam_administrator_access_with_mfa',
+    'iam_avoid_root_usage',
+    'iam_aws_attached_policy_no_administrative_privileges',
+    'iam_check_saml_providers_sts',
+    'iam_customer_attached_policy_no_administrative_privileges',
+    'iam_customer_unattached_policy_no_administrative_privileges',
+    'iam_group_administrator_access_policy',
+    'iam_inline_policy_allows_privilege_escalation',
+    'iam_inline_policy_no_administrative_privileges',
+    'iam_inline_policy_no_full_access_to_cloudtrail',
+    'iam_inline_policy_no_full_access_to_kms',
+    'iam_no_custom_policy_permissive_role_assumption',
+    'iam_no_expired_server_certificates_stored',
+    'iam_no_root_access_key',
+    'iam_password_policy_expires_passwords_within_90_days_or_less',
+    'iam_password_policy_lowercase',
+    'iam_password_policy_minimum_length_14',
+    'iam_password_policy_number',
+    'iam_password_policy_reuse_24',
+    'iam_password_policy_symbol',
+    'iam_password_policy_uppercase',
+    'iam_policy_allows_privilege_escalation',
+    'iam_policy_attached_only_to_group_or_roles',
+    'iam_policy_cloudshell_admin_not_attached',
+    'iam_policy_no_full_access_to_cloudtrail',
+    'iam_policy_no_full_access_to_kms',
+    'iam_role_administratoraccess_policy',
+    'iam_role_cross_account_readonlyaccess_policy',
+    'iam_role_cross_service_confused_deputy_prevention',
+    'iam_root_credentials_management_enabled',
+    'iam_root_hardware_mfa_enabled',
+    'iam_root_mfa_enabled',
+    'iam_rotate_access_key_90_days',
+    'iam_securityaudit_role_created',
+    'iam_support_role_created',
+    'iam_user_accesskey_unused',
+    'iam_user_administrator_access_policy',
+    'iam_user_console_access_unused',
+    'iam_user_hardware_mfa_enabled',
+    'iam_user_mfa_enabled_console_access',
+    'iam_user_no_setup_initial_access_key',
+    'iam_user_two_active_access_key',
+    'iam_user_with_temporary_credentials',
+]

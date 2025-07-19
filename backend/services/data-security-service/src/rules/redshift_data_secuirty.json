@@ -1,0 +1,515 @@
+[
+  {
+    "function_name": "redshift_cluster_public_access",
+    "title": "Ensure Redshift clusters are not publicly accessible",
+    "description": "Ensure Redshift clusters are not publicly accessible to prevent unauthorized access to sensitive data warehouse data.",
+    "capability": "access_governance",
+    "service": "redshift",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_REDSHIFT_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Redshift clusters are not publicly accessible through security group and subnet configurations.",
+        "RationaleStatement": "Public Redshift access exposes sensitive data warehouse information to the internet, creating significant security risks and potential data breaches.",
+        "ImpactStatement": "Publicly accessible Redshift clusters can lead to unauthorized data access, data exfiltration, compliance violations, and exposure of sensitive business intelligence data.",
+        "RemediationProcedure": "1. Check cluster public accessibility: `aws redshift describe-clusters --cluster-identifier <cluster-id>`.\n2. Modify cluster to disable public access: `aws redshift modify-cluster --cluster-identifier <cluster-id> --publicly-accessible false`.\n3. Review security groups: `aws ec2 describe-security-groups --group-ids <sg-id>`.\n4. Remove public access rules: `aws ec2 revoke-security-group-ingress --group-id <sg-id> --protocol tcp --port 5439 --cidr 0.0.0.0/0`.\n5. Configure VPC and private subnets for secure access.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[?PubliclyAccessible==`true`]'` to identify publicly accessible clusters. Check security groups for 0.0.0.0/0 access to port 5439.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms",
+        "DefaultValue": "Publicly accessible unless explicitly configured otherwise"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_vpc_deployment",
+    "title": "Deploy Redshift clusters in VPC",
+    "description": "Ensure Redshift clusters are deployed in VPC to provide network isolation and secure access to data warehouse.",
+    "capability": "access_governance",
+    "service": "redshift",
+    "subservice": "network",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REDSHIFT_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Deploy Redshift clusters within VPC to ensure network isolation and enhanced security controls.",
+        "RationaleStatement": "VPC deployment provides network isolation, enhanced security controls, and prevents unauthorized access to data warehouse resources.",
+        "ImpactStatement": "Clusters outside VPC lack network isolation and advanced security features, increasing risk of unauthorized access and data exposure.",
+        "RemediationProcedure": "1. Create VPC and subnets for Redshift: `aws ec2 create-vpc --cidr-block 10.0.0.0/16`.\n2. Create subnet group: `aws redshift create-cluster-subnet-group --cluster-subnet-group-name <name> --description <desc> --subnet-ids <subnet-ids>`.\n3. Create new cluster in VPC: `aws redshift create-cluster --cluster-identifier <id> --cluster-subnet-group-name <subnet-group>`.\n4. Migrate data from EC2-Classic cluster if needed.\n5. Delete old cluster after migration verification.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[?VpcId==null]'` to identify clusters not deployed in VPC. Check cluster subnet group configuration.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms",
+        "DefaultValue": "EC2-Classic unless VPC specified during creation"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_iam_authentication_enabled",
+    "title": "Enable IAM authentication for Redshift clusters",
+    "description": "Enable IAM authentication for Redshift clusters to centralize access control and eliminate database passwords.",
+    "capability": "access_governance",
+    "service": "redshift",
+    "subservice": "authentication",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REDSHIFT_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure IAM authentication for Redshift to eliminate password-based authentication and centralize access control.",
+        "RationaleStatement": "IAM authentication provides centralized access control, eliminates password management overhead, and integrates with existing AWS security policies.",
+        "ImpactStatement": "Without IAM authentication, clusters rely on database passwords which can be compromised, shared inappropriately, or difficult to rotate consistently.",
+        "RemediationProcedure": "1. Create IAM roles for Redshift access: `aws iam create-role --role-name RedshiftRole --assume-role-policy-document <policy>`.\n2. Attach policies to roles: `aws iam attach-role-policy --role-name RedshiftRole --policy-arn <policy-arn>`.\n3. Associate role with cluster: `aws redshift modify-cluster-iam-roles --cluster-identifier <id> --add-iam-roles <role-arn>`.\n4. Configure applications to use IAM credentials.\n5. Test IAM-based connections and disable password authentication.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[*].IamRoles'` to verify IAM roles are associated. Check for password-based connections in audit logs.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html",
+        "DefaultValue": "Password authentication unless IAM roles configured"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_default_database_name",
+    "title": "Avoid default database names in Redshift clusters",
+    "description": "Ensure Redshift clusters do not use default database names to prevent automated attacks on data warehouse.",
+    "capability": "access_governance",
+    "service": "redshift",
+    "subservice": "database",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REDSHIFT_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure non-default database names for Redshift clusters to reduce attack surface from automated scanning.",
+        "RationaleStatement": "Default database names are well-known and targeted by automated attacks, making clusters more vulnerable to reconnaissance and brute force attempts.",
+        "ImpactStatement": "Default database names increase the likelihood of successful automated attacks and make it easier for attackers to identify database targets.",
+        "RemediationProcedure": "1. Check current database name: `aws redshift describe-clusters --cluster-identifier <id> --query 'Clusters[*].DBName'`.\n2. Create new database with custom name: `psql -h <endpoint> -p 5439 -U <user> -d <current-db> -c 'CREATE DATABASE custom_db_name;'`.\n3. Migrate schemas and data to new database.\n4. Update application connection strings.\n5. Drop old default database after migration verification.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[?DBName==`dev` || DBName==`test` || DBName==`redshift`]'` to identify clusters using common default names.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_DATABASE.html",
+        "DefaultValue": "dev (default database name)"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_parameter_group_ssl_required",
+    "title": "Require SSL connections in Redshift parameter groups",
+    "description": "Ensure Redshift parameter groups require SSL connections to protect data in transit.",
+    "capability": "access_governance",
+    "service": "redshift",
+    "subservice": "ssl",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REDSHIFT_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure parameter groups to require SSL connections for all client communications with Redshift clusters.",
+        "RationaleStatement": "SSL requirement ensures all data in transit is encrypted, preventing interception of sensitive data warehouse queries and results.",
+        "ImpactStatement": "Without SSL requirements, client connections may transmit sensitive data in plaintext, exposing it to network-based attacks and eavesdropping.",
+        "RemediationProcedure": "1. Create custom parameter group: `aws redshift create-cluster-parameter-group --parameter-group-name <name> --parameter-group-family redshift-1.0`.\n2. Set SSL requirement: `aws redshift modify-cluster-parameter-group --parameter-group-name <name> --parameters ParameterName=require_ssl,ParameterValue=true`.\n3. Apply parameter group to cluster: `aws redshift modify-cluster --cluster-identifier <id> --cluster-parameter-group-name <name>`.\n4. Reboot cluster to apply changes: `aws redshift reboot-cluster --cluster-identifier <id>`.\n5. Test SSL connections and update client configurations.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-cluster-parameters --parameter-group-name <name> --source user --query 'Parameters[?ParameterName==`require_ssl`]'` to verify SSL is required.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-ssl-support.html",
+        "DefaultValue": "SSL not required unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_encrypted_at_rest",
+    "title": "Enable encryption at rest for Redshift clusters",
+    "description": "Ensure Redshift clusters have encryption at rest enabled to protect sensitive data warehouse data.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_REDSHIFT_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable encryption at rest for Redshift clusters to protect sensitive data warehouse data using AWS KMS encryption.",
+        "RationaleStatement": "Encryption at rest protects sensitive data warehouse information from unauthorized access if the underlying storage is compromised, meeting compliance requirements.",
+        "ImpactStatement": "Unencrypted Redshift clusters expose sensitive data at rest, violating compliance requirements and creating risk of data exposure if storage media is compromised.",
+        "RemediationProcedure": "1. Check current encryption status: `aws redshift describe-clusters --cluster-identifier <id> --query 'Clusters[*].Encrypted'`.\n2. Create encrypted snapshot: `aws redshift create-cluster-snapshot --cluster-identifier <id> --snapshot-identifier <snapshot-id>`.\n3. Restore from snapshot with encryption: `aws redshift restore-from-cluster-snapshot --cluster-identifier <new-id> --snapshot-identifier <snapshot-id> --encrypted --kms-key-id <key-id>`.\n4. Update application connection strings.\n5. Delete old unencrypted cluster after migration verification.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[?Encrypted==`false`]'` to identify unencrypted clusters.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html",
+        "DefaultValue": "Unencrypted unless explicitly enabled during creation"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_in_transit_encryption_enabled",
+    "title": "Enable encryption in transit for Redshift clusters",
+    "description": "Ensure Redshift clusters use encryption in transit to protect data during query operations and data loading.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "tls",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_REDSHIFT_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure Redshift clusters to enforce encryption in transit for all client connections and data operations.",
+        "RationaleStatement": "Encryption in transit protects sensitive data warehouse queries and results from interception during network transmission between clients and clusters.",
+        "ImpactStatement": "Without encryption in transit, data transmitted between clients and clusters can be intercepted by attackers, potentially exposing sensitive business intelligence.",
+        "RemediationProcedure": "1. Update client connection strings to use SSL: `host=<cluster-endpoint> port=5439 sslmode=require`.\n2. Configure parameter group to require SSL (see previous rule).\n3. Update ETL processes to use encrypted connections.\n4. Monitor connections to ensure SSL usage: check pg_stat_ssl view.\n5. Disable non-SSL connections after verification.",
+        "AuditProcedure": "Check Redshift system tables: `SELECT * FROM pg_stat_ssl;` to verify SSL usage. Monitor CloudTrail for connection events and verify SSL parameters.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-ssl-support.html",
+        "DefaultValue": "SSL available but not required unless configured"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_automated_snapshot",
+    "title": "Enable automated snapshots for Redshift clusters",
+    "description": "Ensure Redshift clusters have automated snapshots enabled for data protection and disaster recovery.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_REDSHIFT_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable automated snapshots for Redshift clusters to ensure regular backups and support disaster recovery capabilities.",
+        "RationaleStatement": "Automated snapshots provide regular backups of data warehouse data, supporting disaster recovery and protecting against data loss from corruption or accidental deletion.",
+        "ImpactStatement": "Without automated snapshots, data loss from corruption, deletion, or disasters cannot be recovered, potentially causing significant business disruption and data loss.",
+        "RemediationProcedure": "1. Check snapshot settings: `aws redshift describe-clusters --cluster-identifier <id> --query 'Clusters[*].AutomatedSnapshotRetentionPeriod'`.\n2. Enable automated snapshots: `aws redshift modify-cluster --cluster-identifier <id> --automated-snapshot-retention-period 7`.\n3. Configure backup window: `aws redshift modify-cluster --cluster-identifier <id> --preferred-backup-window 03:00-04:00`.\n4. Set appropriate retention period based on business requirements.\n5. Monitor snapshot creation and verify backup completion.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[?AutomatedSnapshotRetentionPeriod==`0`]'` to identify clusters without automated snapshots.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html",
+        "DefaultValue": "1 day retention period"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_audit_logging",
+    "title": "Enable audit logging for Redshift clusters",
+    "description": "Enable audit logging for Redshift clusters to track database activities and support compliance requirements.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_REDSHIFT_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable comprehensive audit logging for Redshift clusters to track user activities, connection attempts, and database operations.",
+        "RationaleStatement": "Audit logging provides visibility into database activities, supports compliance requirements, and enables detection of unauthorized access or suspicious behavior.",
+        "ImpactStatement": "Without audit logging, unauthorized activities and security incidents cannot be detected or investigated, limiting compliance capabilities and incident response.",
+        "RemediationProcedure": "1. Enable audit logging: `aws redshift modify-cluster --cluster-identifier <id> --logging-properties enable=true,s3BucketName=<bucket>,s3KeyPrefix=<prefix>`.\n2. Configure log types: connection logs, user logs, user activity logs.\n3. Set up S3 bucket with appropriate permissions and lifecycle policies.\n4. Monitor log delivery and analyze for security events.\n5. Configure automated alerting for suspicious activities.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-logging-status --cluster-identifier <id>` to verify logging is enabled. Check S3 bucket for log delivery.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html",
+        "DefaultValue": "Disabled unless explicitly enabled"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_automatic_upgrades",
+    "title": "Enable automatic upgrades for Redshift clusters",
+    "description": "Enable automatic upgrades for Redshift clusters to maintain security patches and prevent vulnerabilities.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "upgrades",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_REDSHIFT_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable automatic upgrades for Redshift clusters to ensure timely application of security patches and feature updates.",
+        "RationaleStatement": "Automatic upgrades ensure clusters receive security patches promptly, reducing vulnerability windows and maintaining security posture without manual intervention.",
+        "ImpactStatement": "Without automatic upgrades, clusters may run outdated software with known vulnerabilities, increasing risk of exploitation and security incidents.",
+        "RemediationProcedure": "1. Check upgrade settings: `aws redshift describe-clusters --cluster-identifier <id> --query 'Clusters[*].AllowVersionUpgrade'`.\n2. Enable automatic upgrades: `aws redshift modify-cluster --cluster-identifier <id> --allow-version-upgrade`.\n3. Configure maintenance window: `aws redshift modify-cluster --cluster-identifier <id> --preferred-maintenance-window Sun:03:00-Sun:04:00`.\n4. Monitor upgrade notifications and plan for major version upgrades.\n5. Test applications after upgrades to ensure compatibility.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[?AllowVersionUpgrade==`false`]'` to identify clusters with disabled automatic upgrades.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-mgmt-maintenance-tracks",
+        "DefaultValue": "Enabled by default"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_enhanced_vpc_routing",
+    "title": "Enable enhanced VPC routing for Redshift clusters",
+    "description": "Enable enhanced VPC routing for Redshift clusters to ensure data traffic stays within the VPC.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "routing",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_REDSHIFT_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable enhanced VPC routing to ensure all Redshift traffic flows through VPC and can be monitored and controlled.",
+        "RationaleStatement": "Enhanced VPC routing provides better network control, enables traffic monitoring through VPC flow logs, and ensures data doesn't traverse the public internet.",
+        "ImpactStatement": "Without enhanced VPC routing, some traffic may bypass VPC controls, reducing visibility and security monitoring capabilities for data warehouse operations.",
+        "RemediationProcedure": "1. Check current routing: `aws redshift describe-clusters --cluster-identifier <id> --query 'Clusters[*].EnhancedVpcRouting'`.\n2. Enable enhanced VPC routing: `aws redshift modify-cluster --cluster-identifier <id> --enhanced-vpc-routing`.\n3. Configure VPC endpoints for S3 and other AWS services if needed.\n4. Update route tables and security groups as required.\n5. Monitor VPC flow logs to verify traffic routing.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-clusters --query 'Clusters[?EnhancedVpcRouting==`false`]'` to identify clusters without enhanced VPC routing.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html",
+        "DefaultValue": "Disabled unless explicitly enabled"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_snapshot_encryption_enabled",
+    "title": "Enable encryption for Redshift snapshots",
+    "description": "Ensure Redshift snapshots are encrypted to protect sensitive data during backup operations.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REDSHIFT_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure all Redshift snapshots are encrypted to protect sensitive data warehouse data during backup and restore operations.",
+        "RationaleStatement": "Encrypted snapshots protect sensitive data warehouse information during backup operations, ensuring data remains secure even if backup storage is compromised.",
+        "ImpactStatement": "Unencrypted snapshots expose sensitive data warehouse data in backup storage, creating risk of data exposure and compliance violations.",
+        "RemediationProcedure": "1. Check snapshot encryption: `aws redshift describe-cluster-snapshots --cluster-identifier <id> --query 'Snapshots[*].Encrypted'`.\n2. Create encrypted snapshots: `aws redshift create-cluster-snapshot --cluster-identifier <id> --snapshot-identifier <snapshot-id> --kms-key-id <key-id>`.\n3. Configure automated snapshots from encrypted clusters (they inherit encryption).\n4. Delete unencrypted snapshots after creating encrypted replacements.\n5. Implement policies to prevent unencrypted snapshot creation.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-cluster-snapshots --query 'Snapshots[?Encrypted==`false`]'` to identify unencrypted snapshots.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html",
+        "DefaultValue": "Unencrypted unless created from encrypted cluster or explicitly specified"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_parameter_group_logging",
+    "title": "Configure logging in Redshift parameter groups",
+    "description": "Configure comprehensive logging in Redshift parameter groups to monitor data access and modifications.",
+    "capability": "data_protection",
+    "service": "redshift",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REDSHIFT_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Configure parameter groups to enable comprehensive logging of database operations and performance metrics.",
+        "RationaleStatement": "Parameter group logging enables detailed monitoring of database operations, query performance, and system events for security analysis and optimization.",
+        "ImpactStatement": "Without comprehensive parameter group logging, detailed database activities and performance issues cannot be monitored or analyzed for security purposes.",
+        "RemediationProcedure": "1. Create custom parameter group: `aws redshift create-cluster-parameter-group --parameter-group-name <name> --parameter-group-family redshift-1.0`.\n2. Enable query logging: `aws redshift modify-cluster-parameter-group --parameter-group-name <name> --parameters ParameterName=enable_user_activity_logging,ParameterValue=true`.\n3. Configure log retention: set appropriate values for log_statement, log_min_duration_statement.\n4. Apply parameter group to cluster: `aws redshift modify-cluster --cluster-identifier <id> --cluster-parameter-group-name <name>`.\n5. Monitor logs in CloudWatch or S3 based on configuration.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-cluster-parameters --parameter-group-name <name> --query 'Parameters[?ParameterName==`enable_user_activity_logging`]'` to verify logging parameters.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/dg/c_intro_to_admin.html",
+        "DefaultValue": "Basic logging unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_multi_az_enabled",
+    "title": "Enable Multi-AZ deployment for Redshift clusters",
+    "description": "Enable Multi-AZ deployment for Redshift clusters to ensure data availability within approved regions.",
+    "capability": "data_residency",
+    "service": "redshift",
+    "subservice": "availability",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DR_REDSHIFT_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Deploy Redshift clusters across multiple availability zones within approved regions for high availability and data residency compliance.",
+        "RationaleStatement": "Multi-AZ deployment ensures high availability while maintaining data within regional boundaries, supporting both business continuity and data residency requirements.",
+        "ImpactStatement": "Single-AZ deployment creates availability risks and may not meet resilience requirements for sensitive data that must remain within specific geographic boundaries.",
+        "RemediationProcedure": "1. Check current AZ configuration: `aws redshift describe-clusters --cluster-identifier <id> --query 'Clusters[*].AvailabilityZone'`.\n2. Create subnet group with multiple AZs: `aws redshift create-cluster-subnet-group --cluster-subnet-group-name <name> --subnet-ids <subnet-1> <subnet-2>`.\n3. For existing clusters, take snapshot and restore to multi-AZ configuration.\n4. Verify cluster can failover between AZs.\n5. Update application connection logic to handle AZ failures.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-cluster-subnet-groups --cluster-subnet-group-name <name>` to verify subnets span multiple AZs within approved regions.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms",
+        "DefaultValue": "Single AZ unless subnet group spans multiple AZs"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_region_restriction_enforced",
+    "title": "Enforce region restrictions for Redshift clusters",
+    "description": "Ensure Redshift clusters are created only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "redshift",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REDSHIFT_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement controls to ensure Redshift clusters are created only in approved regions that meet data residency requirements.",
+        "RationaleStatement": "Region restrictions ensure sensitive data warehouse data remains within approved geographical boundaries to comply with data sovereignty and privacy regulations.",
+        "ImpactStatement": "Redshift clusters in unapproved regions may violate data residency laws, GDPR, or other regulations, resulting in legal penalties and compliance violations.",
+        "RemediationProcedure": "1. Define approved regions based on data residency requirements.\n2. Implement SCPs in AWS Organizations: `{\"Effect\":\"Deny\",\"Action\":\"redshift:CreateCluster\",\"Condition\":{\"StringNotEquals\":{\"aws:RequestedRegion\":[\"approved-regions\"]}}}`.\n3. Use IAM policies with region conditions for Redshift actions.\n4. Audit existing clusters: `aws redshift describe-clusters --region <region>` across all regions.\n5. Migrate data from non-compliant regions using snapshots and restore.",
+        "AuditProcedure": "Use AWS CLI across all regions: `aws redshift describe-clusters --region <region>` to identify clusters in unapproved regions. Use AWS Config aggregator for multi-region compliance monitoring.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "Any region may be used unless restricted"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_snapshot_region_compliance",
+    "title": "Ensure Redshift snapshots comply with region restrictions",
+    "description": "Ensure Redshift snapshots are stored only in approved regions to meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "redshift",
+    "subservice": "backup",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REDSHIFT_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Redshift snapshots are stored only in approved regions to maintain data residency compliance.",
+        "RationaleStatement": "Snapshot location compliance ensures backup data remains within approved geographical boundaries, maintaining comprehensive data residency control for data warehouse backups.",
+        "ImpactStatement": "Snapshots in non-compliant regions could violate data residency requirements, potentially exposing sensitive data warehouse data to unauthorized jurisdictions.",
+        "RemediationProcedure": "1. Audit snapshots across regions: `aws redshift describe-cluster-snapshots --region <region>`.\n2. Identify snapshots in non-compliant regions.\n3. Copy snapshots to compliant regions: `aws redshift copy-cluster-snapshot --source-snapshot-identifier <id> --target-snapshot-identifier <new-id> --source-region <source> --destination-region <dest>`.\n4. Delete snapshots from non-compliant regions.\n5. Implement policies preventing snapshot creation in non-compliant regions.",
+        "AuditProcedure": "Use AWS CLI across all regions: `aws redshift describe-cluster-snapshots --region <region>` to identify snapshots in unapproved regions. Cross-reference with approved region list.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html",
+        "DefaultValue": "Snapshots stored in cluster region unless copied elsewhere"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cross_region_snapshot_restricted",
+    "title": "Restrict cross-region snapshot copying for Redshift",
+    "description": "Ensure Redshift snapshots are not copied across regions unless approved for data residency compliance.",
+    "capability": "data_residency",
+    "service": "redshift",
+    "subservice": "backup",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REDSHIFT_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Restrict cross-region snapshot copying to approved regions to maintain data residency compliance for data warehouse backups.",
+        "RationaleStatement": "Restricting cross-region snapshot copying ensures backup data remains within approved jurisdictions, maintaining data sovereignty compliance for disaster recovery operations.",
+        "ImpactStatement": "Unrestricted cross-region snapshot copying could move sensitive data warehouse data to jurisdictions with different privacy laws, violating data residency requirements.",
+        "RemediationProcedure": "1. Review existing cross-region snapshot copy configurations.\n2. Implement IAM policies restricting copy destinations: `{\"Effect\":\"Deny\",\"Action\":\"redshift:CopyClusterSnapshot\",\"Condition\":{\"StringNotEquals\":{\"redshift:DestinationRegion\":[\"approved-regions\"]}}}`.\n3. Delete non-compliant copied snapshots.\n4. Configure approved cross-region copying for disaster recovery if needed.\n5. Monitor snapshot copy operations for compliance.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-cluster-snapshots --snapshot-type copied` across regions to verify copied snapshots are in approved regions only.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html#cross-region-snapshot-copy",
+        "DefaultValue": "No cross-region copying unless explicitly configured"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_data_sovereignty_tags",
+    "title": "Tag Redshift clusters with data sovereignty information",
+    "description": "Ensure Redshift clusters are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "redshift",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REDSHIFT_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Apply data sovereignty and jurisdiction tags to Redshift clusters for compliance tracking and governance.",
+        "RationaleStatement": "Data sovereignty tags enable tracking and governance of data location requirements, supporting compliance with various international data protection laws for data warehouse operations.",
+        "ImpactStatement": "Without sovereignty tags, it's difficult to track compliance with data residency requirements and respond to regulatory inquiries about data warehouse data location.",
+        "RemediationProcedure": "1. Define data sovereignty taxonomy (jurisdiction, legal framework, residency requirements).\n2. Tag clusters: `aws redshift create-tags --resource-name <cluster-arn> --tags Key=DataSovereignty,Value=EU-GDPR Key=Jurisdiction,Value=European-Union Key=DataClassification,Value=Sensitive`.\n3. Implement automated tagging based on region and data classification.\n4. Create tag policies to enforce consistent sovereignty tagging.\n5. Use tags in IAM policies for access control based on jurisdiction.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-tags --resource-name <cluster-arn>` to verify sovereignty tags exist. Use AWS Config for compliance monitoring of required tags.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/rs-mgmt-tagging-console.html",
+        "DefaultValue": "No tags unless manually applied"
+      }
+    ]
+  },
+  {
+    "function_name": "redshift_cluster_subnet_group_region_compliance",
+    "title": "Ensure Redshift subnet groups comply with region restrictions",
+    "description": "Ensure Redshift subnet groups are created only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "redshift",
+    "subservice": "network",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REDSHIFT_006",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Redshift subnet groups are created only in approved regions and availability zones that meet data residency requirements.",
+        "RationaleStatement": "Subnet group location compliance ensures cluster network access points remain within approved geographical boundaries, maintaining comprehensive data residency control.",
+        "ImpactStatement": "Subnet groups in non-compliant regions could provide unauthorized network access paths, potentially violating data residency requirements and regulatory compliance.",
+        "RemediationProcedure": "1. Audit subnet groups across regions: `aws redshift describe-cluster-subnet-groups --region <region>`.\n2. Identify subnet groups in non-compliant regions.\n3. Create new subnet groups in compliant regions: `aws redshift create-cluster-subnet-group --cluster-subnet-group-name <name> --subnet-ids <compliant-subnet-ids>`.\n4. Migrate clusters to use compliant subnet groups.\n5. Delete non-compliant subnet groups after migration.",
+        "AuditProcedure": "Use AWS CLI: `aws redshift describe-cluster-subnet-groups` across regions and verify all subnet groups are in approved regions and AZs only.",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms",
+        "DefaultValue": "Subnet groups created in same region as specified subnets"
+      }
+    ]
+  }
+]

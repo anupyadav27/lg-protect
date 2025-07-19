@@ -1,0 +1,80 @@
+{
+  "categories": {
+    "compute": {
+      "name": "Compute Services",
+      "description": "AWS compute and processing services",
+      "priority": 2,
+      "criticality": "high",
+      "services": ["ec2", "lambda", "ecs", "eks", "batch", "sagemaker", "workspaces", "elasticbeanstalk", "lightsail", "autoscaling"]
+    },
+    "storage": {
+      "name": "Storage Services",
+      "description": "AWS storage and backup services",
+      "priority": 3,
+      "criticality": "high",
+      "services": ["s3", "ebs", "efs", "fsx", "backup", "storagegateway", "glacier", "datasync"]
+    },
+    "database": {
+      "name": "Database Services",
+      "description": "AWS database and data services",
+      "priority": 3,
+      "criticality": "high",
+      "services": ["rds", "dynamodb", "elasticache", "redshift", "neptune", "documentdb", "timestream"]
+    },
+    "network": {
+      "name": "Network Services",
+      "description": "AWS networking and connectivity services",
+      "priority": 2,
+      "criticality": "high",
+      "services": ["vpc", "cloudfront", "route53", "apigateway", "apigatewayv2", "elbv2", "directconnect", "globalaccelerator", "networkfirewall", "vpc-lattice", "vpn"]
+    },
+    "security": {
+      "name": "Security Services",
+      "description": "AWS security and identity services",
+      "priority": 1,
+      "criticality": "critical",
+      "services": ["iam", "kms", "guardduty", "securityhub", "inspector2", "secretsmanager", "waf", "wafv2", "shield", "acm", "macie"]
+    },
+    "monitoring": {
+      "name": "Monitoring Services",
+      "description": "AWS monitoring and logging services",
+      "priority": 4,
+      "criticality": "medium",
+      "services": ["cloudwatch", "cloudtrail", "config", "logs", "xray", "systems-manager"]
+    },
+    "analytics": {
+      "name": "Analytics Services",
+      "description": "AWS analytics and data processing services",
+      "priority": 5,
+      "criticality": "medium",
+      "services": ["athena", "glue", "emr", "kinesis", "firehose", "quicksight", "elasticsearch"]
+    },
+    "application": {
+      "name": "Application Services",
+      "description": "AWS application integration services",
+      "priority": 4,
+      "criticality": "medium",
+      "services": ["sns", "sqs", "events", "stepfunctions", "connect", "chime", "ses", "pinpoint", "eventbridge"]
+    },
+    "management": {
+      "name": "Management Services",
+      "description": "AWS management and governance services",
+      "priority": 5,
+      "criticality": "low",
+      "services": ["cloudformation", "organizations", "ssm", "transfer", "control-tower", "service-catalog", "resource-groups"]
+    },
+    "ml_ai": {
+      "name": "ML/AI Services",
+      "description": "AWS machine learning and AI services",
+      "priority": 5,
+      "criticality": "medium",
+      "services": ["comprehend", "rekognition", "translate", "textract", "transcribe", "polly", "sagemaker"]
+    }
+  },
+  "metadata": {
+    "version": "2.0",
+    "last_updated": "2025-01-12",
+    "total_categories": 10,
+    "description": "Category definitions with risk metadata and service lists"
+  }
+} 

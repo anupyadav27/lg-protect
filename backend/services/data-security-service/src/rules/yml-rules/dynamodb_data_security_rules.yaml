@@ -1,0 +1,230 @@
+# DynamoDB Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: dynamodb_table_cross_account_access
+  title: Restrict DynamoDB table cross-account access
+  description: Ensure DynamoDB tables do not allow unrestricted cross-account access that could lead to unauthorized data access.
+  capability: access_governance
+  service: dynamodb
+  subservice: policy
+  risk: HIGH
+  existing: true
+
+- function_name: dynamodb_table_public_access_restricted
+  title: Restrict public access to DynamoDB tables
+  description: Ensure DynamoDB tables are not publicly accessible to prevent unauthorized access to sensitive data.
+  capability: access_governance
+  service: dynamodb
+  subservice: access
+  risk: HIGH
+  existing: false
+
+- function_name: dynamodb_table_vpc_endpoint_access
+  title: Require VPC endpoints for DynamoDB access
+  description: Ensure DynamoDB access occurs through VPC endpoints to prevent data from leaving the controlled network environment.
+  capability: access_governance
+  service: dynamodb
+  subservice: network
+  risk: MEDIUM
+  existing: false
+
+- function_name: dynamodb_table_iam_policy_least_privilege
+  title: Enforce least privilege IAM policies for DynamoDB
+  description: Ensure DynamoDB IAM policies follow least privilege principles to minimize unauthorized data access risks.
+  capability: access_governance
+  service: dynamodb
+  subservice: iam
+  risk: MEDIUM
+  existing: false
+
+- function_name: dynamodb_table_cloudtrail_logging_enabled
+  title: Enable CloudTrail logging for DynamoDB
+  description: Enable CloudTrail logging for DynamoDB operations to monitor data access and support compliance auditing.
+  capability: access_governance
+  service: dynamodb
+  subservice: logging
+  risk: MEDIUM
+  existing: false
+
+- function_name: dynamodb_table_access_patterns_monitored
+  title: Monitor DynamoDB access patterns
+  description: Implement monitoring for unusual DynamoDB access patterns to detect potential data breaches or unauthorized access.
+  capability: access_governance
+  service: dynamodb
+  subservice: monitoring
+  risk: LOW
+  existing: false
+
+- function_name: dynamodb_table_fine_grained_access_control
+  title: Implement fine-grained access control for DynamoDB
+  description: Use DynamoDB fine-grained access control to restrict access to specific items and attributes based on user identity.
+  capability: access_governance
+  service: dynamodb
+  subservice: access
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: dynamodb_table_encryption_enabled
+  title: Enable encryption at rest for DynamoDB tables
+  description: Ensure DynamoDB tables have encryption at rest enabled to protect sensitive data and meet compliance requirements.
+  capability: data_protection
+  service: dynamodb
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: dynamodb_tables_kms_cmk_encryption_enabled
+  title: Use KMS CMK encryption for DynamoDB tables
+  description: Ensure DynamoDB tables use customer-managed KMS keys for encryption to maintain control over encryption keys.
+  capability: data_protection
+  service: dynamodb
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: dynamodb_table_deletion_protection_enabled
+  title: Enable deletion protection for DynamoDB tables
+  description: Enable deletion protection for DynamoDB tables to prevent accidental data loss and ensure data integrity.
+  capability: data_protection
+  service: dynamodb
+  subservice: protection
+  risk: MEDIUM
+  existing: true
+
+- function_name: dynamodb_tables_pitr_enabled
+  title: Enable Point-in-Time Recovery for DynamoDB tables
+  description: Enable Point-in-Time Recovery for DynamoDB tables to protect against accidental data loss and support compliance requirements.
+  capability: data_protection
+  service: dynamodb
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: dynamodb_table_protected_by_backup_plan
+  title: Ensure DynamoDB tables are protected by backup plans
+  description: Ensure DynamoDB tables are included in AWS Backup plans for comprehensive data protection and compliance.
+  capability: data_protection
+  service: dynamodb
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: dynamodb_table_in_transit_encryption_enabled
+  title: Enable encryption in transit for DynamoDB
+  description: Ensure DynamoDB connections use TLS encryption to protect data in transit between applications and database.
+  capability: data_protection
+  service: dynamodb
+  subservice: tls
+  risk: HIGH
+  existing: false
+
+- function_name: dynamodb_table_data_classification_tags
+  title: Tag DynamoDB tables with data classification
+  description: Ensure DynamoDB tables are tagged with appropriate data classification levels for governance and compliance tracking.
+  capability: data_protection
+  service: dynamodb
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: dynamodb_table_retention_policy_configured
+  title: Configure data retention policies for DynamoDB
+  description: Implement data retention policies for DynamoDB tables to automatically manage data lifecycle and meet compliance requirements.
+  capability: data_protection
+  service: dynamodb
+  subservice: lifecycle
+  risk: MEDIUM
+  existing: false
+
+- function_name: dynamodb_table_streams_encryption_enabled
+  title: Enable encryption for DynamoDB Streams
+  description: Ensure DynamoDB Streams are encrypted to protect change data capture information and maintain data security.
+  capability: data_protection
+  service: dynamodb
+  subservice: encryption
+  risk: MEDIUM
+  existing: false
+
+- function_name: dynamodb_accelerator_cluster_encryption_enabled
+  title: Enable encryption for DynamoDB Accelerator clusters
+  description: Ensure DynamoDB Accelerator (DAX) clusters have encryption at rest enabled to protect cached data.
+  capability: data_protection
+  service: dynamodb
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: dynamodb_accelerator_cluster_in_transit_encryption_enabled
+  title: Enable in-transit encryption for DynamoDB Accelerator
+  description: Ensure DynamoDB Accelerator clusters have encryption in transit enabled to protect data during transmission.
+  capability: data_protection
+  service: dynamodb
+  subservice: tls
+  risk: HIGH
+  existing: true
+
+# DATA RESIDENCY Rules
+- function_name: dynamodb_table_region_restriction_enforced
+  title: Enforce region restrictions for DynamoDB tables
+  description: Ensure DynamoDB tables are created only in approved regions to comply with data residency and sovereignty requirements.
+  capability: data_residency
+  service: dynamodb
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: dynamodb_global_tables_region_compliance
+  title: Validate DynamoDB Global Tables regions for compliance
+  description: Ensure DynamoDB Global Tables are configured only in regions that comply with data residency requirements.
+  capability: data_residency
+  service: dynamodb
+  subservice: replication
+  risk: HIGH
+  existing: false
+
+- function_name: dynamodb_table_cross_region_backup_restricted
+  title: Restrict cross-region backup destinations
+  description: Ensure DynamoDB cross-region backups are only configured to approved regions that meet data residency requirements.
+  capability: data_residency
+  service: dynamodb
+  subservice: backup
+  risk: HIGH
+  existing: false
+
+- function_name: dynamodb_table_data_sovereignty_tags
+  title: Tag DynamoDB tables with data sovereignty information
+  description: Ensure DynamoDB tables are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: dynamodb
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: dynamodb_accelerator_cluster_multi_az
+  title: Enable Multi-AZ for DynamoDB Accelerator clusters
+  description: Enable Multi-AZ deployment for DynamoDB Accelerator clusters to ensure availability within approved regions.
+  capability: data_residency
+  service: dynamodb
+  subservice: availability
+  risk: MEDIUM
+  existing: true
+
+- function_name: dynamodb_table_export_region_compliance
+  title: Validate DynamoDB export destinations for compliance
+  description: Ensure DynamoDB table exports to S3 are configured only to buckets in regions that meet data residency requirements.
+  capability: data_residency
+  service: dynamodb
+  subservice: export
+  risk: MEDIUM
+  existing: false
+
+- function_name: dynamodb_table_same_region_replication_only
+  title: Restrict DynamoDB replication to same region
+  description: Ensure DynamoDB replication is configured only within the same region to maintain strict data residency requirements.
+  capability: data_residency
+  service: dynamodb
+  subservice: replication
+  risk: HIGH
+  existing: false

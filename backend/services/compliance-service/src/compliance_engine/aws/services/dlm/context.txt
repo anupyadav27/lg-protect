@@ -1,0 +1,172 @@
+WS Services Standardization Context & Progress Tracker
+📋 CONTEXT SUMMARY
+Goal: Standardize all AWS service files to follow the clean architecture pattern:
+Service files: Data collection only (no compliance logic)
+Individual rules: Rich compliance checks with metadata
+No duplication: Single source of truth for each compliance check
+Reference Pattern: accessanalyzer/ service (already cleaned up)
+📊 PROGRESS TRACKER
+✅ COMPLETED SERVICES
+accessanalyzer - ✅ Cleaned up (reference pattern)
+account - ✅ Already clean structure
+�� CURRENT SERVICE: acm (Next in alphabetical order)
+⏳ PENDING SERVICES (Alphabetical order):
+apigatewayv2
+appstream
+appsync
+athena
+autoscaling
+awslambda
+backup
+bedrock
+cloudformation
+cloudfront
+cloudtrail
+cloudwatch
+codeartifact
+codebuild
+cognito
+config
+datasync
+directconnect
+directoryservice
+dlm
+dms
+documentdb
+drs
+dynamodb
+ec2
+ecr
+ecs
+efs
+eks
+elasticache
+elasticbeanstalk
+elb
+elbv2
+emr
+eventbridge
+firehose
+fms
+fsx
+glacier
+globalaccelerator
+glue
+guardduty
+iam
+inspector2
+kafka
+kinesis
+kms
+lightsail
+macie
+memorydb
+mq
+neptune
+networkfirewall
+opensearch
+organizations
+rds
+redshift
+resourceexplorer2
+route53
+s3
+sagemaker
+secretsmanager
+securityhub
+servicecatalog
+ses
+shield
+sns
+sqs
+ssm
+ssmincidents
+stepfunctions
+storagegateway
+transfer
+trustedadvisor
+vpc
+waf
+wafv2
+wellarchitected
+workspaces
+🔧 STANDARDIZATION CHECKLIST FOR EACH SERVICE
+Service File Requirements:
+[ ] Inherits from BaseService
+[ ] Implements _get_service_name() method
+[ ] NO run_compliance_checks() method
+[ ] NO _check_*() methods
+[ ] ONLY data collection methods
+[ ] Has get_all_[resources]() method for individual rules
+Individual Rules Requirements:
+[ ] Inherit from BaseCheck
+[ ] Implement _get_metadata() method
+[ ] Implement execute() method
+[ ] Use service for data collection
+[ ] Return CheckReport objects with rich metadata
+�� STARTING WITH: ACM SERVICE
+🔍 ACM SERVICE ANALYSIS
+Current State Assessment:
+❌ Issues Found:
+Service File Issues:
+❌ Does NOT inherit from BaseService
+❌ Class name is ACMService instead of ACMService
+❌ No _get_service_name() method
+❌ No get_all_certificates(region) method for individual rules
+Individual Rule Issues:
+❌ Uses acm_client.certificates.values() instead of service
+❌ Missing proper service integration
+✅ Good Parts:
+✅ Has proper data models (Certificate)
+✅ Has individual rule folders
+✅ Individual rules inherit from BaseCheck
+✅ Individual rules have rich metadata
+🔧 ACM SERVICE CLEANUP PLAN
+Step 1: Fix Service File
+Tool edit_file not found. Try switching to Agent mode.
+I apologize for the confusion. Let me continue with the analysis and provide you with the exact changes needed for the ACM service.
+🔧 ACM SERVICE CLEANUP - EXACT CHANGES NEEDED
+Step 1: Service File Changes (acm_service.py)
+Current Issues:
+Apply to dlm_service....
+initialization
+Required Changes:
+Apply to dlm_service....
+]
+Step 2: Individual Rule Changes
+Current Issue in acm_certificates_expiration_check.py:
+Apply to dlm_service....
+:
+Required Change:
+Apply to dlm_service....
+:
+📊 UPDATED PROGRESS TRACKER
+✅ COMPLETED SERVICES
+accessanalyzer - ✅ Cleaned up (reference pattern)
+account - ✅ Already clean structure
+�� CURRENT SERVICE: acm - ⚠️ NEEDS CLEANUP
+Issues Found:
+❌ Service doesn't inherit from BaseService
+❌ No _get_service_name() method
+❌ No get_all_certificates(region) method
+❌ Individual rules don't use service properly
+Changes Needed:
+Fix service inheritance and methods
+Update individual rules to use service
+Add proper region handling
+⏳ NEXT SERVICE: apigatewayv2 (After ACM is fixed)
+�� CONTEXT FOR RESUMPTION
+Current Status: Analyzing ACM service for cleanup
+Next Action: Fix ACM service file and individual rules
+Progress: 2/81 services completed (2.5%)
+Key Points for Continuation:
+ACM service needs BaseService inheritance
+Add get_all_certificates(region) method
+Update individual rules to use service instead of client
+Follow the same pattern as accessanalyzer service
+Quality Standards:
+✅ No duplicate compliance logic in service files
+✅ Individual rules use service for data collection
+✅ Rich metadata in individual rules
+✅ Proper error handling and logging
+Would you like me to continue with the detailed fix for ACM service, or would you prefer to handle this one and then pass the context back to me for the next service?

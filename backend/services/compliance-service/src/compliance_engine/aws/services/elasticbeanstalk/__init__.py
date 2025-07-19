@@ -1,0 +1,20 @@
+"""
+AWS Elasticbeanstalk Service Module
+
+Centralized imports for AWS Elasticbeanstalk compliance checks.
+"""
+
+# Import the service class
+from .elasticbeanstalk_service import ElasticBeanstalkService
+
+# Import individual checks
+from .elasticbeanstalk_environment_cloudwatch_logging_enabled.elasticbeanstalk_environment_cloudwatch_logging_enabled import elasticbeanstalk_environment_cloudwatch_logging_enabled
+from .elasticbeanstalk_environment_enhanced_health_reporting.elasticbeanstalk_environment_enhanced_health_reporting import elasticbeanstalk_environment_enhanced_health_reporting
+from .elasticbeanstalk_environment_managed_updates_enabled.elasticbeanstalk_environment_managed_updates_enabled import elasticbeanstalk_environment_managed_updates_enabled
+
+__all__ = [
+    'ElasticBeanstalkService',
+    'elasticbeanstalk_environment_cloudwatch_logging_enabled',
+    'elasticbeanstalk_environment_enhanced_health_reporting',
+    'elasticbeanstalk_environment_managed_updates_enabled',
+]

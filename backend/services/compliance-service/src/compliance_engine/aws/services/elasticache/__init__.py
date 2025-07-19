@@ -1,0 +1,30 @@
+"""
+AWS Elasticache Service Module
+
+Centralized imports for AWS Elasticache compliance checks.
+"""
+
+# Import the service class
+from .elasticache_service import ElastiCacheService
+
+# Import individual checks
+from .elasticache_cluster_uses_public_subnet.elasticache_cluster_uses_public_subnet import elasticache_cluster_uses_public_subnet
+from .elasticache_redis_cluster_auto_minor_version_upgrades.elasticache_redis_cluster_auto_minor_version_upgrades import elasticache_redis_cluster_auto_minor_version_upgrades
+from .elasticache_redis_cluster_automatic_failover_enabled.elasticache_redis_cluster_automatic_failover_enabled import elasticache_redis_cluster_automatic_failover_enabled
+from .elasticache_redis_cluster_backup_enabled.elasticache_redis_cluster_backup_enabled import elasticache_redis_cluster_backup_enabled
+from .elasticache_redis_cluster_in_transit_encryption_enabled.elasticache_redis_cluster_in_transit_encryption_enabled import elasticache_redis_cluster_in_transit_encryption_enabled
+from .elasticache_redis_cluster_multi_az_enabled.elasticache_redis_cluster_multi_az_enabled import elasticache_redis_cluster_multi_az_enabled
+from .elasticache_redis_cluster_rest_encryption_enabled.elasticache_redis_cluster_rest_encryption_enabled import elasticache_redis_cluster_rest_encryption_enabled
+from .elasticache_redis_replication_group_auth_enabled.elasticache_redis_replication_group_auth_enabled import elasticache_redis_replication_group_auth_enabled
+
+__all__ = [
+    'ElastiCacheService',
+    'elasticache_cluster_uses_public_subnet',
+    'elasticache_redis_cluster_auto_minor_version_upgrades',
+    'elasticache_redis_cluster_automatic_failover_enabled',
+    'elasticache_redis_cluster_backup_enabled',
+    'elasticache_redis_cluster_in_transit_encryption_enabled',
+    'elasticache_redis_cluster_multi_az_enabled',
+    'elasticache_redis_cluster_rest_encryption_enabled',
+    'elasticache_redis_replication_group_auth_enabled',
+]

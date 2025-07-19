@@ -1,0 +1,1044 @@
+{
+  "scan_id": "multi_client_scan_20250718_114336",
+  "scan_timestamp": "2025-07-18T11:43:36.108769",
+  "accounts_scanned": 1,
+  "total_findings": 67,
+  "summary": {
+    "passed": 45,
+    "failed": 19,
+    "warnings": 3,
+    "compliance_score": 67.16417910447761
+  },
+  "account_results": {
+    "default": {
+      "account_id": "588989875114",
+      "account_name": null,
+      "findings_count": 67
+    }
+  },
+  "findings": [
+    {
+      "check_name": "acm_certificates_expiration_check",
+      "status": "FAIL",
+      "status_extended": "Certificate expires in -2396 days",
+      "resource": {
+        "certificate_arn": "arn:aws:acm:us-east-1:588989875114:certificate/466bf8a6-a11e-46e8-be3f-22f5050ea1fc",
+        "domain_name": "www.lgtech.in",
+        "expiration_date": "2018-12-26T17:30:00+05:30",
+        "days_until_expiration": -2396
+      },
+      "evidence": {
+        "certificate_id": "466bf8a6-a11e-46e8-be3f-22f5050ea1fc",
+        "key_algorithm": "RSA-2048"
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "acm"
+    },
+    {
+      "check_name": "account_security_contact_information_is_registered",
+      "status": "WARNING",
+      "status_extended": "Could not verify security contact information: An error occurred (ResourceNotFoundException) when",
+      "resource": {
+        "account_id": "588989875114"
+      },
+      "evidence": {
+        "contact_info_verified": false,
+        "error": "An error occurred (ResourceNotFoundException) when calling the GetAlternateContact operation: No contact of the inputted alternate contact type found."
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "account"
+    },
+    {
+      "check_name": "accessanalyzer_enabled",
+      "status": "FAIL",
+      "status_extended": "No Access Analyzers found in us-east-1",
+      "resource": {
+        "region": "us-east-1",
+        "analyzer_status": "DISABLED"
+      },
+      "evidence": {
+        "analyzers_found": 0
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "accessanalyzer"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User administrator does not have MFA enabled",
+      "resource": {
+        "user_name": "administrator",
+        "user_arn": "arn:aws:iam::588989875114:user/administrator",
+        "create_date": "2021-08-08T16:08:24+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User ajay does not have MFA enabled",
+      "resource": {
+        "user_name": "ajay",
+        "user_arn": "arn:aws:iam::588989875114:user/ajay",
+        "create_date": "2025-04-20T05:08:14+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User cs_admin_central does not have MFA enabled",
+      "resource": {
+        "user_name": "cs_admin_central",
+        "user_arn": "arn:aws:iam::588989875114:user/cs_admin_central",
+        "create_date": "2024-10-26T12:13:03+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User ekspod_users does not have MFA enabled",
+      "resource": {
+        "user_name": "ekspod_users",
+        "user_arn": "arn:aws:iam::588989875114:user/ekspod_users",
+        "create_date": "2024-09-10T10:37:13+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User lgtech_admin does not have MFA enabled",
+      "resource": {
+        "user_name": "lgtech_admin",
+        "user_arn": "arn:aws:iam::588989875114:user/lgtech_admin",
+        "create_date": "2024-10-26T13:53:10+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket anup-backup has encryption enabled",
+      "resource": {
+        "bucket_name": "anup-backup",
+        "creation_date": "2018-08-18T15:28:44+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket appstream-logs-ap-south-1-588989875114-khmbajua has encryption enabled",
+      "resource": {
+        "bucket_name": "appstream-logs-ap-south-1-588989875114-khmbajua",
+        "creation_date": "2025-06-29T15:33:43+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket aws-codestar-us-east-1-588989875114-codestar-pipe has encryption enabled",
+      "resource": {
+        "bucket_name": "aws-codestar-us-east-1-588989875114-codestar-pipe",
+        "creation_date": "2022-05-04T09:56:59+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket aws-resilience-hub-reports-588989875114-fnwv5r3jqjzb has encryption enabled",
+      "resource": {
+        "bucket_name": "aws-resilience-hub-reports-588989875114-fnwv5r3jqjzb",
+        "creation_date": "2025-06-29T15:37:23+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-ap-south-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-ap-south-1-588989875114",
+        "creation_date": "2019-08-16T03:52:01+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-ap-southeast-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-ap-southeast-1-588989875114",
+        "creation_date": "2019-02-16T12:20:33+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-us-east-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-us-east-1-588989875114",
+        "creation_date": "2019-02-09T09:02:54+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-us-west-2-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-us-west-2-588989875114",
+        "creation_date": "2016-04-21T15:39:55+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket lgtech-website has encryption enabled",
+      "resource": {
+        "bucket_name": "lgtech-website",
+        "creation_date": "2019-02-28T06:09:12+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket my-bucket-x2nc4n2t has encryption enabled",
+      "resource": {
+        "bucket_name": "my-bucket-x2nc4n2t",
+        "creation_date": "2024-09-01T13:49:11+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket nmbackupanup has encryption enabled",
+      "resource": {
+        "bucket_name": "nmbackupanup",
+        "creation_date": "2020-08-13T10:03:19+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket sytestspeechtotext has encryption enabled",
+      "resource": {
+        "bucket_name": "sytestspeechtotext",
+        "creation_date": "2019-01-19T14:15:47+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00 has encryption enabled",
+      "resource": {
+        "bucket_name": "textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00",
+        "creation_date": "2024-09-19T13:47:28+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket www.c-and-c.in has encryption enabled",
+      "resource": {
+        "bucket_name": "www.c-and-c.in",
+        "creation_date": "2019-11-03T13:45:41+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket www.lgtech.in has encryption enabled",
+      "resource": {
+        "bucket_name": "www.lgtech.in",
+        "creation_date": "2018-06-25T02:15:01+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-east-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "account_security_contact_information_is_registered",
+      "status": "WARNING",
+      "status_extended": "Could not verify security contact information: An error occurred (ResourceNotFoundException) when",
+      "resource": {
+        "account_id": "588989875114"
+      },
+      "evidence": {
+        "contact_info_verified": false,
+        "error": "An error occurred (ResourceNotFoundException) when calling the GetAlternateContact operation: No contact of the inputted alternate contact type found."
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "account"
+    },
+    {
+      "check_name": "accessanalyzer_enabled",
+      "status": "FAIL",
+      "status_extended": "No Access Analyzers found in us-west-2",
+      "resource": {
+        "region": "us-west-2",
+        "analyzer_status": "DISABLED"
+      },
+      "evidence": {
+        "analyzers_found": 0
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "accessanalyzer"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User administrator does not have MFA enabled",
+      "resource": {
+        "user_name": "administrator",
+        "user_arn": "arn:aws:iam::588989875114:user/administrator",
+        "create_date": "2021-08-08T16:08:24+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User ajay does not have MFA enabled",
+      "resource": {
+        "user_name": "ajay",
+        "user_arn": "arn:aws:iam::588989875114:user/ajay",
+        "create_date": "2025-04-20T05:08:14+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User cs_admin_central does not have MFA enabled",
+      "resource": {
+        "user_name": "cs_admin_central",
+        "user_arn": "arn:aws:iam::588989875114:user/cs_admin_central",
+        "create_date": "2024-10-26T12:13:03+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User ekspod_users does not have MFA enabled",
+      "resource": {
+        "user_name": "ekspod_users",
+        "user_arn": "arn:aws:iam::588989875114:user/ekspod_users",
+        "create_date": "2024-09-10T10:37:13+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User lgtech_admin does not have MFA enabled",
+      "resource": {
+        "user_name": "lgtech_admin",
+        "user_arn": "arn:aws:iam::588989875114:user/lgtech_admin",
+        "create_date": "2024-10-26T13:53:10+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "iam"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket anup-backup has encryption enabled",
+      "resource": {
+        "bucket_name": "anup-backup",
+        "creation_date": "2018-08-18T15:28:44+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket appstream-logs-ap-south-1-588989875114-khmbajua has encryption enabled",
+      "resource": {
+        "bucket_name": "appstream-logs-ap-south-1-588989875114-khmbajua",
+        "creation_date": "2025-06-29T15:33:43+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket aws-codestar-us-east-1-588989875114-codestar-pipe has encryption enabled",
+      "resource": {
+        "bucket_name": "aws-codestar-us-east-1-588989875114-codestar-pipe",
+        "creation_date": "2022-05-04T09:56:59+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket aws-resilience-hub-reports-588989875114-fnwv5r3jqjzb has encryption enabled",
+      "resource": {
+        "bucket_name": "aws-resilience-hub-reports-588989875114-fnwv5r3jqjzb",
+        "creation_date": "2025-06-29T15:37:23+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-ap-south-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-ap-south-1-588989875114",
+        "creation_date": "2019-08-16T03:52:01+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-ap-southeast-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-ap-southeast-1-588989875114",
+        "creation_date": "2019-02-16T12:20:33+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-us-east-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-us-east-1-588989875114",
+        "creation_date": "2019-02-09T09:02:54+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-us-west-2-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-us-west-2-588989875114",
+        "creation_date": "2016-04-21T15:39:55+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket lgtech-website has encryption enabled",
+      "resource": {
+        "bucket_name": "lgtech-website",
+        "creation_date": "2019-02-28T06:09:12+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket my-bucket-x2nc4n2t has encryption enabled",
+      "resource": {
+        "bucket_name": "my-bucket-x2nc4n2t",
+        "creation_date": "2024-09-01T13:49:11+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket nmbackupanup has encryption enabled",
+      "resource": {
+        "bucket_name": "nmbackupanup",
+        "creation_date": "2020-08-13T10:03:19+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket sytestspeechtotext has encryption enabled",
+      "resource": {
+        "bucket_name": "sytestspeechtotext",
+        "creation_date": "2019-01-19T14:15:47+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00 has encryption enabled",
+      "resource": {
+        "bucket_name": "textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00",
+        "creation_date": "2024-09-19T13:47:28+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket www.c-and-c.in has encryption enabled",
+      "resource": {
+        "bucket_name": "www.c-and-c.in",
+        "creation_date": "2019-11-03T13:45:41+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket www.lgtech.in has encryption enabled",
+      "resource": {
+        "bucket_name": "www.lgtech.in",
+        "creation_date": "2018-06-25T02:15:01+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "us-west-2",
+      "service": "s3"
+    },
+    {
+      "check_name": "account_security_contact_information_is_registered",
+      "status": "WARNING",
+      "status_extended": "Could not verify security contact information: An error occurred (ResourceNotFoundException) when",
+      "resource": {
+        "account_id": "588989875114"
+      },
+      "evidence": {
+        "contact_info_verified": false,
+        "error": "An error occurred (ResourceNotFoundException) when calling the GetAlternateContact operation: No contact of the inputted alternate contact type found."
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "account"
+    },
+    {
+      "check_name": "accessanalyzer_enabled",
+      "status": "FAIL",
+      "status_extended": "No Access Analyzers found in eu-west-1",
+      "resource": {
+        "region": "eu-west-1",
+        "analyzer_status": "DISABLED"
+      },
+      "evidence": {
+        "analyzers_found": 0
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "accessanalyzer"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User administrator does not have MFA enabled",
+      "resource": {
+        "user_name": "administrator",
+        "user_arn": "arn:aws:iam::588989875114:user/administrator",
+        "create_date": "2021-08-08T16:08:24+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User ajay does not have MFA enabled",
+      "resource": {
+        "user_name": "ajay",
+        "user_arn": "arn:aws:iam::588989875114:user/ajay",
+        "create_date": "2025-04-20T05:08:14+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User cs_admin_central does not have MFA enabled",
+      "resource": {
+        "user_name": "cs_admin_central",
+        "user_arn": "arn:aws:iam::588989875114:user/cs_admin_central",
+        "create_date": "2024-10-26T12:13:03+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User ekspod_users does not have MFA enabled",
+      "resource": {
+        "user_name": "ekspod_users",
+        "user_arn": "arn:aws:iam::588989875114:user/ekspod_users",
+        "create_date": "2024-09-10T10:37:13+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "iam_user_mfa_enabled",
+      "status": "FAIL",
+      "status_extended": "User lgtech_admin does not have MFA enabled",
+      "resource": {
+        "user_name": "lgtech_admin",
+        "user_arn": "arn:aws:iam::588989875114:user/lgtech_admin",
+        "create_date": "2024-10-26T13:53:10+00:00"
+      },
+      "evidence": {
+        "mfa_devices_count": 0
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "iam"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket anup-backup has encryption enabled",
+      "resource": {
+        "bucket_name": "anup-backup",
+        "creation_date": "2018-08-18T15:28:44+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket appstream-logs-ap-south-1-588989875114-khmbajua has encryption enabled",
+      "resource": {
+        "bucket_name": "appstream-logs-ap-south-1-588989875114-khmbajua",
+        "creation_date": "2025-06-29T15:33:43+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket aws-codestar-us-east-1-588989875114-codestar-pipe has encryption enabled",
+      "resource": {
+        "bucket_name": "aws-codestar-us-east-1-588989875114-codestar-pipe",
+        "creation_date": "2022-05-04T09:56:59+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket aws-resilience-hub-reports-588989875114-fnwv5r3jqjzb has encryption enabled",
+      "resource": {
+        "bucket_name": "aws-resilience-hub-reports-588989875114-fnwv5r3jqjzb",
+        "creation_date": "2025-06-29T15:37:23+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-ap-south-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-ap-south-1-588989875114",
+        "creation_date": "2019-08-16T03:52:01+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-ap-southeast-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-ap-southeast-1-588989875114",
+        "creation_date": "2019-02-16T12:20:33+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-us-east-1-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-us-east-1-588989875114",
+        "creation_date": "2019-02-09T09:02:54+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket elasticbeanstalk-us-west-2-588989875114 has encryption enabled",
+      "resource": {
+        "bucket_name": "elasticbeanstalk-us-west-2-588989875114",
+        "creation_date": "2016-04-21T15:39:55+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket lgtech-website has encryption enabled",
+      "resource": {
+        "bucket_name": "lgtech-website",
+        "creation_date": "2019-02-28T06:09:12+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket my-bucket-x2nc4n2t has encryption enabled",
+      "resource": {
+        "bucket_name": "my-bucket-x2nc4n2t",
+        "creation_date": "2024-09-01T13:49:11+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket nmbackupanup has encryption enabled",
+      "resource": {
+        "bucket_name": "nmbackupanup",
+        "creation_date": "2020-08-13T10:03:19+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket sytestspeechtotext has encryption enabled",
+      "resource": {
+        "bucket_name": "sytestspeechtotext",
+        "creation_date": "2019-01-19T14:15:47+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00 has encryption enabled",
+      "resource": {
+        "bucket_name": "textract-console-us-east-1-4436e225-a5be-4a99-8619-1ba3510aeb00",
+        "creation_date": "2024-09-19T13:47:28+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket www.c-and-c.in has encryption enabled",
+      "resource": {
+        "bucket_name": "www.c-and-c.in",
+        "creation_date": "2019-11-03T13:45:41+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    },
+    {
+      "check_name": "s3_bucket_encryption_enabled",
+      "status": "PASS",
+      "status_extended": "Bucket www.lgtech.in has encryption enabled",
+      "resource": {
+        "bucket_name": "www.lgtech.in",
+        "creation_date": "2018-06-25T02:15:01+00:00"
+      },
+      "evidence": {
+        "encryption_enabled": true
+      },
+      "account_name": "default",
+      "region": "eu-west-1",
+      "service": "s3"
+    }
+  ]
+}

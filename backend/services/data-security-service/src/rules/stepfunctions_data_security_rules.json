@@ -1,0 +1,482 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Restrict public access to Step Functions state machines",
+    "Checks": ["stepfunctions_statemachine_public_access_restricted"],
+    "function_name": "stepfunctions_statemachine_public_access_restricted",
+    "title": "Restrict public access to Step Functions state machines",
+    "description": "Ensure Step Functions state machines are not publicly accessible to prevent unauthorized access to workflow data.",
+    "capability": "access_governance",
+    "service": "stepfunctions",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_STEPFUNCTIONS_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines are not publicly accessible to prevent unauthorized access to workflow data.",
+        "RationaleStatement": "Public access to Step Functions state machines can expose sensitive workflow logic and data processing patterns to unauthorized users.",
+        "ImpactStatement": "Publicly accessible state machines can lead to unauthorized workflow executions, data exposure, and potential misuse of business logic.",
+        "RemediationProcedure": "1. Review state machine resource policies:\n```aws stepfunctions describe-state-machine --state-machine-arn <arn>```\n2. Remove public access from resource policies:\n```aws stepfunctions update-state-machine --state-machine-arn <arn> --definition file://private-state-machine.json```\n3. Implement IAM-based access controls\n4. Configure VPC endpoints for private access if needed",
+        "AuditProcedure": "1. List all state machines:\n```aws stepfunctions list-state-machines```\n2. Check resource policies for public access:\n```aws stepfunctions describe-state-machine --state-machine-arn <arn> --query 'definition' | jq '.Resource'```\n3. Verify no wildcard principals in resource policies\n4. Check for internet-accessible execution endpoints",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/concept-resource-based-policies.html",
+        "DefaultValue": "State machines are private by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Enforce least privilege for Step Functions IAM roles",
+    "Checks": ["stepfunctions_statemachine_iam_least_privilege"],
+    "function_name": "stepfunctions_statemachine_iam_least_privilege",
+    "title": "Enforce least privilege for Step Functions IAM roles",
+    "description": "Ensure Step Functions state machines use IAM roles with least privilege to minimize unauthorized data access.",
+    "capability": "access_governance",
+    "service": "stepfunctions",
+    "subservice": "iam",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_STEPFUNCTIONS_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines use IAM roles with least privilege to minimize unauthorized data access.",
+        "RationaleStatement": "Excessive permissions in Step Functions IAM roles can lead to unauthorized access to AWS resources and data beyond the intended workflow scope.",
+        "ImpactStatement": "Over-privileged roles can be exploited to access sensitive data or resources outside the intended workflow boundaries, leading to data breaches.",
+        "RemediationProcedure": "1. Review current Step Functions execution roles:\n```aws iam get-role --role-name <step-functions-role>```\n2. Analyze attached policies for excessive permissions\n3. Create minimal permission policies for specific workflows\n4. Update state machines with least privilege roles:\n```aws stepfunctions update-state-machine --state-machine-arn <arn> --role-arn <least-privilege-role-arn>```",
+        "AuditProcedure": "1. List Step Functions execution roles:\n```aws stepfunctions list-state-machines --query 'stateMachines[].roleArn'```\n2. Review role policies for each execution role:\n```aws iam list-attached-role-policies --role-name <role-name>```\n3. Check for wildcard permissions or overly broad resource access\n4. Verify roles follow principle of least privilege",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/procedure-create-iam-role.html",
+        "DefaultValue": "No default execution role provided"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Restrict Step Functions resource policies",
+    "Checks": ["stepfunctions_statemachine_resource_policy_restricted"],
+    "function_name": "stepfunctions_statemachine_resource_policy_restricted",
+    "title": "Restrict Step Functions resource policies",
+    "description": "Ensure Step Functions state machines have restrictive resource policies to prevent unauthorized workflow execution.",
+    "capability": "access_governance",
+    "service": "stepfunctions",
+    "subservice": "policy",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_STEPFUNCTIONS_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines have restrictive resource policies to prevent unauthorized workflow execution.",
+        "RationaleStatement": "Overly permissive resource policies can allow unauthorized users or services to execute workflows containing sensitive data processing logic.",
+        "ImpactStatement": "Unrestricted resource policies can lead to unauthorized workflow executions, potentially exposing or manipulating sensitive data.",
+        "RemediationProcedure": "1. Review current resource policies on state machines\n2. Implement restrictive resource policies with specific principals:\n```aws stepfunctions create-state-machine --name <name> --definition file://definition.json --role-arn <role> --policy file://restrictive-policy.json```\n3. Remove wildcard principals and overly broad permissions\n4. Implement condition-based access controls",
+        "AuditProcedure": "1. Check state machine resource policies:\n```aws stepfunctions describe-state-machine --state-machine-arn <arn>```\n2. Review policies for wildcard principals or actions\n3. Verify condition statements restrict access appropriately\n4. Check for cross-account access permissions",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/concept-resource-based-policies.html",
+        "DefaultValue": "No resource policy by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Restrict cross-account access to Step Functions",
+    "Checks": ["stepfunctions_statemachine_cross_account_access_restricted"],
+    "function_name": "stepfunctions_statemachine_cross_account_access_restricted",
+    "title": "Restrict cross-account access to Step Functions",
+    "description": "Ensure Step Functions state machines do not allow unrestricted cross-account access to workflow data.",
+    "capability": "access_governance",
+    "service": "stepfunctions",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_STEPFUNCTIONS_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines do not allow unrestricted cross-account access to workflow data.",
+        "RationaleStatement": "Unrestricted cross-account access can expose sensitive workflow data and business logic to unauthorized external accounts.",
+        "ImpactStatement": "Unrestricted cross-account access can lead to data exposure, unauthorized workflow executions, and potential compliance violations.",
+        "RemediationProcedure": "1. Review resource policies for cross-account permissions\n2. Implement external ID requirements for cross-account access\n3. Restrict cross-account access to specific trusted accounts:\n```aws stepfunctions update-state-machine --state-machine-arn <arn> --policy file://cross-account-restricted-policy.json```\n4. Enable logging for cross-account access attempts",
+        "AuditProcedure": "1. Check for cross-account principals in resource policies:\n```aws stepfunctions describe-state-machine --state-machine-arn <arn>```\n2. Verify external ID requirements are in place\n3. Review CloudTrail logs for cross-account access attempts\n4. Check for wildcard account principals",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/concept-resource-based-policies.html",
+        "DefaultValue": "No cross-account access by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Monitor Step Functions executions for anomalies",
+    "Checks": ["stepfunctions_statemachine_execution_monitoring"],
+    "function_name": "stepfunctions_statemachine_execution_monitoring",
+    "title": "Monitor Step Functions executions for anomalies",
+    "description": "Implement monitoring for Step Functions executions to detect unusual patterns that could indicate data security issues.",
+    "capability": "access_governance",
+    "service": "stepfunctions",
+    "subservice": "monitoring",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_STEPFUNCTIONS_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement monitoring for Step Functions executions to detect unusual patterns that could indicate data security issues.",
+        "RationaleStatement": "Monitoring execution patterns helps detect anomalous behavior that could indicate unauthorized access or data exfiltration attempts through workflows.",
+        "ImpactStatement": "Without proper monitoring, malicious workflow executions or data security breaches may go undetected, leading to prolonged exposure.",
+        "RemediationProcedure": "1. Enable CloudWatch metrics for Step Functions:\n```aws cloudwatch put-metric-alarm --alarm-name StepFunctionsAnomalies --metric-name ExecutionsSucceeded --namespace AWS/States```\n2. Set up CloudWatch alarms for unusual execution patterns\n3. Configure SNS notifications for anomaly detection\n4. Implement custom monitoring for business logic anomalies",
+        "AuditProcedure": "1. Check CloudWatch metrics configuration:\n```aws cloudwatch list-metrics --namespace AWS/States```\n2. Review CloudWatch alarms for Step Functions:\n```aws cloudwatch describe-alarms --alarm-names <alarm-name>```\n3. Verify notification configurations\n4. Check execution history for anomalies",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/procedure-cloudwatch-alarms.html",
+        "DefaultValue": "Basic CloudWatch metrics available"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable logging for Step Functions state machines",
+    "Checks": ["stepfunctions_statemachine_logging_enabled"],
+    "function_name": "stepfunctions_statemachine_logging_enabled",
+    "title": "Enable logging for Step Functions state machines",
+    "description": "Enable comprehensive logging for Step Functions state machines to track workflow executions and data processing activities.",
+    "capability": "data_protection",
+    "service": "stepfunctions",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_STEPFUNCTIONS_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable comprehensive logging for Step Functions state machines to track workflow executions and data processing activities.",
+        "RationaleStatement": "Comprehensive logging provides audit trails for workflow executions and helps track data processing activities for security analysis and compliance.",
+        "ImpactStatement": "Without proper logging, it becomes difficult to track data processing activities, investigate security incidents, or demonstrate compliance.",
+        "RemediationProcedure": "1. Enable CloudWatch Logs for Step Functions:\n```aws stepfunctions create-state-machine --name <name> --definition file://definition.json --role-arn <role> --logging-configuration file://logging-config.json```\n2. Configure appropriate log levels (ALL, ERROR, FATAL, OFF)\n3. Set up log retention policies\n4. Configure log encryption",
+        "AuditProcedure": "1. Check logging configuration for state machines:\n```aws stepfunctions describe-state-machine --state-machine-arn <arn> --query 'loggingConfiguration'```\n2. Verify log groups exist in CloudWatch:\n```aws logs describe-log-groups --log-group-name-prefix /aws/stepfunctions/```\n3. Check log retention settings\n4. Verify log encryption configuration",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html",
+        "DefaultValue": "Logging is disabled by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Enable encryption for Step Functions state machines",
+    "Checks": ["stepfunctions_statemachine_encryption_enabled"],
+    "function_name": "stepfunctions_statemachine_encryption_enabled",
+    "title": "Enable encryption for Step Functions state machines",
+    "description": "Ensure Step Functions state machines use encryption to protect sensitive data in workflow executions.",
+    "capability": "data_protection",
+    "service": "stepfunctions",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_STEPFUNCTIONS_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines use encryption to protect sensitive data in workflow executions.",
+        "RationaleStatement": "Encryption protects sensitive data processed by workflows from unauthorized access in case of system compromise or unauthorized access to execution history.",
+        "ImpactStatement": "Unencrypted workflow data can be exposed to unauthorized parties, leading to data breaches and compliance violations.",
+        "RemediationProcedure": "1. Create KMS key for Step Functions encryption:\n```aws kms create-key --description 'Step Functions encryption key'```\n2. Enable encryption when creating state machines:\n```aws stepfunctions create-state-machine --name <name> --definition file://definition.json --role-arn <role> --encryption-configuration kmsKeyId=<key-id>,type=CUSTOMER_MANAGED_KMS_KEY```\n3. Update existing state machines to use encryption\n4. Configure key rotation and access policies",
+        "AuditProcedure": "1. Check encryption configuration for state machines:\n```aws stepfunctions describe-state-machine --state-machine-arn <arn> --query 'encryptionConfiguration'```\n2. Verify KMS key configuration:\n```aws kms describe-key --key-id <key-id>```\n3. Check key rotation status\n4. Verify encryption is applied to execution history",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/encryption-at-rest.html",
+        "DefaultValue": "AWS managed encryption by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Use proper secrets management in Step Functions",
+    "Checks": ["stepfunctions_statemachine_secrets_management"],
+    "function_name": "stepfunctions_statemachine_secrets_management",
+    "title": "Use proper secrets management in Step Functions",
+    "description": "Ensure Step Functions state machines use AWS Secrets Manager or Parameter Store instead of hardcoded secrets.",
+    "capability": "data_protection",
+    "service": "stepfunctions",
+    "subservice": "secrets",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_STEPFUNCTIONS_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines use AWS Secrets Manager or Parameter Store instead of hardcoded secrets.",
+        "RationaleStatement": "Hardcoded secrets in workflow definitions can be exposed through logs, execution history, or source code, compromising security.",
+        "ImpactStatement": "Hardcoded secrets can lead to credential exposure, unauthorized access to external systems, and potential data breaches.",
+        "RemediationProcedure": "1. Review state machine definitions for hardcoded secrets\n2. Replace hardcoded values with Secrets Manager references:\n```aws secretsmanager create-secret --name workflow-credentials --secret-string '{\"username\":\"user\",\"password\":\"pass\"}'```\n3. Update workflow definitions to use dynamic references\n4. Configure IAM permissions for secret access",
+        "AuditProcedure": "1. Review state machine definitions for hardcoded credentials:\n```aws stepfunctions describe-state-machine --state-machine-arn <arn> --query 'definition'```\n2. Check for plain text passwords, API keys, or tokens\n3. Verify usage of Secrets Manager or Parameter Store\n4. Review IAM permissions for secret access",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/connect-parameters.html",
+        "DefaultValue": "No automatic secrets management"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Implement input validation for Step Functions",
+    "Checks": ["stepfunctions_statemachine_input_validation"],
+    "function_name": "stepfunctions_statemachine_input_validation",
+    "title": "Implement input validation for Step Functions",
+    "description": "Implement proper input validation in Step Functions state machines to prevent data injection attacks.",
+    "capability": "data_protection",
+    "service": "stepfunctions",
+    "subservice": "validation",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_STEPFUNCTIONS_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement proper input validation in Step Functions state machines to prevent data injection attacks.",
+        "RationaleStatement": "Input validation prevents malicious data from being processed by workflows, protecting against injection attacks and data corruption.",
+        "ImpactStatement": "Lack of input validation can lead to data injection attacks, workflow manipulation, and potential exposure of sensitive information.",
+        "RemediationProcedure": "1. Implement input validation in workflow definitions\n2. Use choice states to validate input parameters\n3. Configure error handling for invalid inputs\n4. Implement schema validation for complex inputs",
+        "AuditProcedure": "1. Review workflow definitions for input validation logic\n2. Check for proper data type validation\n3. Verify error handling for invalid inputs\n4. Test workflows with malicious input data",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html",
+        "DefaultValue": "No automatic input validation"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Configure error handling for Step Functions",
+    "Checks": ["stepfunctions_statemachine_error_handling"],
+    "function_name": "stepfunctions_statemachine_error_handling",
+    "title": "Configure error handling for Step Functions",
+    "description": "Implement proper error handling in Step Functions to prevent sensitive data exposure in error messages.",
+    "capability": "data_protection",
+    "service": "stepfunctions",
+    "subservice": "error_handling",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_STEPFUNCTIONS_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement proper error handling in Step Functions to prevent sensitive data exposure in error messages.",
+        "RationaleStatement": "Proper error handling prevents sensitive information from being exposed in error messages, logs, or execution history.",
+        "ImpactStatement": "Poor error handling can expose sensitive data through error messages, potentially leading to information disclosure.",
+        "RemediationProcedure": "1. Implement catch blocks in state machine definitions\n2. Configure generic error messages that don't expose sensitive data\n3. Use retry and catch mechanisms appropriately\n4. Sanitize error outputs before logging",
+        "AuditProcedure": "1. Review state machine definitions for error handling\n2. Check catch blocks and retry configurations\n3. Verify error messages don't contain sensitive data\n4. Review execution history for exposed information",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html",
+        "DefaultValue": "Basic error handling available"
+      }
+    ]
+  },
+  {
+    "Id": "2.6",
+    "Description": "Tag Step Functions with data classification",
+    "Checks": ["stepfunctions_statemachine_data_classification_tags"],
+    "function_name": "stepfunctions_statemachine_data_classification_tags",
+    "title": "Tag Step Functions with data classification",
+    "description": "Ensure Step Functions state machines are tagged with appropriate data classification for governance tracking.",
+    "capability": "data_protection",
+    "service": "stepfunctions",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_STEPFUNCTIONS_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines are tagged with appropriate data classification for governance tracking.",
+        "RationaleStatement": "Data classification tags enable proper governance, access controls, and compliance tracking for workflow resources based on the sensitivity of processed data.",
+        "ImpactStatement": "Without proper classification tags, it becomes difficult to apply appropriate security controls and track compliance for sensitive data workflows.",
+        "RemediationProcedure": "1. Define data classification standards for workflows\n2. Tag state machines with classification information:\n```aws stepfunctions tag-resource --resource-arn <arn> --tags DataClassification=Sensitive,Environment=Production```\n3. Implement automated tagging policies\n4. Set up tag compliance monitoring",
+        "AuditProcedure": "1. Check tags on Step Functions state machines:\n```aws stepfunctions list-tags-for-resource --resource-arn <arn>```\n2. Verify data classification tags are present\n3. Check tag compliance across all state machines\n4. Review tagging policies and enforcement",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/tagging.html",
+        "DefaultValue": "No tags applied by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Enforce region restrictions for Step Functions",
+    "Checks": ["stepfunctions_statemachine_region_restriction_enforced"],
+    "function_name": "stepfunctions_statemachine_region_restriction_enforced",
+    "title": "Enforce region restrictions for Step Functions",
+    "description": "Ensure Step Functions state machines are created only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "stepfunctions",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_STEPFUNCTIONS_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines are created only in approved regions to comply with data residency requirements.",
+        "RationaleStatement": "Region restrictions ensure that workflow executions and associated data remain within approved geographic boundaries as required by data residency regulations.",
+        "ImpactStatement": "Creating state machines in non-approved regions can violate data residency requirements and lead to regulatory compliance failures.",
+        "RemediationProcedure": "1. Define approved regions for Step Functions deployment\n2. Implement Service Control Policies (SCPs) to restrict region usage:\n```aws organizations create-policy --name StepFunctionsRegionRestriction --type SERVICE_CONTROL_POLICY --content file://stepfunctions-region-scp.json```\n3. Configure IAM policies with region conditions\n4. Monitor for non-compliant deployments",
+        "AuditProcedure": "1. List state machines in all regions:\n```for region in $(aws ec2 describe-regions --query 'Regions[].RegionName' --output text); do echo \"$region:\"; aws stepfunctions list-state-machines --region $region; done```\n2. Check against approved regions list\n3. Verify SCP enforcement\n4. Review deployment logs for compliance",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "State machines can be created in any region"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Restrict cross-region executions for Step Functions",
+    "Checks": ["stepfunctions_statemachine_cross_region_execution_restricted"],
+    "function_name": "stepfunctions_statemachine_cross_region_execution_restricted",
+    "title": "Restrict cross-region executions for Step Functions",
+    "description": "Ensure Step Functions state machines do not execute workflows across regions unless approved for data residency.",
+    "capability": "data_residency",
+    "service": "stepfunctions",
+    "subservice": "execution",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_STEPFUNCTIONS_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines do not execute workflows across regions unless approved for data residency.",
+        "RationaleStatement": "Cross-region workflow executions can move data across geographic boundaries, potentially violating data residency and sovereignty requirements.",
+        "ImpactStatement": "Unrestricted cross-region executions can lead to data being processed in non-approved regions, violating data residency compliance.",
+        "RemediationProcedure": "1. Review workflow definitions for cross-region service calls\n2. Implement region validation in workflow logic\n3. Configure IAM policies to restrict cross-region access\n4. Monitor execution patterns for cross-region activities",
+        "AuditProcedure": "1. Review state machine definitions for cross-region resource references\n2. Check execution history for cross-region activities\n3. Verify IAM policy restrictions\n4. Monitor CloudTrail for cross-region API calls",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html",
+        "DefaultValue": "No automatic cross-region restrictions"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Tag Step Functions with data sovereignty information",
+    "Checks": ["stepfunctions_statemachine_data_sovereignty_tags"],
+    "function_name": "stepfunctions_statemachine_data_sovereignty_tags",
+    "title": "Tag Step Functions with data sovereignty information",
+    "description": "Ensure Step Functions state machines are tagged with data sovereignty and jurisdiction information for compliance.",
+    "capability": "data_residency",
+    "service": "stepfunctions",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_STEPFUNCTIONS_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions state machines are tagged with data sovereignty and jurisdiction information for compliance.",
+        "RationaleStatement": "Data sovereignty tags enable tracking and auditing of workflow resources for compliance with geographic and jurisdictional data requirements.",
+        "ImpactStatement": "Without proper sovereignty tags, it becomes difficult to track workflows for data residency compliance and respond to regulatory inquiries.",
+        "RemediationProcedure": "1. Define data sovereignty tagging standards\n2. Tag state machines with sovereignty information:\n```aws stepfunctions tag-resource --resource-arn <arn> --tags DataSovereignty=EU,Jurisdiction=GDPR```\n3. Implement automated tagging policies\n4. Set up compliance monitoring and reporting",
+        "AuditProcedure": "1. Check sovereignty tags on state machines:\n```aws stepfunctions list-tags-for-resource --resource-arn <arn>```\n2. Verify sovereignty tags are present and accurate\n3. Check tag compliance across all state machines\n4. Review sovereignty compliance reports",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/tagging.html",
+        "DefaultValue": "No sovereignty tags by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.4",
+    "Description": "Ensure integrated services comply with region restrictions",
+    "Checks": ["stepfunctions_statemachine_integrated_service_region_compliance"],
+    "function_name": "stepfunctions_statemachine_integrated_service_region_compliance",
+    "title": "Ensure integrated services comply with region restrictions",
+    "description": "Ensure Step Functions integrated services operate only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "stepfunctions",
+    "subservice": "integration",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_STEPFUNCTIONS_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions integrated services operate only in approved regions to maintain data residency compliance.",
+        "RationaleStatement": "Integrated services called by workflows must also comply with data residency requirements to maintain end-to-end compliance.",
+        "ImpactStatement": "Non-compliant integrated services can cause data to be processed in restricted regions, violating data residency requirements.",
+        "RemediationProcedure": "1. Review workflow definitions for service integrations\n2. Verify all integrated services are in approved regions\n3. Update ARNs to use region-compliant resources\n4. Implement validation for service region compliance",
+        "AuditProcedure": "1. Extract service ARNs from workflow definitions\n2. Check regions of all integrated services\n3. Verify compliance with approved regions list\n4. Review service integration patterns",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-services.html",
+        "DefaultValue": "No automatic region validation"
+      }
+    ]
+  },
+  {
+    "Id": "3.5",
+    "Description": "Ensure execution history complies with region restrictions",
+    "Checks": ["stepfunctions_statemachine_execution_history_region_compliance"],
+    "function_name": "stepfunctions_statemachine_execution_history_region_compliance",
+    "title": "Ensure execution history complies with region restrictions",
+    "description": "Ensure Step Functions execution history is stored only in approved regions for data residency compliance.",
+    "capability": "data_residency",
+    "service": "stepfunctions",
+    "subservice": "history",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_STEPFUNCTIONS_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure Step Functions execution history is stored only in approved regions for data residency compliance.",
+        "RationaleStatement": "Execution history contains workflow data and must be stored in approved regions to maintain data residency compliance throughout the data lifecycle.",
+        "ImpactStatement": "Execution history in non-approved regions can violate data residency requirements even if the workflow execution itself was compliant.",
+        "RemediationProcedure": "1. Verify state machines are deployed only in approved regions\n2. Configure CloudWatch Logs in approved regions for execution logging\n3. Implement data retention policies for execution history\n4. Monitor execution history storage locations",
+        "AuditProcedure": "1. Check regions where state machines are deployed\n2. Verify CloudWatch Logs regions for execution history\n3. Review execution history retention policies\n4. Check for any cross-region replication of logs",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-data.html",
+        "DefaultValue": "Execution history stored in same region as state machine"
+      }
+    ]
+  }
+]

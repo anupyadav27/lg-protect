@@ -1,0 +1,392 @@
+version: '3.8'
+
+services:
+  # Infrastructure Services
+  redis:
+    image: redis:7-alpine
+    container_name: lg-protect-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - lg_protect_logs:/var/log/redis
+    command: redis-server --appendonly yes --logfile /var/log/redis/redis.log
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - lg-protect-network
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: lg-protect-postgres
+    environment:
+      POSTGRES_DB: lgprotect
+      POSTGRES_USER: lgprotect
+      POSTGRES_PASSWORD: lgprotect123
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=scram-sha-256"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - lg_protect_logs:/var/log/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lgprotect"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - lg-protect-network
+
+  # Core Microservices - Using centralized logging system
+  inventory-service:
+    build:
+      context: ../../backend
+      dockerfile: ../infrastructure/docker-compose/Dockerfile.inventory-service
+    container_name: lg-protect-inventory-service
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://lgprotect:lgprotect123@postgres:5432/lgprotect
+      - AWS_REGION=us-east-1
+      - SERVICE_NAME=inventory-service
+      - SERVICE_PORT=3000
+      - LOG_LEVEL=INFO
+      - DEBUG_MODE=false
+      - LOG_MAX_SIZE_MB=50
+      - LOG_BACKUP_COUNT=10
+      - ENABLE_AUDIT_LOGGING=true
+      - ENABLE_COMPLIANCE_LOGGING=true
+      - ENABLE_SECURITY_LOGGING=true
+      - ENABLE_PERFORMANCE_LOGGING=true
+      - DATA_DIR=/app/data
+      - PYTHONPATH=/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - "../../data:/app/data"
+      - "lg_protect_logs:/app/logs"
+    networks:
+      - lg-protect-network
+
+  compliance-service:
+    build:
+      context: ../../backend
+      dockerfile: ../infrastructure/docker-compose/Dockerfile.compliance-service
+    container_name: lg-protect-compliance-service
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://lgprotect:lgprotect123@postgres:5432/lgprotect
+      - AWS_REGION=us-east-1
+      - SERVICE_NAME=compliance-service
+      - SERVICE_PORT=3001
+      - LOG_LEVEL=INFO
+      - DEBUG_MODE=false
+      - LOG_MAX_SIZE_MB=50
+      - LOG_BACKUP_COUNT=10
+      - ENABLE_AUDIT_LOGGING=true
+      - ENABLE_COMPLIANCE_LOGGING=true
+      - ENABLE_SECURITY_LOGGING=true
+      - ENABLE_PERFORMANCE_LOGGING=true
+      - DATA_DIR=/app/data
+      - PYTHONPATH=/app
+    ports:
+      - "3001:3001"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - "../../data:/app/data"
+      - "lg_protect_logs:/app/logs"
+    networks:
+      - lg-protect-network
+
+  data-security-service:
+    build:
+      context: ../../backend
+      dockerfile: ../infrastructure/docker-compose/Dockerfile.data-security-service
+    container_name: lg-protect-data-security-service
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://lgprotect:lgprotect123@postgres:5432/lgprotect
+      - AWS_REGION=us-east-1
+      - SERVICE_NAME=data-security-service
+      - SERVICE_PORT=3002
+      - LOG_LEVEL=INFO
+      - DEBUG_MODE=false
+      - LOG_MAX_SIZE_MB=50
+      - LOG_BACKUP_COUNT=10
+      - ENABLE_AUDIT_LOGGING=true
+      - ENABLE_COMPLIANCE_LOGGING=true
+      - ENABLE_SECURITY_LOGGING=true
+      - ENABLE_PERFORMANCE_LOGGING=true
+      - DATA_DIR=/app/data
+      - PYTHONPATH=/app
+    ports:
+      - "3002:3002"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - "../../data:/app/data"
+      - "lg_protect_logs:/app/logs"
+    networks:
+      - lg-protect-network
+
+  alert-engine:
+    build:
+      context: ../../backend
+      dockerfile: ../infrastructure/docker-compose/Dockerfile.alert-engine
+    container_name: lg-protect-alert-engine
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://lgprotect:lgprotect123@postgres:5432/lgprotect
+      - AWS_REGION=us-east-1
+      - SERVICE_NAME=alert-engine
+      - SERVICE_PORT=3010
+      - LOG_LEVEL=INFO
+      - DEBUG_MODE=false
+      - LOG_MAX_SIZE_MB=50
+      - LOG_BACKUP_COUNT=10
+      - ENABLE_AUDIT_LOGGING=true
+      - ENABLE_COMPLIANCE_LOGGING=true
+      - ENABLE_SECURITY_LOGGING=true
+      - ENABLE_PERFORMANCE_LOGGING=true
+      - DATA_DIR=/app/data
+      - PYTHONPATH=/app
+    ports:
+      - "3010:3010"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3010/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - "../../data:/app/data"
+      - "lg_protect_logs:/app/logs"
+    networks:
+      - lg-protect-network
+
+  api-gateway:
+    build:
+      context: ../../backend
+      dockerfile: ../infrastructure/docker-compose/Dockerfile.api-gateway
+    container_name: lg-protect-api-gateway
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - INVENTORY_SERVICE_URL=http://inventory-service:3000
+      - COMPLIANCE_SERVICE_URL=http://compliance-service:3001
+      - DATA_SECURITY_SERVICE_URL=http://data-security-service:3002
+      - ALERT_ENGINE_URL=http://alert-engine:3010
+      - SERVICE_NAME=api-gateway
+      - SERVICE_PORT=8000
+      - LOG_LEVEL=INFO
+      - DEBUG_MODE=false
+      - LOG_MAX_SIZE_MB=50
+      - LOG_BACKUP_COUNT=10
+      - ENABLE_AUDIT_LOGGING=true
+      - ENABLE_COMPLIANCE_LOGGING=true
+      - ENABLE_SECURITY_LOGGING=true
+      - ENABLE_PERFORMANCE_LOGGING=true
+      - DATA_DIR=/app/data
+      - PYTHONPATH=/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      inventory-service:
+        condition: service_healthy
+      compliance-service:
+        condition: service_healthy
+      data-security-service:
+        condition: service_healthy
+      alert-engine:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - "../../data:/app/data"
+      - "lg_protect_logs:/app/logs"
+    networks:
+      - lg-protect-network
+
+  # Load Balancer & Reverse Proxy with centralized logging
+  nginx:
+    image: nginx:alpine
+    container_name: lg-protect-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+      - "lg_protect_logs:/var/log/nginx"
+    depends_on:
+      - api-gateway
+    networks:
+      - lg-protect-network
+
+  # Monitoring & Observability with centralized logging
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: lg-protect-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+      - "lg_protect_logs:/var/log/prometheus"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+      - '--log.level=info'
+    networks:
+      - lg-protect-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: lg-protect-grafana
+    ports:
+      - "3030:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+      - GF_LOG_MODE=file
+      - GF_PATHS_LOGS=/var/log/grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - "lg_protect_logs:/var/log/grafana"
+    networks:
+      - lg-protect-network
+
+  # Log Management Service (Optional - for centralized log viewing)
+  # log-viewer:
+  #   image: gloghub/gloghub:latest
+  #   container_name: lg-protect-log-viewer
+  #   ports:
+  #     - "8084:80"
+  #   environment:
+  #     - GLOGHUB_LOG_DIRECTORY=/logs
+  #   volumes:
+  #     - "lg_protect_logs:/logs:ro"
+  #   networks:
+  #     - lg-protect-network
+
+  # Development Tools
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: lg-protect-redis-commander
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    depends_on:
+      - redis
+    networks:
+      - lg-protect-network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: lg-protect-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@lgprotect.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 20
+    ports:
+      - "8082:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - "lg_protect_logs:/var/log/pgadmin"
+    depends_on:
+      - postgres
+    networks:
+      - lg-protect-network
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    container_name: lg-protect-uptime-kuma
+    ports:
+      - "8083:3001"
+    volumes:
+      - uptime_kuma_data:/app/data
+      - "lg_protect_logs:/app/logs"
+    networks:
+      - lg-protect-network
+
+  # Log Aggregation Service (ELK-like setup with Fluent Bit)
+  # fluent-bit:
+  #   image: fluent/fluent-bit:latest
+  #   container_name: lg-protect-fluent-bit
+  #   volumes:
+  #     - "lg_protect_logs:/logs:ro"
+  #     - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+  #   ports:
+  #     - "24224:24224"
+  #   networks:
+  #     - lg-protect-network
+
+networks:
+  lg-protect-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  uptime_kuma_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+  # Centralized logging volume - shared across all services
+  lg_protect_logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/apple/Desktop/lg-protect/logs

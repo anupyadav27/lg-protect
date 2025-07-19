@@ -1,0 +1,158 @@
+# KMS Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: kms_key_not_publicly_accessible
+  title: Ensure KMS keys are not publicly accessible
+  description: Ensure KMS keys are not publicly accessible to prevent unauthorized access to encryption keys protecting sensitive data.
+  capability: access_governance
+  service: kms
+  subservice: access
+  risk: HIGH
+  existing: true
+
+- function_name: kms_key_policy_least_privilege
+  title: Enforce least privilege for KMS key policies
+  description: Ensure KMS key policies follow least privilege principles to minimize unauthorized access to encryption keys.
+  capability: access_governance
+  service: kms
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: kms_key_cross_account_access_restricted
+  title: Restrict cross-account access to KMS keys
+  description: Ensure KMS keys do not allow unrestricted cross-account access that could compromise data encryption.
+  capability: access_governance
+  service: kms
+  subservice: policy
+  risk: HIGH
+  existing: false
+
+- function_name: kms_key_admin_separation_enforced
+  title: Enforce separation of KMS key administration
+  description: Ensure KMS key administration is separated from key usage to prevent unauthorized key management.
+  capability: access_governance
+  service: kms
+  subservice: policy
+  risk: MEDIUM
+  existing: false
+
+- function_name: kms_key_usage_monitoring_enabled
+  title: Enable KMS key usage monitoring
+  description: Enable monitoring for KMS key usage to detect unusual access patterns that could indicate data security issues.
+  capability: access_governance
+  service: kms
+  subservice: monitoring
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: kms_cmk_rotation_enabled
+  title: Enable automatic rotation for KMS customer managed keys
+  description: Ensure KMS customer managed keys have automatic rotation enabled to maintain encryption key security.
+  capability: data_protection
+  service: kms
+  subservice: rotation
+  risk: HIGH
+  existing: true
+
+- function_name: kms_cmk_are_used
+  title: Use customer managed keys instead of AWS managed keys
+  description: Ensure customer managed KMS keys are used instead of AWS managed keys for better control over data encryption.
+  capability: data_protection
+  service: kms
+  subservice: keys
+  risk: MEDIUM
+  existing: true
+
+- function_name: kms_cmk_not_deleted_unintentionally
+  title: Prevent unintentional deletion of KMS keys
+  description: Ensure KMS customer managed keys are not scheduled for deletion to prevent data loss from encrypted resources.
+  capability: data_protection
+  service: kms
+  subservice: protection
+  risk: HIGH
+  existing: true
+
+- function_name: kms_cmk_not_multi_region
+  title: Restrict multi-region KMS keys
+  description: Ensure KMS keys are not multi-region unless required for approved data residency use cases.
+  capability: data_protection
+  service: kms
+  subservice: region
+  risk: MEDIUM
+  existing: true
+
+- function_name: kms_key_origin_validation
+  title: Validate KMS key origin and key material
+  description: Ensure KMS keys use AWS-generated key material unless external key material is required for compliance.
+  capability: data_protection
+  service: kms
+  subservice: origin
+  risk: MEDIUM
+  existing: false
+
+- function_name: kms_key_spec_validation
+  title: Validate KMS key specifications for data protection
+  description: Ensure KMS keys use appropriate key specifications for the type of data being protected.
+  capability: data_protection
+  service: kms
+  subservice: spec
+  risk: LOW
+  existing: false
+
+- function_name: kms_key_grants_restricted
+  title: Restrict KMS key grants
+  description: Ensure KMS key grants are properly restricted and do not provide excessive permissions for data access.
+  capability: data_protection
+  service: kms
+  subservice: grants
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: kms_key_region_restriction_enforced
+  title: Enforce region restrictions for KMS keys
+  description: Ensure KMS keys are created only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: kms
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: kms_key_multi_region_restricted
+  title: Restrict multi-region KMS keys for compliance
+  description: Ensure multi-region KMS keys are used only when required for approved data residency use cases.
+  capability: data_residency
+  service: kms
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: kms_key_replica_region_compliance
+  title: Validate KMS key replica regions for compliance
+  description: Ensure KMS key replicas are created only in regions that meet data residency requirements.
+  capability: data_residency
+  service: kms
+  subservice: replication
+  risk: HIGH
+  existing: false
+
+- function_name: kms_key_data_sovereignty_tags
+  title: Tag KMS keys with data sovereignty information
+  description: Ensure KMS keys are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: kms
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: kms_key_cloudtrail_regional_logging
+  title: Ensure KMS CloudTrail logging is regional
+  description: Ensure KMS key usage is logged in CloudTrail within the same region to maintain data residency compliance.
+  capability: data_residency
+  service: kms
+  subservice: logging
+  risk: MEDIUM
+  existing: false

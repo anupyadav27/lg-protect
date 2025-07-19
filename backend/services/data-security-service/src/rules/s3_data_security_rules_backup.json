@@ -1,0 +1,874 @@
+{
+  "rules": [
+    {
+      "Id": "1.1",
+      "function_name": "s3_bucket_level_public_access_block",
+      "title": "Enable S3 bucket-level public access block",
+      "description": "Ensure S3 buckets have public access block settings enabled at bucket level to prevent accidental data exposure through public access policies.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "acl",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_001",
+      "Checks": ["s3_bucket_level_public_access_block"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 buckets have public access block settings enabled at bucket level to prevent accidental data exposure through public access policies.",
+          "RationaleStatement": "Public access block settings provide an additional layer of security by preventing public access configurations at the bucket level, reducing the risk of accidental data exposure.",
+          "ImpactStatement": "Without bucket-level public access blocks, misconfigured bucket policies or ACLs could inadvertently expose sensitive data to the public internet.",
+          "RemediationProcedure": "1. Navigate to S3 console\n2. Select the bucket\n3. Go to Permissions tab\n4. Edit Block public access settings\n5. Enable all four options: Block public ACLs, Ignore public ACLs, Block public bucket policies, Restrict public buckets\n\nCLI: ```aws s3api put-public-access-block --bucket BUCKET_NAME --public-access-block-configuration BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true```",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-public-access-block --bucket BUCKET_NAME```\nVerify all four settings are enabled (true).",
+          "AdditionalInformation": "This setting works in conjunction with account-level public access blocks for comprehensive protection.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+          "DefaultValue": "Disabled by default for existing buckets"
+        }
+      ]
+    },
+    {
+      "Id": "1.2",
+      "function_name": "s3_account_level_public_access_blocks",
+      "title": "Enable S3 account-level public access blocks",
+      "description": "Ensure S3 account-level public access blocks are enabled to prevent accidental data exposure across all buckets in the account.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "acl",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_002",
+      "Checks": ["s3_account_level_public_access_blocks"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 account-level public access blocks are enabled to prevent accidental data exposure across all buckets in the account.",
+          "RationaleStatement": "Account-level public access blocks provide organization-wide protection against public access misconfigurations across all S3 buckets.",
+          "ImpactStatement": "Without account-level controls, individual bucket misconfigurations could expose sensitive data organization-wide.",
+          "RemediationProcedure": "1. Navigate to S3 console\n2. Go to Block Public Access settings for this account\n3. Edit settings\n4. Enable all four options\n\nCLI: ```aws s3control put-public-access-block --account-id ACCOUNT_ID --public-access-block-configuration BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true```",
+          "AuditProcedure": "Use CLI command:\n```aws s3control get-public-access-block --account-id ACCOUNT_ID```\nVerify all settings are enabled.",
+          "AdditionalInformation": "Account-level settings override bucket-level settings when more restrictive.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ]
+    },
+    {
+      "Id": "1.3",
+      "function_name": "s3_bucket_public_access",
+      "title": "Prevent S3 bucket public access",
+      "description": "Ensure S3 buckets are not publicly accessible to prevent unauthorized access to sensitive data stored in buckets.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "acl",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_003",
+      "Checks": ["s3_bucket_public_access"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 buckets are not publicly accessible to prevent unauthorized access to sensitive data stored in buckets.",
+          "RationaleStatement": "Public S3 buckets can expose sensitive data to unauthorized users and are a common source of data breaches.",
+          "ImpactStatement": "Publicly accessible buckets can lead to data breaches, compliance violations, and unauthorized data access or modification.",
+          "RemediationProcedure": "1. Review bucket policy and ACLs\n2. Remove public read/write permissions\n3. Enable public access block\n4. Use IAM policies for authorized access\n\nCLI: ```aws s3api get-bucket-acl --bucket BUCKET_NAME``` and ```aws s3api get-bucket-policy --bucket BUCKET_NAME``` to review current permissions.",
+          "AuditProcedure": "Use CLI commands:\n```aws s3api get-bucket-acl --bucket BUCKET_NAME```\n```aws s3api get-bucket-policy --bucket BUCKET_NAME```\nVerify no public permissions are granted.",
+          "AdditionalInformation": "Regularly audit bucket permissions and use least privilege principle.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-best-practices.html",
+          "DefaultValue": "Private by default, but can be changed through policies or ACLs"
+        }
+      ]
+    },
+    {
+      "Id": "1.4",
+      "function_name": "s3_bucket_cross_account_access",
+      "title": "Restrict S3 bucket cross-account access",
+      "description": "Ensure S3 bucket policies do not allow unrestricted cross-account access that could lead to unauthorized data access.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "policy",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_004",
+      "Checks": ["s3_bucket_cross_account_access"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 bucket policies do not allow unrestricted cross-account access that could lead to unauthorized data access.",
+          "RationaleStatement": "Unrestricted cross-account access can allow unauthorized external entities to access sensitive data.",
+          "ImpactStatement": "Overly permissive cross-account policies can lead to data exposure to unintended external AWS accounts.",
+          "RemediationProcedure": "1. Review bucket policies for cross-account principals\n2. Ensure specific account IDs are listed instead of wildcards\n3. Add condition statements for additional security\n4. Regularly audit cross-account permissions",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-policy --bucket BUCKET_NAME```\nReview policy for cross-account principals and ensure they are explicitly authorized.",
+          "AdditionalInformation": "Use AWS Organizations SCPs to further restrict cross-account access.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-walkthroughs-managing-access-example2.html",
+          "DefaultValue": "No cross-account access by default"
+        }
+      ]
+    },
+    {
+      "Id": "1.5",
+      "function_name": "s3_bucket_policy_public_write_access",
+      "title": "Prevent public write access in S3 bucket policies",
+      "description": "Ensure S3 bucket policies do not allow public write access which could lead to data tampering or unauthorized uploads.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "policy",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_005",
+      "Checks": ["s3_bucket_policy_public_write_access"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 bucket policies do not allow public write access which could lead to data tampering or unauthorized uploads.",
+          "RationaleStatement": "Public write access allows anyone to upload or modify data, leading to potential data corruption or malicious content injection.",
+          "ImpactStatement": "Public write access can result in data tampering, storage of malicious content, and significant storage costs from unauthorized uploads.",
+          "RemediationProcedure": "1. Review bucket policy statements\n2. Remove or modify statements allowing public write access\n3. Ensure Principal is not set to '*' for write operations\n4. Use IAM roles/users for authorized write access",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-policy --bucket BUCKET_NAME```\nReview policy for statements with Principal '*' and write actions (s3:Put*, s3:Delete*, etc.).",
+          "AdditionalInformation": "Consider using pre-signed URLs for temporary write access instead of public policies.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-policy-language-overview.html",
+          "DefaultValue": "No public write access by default"
+        }
+      ]
+    },
+    {
+      "Id": "1.6",
+      "function_name": "s3_bucket_server_access_logging_enabled",
+      "title": "Enable S3 server access logging",
+      "description": "Ensure S3 server access logging is enabled to track data access patterns and detect unauthorized access attempts for compliance auditing.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "logging",
+      "risk": "MEDIUM",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_006",
+      "Checks": ["s3_bucket_server_access_logging_enabled"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 server access logging is enabled to track data access patterns and detect unauthorized access attempts for compliance auditing.",
+          "RationaleStatement": "Server access logs provide detailed records of requests made to S3 buckets, essential for security monitoring and compliance auditing.",
+          "ImpactStatement": "Without access logging, organizations cannot track data access patterns or investigate potential security incidents.",
+          "RemediationProcedure": "1. Navigate to S3 console\n2. Select bucket\n3. Go to Properties tab\n4. Enable Server access logging\n5. Specify target bucket for logs\n\nCLI: ```aws s3api put-bucket-logging --bucket BUCKET_NAME --bucket-logging-status file://logging.json```",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-logging --bucket BUCKET_NAME```\nVerify logging configuration is present and target bucket is specified.",
+          "AdditionalInformation": "Consider using CloudTrail data events for more comprehensive API logging.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ]
+    },
+    {
+      "Id": "1.7",
+      "function_name": "s3_bucket_no_mfa_delete",
+      "title": "Enable MFA delete for S3 buckets",
+      "description": "Require multi-factor authentication for permanent deletion of S3 objects to prevent accidental or malicious data loss.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "mfa",
+      "risk": "MEDIUM",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_007",
+      "Checks": ["s3_bucket_no_mfa_delete"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Require multi-factor authentication for permanent deletion of S3 objects to prevent accidental or malicious data loss.",
+          "RationaleStatement": "MFA delete provides an additional layer of protection against accidental or malicious deletion of critical data.",
+          "ImpactStatement": "Without MFA delete, critical data could be permanently lost due to accidental deletion or compromised credentials.",
+          "RemediationProcedure": "1. Enable versioning on the bucket first\n2. Configure MFA delete using root account credentials\n3. Ensure MFA device is properly configured\n\nNote: MFA delete can only be enabled by root account using CLI with MFA authentication.",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-versioning --bucket BUCKET_NAME```\nVerify MFADelete status is 'Enabled'.",
+          "AdditionalInformation": "MFA delete requires bucket versioning to be enabled and can only be configured by root account.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ]
+    },
+    {
+      "Id": "1.8",
+      "function_name": "s3_access_point_public_access_block",
+      "title": "Enable public access block for S3 access points",
+      "description": "Ensure S3 access points have public access block enabled to prevent data exposure through access point policies.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "acl",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_AG_S3_008",
+      "Checks": ["s3_access_point_public_access_block"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 access points have public access block enabled to prevent data exposure through access point policies.",
+          "RationaleStatement": "Access points provide an additional attack surface that must be secured against public access to prevent data exposure.",
+          "ImpactStatement": "Publicly accessible access points can bypass bucket-level security controls and expose sensitive data.",
+          "RemediationProcedure": "1. Navigate to S3 console\n2. Go to Access points\n3. Select access point\n4. Edit public access block settings\n5. Enable all restrictions\n\nCLI: ```aws s3control put-access-point-public-access-block --account-id ACCOUNT_ID --name ACCESS_POINT_NAME --public-access-block-configuration BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true```",
+          "AuditProcedure": "Use CLI command:\n```aws s3control get-access-point-public-access-block --account-id ACCOUNT_ID --name ACCESS_POINT_NAME```\nVerify all public access block settings are enabled.",
+          "AdditionalInformation": "Access point policies work in conjunction with bucket policies and IAM policies.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html",
+          "DefaultValue": "Inherits account-level settings"
+        }
+      ]
+    },
+    {
+      "Id": "1.9",
+      "function_name": "s3_bucket_conditional_access_enforced",
+      "title": "Enforce conditional access policies for S3 buckets",
+      "description": "Implement IP-based, VPC-based, or time-based conditional access controls to restrict data access to authorized contexts only.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "policy",
+      "risk": "MEDIUM",
+      "existing": false,
+      "unique_key": "DATASEC_AG_S3_009",
+      "Checks": ["s3_bucket_conditional_access_enforced"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Implement IP-based, VPC-based, or time-based conditional access controls to restrict data access to authorized contexts only.",
+          "RationaleStatement": "Conditional access policies provide context-aware security controls that limit data access to approved locations, networks, and time windows.",
+          "ImpactStatement": "Without conditional access controls, data could be accessed from unauthorized locations or outside approved time windows.",
+          "RemediationProcedure": "1. Identify access requirements (IP ranges, VPC, time windows)\n2. Create bucket policy with appropriate condition statements\n3. Test policy with authorized and unauthorized contexts\n4. Monitor access patterns for violations",
+          "AuditProcedure": "Review bucket policies for condition statements using:\n```aws s3api get-bucket-policy --bucket BUCKET_NAME```\nVerify presence of IpAddress, VpcSourceIp, or DateGreaterThan/DateLessThan conditions.",
+          "AdditionalInformation": "Common conditions include aws:SourceIp, aws:SourceVpc, aws:CurrentTime, and aws:SecureTransport.",
+          "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html",
+          "DefaultValue": "No conditional access by default"
+        }
+      ]
+    },
+    {
+      "Id": "1.10",
+      "function_name": "s3_bucket_principal_access_restricted",
+      "title": "Restrict S3 bucket access to specific principals",
+      "description": "Ensure S3 bucket policies restrict access to specific IAM principals to prevent unauthorized data access from unknown entities.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "policy",
+      "risk": "MEDIUM",
+      "existing": false,
+      "unique_key": "DATASEC_AG_S3_010",
+      "Checks": ["s3_bucket_principal_access_restricted"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 bucket policies restrict access to specific IAM principals to prevent unauthorized data access from unknown entities.",
+          "RationaleStatement": "Restricting access to specific principals implements the principle of least privilege and prevents unauthorized access.",
+          "ImpactStatement": "Overly broad principal specifications can allow unintended access to sensitive data from unauthorized entities.",
+          "RemediationProcedure": "1. Review current bucket policy principals\n2. Replace wildcard principals with specific ARNs\n3. Use IAM roles instead of users where possible\n4. Implement regular principal access reviews",
+          "AuditProcedure": "Review bucket policy using:\n```aws s3api get-bucket-policy --bucket BUCKET_NAME```\nEnsure Principal field specifies exact ARNs rather than wildcards.",
+          "AdditionalInformation": "Use aws:PrincipalOrgID condition to restrict access to organization members only.",
+          "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html",
+          "DefaultValue": "No policy restrictions by default"
+        }
+      ]
+    },
+    {
+      "Id": "1.11",
+      "function_name": "s3_bucket_cloudtrail_data_events_enabled",
+      "title": "Enable CloudTrail data events for S3 buckets",
+      "description": "Configure CloudTrail to log S3 data events for monitoring access to sensitive data and compliance auditing requirements.",
+      "capability": "access_governance",
+      "service": "s3",
+      "subservice": "logging",
+      "risk": "LOW",
+      "existing": false,
+      "unique_key": "DATASEC_AG_S3_011",
+      "Checks": ["s3_bucket_cloudtrail_data_events_enabled"],
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Configure CloudTrail to log S3 data events for monitoring access to sensitive data and compliance auditing requirements.",
+          "RationaleStatement": "CloudTrail data events provide comprehensive API-level logging for S3 object operations, essential for security monitoring and compliance.",
+          "ImpactStatement": "Without data event logging, organizations cannot track object-level access patterns or investigate security incidents effectively.",
+          "RemediationProcedure": "1. Create or modify CloudTrail\n2. Configure data events for S3\n3. Specify bucket ARNs for monitoring\n4. Enable both read and write data events\n\nCLI: ```aws cloudtrail put-event-selectors --trail-name TRAIL_NAME --event-selectors file://data-events.json```",
+          "AuditProcedure": "Use CLI command:\n```aws cloudtrail get-event-selectors --trail-name TRAIL_NAME```\nVerify S3 data events are configured for target buckets.",
+          "AdditionalInformation": "Data events incur additional charges; consider cost implications for high-volume buckets.",
+          "References": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html",
+          "DefaultValue": "Data events not logged by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.1",
+      "function_name": "s3_bucket_default_encryption",
+      "title": "Ensure default encryption on S3 buckets",
+      "description": "All S3 buckets must enforce server-side encryption using AES256 or AWS-KMS to protect data at rest and meet compliance requirements.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "encryption",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_DP_S3_001",
+      "Checks": ["s3_bucket_default_encryption"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "All S3 buckets must enforce server-side encryption using AES256 or AWS-KMS to protect data at rest and meet compliance requirements.",
+          "RationaleStatement": "Default encryption ensures all objects stored in S3 are automatically encrypted, protecting sensitive data at rest.",
+          "ImpactStatement": "Unencrypted data at rest is vulnerable to unauthorized access if storage media is compromised.",
+          "RemediationProcedure": "1. Navigate to S3 console\n2. Select bucket\n3. Go to Properties tab\n4. Edit Default encryption\n5. Choose AES-256 or AWS-KMS\n\nCLI: ```aws s3api put-bucket-encryption --bucket BUCKET_NAME --server-side-encryption-configuration file://encryption.json```",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-encryption --bucket BUCKET_NAME```\nVerify encryption configuration is present and properly configured.",
+          "AdditionalInformation": "KMS encryption provides additional features like key rotation and access logging.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html",
+          "DefaultValue": "No default encryption by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.2",
+      "function_name": "s3_bucket_secure_transport_policy",
+      "title": "Enforce HTTPS-only access to S3 buckets",
+      "description": "Require all access to S3 to use TLS by enforcing aws:SecureTransport condition in bucket policies to protect data in transit.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "tls",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_DP_S3_002",
+      "Checks": ["s3_bucket_secure_transport_policy"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Require all access to S3 to use TLS by enforcing aws:SecureTransport condition in bucket policies to protect data in transit.",
+          "RationaleStatement": "HTTPS-only access ensures data in transit is encrypted and protected from interception or man-in-the-middle attacks.",
+          "ImpactStatement": "Unencrypted data transmission can be intercepted and compromised during transit.",
+          "RemediationProcedure": "1. Create or modify bucket policy\n2. Add Deny statement for requests where aws:SecureTransport is false\n3. Apply policy to bucket\n\nExample policy statement: ```{\"Effect\":\"Deny\",\"Principal\":\"*\",\"Action\":\"s3:*\",\"Resource\":[\"arn:aws:s3:::bucket/*\",\"arn:aws:s3:::bucket\"],\"Condition\":{\"Bool\":{\"aws:SecureTransport\":\"false\"}}}```",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-policy --bucket BUCKET_NAME```\nVerify policy contains aws:SecureTransport condition denying non-HTTPS requests.",
+          "AdditionalInformation": "This policy applies to all S3 operations including API calls and website access.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html#transit",
+          "DefaultValue": "HTTPS not enforced by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.3",
+      "function_name": "s3_bucket_kms_encryption",
+      "title": "Use KMS encryption for S3 buckets",
+      "description": "Ensure S3 buckets storing sensitive data use AWS KMS encryption instead of AES256 for enhanced key management and audit trails.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "encryption",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_DP_S3_003",
+      "Checks": ["s3_bucket_kms_encryption"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 buckets storing sensitive data use AWS KMS encryption instead of AES256 for enhanced key management and audit trails.",
+          "RationaleStatement": "KMS encryption provides centralized key management, access logging, and key rotation capabilities essential for sensitive data protection.",
+          "ImpactStatement": "Without KMS encryption, organizations lack centralized key management and detailed encryption access logs.",
+          "RemediationProcedure": "1. Create or identify KMS key\n2. Configure bucket default encryption to use KMS\n3. Update bucket policy to require KMS encryption\n4. Verify existing objects are encrypted with KMS",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-encryption --bucket BUCKET_NAME```\nVerify SSEAlgorithm is 'aws:kms' and KMSMasterKeyID is specified.",
+          "AdditionalInformation": "Consider using customer-managed KMS keys for additional control over key policies.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
+          "DefaultValue": "AES256 encryption if default encryption is enabled"
+        }
+      ]
+    },
+    {
+      "Id": "2.4",
+      "function_name": "s3_bucket_object_versioning",
+      "title": "Enable versioning for S3 buckets",
+      "description": "Enable S3 bucket versioning to protect against accidental data deletion and maintain data integrity for compliance and recovery purposes.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "versioning",
+      "risk": "MEDIUM",
+      "existing": true,
+      "unique_key": "DATASEC_DP_S3_004",
+      "Checks": ["s3_bucket_object_versioning"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Enable S3 bucket versioning to protect against accidental data deletion and maintain data integrity for compliance and recovery purposes.",
+          "RationaleStatement": "Versioning protects against accidental deletion and modification while maintaining historical versions for compliance and recovery.",
+          "ImpactStatement": "Without versioning, accidental deletion or corruption results in permanent data loss.",
+          "RemediationProcedure": "1. Navigate to S3 console\n2. Select bucket\n3. Go to Properties tab\n4. Edit Bucket Versioning\n5. Enable versioning\n\nCLI: ```aws s3api put-bucket-versioning --bucket BUCKET_NAME --versioning-configuration Status=Enabled```",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-versioning --bucket BUCKET_NAME```\nVerify Status is 'Enabled'.",
+          "AdditionalInformation": "Consider implementing lifecycle policies to manage storage costs of multiple versions.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.5",
+      "function_name": "s3_bucket_versioning_enabled",
+      "title": "Verify S3 bucket versioning is properly configured",
+      "description": "Ensure S3 bucket versioning is enabled and properly configured to prevent data loss and support compliance data retention requirements.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "versioning",
+      "risk": "MEDIUM",
+      "existing": true,
+      "unique_key": "DATASEC_DP_S3_005",
+      "Checks": ["s3_bucket_versioning_enabled"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 bucket versioning is enabled and properly configured to prevent data loss and support compliance data retention requirements.",
+          "RationaleStatement": "Proper versioning configuration ensures data protection mechanisms are in place and functioning correctly.",
+          "ImpactStatement": "Improperly configured versioning may not provide adequate protection against data loss or compliance violations.",
+          "RemediationProcedure": "1. Verify versioning status\n2. Check for suspended versioning\n3. Re-enable if necessary\n4. Configure lifecycle policies for version management",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-versioning --bucket BUCKET_NAME```\nEnsure Status is 'Enabled' and not 'Suspended'.",
+          "AdditionalInformation": "Versioning once enabled cannot be disabled, only suspended.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.6",
+      "function_name": "s3_bucket_object_lock",
+      "title": "Configure S3 Object Lock for compliance",
+      "description": "Enable S3 Object Lock with retention policies to implement WORM (Write Once Read Many) compliance for regulated data storage.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "retention",
+      "risk": "MEDIUM",
+      "existing": true,
+      "unique_key": "DATASEC_DP_S3_006",
+      "Checks": ["s3_bucket_object_lock"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Enable S3 Object Lock with retention policies to implement WORM (Write Once Read Many) compliance for regulated data storage.",
+          "RationaleStatement": "Object Lock provides WORM compliance capabilities required for regulatory frameworks and legal hold requirements.",
+          "ImpactStatement": "Without Object Lock, organizations cannot meet certain compliance requirements for immutable data storage.",
+          "RemediationProcedure": "1. Enable Object Lock during bucket creation\n2. Configure default retention settings\n3. Set appropriate retention modes (Governance or Compliance)\n4. Configure legal hold if required\n\nNote: Object Lock must be enabled during bucket creation.",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-object-lock-configuration --bucket BUCKET_NAME```\nVerify Object Lock is enabled and retention rules are configured.",
+          "AdditionalInformation": "Object Lock requires versioning to be enabled and cannot be disabled once enabled.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.7",
+      "function_name": "s3_bucket_lifecycle_enabled",
+      "title": "Configure lifecycle policies for data retention",
+      "description": "Implement S3 lifecycle policies to automatically transition or delete data based on compliance and data retention requirements.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "lifecycle",
+      "risk": "LOW",
+      "existing": true,
+      "unique_key": "DATASEC_DP_S3_007",
+      "Checks": ["s3_bucket_lifecycle_enabled"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Implement S3 lifecycle policies to automatically transition or delete data based on compliance and data retention requirements.",
+          "RationaleStatement": "Lifecycle policies ensure data is managed according to retention requirements and help optimize storage costs while maintaining compliance.",
+          "ImpactStatement": "Without lifecycle policies, data may be retained longer than required, increasing costs and compliance risks.",
+          "RemediationProcedure": "1. Define data retention requirements\n2. Create lifecycle policy with appropriate transitions\n3. Configure deletion rules for expired data\n4. Apply policy to bucket or specific prefixes",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-lifecycle-configuration --bucket BUCKET_NAME```\nVerify lifecycle rules are configured according to retention requirements.",
+          "AdditionalInformation": "Consider storage class transitions to optimize costs while meeting access requirements.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+          "DefaultValue": "No lifecycle policies by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.8",
+      "function_name": "s3_bucket_kms_key_rotation_enabled",
+      "title": "Enable KMS key rotation for S3 encryption",
+      "description": "Ensure KMS keys used for S3 encryption have automatic key rotation enabled to meet security best practices and compliance requirements.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "encryption",
+      "risk": "MEDIUM",
+      "existing": false,
+      "unique_key": "DATASEC_DP_S3_008",
+      "Checks": ["s3_bucket_kms_key_rotation_enabled"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure KMS keys used for S3 encryption have automatic key rotation enabled to meet security best practices and compliance requirements.",
+          "RationaleStatement": "Automatic key rotation reduces the risk of key compromise and meets compliance requirements for cryptographic key management.",
+          "ImpactStatement": "Without key rotation, the same encryption key is used indefinitely, increasing the risk of compromise over time.",
+          "RemediationProcedure": "1. Identify KMS keys used for S3 encryption\n2. Enable automatic key rotation\n3. Verify rotation is working\n4. Monitor key usage and rotation events",
+          "AuditProcedure": "Use CLI command:\n```aws kms get-key-rotation-status --key-id KEY_ID```\nVerify KeyRotationEnabled is true for KMS keys used with S3.",
+          "AdditionalInformation": "Key rotation is automatic and transparent to applications using the key.",
+          "References": "https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys.html",
+          "DefaultValue": "Disabled by default for customer-managed keys"
+        }
+      ]
+    },
+    {
+      "Id": "2.9",
+      "function_name": "s3_bucket_backup_configured",
+      "title": "Configure backup and replication for critical data",
+      "description": "Ensure critical S3 data has appropriate backup mechanisms configured to prevent data loss and ensure business continuity.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "backup",
+      "risk": "MEDIUM",
+      "existing": false,
+      "unique_key": "DATASEC_DP_S3_009",
+      "Checks": ["s3_bucket_backup_configured"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure critical S3 data has appropriate backup mechanisms configured to prevent data loss and ensure business continuity.",
+          "RationaleStatement": "Backup mechanisms protect against data loss from accidental deletion, corruption, or disasters.",
+          "ImpactStatement": "Without proper backups, critical data loss could result in significant business disruption and compliance violations.",
+          "RemediationProcedure": "1. Identify critical data requiring backup\n2. Configure cross-region replication or AWS Backup\n3. Set appropriate backup schedules\n4. Test backup and recovery procedures\n5. Monitor backup status",
+          "AuditProcedure": "Review backup configurations using:\n```aws s3api get-bucket-replication --bucket BUCKET_NAME```\nor check AWS Backup plans for S3 resources.",
+          "AdditionalInformation": "Consider both cross-region replication and AWS Backup based on RTO/RPO requirements.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html",
+          "DefaultValue": "No backup configuration by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.10",
+      "function_name": "s3_bucket_intelligent_tiering_enabled",
+      "title": "Enable S3 Intelligent Tiering for cost optimization",
+      "description": "Configure S3 Intelligent Tiering to automatically optimize storage costs while maintaining data accessibility and compliance.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "lifecycle",
+      "risk": "LOW",
+      "existing": false,
+      "unique_key": "DATASEC_DP_S3_010",
+      "Checks": ["s3_bucket_intelligent_tiering_enabled"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Configure S3 Intelligent Tiering to automatically optimize storage costs while maintaining data accessibility and compliance.",
+          "RationaleStatement": "Intelligent Tiering optimizes storage costs by automatically moving data between access tiers based on usage patterns.",
+          "ImpactStatement": "Without cost optimization, organizations may pay unnecessarily high storage costs for infrequently accessed data.",
+          "RemediationProcedure": "1. Analyze access patterns for data\n2. Configure Intelligent Tiering for appropriate buckets\n3. Set up monitoring for tier transitions\n4. Review cost savings regularly",
+          "AuditProcedure": "Check Intelligent Tiering configuration using:\n```aws s3api get-bucket-intelligent-tiering-configuration --bucket BUCKET_NAME```",
+          "AdditionalInformation": "Intelligent Tiering has monitoring and automation fees that should be considered in cost analysis.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html",
+          "DefaultValue": "Not configured by default"
+        }
+      ]
+    },
+    {
+      "Id": "2.11",
+      "function_name": "s3_bucket_multipart_upload_cleanup",
+      "title": "Configure multipart upload cleanup policies",
+      "description": "Implement lifecycle policies to automatically clean up incomplete multipart uploads to prevent storage cost accumulation and data exposure.",
+      "capability": "data_protection",
+      "service": "s3",
+      "subservice": "lifecycle",
+      "risk": "LOW",
+      "existing": false,
+      "unique_key": "DATASEC_DP_S3_011",
+      "Checks": ["s3_bucket_multipart_upload_cleanup"],
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Implement lifecycle policies to automatically clean up incomplete multipart uploads to prevent storage cost accumulation and data exposure.",
+          "RationaleStatement": "Incomplete multipart uploads consume storage and incur costs while potentially leaving partial data exposed.",
+          "ImpactStatement": "Without cleanup policies, incomplete uploads accumulate storage costs and may create security risks from partial data exposure.",
+          "RemediationProcedure": "1. Create lifecycle policy with multipart upload cleanup\n2. Set appropriate cleanup timeframe (typically 1-7 days)\n3. Apply policy to bucket\n4. Monitor for incomplete uploads",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-lifecycle-configuration --bucket BUCKET_NAME```\nVerify lifecycle rules include AbortIncompleteMultipartUpload configuration.",
+          "AdditionalInformation": "Cleanup timeframe should balance storage costs with legitimate upload completion times.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-abort-incomplete-mpu-lifecycle-config.html",
+          "DefaultValue": "No cleanup by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.1",
+      "function_name": "s3_bucket_cross_region_replication",
+      "title": "Validate cross-region replication for compliance",
+      "description": "Ensure S3 cross-region replication is configured only to approved regions that meet data residency and sovereignty requirements.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "replication",
+      "risk": "HIGH",
+      "existing": true,
+      "unique_key": "DATASEC_DR_S3_001",
+      "Checks": ["s3_bucket_cross_region_replication"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 cross-region replication is configured only to approved regions that meet data residency and sovereignty requirements.",
+          "RationaleStatement": "Cross-region replication must comply with data sovereignty laws and organizational policies regarding data location.",
+          "ImpactStatement": "Replication to non-approved regions can violate data sovereignty requirements and compliance regulations.",
+          "RemediationProcedure": "1. Review current replication configurations\n2. Verify destination regions are approved\n3. Update replication rules to remove non-compliant destinations\n4. Implement controls to prevent unauthorized replication",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-replication --bucket BUCKET_NAME```\nReview destination regions against approved region list.",
+          "AdditionalInformation": "Maintain a list of approved regions based on legal and compliance requirements.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html",
+          "DefaultValue": "No replication configured by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.2",
+      "function_name": "s3_bucket_region_restriction_enforced",
+      "title": "Enforce data residency through region restrictions",
+      "description": "Ensure S3 buckets are created only in approved regions to comply with data sovereignty and geographic data residency requirements.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "region",
+      "risk": "HIGH",
+      "existing": false,
+      "unique_key": "DATASEC_DR_S3_002",
+      "Checks": ["s3_bucket_region_restriction_enforced"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 buckets are created only in approved regions to comply with data sovereignty and geographic data residency requirements.",
+          "RationaleStatement": "Region restrictions ensure data remains within approved geographic boundaries to meet sovereignty and compliance requirements.",
+          "ImpactStatement": "Buckets in non-approved regions may violate data residency laws and compliance requirements.",
+          "RemediationProcedure": "1. Identify approved regions for data storage\n2. Implement SCPs to restrict bucket creation\n3. Audit existing buckets for compliance\n4. Migrate non-compliant buckets if necessary",
+          "AuditProcedure": "List all buckets and their regions using:\n```aws s3api list-buckets --query 'Buckets[].Name' | xargs -I {} aws s3api get-bucket-location --bucket {}```\nVerify all regions are approved.",
+          "AdditionalInformation": "Use AWS Organizations SCPs to enforce region restrictions at the organizational level.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html#access-bucket-intro",
+          "DefaultValue": "No region restrictions by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.3",
+      "function_name": "s3_bucket_transfer_acceleration_disabled",
+      "title": "Disable Transfer Acceleration for regulated data",
+      "description": "Ensure S3 Transfer Acceleration is disabled for buckets containing regulated data to prevent data from transiting through unapproved regions.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "transfer",
+      "risk": "MEDIUM",
+      "existing": false,
+      "unique_key": "DATASEC_DR_S3_003",
+      "Checks": ["s3_bucket_transfer_acceleration_disabled"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Automated",
+          "Description": "Ensure S3 Transfer Acceleration is disabled for buckets containing regulated data to prevent data from transiting through unapproved regions.",
+          "RationaleStatement": "Transfer Acceleration routes data through CloudFront edge locations which may be in regions not approved for data processing.",
+          "ImpactStatement": "Enabled Transfer Acceleration could cause regulated data to transit through unapproved geographic regions.",
+          "RemediationProcedure": "1. Review buckets with Transfer Acceleration enabled\n2. Assess data classification for each bucket\n3. Disable Transfer Acceleration for regulated data buckets\n4. Implement controls to prevent re-enabling",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-accelerate-configuration --bucket BUCKET_NAME```\nVerify Status is not 'Enabled' for buckets containing regulated data.",
+          "AdditionalInformation": "Document exceptions where Transfer Acceleration is required and approved for regulated data.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.4",
+      "function_name": "s3_bucket_vpc_endpoint_required",
+      "title": "Require VPC endpoints for S3 access",
+      "description": "Ensure S3 access occurs through VPC endpoints to prevent data from leaving the controlled network environment and maintain data residency.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "network",
+      "risk": "MEDIUM",
+      "existing": false,
+      "unique_key": "DATASEC_DR_S3_004",
+      "Checks": ["s3_bucket_vpc_endpoint_required"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 access occurs through VPC endpoints to prevent data from leaving the controlled network environment and maintain data residency.",
+          "RationaleStatement": "VPC endpoints ensure S3 traffic remains within the AWS network and controlled geographic regions.",
+          "ImpactStatement": "Without VPC endpoints, S3 traffic may route through public internet and potentially through unapproved regions.",
+          "RemediationProcedure": "1. Create VPC endpoints for S3 in required VPCs\n2. Configure bucket policies to require VPC endpoint access\n3. Update application configurations to use VPC endpoints\n4. Monitor and audit S3 access patterns",
+          "AuditProcedure": "Check bucket policies for aws:SourceVpce conditions:\n```aws s3api get-bucket-policy --bucket BUCKET_NAME```\nVerify VPC endpoint requirements are enforced.",
+          "AdditionalInformation": "Consider both Gateway and Interface VPC endpoints based on access requirements.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html",
+          "DefaultValue": "No VPC endpoint restrictions by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.5",
+      "function_name": "s3_bucket_geo_tagging_enforced",
+      "title": "Enforce geo-tagging for data classification",
+      "description": "Ensure S3 buckets have appropriate geo-location tags to identify data residency requirements and facilitate compliance auditing.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "tagging",
+      "risk": "LOW",
+      "existing": false,
+      "unique_key": "DATASEC_DR_S3_005",
+      "Checks": ["s3_bucket_geo_tagging_enforced"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 buckets have appropriate geo-location tags to identify data residency requirements and facilitate compliance auditing.",
+          "RationaleStatement": "Geo-tagging enables automated compliance monitoring and helps identify data subject to specific residency requirements.",
+          "ImpactStatement": "Without proper geo-tagging, it becomes difficult to track and audit data residency compliance at scale.",
+          "RemediationProcedure": "1. Define geo-tagging standards\n2. Implement tagging policies\n3. Tag existing buckets according to standards\n4. Automate tagging for new buckets\n5. Monitor tag compliance",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-tagging --bucket BUCKET_NAME```\nVerify presence of required geo-location tags.",
+          "AdditionalInformation": "Common geo-tags include DataResidency, JurisdictionRequired, and GeographicRestriction.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html",
+          "DefaultValue": "No tags by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.6",
+      "function_name": "s3_bucket_replication_destination_compliance",
+      "title": "Validate replication destinations for compliance",
+      "description": "Ensure all S3 replication destinations comply with organizational data residency and sovereignty policies before enabling replication.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "replication",
+      "risk": "HIGH",
+      "existing": false,
+      "unique_key": "DATASEC_DR_S3_006",
+      "Checks": ["s3_bucket_replication_destination_compliance"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure all S3 replication destinations comply with organizational data residency and sovereignty policies before enabling replication.",
+          "RationaleStatement": "Replication destinations must be pre-approved to ensure compliance with data sovereignty and residency requirements.",
+          "ImpactStatement": "Replication to non-compliant destinations can violate data residency laws and regulatory requirements.",
+          "RemediationProcedure": "1. Create approved destination list\n2. Review existing replication configurations\n3. Validate destinations against approved list\n4. Remove or modify non-compliant replications\n5. Implement approval workflow for new replications",
+          "AuditProcedure": "Review replication configurations using:\n```aws s3api get-bucket-replication --bucket BUCKET_NAME```\nValidate all destinations against approved destination list.",
+          "AdditionalInformation": "Maintain documentation of approved regions and the compliance rationale for each.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-and-other-bucket-configs.html",
+          "DefaultValue": "No destination validation by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.7",
+      "function_name": "s3_bucket_data_sovereignty_tags",
+      "title": "Tag buckets with data sovereignty information",
+      "description": "Ensure S3 buckets are tagged with data sovereignty and jurisdiction information for compliance tracking and regulatory auditing.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "tagging",
+      "risk": "LOW",
+      "existing": false,
+      "unique_key": "DATASEC_DR_S3_007",
+      "Checks": ["s3_bucket_data_sovereignty_tags"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 buckets are tagged with data sovereignty and jurisdiction information for compliance tracking and regulatory auditing.",
+          "RationaleStatement": "Data sovereignty tags enable automated compliance reporting and help identify buckets subject to specific legal requirements.",
+          "ImpactStatement": "Without sovereignty tagging, compliance auditing becomes manual and error-prone, potentially missing regulatory violations.",
+          "RemediationProcedure": "1. Define sovereignty tagging schema\n2. Identify applicable jurisdictions and regulations\n3. Tag buckets with sovereignty information\n4. Implement automated compliance reporting\n5. Regular audit tag accuracy",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-tagging --bucket BUCKET_NAME```\nVerify presence of sovereignty tags like Jurisdiction, Regulation, DataSovereignty.",
+          "AdditionalInformation": "Consider tags for GDPR, CCPA, SOX, HIPAA and other applicable regulations.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html",
+          "DefaultValue": "No sovereignty tags by default"
+        }
+      ]
+    },
+    {
+      "Id": "3.8",
+      "function_name": "s3_bucket_same_region_replication_only",
+      "title": "Restrict replication to same region only",
+      "description": "Ensure S3 replication is configured only within the same region to maintain strict data residency requirements for highly regulated data.",
+      "capability": "data_residency",
+      "service": "s3",
+      "subservice": "replication",
+      "risk": "HIGH",
+      "existing": false,
+      "unique_key": "DATASEC_DR_S3_008",
+      "Checks": ["s3_bucket_same_region_replication_only"],
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure S3 replication is configured only within the same region to maintain strict data residency requirements for highly regulated data.",
+          "RationaleStatement": "Same-region replication ensures highly regulated data never leaves the approved geographic region.",
+          "ImpactStatement": "Cross-region replication of highly regulated data could violate strict data residency requirements.",
+          "RemediationProcedure": "1. Identify buckets with highly regulated data\n2. Review replication configurations\n3. Modify replication to same-region destinations only\n4. Implement controls to prevent cross-region replication\n5. Document exceptions if any are approved",
+          "AuditProcedure": "Use CLI command:\n```aws s3api get-bucket-replication --bucket BUCKET_NAME```\nVerify destination regions match source bucket region for regulated data buckets.",
+          "AdditionalInformation": "Consider using Same-Region Replication (SRR) for compliance while maintaining disaster recovery capabilities.",
+          "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-and-other-bucket-configs.html",
+          "DefaultValue": "No region restrictions on replication by default"
+        }
+      ]
+    }
+  ]
+}

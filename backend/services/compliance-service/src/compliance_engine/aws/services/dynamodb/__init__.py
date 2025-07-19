@@ -1,0 +1,32 @@
+"""
+AWS Dynamodb Service Module
+
+Centralized imports for AWS Dynamodb compliance checks.
+"""
+
+# Import the service class
+from .dynamodb_service import DynamoDBService
+
+# Import individual checks
+from .dynamodb_accelerator_cluster_encryption_enabled.dynamodb_accelerator_cluster_encryption_enabled import dynamodb_accelerator_cluster_encryption_enabled
+from .dynamodb_accelerator_cluster_in_transit_encryption_enabled.dynamodb_accelerator_cluster_in_transit_encryption_enabled import dynamodb_accelerator_cluster_in_transit_encryption_enabled
+from .dynamodb_accelerator_cluster_multi_az.dynamodb_accelerator_cluster_multi_az import dynamodb_accelerator_cluster_multi_az
+from .dynamodb_table_autoscaling_enabled.dynamodb_table_autoscaling_enabled import dynamodb_table_autoscaling_enabled
+from .dynamodb_table_cross_account_access.dynamodb_table_cross_account_access import dynamodb_table_cross_account_access
+from .dynamodb_table_deletion_protection_enabled.dynamodb_table_deletion_protection_enabled import dynamodb_table_deletion_protection_enabled
+from .dynamodb_table_protected_by_backup_plan.dynamodb_table_protected_by_backup_plan import dynamodb_table_protected_by_backup_plan
+from .dynamodb_tables_kms_cmk_encryption_enabled.dynamodb_tables_kms_cmk_encryption_enabled import dynamodb_tables_kms_cmk_encryption_enabled
+from .dynamodb_tables_pitr_enabled.dynamodb_tables_pitr_enabled import dynamodb_tables_pitr_enabled
+
+__all__ = [
+    'DynamoDBService',
+    'dynamodb_accelerator_cluster_encryption_enabled',
+    'dynamodb_accelerator_cluster_in_transit_encryption_enabled',
+    'dynamodb_accelerator_cluster_multi_az',
+    'dynamodb_table_autoscaling_enabled',
+    'dynamodb_table_cross_account_access',
+    'dynamodb_table_deletion_protection_enabled',
+    'dynamodb_table_protected_by_backup_plan',
+    'dynamodb_tables_kms_cmk_encryption_enabled',
+    'dynamodb_tables_pitr_enabled',
+]

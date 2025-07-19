@@ -1,0 +1,401 @@
+{
+  "Framework": "LGTech Data Security",
+  "Version": "1.0",
+  "Provider": "AWS",
+  "Description": "CloudTrail Data Security Rules - Prescriptive guidance for access governance, log protection, anomaly detection, and compliance across AWS accounts.",
+  "Requirements": [
+    {
+      "Id": "1.1",
+      "Description": "Ensure DynamoDB tables are encrypted using customer-managed KMS keys",
+      "Checks": ["dynamodb_kms_cmk_encryption_enabled"],
+      "service": "dynamodb",
+      "subservice": "encryption",
+      "risk": "HIGH",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Enable encryption at rest using customer-managed keys (CMKs) for fine-grained control and audit logging.",
+          "RationaleStatement": "CMKs offer enhanced security over AWS-managed keys, with the ability to manage key rotation, permissions, and usage logs.",
+          "ImpactStatement": "Lack of CMK encryption may lead to regulatory non-compliance and less control over sensitive data.",
+          "RemediationProcedure": "1. Navigate to DynamoDB > Tables > [Your Table]\n2. Choose `Edit Encryption`\n3. Select a CMK from AWS KMS or create a new one.\nAlternatively, use CLI:\n```aws dynamodb update-table --table-name <name> --sse-specification Enabled=true, SSEType=KMS, KMSMasterKeyId=<cmk-id>```",
+          "AuditProcedure": "Run:\n```aws dynamodb describe-table --table-name <name>```\nEnsure `SSEType` is `KMS` and `KMSMasterKeyId` is a customer-managed key.",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/EncryptionAtRest.html",
+          "DefaultValue": "AWS-owned KMS keys"
+        }
+      ],
+      "unique_key": "DATASEC_DP_DYNAMODB_001"
+    },
+    {
+      "Id": "1.2",
+      "Description": "Ensure point-in-time recovery is enabled for DynamoDB tables",
+      "Checks": ["dynamodb_pitr_enabled"],
+      "service": "dynamodb",
+      "subservice": "backup",
+      "risk": "MEDIUM",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Enable PITR (Point-in-Time Recovery) to allow restoration of tables to any second within the last 35 days.",
+          "RationaleStatement": "PITR provides a critical safeguard against accidental deletes or writes, ensuring recoverability of sensitive or regulated data.",
+          "ImpactStatement": "Without PITR, any data corruption or deletion may result in permanent data loss.",
+          "RemediationProcedure": "1. Go to AWS Console > DynamoDB > Tables > [Your Table] > Backups\n2. Enable Point-in-Time Recovery.\nOr run:\n```aws dynamodb update-continuous-backups --table-name <name> --point-in-time-recovery-specification PointInTimeRecoveryEnabled=true```",
+          "AuditProcedure": "Run:\n```aws dynamodb describe-continuous-backups --table-name <name>```\nCheck `PointInTimeRecoveryStatus` is `ENABLED`.",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ],
+      "unique_key": "DATASEC_DP_DYNAMODB_002"
+    },
+    {
+      "Id": "1.3",
+      "Description": "Ensure DynamoDB tables have IAM policies with least privilege access",
+      "Checks": ["dynamodb_least_privilege_policies"],
+      "service": "dynamodb",
+      "subservice": "access",
+      "risk": "HIGH",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Review IAM policies to ensure access to DynamoDB resources follows the principle of least privilege.",
+          "RationaleStatement": "Granting only necessary permissions helps prevent unauthorized access or modification of sensitive table data.",
+          "ImpactStatement": "Over-permissive access could allow data leaks, deletions, or unauthorized queries on sensitive data.",
+          "RemediationProcedure": "1. Review IAM roles and policies attached to users or services\n2. Ensure only required actions (`GetItem`, `Query`, `UpdateItem`, etc.) are allowed on specific tables or items\n3. Use condition keys where possible (e.g., `dynamodb:LeadingKeys`).",
+          "AuditProcedure": "Run IAM Access Analyzer or review attached IAM policies:\n```aws iam list-attached-role-policies --role-name <role>```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/specifying-conditions.html",
+          "DefaultValue": "Full access by default unless restricted"
+        }
+      ],
+      "unique_key": "DATASEC_AG_DYNAMODB_001"
+    },
+    {
+      "Id": "1.4",
+      "Description": "Ensure DynamoDB tables are protected with resource-based policies (when applicable)",
+      "Checks": ["dynamodb_resource_policy_configured"],
+      "service": "dynamodb",
+      "subservice": "access",
+      "risk": "MEDIUM",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Use resource-based policies to control access to DynamoDB tables from specific services, accounts, or conditions.",
+          "RationaleStatement": "Resource policies offer an additional layer of control over access without relying solely on identity-based policies.",
+          "ImpactStatement": "Lack of fine-grained access control could lead to unintended exposure of table data or misuse by cross-account access.",
+          "RemediationProcedure": "Attach a resource policy to your DynamoDB table that restricts access based on principals, actions, and conditions.\nUse AWS CLI:\n```aws dynamodb put-resource-policy --resource-arn <arn> --policy <json-policy>```",
+          "AuditProcedure": "Use:\n```aws dynamodb get-resource-policy --resource-arn <arn>```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/using-resource-policies.html",
+          "DefaultValue": "No resource policy applied"
+        }
+      ],
+      "unique_key": "DATASEC_AG_DYNAMODB_002"
+    },
+    {
+      "Id": "1.5",
+      "Description": "Enable DynamoDB table backups with AWS Backup service",
+      "Checks": ["dynamodb_aws_backup_enabled"],
+      "service": "dynamodb",
+      "subservice": "backup",
+      "risk": "MEDIUM",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Use AWS Backup to automate scheduled backups of DynamoDB tables with centralized management and compliance tracking.",
+          "RationaleStatement": "Centralized backup policies help ensure recoverability and compliance across all critical resources.",
+          "ImpactStatement": "Manual or inconsistent backup strategies may lead to gaps in recovery or auditing.",
+          "RemediationProcedure": "1. Go to AWS Backup > Backup plans\n2. Create or modify a plan to include DynamoDB tables\n3. Assign resources using tags or resource IDs\nOr use CLI:\n```aws backup start-backup-job --resource-arn <arn> --iam-role-arn <backup-role> --backup-vault-name <vault>```",
+          "AuditProcedure": "Check for backup jobs using:\n```aws backup list-backup-jobs --resource-arn <arn>```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html",
+          "DefaultValue": "Manual backups only"
+        }
+      ],
+      "unique_key": "DATASEC_DP_DYNAMODB_003"
+    },
+    {
+      "Id": "1.6",
+      "Description": "Ensure table-level metrics are enabled for DynamoDB monitoring",
+      "Checks": ["dynamodb_cloudwatch_metrics_enabled"],
+      "service": "dynamodb",
+      "subservice": "monitoring",
+      "risk": "LOW",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Monitoring & Logging",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Enable enhanced metrics for DynamoDB tables in CloudWatch for access pattern visibility and anomaly detection.",
+          "RationaleStatement": "CloudWatch metrics provide observability into access, throttling, read/write usage and performance.",
+          "ImpactStatement": "Lack of monitoring can delay detection of misconfigurations, anomalies, or attacks.",
+          "RemediationProcedure": "Go to DynamoDB > [Your Table] > Monitor > Enable Enhanced Monitoring.\nUse CLI:\n```aws dynamodb update-table --table-name <name> --table-class STANDARD --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5```",
+          "AuditProcedure": "Use:\n```aws cloudwatch list-metrics --namespace AWS/DynamoDB```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/MonitoringOverview.html",
+          "DefaultValue": "Basic metrics enabled by default"
+        }
+      ],
+      "unique_key": "DATASEC_MON_DYNAMODB_001"
+    },
+    ,
+    {
+      "Id": "1.7",
+      "Description": "Ensure auto-scaling is enabled for DynamoDB to prevent over-provisioning",
+      "Checks": ["dynamodb_autoscaling_enabled"],
+      "service": "dynamodb",
+      "subservice": "scaling",
+      "risk": "LOW",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Performance & Cost Optimization",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Enable auto-scaling on DynamoDB tables to automatically adjust throughput capacity and reduce cost wastage.",
+          "RationaleStatement": "Auto-scaling ensures tables scale based on demand and avoids performance degradation or cost overruns.",
+          "ImpactStatement": "Without scaling, tables might over-provision or throttle requests, affecting performance or wasting resources.",
+          "RemediationProcedure": "Go to DynamoDB > [Your Table] > Capacity > Auto Scaling > Enable.\nOr use CLI:\n```aws application-autoscaling register-scalable-target --service-namespace dynamodb ...```",
+          "AuditProcedure": "Verify auto-scaling target with:\n```aws application-autoscaling describe-scalable-targets --service-namespace dynamodb```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html",
+          "DefaultValue": "Disabled by default"
+        }
+      ],
+      "unique_key": "DATASEC_PERF_DYNAMODB_001"
+    },
+    {
+      "Id": "1.8",
+      "Description": "Ensure DynamoDB Global Tables use approved AWS regions",
+      "Checks": ["dynamodb_global_tables_region_compliance"],
+      "service": "dynamodb",
+      "subservice": "region",
+      "risk": "MEDIUM",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Residency",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Limit the replication of Global Tables to approved AWS regions to ensure compliance with data residency laws.",
+          "RationaleStatement": "Using only compliant regions reduces legal and compliance risk related to cross-border data storage.",
+          "ImpactStatement": "Replicating data to unapproved regions may violate local data residency regulations.",
+          "RemediationProcedure": "Review Global Table settings in DynamoDB and remove unapproved regions via AWS Console or CLI.",
+          "AuditProcedure": "Run:\n```aws dynamodb describe-global-table --global-table-name <name>``` and verify `ReplicationGroup` values.",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html",
+          "DefaultValue": "Any region may be used unless restricted manually"
+        }
+      ],
+      "unique_key": "DATASEC_DR_DYNAMODB_001"
+    },
+    {
+      "Id": "1.9",
+      "Description": "Ensure DynamoDB streams are encrypted",
+      "Checks": ["dynamodb_streams_encrypted"],
+      "service": "dynamodb",
+      "subservice": "encryption",
+      "risk": "HIGH",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Ensure encryption of DynamoDB Streams to protect data in transit and at rest.",
+          "RationaleStatement": "DynamoDB Streams may contain sensitive change data and must be encrypted for confidentiality and integrity.",
+          "ImpactStatement": "Unencrypted streams increase the risk of data interception or exposure.",
+          "RemediationProcedure": "Use KMS keys when configuring Streams in DynamoDB.",
+          "AuditProcedure": "Use:\n```aws dynamodb describe-table --table-name <name>``` and verify `StreamSpecification` and encryption options.",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html",
+          "DefaultValue": "May be unencrypted by default"
+        }
+      ],
+      "unique_key": "DATASEC_DP_DYNAMODB_004"
+    },
+    {
+      "Id": "1.10",
+      "Description": "Ensure data access is logged using CloudTrail",
+      "Checks": ["cloudtrail_dynamodb_logging_enabled"],
+      "service": "dynamodb",
+      "subservice": "logging",
+      "risk": "HIGH",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Logging & Audit",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Enable CloudTrail logging for DynamoDB to record API calls and track access to sensitive data.",
+          "RationaleStatement": "CloudTrail helps detect unauthorized access or anomalies in API usage for auditing and forensics.",
+          "ImpactStatement": "Without audit logging, detection and response to breaches is delayed or impossible.",
+          "RemediationProcedure": "Ensure CloudTrail is enabled and includes DynamoDB operations in management and data event logging.",
+          "AuditProcedure": "Check CloudTrail data event logging settings via:\n```aws cloudtrail get-event-selectors --trail-name <trail>```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events.html",
+          "DefaultValue": "Disabled unless explicitly configured"
+        }
+      ],
+      "unique_key": "DATASEC_LOG_DYNAMODB_001"
+    },
+    {
+      "Id": "1.11",
+      "Description": "Restrict public access to DynamoDB via VPC endpoints",
+      "Checks": ["dynamodb_vpc_endpoint_enabled"],
+      "service": "dynamodb",
+      "subservice": "networking",
+      "risk": "HIGH",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Use VPC endpoints for DynamoDB access to restrict data exposure to the internet.",
+          "RationaleStatement": "Private VPC access reduces risk of exfiltration via internet-exposed APIs.",
+          "ImpactStatement": "Unrestricted internet access may expose data to MITM or unauthorized parties.",
+          "RemediationProcedure": "Create an interface VPC endpoint for DynamoDB using AWS Console or:\n```aws ec2 create-vpc-endpoint --vpc-id <id> --service-name com.amazonaws.<region>.dynamodb --vpc-endpoint-type Interface ...```",
+          "AuditProcedure": "List endpoints using:\n```aws ec2 describe-vpc-endpoints``` and verify DynamoDB association.",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/vpc/latest/privatelink/dynamodb.html",
+          "DefaultValue": "Internet-facing access unless restricted"
+        }
+      ],
+      "unique_key": "DATASEC_AG_DYNAMODB_003"
+    },
+    {
+      "Id": "1.12",
+      "Description": "Restrict access to sensitive attributes using fine-grained access control",
+      "Checks": ["dynamodb_attribute_level_permissions"],
+      "service": "dynamodb",
+      "subservice": "access",
+      "risk": "HIGH",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Access Governance",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Use attribute-level IAM policies to restrict read/write access to sensitive fields like SSNs or credentials.",
+          "RationaleStatement": "Fine-grained control prevents accidental or malicious access to critical data within table items.",
+          "ImpactStatement": "Without attribute-level control, all users with item access may view or modify sensitive data.",
+          "RemediationProcedure": "Use condition keys such as `dynamodb:Attributes` and `dynamodb:LeadingKeys` in IAM policies.",
+          "AuditProcedure": "Review IAM policies and verify attribute restrictions exist using:\n```aws iam get-policy ...```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/specifying-conditions.html",
+          "DefaultValue": "Full item access unless restricted manually"
+        }
+      ],
+      "unique_key": "DATASEC_AG_DYNAMODB_004"
+    },
+    {
+      "Id": "1.13",
+      "Description": "Ensure backup retention policies are defined for DynamoDB tables",
+      "Checks": ["dynamodb_backup_retention_defined"],
+      "service": "dynamodb",
+      "subservice": "retention",
+      "risk": "MEDIUM",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Define how long backups are retained for DynamoDB tables and align them with compliance requirements.",
+          "RationaleStatement": "Clear retention policies help reduce risk of unnecessary data exposure and support recovery processes.",
+          "ImpactStatement": "Undefined retention may result in either data unavailability or prolonged sensitive data retention.",
+          "RemediationProcedure": "Use AWS Backup policies or manual schedules with defined TTL for backups.\nCheck Backup Vault settings.",
+          "AuditProcedure": "Inspect backup plans or retention policies associated with DynamoDB resources via AWS Backup console.",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-restore.html",
+          "DefaultValue": "Backups retained indefinitely unless manually purged"
+        }
+      ],
+      "unique_key": "DATASEC_DP_DYNAMODB_005"
+    },
+    {
+      "Id": "1.14",
+      "Description": "Ensure DynamoDB encryption key rotation is enabled",
+      "Checks": ["dynamodb_kms_rotation_enabled"],
+      "service": "dynamodb",
+      "subservice": "encryption",
+      "risk": "MEDIUM",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Protection",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Enable KMS key rotation to ensure long-term cryptographic hygiene and limit key exposure.",
+          "RationaleStatement": "Regular key rotation reduces risk of key compromise over time.",
+          "ImpactStatement": "Stale keys increase the chance of unauthorized decryption if compromised.",
+          "RemediationProcedure": "Enable automatic rotation in KMS for customer-managed keys used by DynamoDB.",
+          "AuditProcedure": "Use:\n```aws kms get-key-rotation-status --key-id <key-id>```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html",
+          "DefaultValue": "Disabled unless explicitly configured"
+        }
+      ],
+      "unique_key": "DATASEC_DP_DYNAMODB_006"
+    },
+    {
+      "Id": "1.15",
+      "Description": "Ensure data classification tags are applied to DynamoDB tables",
+      "Checks": ["dynamodb_classification_tags_applied"],
+      "service": "dynamodb",
+      "subservice": "tagging",
+      "risk": "LOW",
+      "existing": false,
+      "Attributes": [
+        {
+          "Section": "Data Classification",
+          "SubSection": "",
+          "Profile": "LGTech",
+          "AssessmentStatus": "Manual",
+          "Description": "Apply metadata tags to classify table sensitivity (e.g., `Confidential`, `PII`) to support policy enforcement.",
+          "RationaleStatement": "Data classification supports security controls, discovery, and regulatory compliance.",
+          "ImpactStatement": "Lack of tagging may lead to inconsistent policy enforcement or exposure of regulated data.",
+          "RemediationProcedure": "Apply tags using Console or:\n```aws dynamodb tag-resource --resource-arn <arn> --tags Key=classification,Value=confidential```",
+          "AuditProcedure": "Use:\n```aws dynamodb list-tags-of-resource --resource-arn <arn>```",
+          "AdditionalInformation": "",
+          "References": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html",
+          "DefaultValue": "No tags unless manually applied"
+        }
+      ],
+      "unique_key": "DATASEC_TAG_DYNAMODB_001"
+    }
+  ]
+}
+  
+  

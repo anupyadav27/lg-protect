@@ -1,0 +1,546 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Ensure KMS keys are not publicly accessible",
+    "Checks": [
+      "kms_key_not_publicly_accessible"
+    ],
+    "function_name": "kms_key_not_publicly_accessible",
+    "title": "Ensure KMS keys are not publicly accessible",
+    "description": "Ensure KMS keys are not publicly accessible to prevent unauthorized access to encryption keys protecting sensitive data.",
+    "capability": "access_governance",
+    "service": "kms",
+    "subservice": "access",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_AG_KMS_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure KMS keys are not publicly accessible to prevent unauthorized access to encryption keys protecting sensitive data.",
+        "RationaleStatement": "Publicly accessible KMS keys expose encryption capabilities to unauthorized users, potentially compromising data security across all encrypted resources.",
+        "ImpactStatement": "Public access to KMS keys could allow attackers to decrypt sensitive data or encrypt resources for ransom attacks.",
+        "RemediationProcedure": "1. Review KMS key policies for wildcard principals: ```aws kms get-key-policy --key-id <key-id> --policy-name default```\n2. Remove public access from key policy\n3. Update key policy: ```aws kms put-key-policy --key-id <key-id> --policy-name default --policy <updated-policy>```\n4. Verify access is restricted to authorized principals only\n5. Review all resources encrypted with the key",
+        "AuditProcedure": "1. List all KMS keys: ```aws kms list-keys```\n2. Check key policies for public access: ```aws kms get-key-policy --key-id <key-id> --policy-name default```\n3. Look for principals containing '*' or allowing anonymous access\n4. Verify resource-based policies don't grant public access",
+        "AdditionalInformation": "Monitor key usage with CloudTrail to detect unauthorized access attempts",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html",
+        "DefaultValue": "KMS keys are not publicly accessible by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Enforce least privilege for KMS key policies",
+    "Checks": [
+      "kms_key_policy_least_privilege"
+    ],
+    "function_name": "kms_key_policy_least_privilege",
+    "title": "Enforce least privilege for KMS key policies",
+    "description": "Ensure KMS key policies follow least privilege principles to minimize unauthorized access to encryption keys.",
+    "capability": "access_governance",
+    "service": "kms",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_KMS_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS key policies follow least privilege principles to minimize unauthorized access to encryption keys.",
+        "RationaleStatement": "Excessive permissions in KMS key policies increase the risk of unauthorized data access and compromise of encrypted resources.",
+        "ImpactStatement": "Overprivileged KMS key policies may allow unintended users to decrypt sensitive data or perform unauthorized key operations.",
+        "RemediationProcedure": "1. Review current key policies for excessive permissions\n2. Identify minimum required permissions for each principal\n3. Create restrictive key policy with specific actions and conditions\n4. Update key policy: ```aws kms put-key-policy --key-id <key-id> --policy-name default --policy <restricted-policy>```\n5. Test applications to ensure functionality is maintained\n6. Implement regular policy reviews",
+        "AuditProcedure": "1. Review all KMS key policies for overprivileged access\n2. Check for wildcard actions or resources in policies\n3. Verify principals have only necessary permissions\n4. Review condition statements for appropriate restrictions\n5. Audit key usage patterns against granted permissions",
+        "AdditionalInformation": "Use AWS Access Analyzer to identify unused permissions in key policies",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html",
+        "DefaultValue": "Default key policies may be overprivileged for specific use cases"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Restrict cross-account access to KMS keys",
+    "Checks": [
+      "kms_key_cross_account_access_restricted"
+    ],
+    "function_name": "kms_key_cross_account_access_restricted",
+    "title": "Restrict cross-account access to KMS keys",
+    "description": "Ensure KMS keys do not allow unrestricted cross-account access that could compromise data encryption.",
+    "capability": "access_governance",
+    "service": "kms",
+    "subservice": "policy",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_KMS_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS keys do not allow unrestricted cross-account access that could compromise data encryption.",
+        "RationaleStatement": "Unrestricted cross-account access to KMS keys may expose encrypted data to unauthorized external accounts and increase attack surface.",
+        "ImpactStatement": "Cross-account access without proper restrictions could lead to data exposure to unauthorized parties outside the organization.",
+        "RemediationProcedure": "1. Review key policies for cross-account principals\n2. Validate business justification for cross-account access\n3. Implement specific account restrictions and conditions\n4. Add external ID requirements for cross-account roles\n5. Update key policy with restricted cross-account access\n6. Monitor cross-account key usage",
+        "AuditProcedure": "1. Review KMS key policies for external account principals\n2. Verify business justification for cross-account access\n3. Check for appropriate conditions and restrictions\n4. Review CloudTrail logs for cross-account key usage\n5. Validate external ID usage for cross-account roles",
+        "AdditionalInformation": "Use condition keys like aws:SourceAccount to restrict cross-account access",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html",
+        "DefaultValue": "Cross-account access must be explicitly configured in key policies"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Enforce separation of KMS key administration",
+    "Checks": [
+      "kms_key_admin_separation_enforced"
+    ],
+    "function_name": "kms_key_admin_separation_enforced",
+    "title": "Enforce separation of KMS key administration",
+    "description": "Ensure KMS key administration is separated from key usage to prevent unauthorized key management.",
+    "capability": "access_governance",
+    "service": "kms",
+    "subservice": "policy",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_KMS_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS key administration is separated from key usage to prevent unauthorized key management.",
+        "RationaleStatement": "Separation of key administration and usage reduces the risk of key compromise and unauthorized changes to key policies.",
+        "ImpactStatement": "Combined administrative and usage permissions increase the risk of key mismanagement and potential data exposure.",
+        "RemediationProcedure": "1. Identify current key administrators and users\n2. Create separate IAM roles for key administration and usage\n3. Update key policies to separate administrative and usage permissions\n4. Assign appropriate roles to users based on their responsibilities\n5. Implement approval workflows for key administrative changes\n6. Regular review of role assignments",
+        "AuditProcedure": "1. Review KMS key policies for combined admin/usage permissions\n2. Check IAM roles and policies for separation of duties\n3. Verify administrative actions require appropriate approval\n4. Review key usage patterns for administrative activities\n5. Audit role assignments for appropriate separation",
+        "AdditionalInformation": "Consider using AWS Organizations SCPs to enforce separation of duties",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-users-vs-admins",
+        "DefaultValue": "Default key policies may not enforce separation of administrative and usage permissions"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Enable KMS key usage monitoring",
+    "Checks": [
+      "kms_key_usage_monitoring_enabled"
+    ],
+    "function_name": "kms_key_usage_monitoring_enabled",
+    "title": "Enable KMS key usage monitoring",
+    "description": "Enable monitoring for KMS key usage to detect unusual access patterns that could indicate data security issues.",
+    "capability": "access_governance",
+    "service": "kms",
+    "subservice": "monitoring",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_KMS_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable monitoring for KMS key usage to detect unusual access patterns that could indicate data security issues.",
+        "RationaleStatement": "Monitoring KMS key usage helps detect unauthorized access attempts, unusual patterns, and potential security incidents.",
+        "ImpactStatement": "Without proper monitoring, unauthorized KMS key usage and potential data breaches may go undetected.",
+        "RemediationProcedure": "1. Enable CloudTrail for KMS API logging\n2. Configure CloudWatch alarms for unusual key usage patterns\n3. Set up monitoring for failed key operations\n4. Implement automated responses to suspicious activities\n5. Create dashboards for key usage visualization\n6. Regular review of monitoring data and alerts",
+        "AuditProcedure": "1. Verify CloudTrail is enabled for KMS events\n2. Check CloudWatch alarms for key usage monitoring\n3. Review monitoring dashboards and metrics\n4. Verify automated response mechanisms are configured\n5. Test alerting for suspicious key usage patterns",
+        "AdditionalInformation": "Use AWS Config to monitor KMS key configuration changes",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/logging-using-cloudtrail.html",
+        "DefaultValue": "KMS key usage monitoring requires explicit configuration"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable automatic rotation for KMS customer managed keys",
+    "Checks": [
+      "kms_cmk_rotation_enabled"
+    ],
+    "function_name": "kms_cmk_rotation_enabled",
+    "title": "Enable automatic rotation for KMS customer managed keys",
+    "description": "Ensure KMS customer managed keys have automatic rotation enabled to maintain encryption key security.",
+    "capability": "data_protection",
+    "service": "kms",
+    "subservice": "rotation",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_KMS_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure KMS customer managed keys have automatic rotation enabled to maintain encryption key security.",
+        "RationaleStatement": "Regular key rotation reduces the risk of key compromise and limits the impact of potential security breaches on encrypted data.",
+        "ImpactStatement": "Keys without rotation remain vulnerable to long-term cryptographic attacks and increase the potential impact of key compromise.",
+        "RemediationProcedure": "1. Enable key rotation: ```aws kms enable-key-rotation --key-id <key-id>```\n2. Verify rotation is enabled: ```aws kms get-key-rotation-status --key-id <key-id>```\n3. Update applications to handle key rotation gracefully\n4. Monitor rotation events in CloudTrail\n5. Plan for rotation schedule and impact assessment",
+        "AuditProcedure": "1. List all customer managed keys: ```aws kms list-keys```\n2. Check rotation status: ```aws kms get-key-rotation-status --key-id <key-id>```\n3. Verify rotation history in CloudTrail\n4. Review applications for rotation compatibility",
+        "AdditionalInformation": "KMS automatically rotates keys annually when enabled; AWS managed keys are rotated every 3 years",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys.html",
+        "DefaultValue": "Automatic rotation is disabled by default for customer managed keys"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Use customer managed keys instead of AWS managed keys",
+    "Checks": [
+      "kms_cmk_are_used"
+    ],
+    "function_name": "kms_cmk_are_used",
+    "title": "Use customer managed keys instead of AWS managed keys",
+    "description": "Ensure customer managed KMS keys are used instead of AWS managed keys for better control over data encryption.",
+    "capability": "data_protection",
+    "service": "kms",
+    "subservice": "keys",
+    "risk": "MEDIUM",
+    "existing": true,
+    "unique_key": "DATASEC_DP_KMS_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure customer managed KMS keys are used instead of AWS managed keys for better control over data encryption.",
+        "RationaleStatement": "Customer managed keys provide greater control over key policies, rotation, and access management compared to AWS managed keys.",
+        "ImpactStatement": "AWS managed keys limit organizational control over encryption policies and may not meet specific compliance requirements.",
+        "RemediationProcedure": "1. Create customer managed keys: ```aws kms create-key --description 'Customer managed key for <service>'```\n2. Update service configurations to use customer managed keys\n3. Re-encrypt data with new keys where possible\n4. Update IAM policies for key access\n5. Enable key rotation and monitoring\n6. Document key usage and management procedures",
+        "AuditProcedure": "1. List all keys and identify AWS managed vs customer managed\n2. Review service configurations for key usage\n3. Check for services still using AWS managed keys\n4. Verify customer managed keys have appropriate policies\n5. Review key rotation and monitoring configuration",
+        "AdditionalInformation": "Customer managed keys incur additional costs but provide enhanced security controls",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk",
+        "DefaultValue": "AWS services use AWS managed keys by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Prevent unintentional deletion of KMS keys",
+    "Checks": [
+      "kms_cmk_not_deleted_unintentionally"
+    ],
+    "function_name": "kms_cmk_not_deleted_unintentionally",
+    "title": "Prevent unintentional deletion of KMS keys",
+    "description": "Ensure KMS customer managed keys are not scheduled for deletion to prevent data loss from encrypted resources.",
+    "capability": "data_protection",
+    "service": "kms",
+    "subservice": "protection",
+    "risk": "HIGH",
+    "existing": true,
+    "unique_key": "DATASEC_DP_KMS_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure KMS customer managed keys are not scheduled for deletion to prevent data loss from encrypted resources.",
+        "RationaleStatement": "Deletion of KMS keys permanently disables access to all data encrypted with those keys, causing irreversible data loss.",
+        "ImpactStatement": "Scheduled key deletion can result in permanent loss of access to encrypted data and services.",
+        "RemediationProcedure": "1. List keys scheduled for deletion: ```aws kms list-keys --include-planned-deletion```\n2. Cancel deletion: ```aws kms cancel-key-deletion --key-id <key-id>```\n3. Verify key is accessible again\n4. Review deletion permissions and implement approval workflows\n5. Create backup and recovery procedures for critical keys\n6. Monitor for future deletion attempts",
+        "AuditProcedure": "1. Check for keys scheduled for deletion\n2. Review key deletion permissions in IAM policies\n3. Verify approval workflows for key deletion are in place\n4. Monitor CloudTrail for ScheduleKeyDeletion events\n5. Test key recovery procedures",
+        "AdditionalInformation": "KMS provides a 7-30 day waiting period before permanent deletion",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html",
+        "DefaultValue": "Keys can be scheduled for deletion if users have appropriate permissions"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Restrict multi-region KMS keys",
+    "Checks": [
+      "kms_cmk_not_multi_region"
+    ],
+    "function_name": "kms_cmk_not_multi_region",
+    "title": "Restrict multi-region KMS keys",
+    "description": "Ensure KMS keys are not multi-region unless required for approved data residency use cases.",
+    "capability": "data_protection",
+    "service": "kms",
+    "subservice": "region",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_KMS_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Automated",
+        "Description": "Ensure KMS keys are not multi-region unless required for approved data residency use cases.",
+        "RationaleStatement": "Multi-region keys may violate data residency requirements and increase the attack surface across multiple regions.",
+        "ImpactStatement": "Unauthorized multi-region keys may expose encrypted data across jurisdictions that violate compliance requirements.",
+        "RemediationProcedure": "1. Identify multi-region keys: ```aws kms describe-key --key-id <key-id>```\n2. Review business justification for multi-region requirements\n3. Create single-region replacement keys if multi-region is not needed\n4. Re-encrypt data with single-region keys\n5. Update service configurations\n6. Implement policies to prevent unauthorized multi-region key creation",
+        "AuditProcedure": "1. List all KMS keys and check MultiRegion property\n2. Review business justification for multi-region keys\n3. Verify data residency compliance for multi-region keys\n4. Check policies that prevent unauthorized multi-region key creation",
+        "AdditionalInformation": "Multi-region keys cannot be converted to single-region keys after creation",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html",
+        "DefaultValue": "Keys are single-region by default; multi-region must be explicitly specified"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Validate KMS key origin and key material",
+    "Checks": [
+      "kms_key_origin_validation"
+    ],
+    "function_name": "kms_key_origin_validation",
+    "title": "Validate KMS key origin and key material",
+    "description": "Ensure KMS keys use AWS-generated key material unless external key material is required for compliance.",
+    "capability": "data_protection",
+    "service": "kms",
+    "subservice": "origin",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_KMS_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS keys use AWS-generated key material unless external key material is required for compliance.",
+        "RationaleStatement": "AWS-generated key material provides proven security and proper entropy, while external key material may introduce security risks if not properly managed.",
+        "ImpactStatement": "Improperly managed external key material could compromise the security of encrypted data and violate cryptographic standards.",
+        "RemediationProcedure": "1. Review key origin: ```aws kms describe-key --key-id <key-id>```\n2. Validate business justification for external key material\n3. For external keys, verify proper key generation and management\n4. Consider migrating to AWS-generated keys if external material is not required\n5. Implement proper external key material lifecycle management\n6. Regular audit of key material security",
+        "AuditProcedure": "1. List keys and check Origin property for external material\n2. Review business justification for external key material usage\n3. Verify external key material meets cryptographic standards\n4. Check key material expiration and renewal procedures\n5. Audit external key material security controls",
+        "AdditionalInformation": "External key material requires import and may have expiration dates",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html",
+        "DefaultValue": "KMS uses AWS-generated key material by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.6",
+    "Description": "Validate KMS key specifications for data protection",
+    "Checks": [
+      "kms_key_spec_validation"
+    ],
+    "function_name": "kms_key_spec_validation",
+    "title": "Validate KMS key specifications for data protection",
+    "description": "Ensure KMS keys use appropriate key specifications for the type of data being protected.",
+    "capability": "data_protection",
+    "service": "kms",
+    "subservice": "spec",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_KMS_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS keys use appropriate key specifications for the type of data being protected.",
+        "RationaleStatement": "Appropriate key specifications ensure adequate cryptographic strength and compliance with security standards for different data sensitivity levels.",
+        "ImpactStatement": "Inadequate key specifications may provide insufficient protection for highly sensitive data or exceed requirements for less sensitive data.",
+        "RemediationProcedure": "1. Review key specifications: ```aws kms describe-key --key-id <key-id>```\n2. Assess data sensitivity and compliance requirements\n3. Validate key spec meets minimum security standards\n4. Create new keys with appropriate specifications if needed\n5. Plan data re-encryption with stronger keys where required\n6. Document key specification standards",
+        "AuditProcedure": "1. List all keys and their specifications\n2. Review data classification for each key usage\n3. Verify key specs meet minimum requirements for data sensitivity\n4. Check compliance with organizational security standards\n5. Review key specification selection criteria",
+        "AdditionalInformation": "SYMMETRIC_DEFAULT (AES-256) is suitable for most use cases",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec",
+        "DefaultValue": "KMS uses SYMMETRIC_DEFAULT (AES-256) by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.7",
+    "Description": "Restrict KMS key grants",
+    "Checks": [
+      "kms_key_grants_restricted"
+    ],
+    "function_name": "kms_key_grants_restricted",
+    "title": "Restrict KMS key grants",
+    "description": "Ensure KMS key grants are properly restricted and do not provide excessive permissions for data access.",
+    "capability": "data_protection",
+    "service": "kms",
+    "subservice": "grants",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_KMS_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS key grants are properly restricted and do not provide excessive permissions for data access.",
+        "RationaleStatement": "Excessive grant permissions can allow unauthorized access to encrypted data and bypass key policy restrictions.",
+        "ImpactStatement": "Overprivileged grants may enable unauthorized decryption of sensitive data or misuse of encryption keys.",
+        "RemediationProcedure": "1. List key grants: ```aws kms list-grants --key-id <key-id>```\n2. Review grant permissions and constraints\n3. Remove unnecessary or overprivileged grants: ```aws kms retire-grant --key-id <key-id> --grant-token <grant-token>```\n4. Implement grant approval workflows\n5. Add appropriate constraints to remaining grants\n6. Regular audit of grant usage and necessity",
+        "AuditProcedure": "1. List all grants for each KMS key\n2. Review grant permissions and justification\n3. Check for grants with excessive operations\n4. Verify grant constraints are appropriate\n5. Monitor grant usage in CloudTrail logs",
+        "AdditionalInformation": "Grants are temporary and can be retired; use constraints to limit grant scope",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/grants.html",
+        "DefaultValue": "No grants are created by default; grants require explicit creation"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Enforce region restrictions for KMS keys",
+    "Checks": [
+      "kms_key_region_restriction_enforced"
+    ],
+    "function_name": "kms_key_region_restriction_enforced",
+    "title": "Enforce region restrictions for KMS keys",
+    "description": "Ensure KMS keys are created only in approved regions to comply with data residency requirements.",
+    "capability": "data_residency",
+    "service": "kms",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_KMS_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS keys are created only in approved regions to comply with data residency requirements.",
+        "RationaleStatement": "Regional restrictions ensure encryption keys and associated data remain within approved jurisdictions for compliance with data sovereignty laws.",
+        "ImpactStatement": "KMS keys in unauthorized regions may violate data residency requirements and expose the organization to compliance penalties.",
+        "RemediationProcedure": "1. Identify keys in non-compliant regions: ```aws kms list-keys --region <region>```\n2. Create replacement keys in approved regions\n3. Re-encrypt data with compliant region keys\n4. Update service configurations to use new keys\n5. Schedule deletion of non-compliant keys\n6. Implement SCPs to prevent key creation in unauthorized regions",
+        "AuditProcedure": "1. List KMS keys across all regions\n2. Compare key locations against approved regions\n3. Review data residency requirements for each key\n4. Check SCPs for regional restrictions\n5. Verify all encrypted data uses compliant keys",
+        "AdditionalInformation": "Use Service Control Policies (SCPs) to prevent key creation in unauthorized regions",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#enveloping",
+        "DefaultValue": "KMS keys can be created in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Restrict multi-region KMS keys for compliance",
+    "Checks": [
+      "kms_key_multi_region_restricted"
+    ],
+    "function_name": "kms_key_multi_region_restricted",
+    "title": "Restrict multi-region KMS keys for compliance",
+    "description": "Ensure multi-region KMS keys are used only when required for approved data residency use cases.",
+    "capability": "data_residency",
+    "service": "kms",
+    "subservice": "region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_KMS_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure multi-region KMS keys are used only when required for approved data residency use cases.",
+        "RationaleStatement": "Multi-region keys may violate data residency requirements by allowing access to encrypted data from multiple jurisdictions.",
+        "ImpactStatement": "Unauthorized multi-region keys may enable data access from regions that violate data sovereignty compliance requirements.",
+        "RemediationProcedure": "1. Identify multi-region keys: ```aws kms describe-key --key-id <key-id>```\n2. Review business justification for multi-region requirements\n3. Validate compliance with data residency policies\n4. Create single-region replacement keys for non-compliant cases\n5. Plan data migration and re-encryption\n6. Implement approval workflows for multi-region key creation",
+        "AuditProcedure": "1. List all KMS keys and identify multi-region keys\n2. Review data residency justification for each multi-region key\n3. Verify compliance with organizational policies\n4. Check approval documentation for multi-region key creation\n5. Monitor for unauthorized multi-region key creation",
+        "AdditionalInformation": "Multi-region keys synchronize key material across regions but policies remain region-specific",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html",
+        "DefaultValue": "Keys are single-region by default; multi-region requires explicit configuration"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Validate KMS key replica regions for compliance",
+    "Checks": [
+      "kms_key_replica_region_compliance"
+    ],
+    "function_name": "kms_key_replica_region_compliance",
+    "title": "Validate KMS key replica regions for compliance",
+    "description": "Ensure KMS key replicas are created only in regions that meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "kms",
+    "subservice": "replication",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_KMS_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS key replicas are created only in regions that meet data residency requirements.",
+        "RationaleStatement": "Key replicas in non-compliant regions may enable data decryption outside approved jurisdictions, violating data residency policies.",
+        "ImpactStatement": "Key replicas in unauthorized regions could allow sensitive data to be decrypted and accessed outside compliant jurisdictions.",
+        "RemediationProcedure": "1. List key replicas: ```aws kms describe-key --key-id <key-id>``` (check ReplicaKeys)\n2. Review data residency requirements for replica regions\n3. Delete non-compliant replicas: ```aws kms schedule-key-deletion --key-id <replica-key-id>```\n4. Update applications to use compliant key replicas\n5. Implement controls to prevent replica creation in unauthorized regions\n6. Monitor replica creation activities",
+        "AuditProcedure": "1. List all multi-region keys and their replicas\n2. Verify replica regions meet data residency requirements\n3. Check business justification for each replica location\n4. Review controls preventing unauthorized replica creation\n5. Monitor CloudTrail for replica creation events",
+        "AdditionalInformation": "Key replicas share the same key material but have independent policies and lifecycle",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-replicate.html",
+        "DefaultValue": "Key replicas must be explicitly created and can be placed in any available region"
+      }
+    ]
+  },
+  {
+    "Id": "3.4",
+    "Description": "Tag KMS keys with data sovereignty information",
+    "Checks": [
+      "kms_key_data_sovereignty_tags"
+    ],
+    "function_name": "kms_key_data_sovereignty_tags",
+    "title": "Tag KMS keys with data sovereignty information",
+    "description": "Ensure KMS keys are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+    "capability": "data_residency",
+    "service": "kms",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_KMS_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS keys are tagged with data sovereignty and jurisdiction information for compliance tracking.",
+        "RationaleStatement": "Data sovereignty tags enable automated compliance monitoring and help ensure appropriate key usage based on jurisdictional requirements.",
+        "ImpactStatement": "Without proper sovereignty tags, it becomes difficult to track and manage keys according to data residency compliance requirements.",
+        "RemediationProcedure": "1. Define data sovereignty tagging taxonomy\n2. Tag KMS keys: ```aws kms tag-resource --key-id <key-id> --tags TagKey=DataSovereignty,TagValue=<jurisdiction>```\n3. Implement automated tagging for new keys\n4. Create compliance monitoring based on tags\n5. Regular audit of tagging compliance\n6. Update tags when jurisdiction requirements change",
+        "AuditProcedure": "1. List all KMS keys and their tags: ```aws kms list-resource-tags --key-id <key-id>```\n2. Verify data sovereignty tags are present and accurate\n3. Check consistency with data residency policies\n4. Review automated tagging implementation\n5. Validate compliance monitoring based on tags",
+        "AdditionalInformation": "Use consistent tagging strategy across all AWS resources for comprehensive governance",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html",
+        "DefaultValue": "KMS keys are created without data sovereignty tags by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.5",
+    "Description": "Ensure KMS CloudTrail logging is regional",
+    "Checks": [
+      "kms_key_cloudtrail_regional_logging"
+    ],
+    "function_name": "kms_key_cloudtrail_regional_logging",
+    "title": "Ensure KMS CloudTrail logging is regional",
+    "description": "Ensure KMS key usage is logged in CloudTrail within the same region to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "kms",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DR_KMS_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure KMS key usage is logged in CloudTrail within the same region to maintain data residency compliance.",
+        "RationaleStatement": "Regional logging ensures audit trails and key usage data remain within approved jurisdictions for compliance with data sovereignty requirements.",
+        "ImpactStatement": "Cross-region logging may expose key usage metadata outside approved jurisdictions, potentially violating data residency policies.",
+        "RemediationProcedure": "1. Review CloudTrail configuration for KMS logging\n2. Ensure regional trails are configured for each region with KMS keys\n3. Configure trails to store logs in the same region: ```aws cloudtrail create-trail --name <trail-name> --s3-bucket-name <regional-bucket>```\n4. Enable KMS event logging in CloudTrail\n5. Verify log storage location compliance\n6. Monitor cross-region log access",
+        "AuditProcedure": "1. List CloudTrail trails and their configurations\n2. Verify regional trails exist for regions with KMS keys\n3. Check CloudTrail log storage locations\n4. Review KMS event logging configuration\n5. Verify logs remain within compliant regions",
+        "AdditionalInformation": "CloudTrail can be configured for single region or multi-region logging",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/logging-using-cloudtrail.html",
+        "DefaultValue": "CloudTrail regional configuration depends on trail setup; multi-region trails log to single location"
+      }
+    ]
+  }
+]

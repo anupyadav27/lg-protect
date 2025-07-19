@@ -1,0 +1,257 @@
+# EC2 Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: ec2_instance_public_ip_disabled
+  title: Disable public IP assignment for EC2 instances
+  description: Ensure EC2 instances do not have public IP addresses assigned to prevent direct internet access to sensitive data.
+  capability: access_governance
+  service: ec2
+  subservice: network
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_instance_public_access_restricted
+  title: Restrict public access to EC2 instances
+  description: Ensure EC2 instances are not publicly accessible to prevent unauthorized access to sensitive data and applications.
+  capability: access_governance
+  service: ec2
+  subservice: access
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22
+  title: Restrict SSH access from internet
+  description: Ensure security groups do not allow SSH access from the internet to protect against unauthorized access to instance data.
+  capability: access_governance
+  service: ec2
+  subservice: security_groups
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389
+  title: Restrict RDP access from internet
+  description: Ensure security groups do not allow RDP access from the internet to protect Windows instances from unauthorized access.
+  capability: access_governance
+  service: ec2
+  subservice: security_groups
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_securitygroup_default_restrict_traffic
+  title: Restrict default security group traffic
+  description: Ensure default security groups do not allow unrestricted traffic to prevent unauthorized access to EC2 instances.
+  capability: access_governance
+  service: ec2
+  subservice: security_groups
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_instance_profile_attached
+  title: Attach IAM instance profiles to EC2 instances
+  description: Ensure EC2 instances have IAM instance profiles attached for secure access to AWS services without hardcoded credentials.
+  capability: access_governance
+  service: ec2
+  subservice: iam
+  risk: MEDIUM
+  existing: true
+
+- function_name: ec2_instance_managed_by_ssm
+  title: Ensure EC2 instances are managed by Systems Manager
+  description: Ensure EC2 instances are managed by AWS Systems Manager for secure remote access and patch management.
+  capability: access_governance
+  service: ec2
+  subservice: ssm
+  risk: MEDIUM
+  existing: true
+
+- function_name: ec2_instance_imdsv2_enabled
+  title: Enable IMDSv2 for EC2 instances
+  description: Ensure EC2 instances use Instance Metadata Service v2 to prevent SSRF attacks and protect instance credentials.
+  capability: access_governance
+  service: ec2
+  subservice: metadata
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_launch_template_imdsv2_required
+  title: Require IMDSv2 in launch templates
+  description: Ensure EC2 launch templates require IMDSv2 to protect against metadata service attacks on new instances.
+  capability: access_governance
+  service: ec2
+  subservice: metadata
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_instance_secrets_user_data
+  title: Avoid secrets in EC2 user data
+  description: Ensure EC2 instances do not contain secrets in user data scripts to prevent credential exposure.
+  capability: access_governance
+  service: ec2
+  subservice: userdata
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_launch_template_no_secrets
+  title: Avoid secrets in launch templates
+  description: Ensure EC2 launch templates do not contain hardcoded secrets that could be exposed to unauthorized users.
+  capability: access_governance
+  service: ec2
+  subservice: userdata
+  risk: HIGH
+  existing: true
+
+# DATA PROTECTION Rules
+- function_name: ec2_ebs_default_encryption
+  title: Enable default EBS encryption
+  description: Ensure EBS default encryption is enabled to protect data at rest on all new volumes automatically.
+  capability: data_protection
+  service: ec2
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_ebs_volume_encryption
+  title: Enable EBS volume encryption
+  description: Ensure EBS volumes are encrypted to protect sensitive data at rest and meet compliance requirements.
+  capability: data_protection
+  service: ec2
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_ebs_snapshots_encrypted
+  title: Ensure EBS snapshots are encrypted
+  description: Ensure EBS snapshots are encrypted to protect sensitive data during backup operations.
+  capability: data_protection
+  service: ec2
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: ec2_ebs_volume_protected_by_backup_plan
+  title: Protect EBS volumes with backup plans
+  description: Ensure EBS volumes are protected by AWS Backup plans for data protection and compliance requirements.
+  capability: data_protection
+  service: ec2
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: ec2_ebs_volume_snapshots_exists
+  title: Ensure EBS volume snapshots exist
+  description: Ensure EBS volumes have regular snapshots created for data protection and disaster recovery.
+  capability: data_protection
+  service: ec2
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: ec2_instance_termination_protection_enabled
+  title: Enable termination protection for EC2 instances
+  description: Enable termination protection for EC2 instances to prevent accidental data loss from instance termination.
+  capability: data_protection
+  service: ec2
+  subservice: protection
+  risk: MEDIUM
+  existing: true
+
+- function_name: ec2_instance_detailed_monitoring_enabled
+  title: Enable detailed monitoring for EC2 instances
+  description: Enable detailed monitoring for EC2 instances to track performance and detect anomalies that could indicate data access issues.
+  capability: data_protection
+  service: ec2
+  subservice: monitoring
+  risk: LOW
+  existing: true
+
+- function_name: ec2_ebs_volume_kms_encryption_enabled
+  title: Use KMS encryption for EBS volumes
+  description: Ensure EBS volumes use KMS encryption instead of default encryption for better key management and audit trails.
+  capability: data_protection
+  service: ec2
+  subservice: encryption
+  risk: HIGH
+  existing: false
+
+- function_name: ec2_instance_data_classification_tags
+  title: Tag EC2 instances with data classification
+  description: Ensure EC2 instances are tagged with appropriate data classification levels for governance and compliance tracking.
+  capability: data_protection
+  service: ec2
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: ec2_ebs_volume_lifecycle_management
+  title: Implement EBS volume lifecycle management
+  description: Implement lifecycle policies for EBS volumes to automatically manage data retention and reduce storage costs.
+  capability: data_protection
+  service: ec2
+  subservice: lifecycle
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: ec2_instance_region_restriction_enforced
+  title: Enforce region restrictions for EC2 instances
+  description: Ensure EC2 instances are launched only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: ec2
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: ec2_ebs_volume_region_compliance
+  title: Ensure EBS volumes comply with region restrictions
+  description: Ensure EBS volumes are created only in approved regions to meet data residency and sovereignty requirements.
+  capability: data_residency
+  service: ec2
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: ec2_ami_region_restriction_enforced
+  title: Restrict AMI usage to approved regions
+  description: Ensure AMIs are shared and used only in approved regions to maintain data residency compliance.
+  capability: data_residency
+  service: ec2
+  subservice: region
+  risk: MEDIUM
+  existing: false
+
+- function_name: ec2_snapshot_cross_region_copy_restricted
+  title: Restrict cross-region snapshot copying
+  description: Ensure EBS snapshots are copied only to approved regions that meet data residency requirements.
+  capability: data_residency
+  service: ec2
+  subservice: backup
+  risk: HIGH
+  existing: false
+
+- function_name: ec2_instance_data_sovereignty_tags
+  title: Tag EC2 instances with data sovereignty information
+  description: Ensure EC2 instances are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: ec2
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: ec2_placement_group_region_compliance
+  title: Ensure placement groups comply with region restrictions
+  description: Ensure EC2 placement groups are created only in approved regions to maintain data residency compliance.
+  capability: data_residency
+  service: ec2
+  subservice: region
+  risk: MEDIUM
+  existing: false
+
+- function_name: ec2_dedicated_host_region_compliance
+  title: Ensure dedicated hosts comply with region restrictions
+  description: Ensure EC2 dedicated hosts are allocated only in approved regions to meet data residency requirements.
+  capability: data_residency
+  service: ec2
+  subservice: region
+  risk: MEDIUM
+  existing: false

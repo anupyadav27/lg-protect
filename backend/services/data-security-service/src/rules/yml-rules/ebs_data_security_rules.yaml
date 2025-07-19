@@ -1,0 +1,212 @@
+# EBS Data Security Rules - CSPM Rule Generator
+# Generated based on data security focus: misconfigurations, data exposure, compliance, encryption, access, residency
+
+# ACCESS GOVERNANCE Rules
+- function_name: ebs_snapshot_account_block_public_access
+  title: Block public access to EBS snapshots at account level
+  description: Ensure EBS snapshots are not publicly accessible at the account level to prevent unauthorized access to sensitive data.
+  capability: access_governance
+  service: ebs
+  subservice: snapshots
+  risk: HIGH
+  existing: true
+
+- function_name: ebs_public_snapshot
+  title: Ensure EBS snapshots are not publicly accessible
+  description: Ensure EBS snapshots are not publicly accessible to prevent unauthorized access to sensitive data stored in volumes.
+  capability: access_governance
+  service: ebs
+  subservice: snapshots
+  risk: HIGH
+  existing: true
+
+- function_name: ebs_snapshot_sharing_restricted
+  title: Restrict EBS snapshot sharing
+  description: Ensure EBS snapshots are not shared with unauthorized accounts to prevent data exposure through snapshot access.
+  capability: access_governance
+  service: ebs
+  subservice: sharing
+  risk: HIGH
+  existing: false
+
+- function_name: ebs_volume_attachment_restricted
+  title: Restrict EBS volume attachments
+  description: Ensure EBS volumes can only be attached to authorized EC2 instances to prevent unauthorized data access.
+  capability: access_governance
+  service: ebs
+  subservice: attachment
+  risk: MEDIUM
+  existing: false
+
+- function_name: ebs_snapshot_cross_account_access_restricted
+  title: Restrict cross-account access to EBS snapshots
+  description: Ensure EBS snapshots do not allow unrestricted cross-account access that could lead to data exposure.
+  capability: access_governance
+  service: ebs
+  subservice: snapshots
+  risk: HIGH
+  existing: false
+
+- function_name: ebs_volume_cloudtrail_logging_enabled
+  title: Enable CloudTrail logging for EBS operations
+  description: Enable CloudTrail logging for EBS operations to monitor volume and snapshot activities for compliance auditing.
+  capability: access_governance
+  service: ebs
+  subservice: logging
+  risk: MEDIUM
+  existing: false
+
+# DATA PROTECTION Rules
+- function_name: ebs_default_encryption
+  title: Enable default EBS encryption
+  description: Ensure EBS default encryption is enabled to automatically encrypt all new volumes and protect data at rest.
+  capability: data_protection
+  service: ebs
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: ebs_volume_encryption
+  title: Enable encryption for EBS volumes
+  description: Ensure EBS volumes are encrypted to protect sensitive data at rest and meet compliance requirements.
+  capability: data_protection
+  service: ebs
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: ebs_snapshots_encrypted
+  title: Ensure EBS snapshots are encrypted
+  description: Ensure EBS snapshots are encrypted to protect sensitive data during backup and restore operations.
+  capability: data_protection
+  service: ebs
+  subservice: encryption
+  risk: HIGH
+  existing: true
+
+- function_name: ebs_volume_protected_by_backup_plan
+  title: Protect EBS volumes with backup plans
+  description: Ensure EBS volumes are protected by AWS Backup plans for comprehensive data protection and compliance.
+  capability: data_protection
+  service: ebs
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: ebs_volume_snapshots_exists
+  title: Ensure EBS volume snapshots exist
+  description: Ensure EBS volumes have regular snapshots created for data protection and disaster recovery purposes.
+  capability: data_protection
+  service: ebs
+  subservice: backup
+  risk: MEDIUM
+  existing: true
+
+- function_name: ebs_volume_kms_encryption_enabled
+  title: Use KMS encryption for EBS volumes
+  description: Ensure EBS volumes use KMS encryption instead of default encryption for enhanced key management and audit trails.
+  capability: data_protection
+  service: ebs
+  subservice: encryption
+  risk: HIGH
+  existing: false
+
+- function_name: ebs_snapshot_lifecycle_management
+  title: Implement EBS snapshot lifecycle management
+  description: Implement lifecycle policies for EBS snapshots to automatically manage retention and reduce storage costs.
+  capability: data_protection
+  service: ebs
+  subservice: lifecycle
+  risk: MEDIUM
+  existing: false
+
+- function_name: ebs_volume_delete_on_termination_disabled
+  title: Disable delete on termination for EBS volumes
+  description: Disable delete on termination for EBS volumes containing sensitive data to prevent accidental data loss.
+  capability: data_protection
+  service: ebs
+  subservice: protection
+  risk: MEDIUM
+  existing: false
+
+- function_name: ebs_snapshot_encryption_in_transit
+  title: Ensure EBS snapshot encryption in transit
+  description: Ensure EBS snapshots are encrypted during transfer operations to protect data during copy and sharing.
+  capability: data_protection
+  service: ebs
+  subservice: tls
+  risk: HIGH
+  existing: false
+
+- function_name: ebs_volume_data_classification_tags
+  title: Tag EBS volumes with data classification
+  description: Ensure EBS volumes are tagged with appropriate data classification levels for governance and compliance tracking.
+  capability: data_protection
+  service: ebs
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: ebs_snapshot_retention_policy
+  title: Configure EBS snapshot retention policies
+  description: Configure retention policies for EBS snapshots to meet compliance requirements and manage storage costs.
+  capability: data_protection
+  service: ebs
+  subservice: retention
+  risk: MEDIUM
+  existing: false
+
+# DATA RESIDENCY Rules
+- function_name: ebs_volume_region_restriction_enforced
+  title: Enforce region restrictions for EBS volumes
+  description: Ensure EBS volumes are created only in approved regions to comply with data residency requirements.
+  capability: data_residency
+  service: ebs
+  subservice: region
+  risk: HIGH
+  existing: false
+
+- function_name: ebs_snapshot_cross_region_copy_restricted
+  title: Restrict cross-region EBS snapshot copying
+  description: Ensure EBS snapshots are copied only to approved regions that meet data residency requirements.
+  capability: data_residency
+  service: ebs
+  subservice: backup
+  risk: HIGH
+  existing: false
+
+- function_name: ebs_volume_availability_zone_compliance
+  title: Ensure EBS volumes comply with availability zone restrictions
+  description: Ensure EBS volumes are created only in approved availability zones within compliant regions.
+  capability: data_residency
+  service: ebs
+  subservice: availability
+  risk: MEDIUM
+  existing: false
+
+- function_name: ebs_snapshot_destination_region_compliance
+  title: Validate EBS snapshot destinations for compliance
+  description: Ensure EBS snapshot destinations comply with data residency and sovereignty requirements.
+  capability: data_residency
+  service: ebs
+  subservice: backup
+  risk: HIGH
+  existing: false
+
+- function_name: ebs_volume_data_sovereignty_tags
+  title: Tag EBS volumes with data sovereignty information
+  description: Ensure EBS volumes are tagged with data sovereignty and jurisdiction information for compliance tracking.
+  capability: data_residency
+  service: ebs
+  subservice: tagging
+  risk: LOW
+  existing: false
+
+- function_name: ebs_snapshot_same_region_restriction
+  title: Restrict EBS snapshots to same region
+  description: Ensure EBS snapshots remain within the same region to maintain strict data residency requirements.
+  capability: data_residency
+  service: ebs
+  subservice: backup
+  risk: HIGH
+  existing: false

@@ -1,0 +1,30 @@
+"""
+AWS Kafka Service Module
+
+Centralized imports for AWS Kafka compliance checks.
+"""
+
+# Import the service class
+from .kafka_service import KafkaService
+
+# Import individual checks
+from .kafka_cluster_encryption_at_rest_uses_cmk.kafka_cluster_encryption_at_rest_uses_cmk import kafka_cluster_encryption_at_rest_uses_cmk
+from .kafka_cluster_enhanced_monitoring_enabled.kafka_cluster_enhanced_monitoring_enabled import kafka_cluster_enhanced_monitoring_enabled
+from .kafka_cluster_in_transit_encryption_enabled.kafka_cluster_in_transit_encryption_enabled import kafka_cluster_in_transit_encryption_enabled
+from .kafka_cluster_is_public.kafka_cluster_is_public import kafka_cluster_is_public
+from .kafka_cluster_mutual_tls_authentication_enabled.kafka_cluster_mutual_tls_authentication_enabled import kafka_cluster_mutual_tls_authentication_enabled
+from .kafka_cluster_unrestricted_access_disabled.kafka_cluster_unrestricted_access_disabled import kafka_cluster_unrestricted_access_disabled
+from .kafka_cluster_uses_latest_version.kafka_cluster_uses_latest_version import kafka_cluster_uses_latest_version
+from .kafka_connector_in_transit_encryption_enabled.kafka_connector_in_transit_encryption_enabled import kafka_connector_in_transit_encryption_enabled
+
+__all__ = [
+    'KafkaService',
+    'kafka_cluster_encryption_at_rest_uses_cmk',
+    'kafka_cluster_enhanced_monitoring_enabled',
+    'kafka_cluster_in_transit_encryption_enabled',
+    'kafka_cluster_is_public',
+    'kafka_cluster_mutual_tls_authentication_enabled',
+    'kafka_cluster_unrestricted_access_disabled',
+    'kafka_cluster_uses_latest_version',
+    'kafka_connector_in_transit_encryption_enabled',
+]

@@ -1,0 +1,25 @@
+{
+  "title": "LG-Protect API Gateway",
+  "version": "1.0.0",
+  "debug": true,
+  "cors": {
+    "allow_origins": [
+      "http://localhost:3000",
+      "http://localhost:8080"
+    ],
+    "allow_credentials": true,
+    "allow_methods": [
+      "*"
+    ],
+    "allow_headers": [
+      "*"
+    ]
+  },
+  "redis": {
+    "url": "redis://localhost:6379",
+    "decode_responses": true
+  },
+  "aws": {
+    "region": "us-east-1"
+  }
+}

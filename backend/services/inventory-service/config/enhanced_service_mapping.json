@@ -1,0 +1,2021 @@
+{
+  "cloudwatch": {
+    "check_function": "list_metrics",
+    "client_type": "cloudwatch",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "monitoring",
+    "resource_types": {
+      "alarm": {
+        "count_field": "MetricAlarms[*].AlarmName",
+        "resource_identifier": "AlarmName",
+        "arn_format": "arn:aws:cloudwatch:{region}:{account_id}:alarm/{resource_id}"
+      },
+      "log_group": {
+        "count_field": "logGroups[*].logGroupName",
+        "resource_identifier": "logGroupName",
+        "arn_format": "arn:aws:logs:{region}:{account_id}:log-group:{resource_id}"
+      },
+      "certificate": {
+        "count_field": "Certificates[*].CertificateArn",
+        "resource_identifier": "CertificateArn",
+        "arn_format": "arn:aws:cloudwatch:{region}:{account_id}:certificate/{resource_id}"
+      }
+    }
+  },
+  "dynamodb": {
+    "check_function": "list_tables",
+    "client_type": "dynamodb",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "database",
+    "resource_types": {
+      "table": {
+        "count_field": "TableNames[*]",
+        "resource_identifier": "TableName",
+        "arn_format": "arn:aws:dynamodb:{region}:{account_id}:table/{resource_id}"
+      },
+      "dax_cluster": {
+        "count_field": "Clusters[*].ClusterName",
+        "resource_identifier": "ClusterName",
+        "arn_format": "arn:aws:dax:{region}:{account_id}:cache/{resource_id}"
+      }
+    }
+  },
+  "ec2": {
+    "check_function": "describe_instances",
+    "client_type": "ec2",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "compute",
+    "resource_types": {
+      "instance": {
+        "count_field": "Reservations[*].Instances[*].InstanceId",
+        "resource_identifier": "InstanceId",
+        "arn_format": "arn:aws:ec2:{region}:{account_id}:instance/{resource_id}"
+      },
+      "volume": {
+        "count_field": "Volumes[*].VolumeId",
+        "resource_identifier": "VolumeId",
+        "arn_format": "arn:aws:ec2:{region}:{account_id}:volume/{resource_id}"
+      },
+      "launch_template": {
+        "count_field": "LaunchTemplates[*].LaunchTemplateId",
+        "resource_identifier": "LaunchTemplateId",
+        "arn_format": "arn:aws:ec2:{region}:{account_id}:launch-template/{resource_id}"
+      },
+      "transit_gateway": {
+        "count_field": "TransitGateways[*].TransitGatewayId",
+        "resource_identifier": "TransitGatewayId",
+        "arn_format": "arn:aws:ec2:{region}:{account_id}:transit-gateway/{resource_id}"
+      },
+      "analyzer": {
+        "count_field": "Analyzers[*].AnalyzerName",
+        "resource_identifier": "AnalyzerName",
+        "arn_format": "arn:aws:access-analyzer:{region}:{account_id}:analyzer/{resource_id}"
+      }
+    }
+  },
+  "rds": {
+    "check_function": "describe_db_instances",
+    "client_type": "rds",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "database",
+    "resource_types": {
+      "db_instance": {
+        "count_field": "DBInstances[*].DBInstanceIdentifier",
+        "resource_identifier": "DBInstanceIdentifier",
+        "arn_format": "arn:aws:rds:{region}:{account_id}:db:{resource_id}"
+      },
+      "db_cluster": {
+        "count_field": "DBClusters[*].DBClusterIdentifier",
+        "resource_identifier": "DBClusterIdentifier",
+        "arn_format": "arn:aws:rds:{region}:{account_id}:cluster:{resource_id}"
+      },
+      "snapshot": {
+        "count_field": "DBSnapshots[*].DBSnapshotIdentifier",
+        "resource_identifier": "DBSnapshotIdentifier",
+        "arn_format": "arn:aws:rds:{region}:{account_id}:snapshot:{resource_id}"
+      }
+    }
+  },
+  "s3": {
+    "check_function": "list_buckets",
+    "client_type": "s3",
+    "regions": [
+      "global"
+    ],
+    "scope": "global",
+    "category": "storage",
+    "resource_types": {
+      "bucket": {
+        "count_field": "Buckets[*].Name",
+        "check_function": "list_buckets",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:s3:::{resource_id}"
+      },
+      "access_point": {
+        "count_field": "AccessPointList[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:s3:region:account-id:accesspoint/{resource_id}"
+      }
+    }
+  },
+  "autoscaling": {
+    "check_function": "describe_auto_scaling_groups",
+    "client_type": "autoscaling",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "compute",
+    "resource_types": {
+      "auto_scaling_group": {
+        "count_field": "AutoScalingGroups[*].AutoScalingGroupName",
+        "resource_identifier": "AutoScalingGroupName",
+        "arn_format": "arn:aws:autoscaling:{region}:{account_id}:autoScalingGroup:{resource_id}"
+      },
+      "launch_configuration": {
+        "count_field": "LaunchConfigurations[*].LaunchConfigurationName",
+        "resource_identifier": "LaunchConfigurationName",
+        "arn_format": "arn:aws:autoscaling:{region}:{account_id}:launchConfiguration/{resource_id}"
+      }
+    }
+  },
+  "backup": {
+    "check_function": "list_backup_vaults",
+    "client_type": "backup",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "storage",
+    "resource_types": {
+      "backup_vault": {
+        "count_field": "BackupVaultList[*].BackupVaultName",
+        "resource_identifier": "BackupVaultName",
+        "arn_format": "arn:aws:backup:{region}:{account_id}:backup-vault:{resource_id}"
+      },
+      "recovery_point": {
+        "count_field": "RecoveryPoints[*].RecoveryPointArn",
+        "resource_identifier": "RecoveryPointArn",
+        "arn_format": "arn:aws:backup:{region}:{account_id}:recovery-point/{resource_id}"
+      },
+      "backup_plan": {
+        "count_field": "BackupPlans[*].BackupPlanId",
+        "resource_identifier": "BackupPlanId",
+        "arn_format": "arn:aws:backup:{region}:{account_id}:backup-plan:{resource_id}"
+      },
+      "backup_report_plan": {
+        "count_field": "BackupReportPlans[*].BackupReportPlanId",
+        "resource_identifier": "BackupReportPlanId",
+        "arn_format": "arn:aws:backup:{region}:{account_id}:backup-report-plan:{resource_id}"
+      }
+    }
+  },
+  "cloudformation": {
+    "check_function": "list_stacks",
+    "client_type": "cloudformation",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "management",
+    "resource_types": {
+      "stack": {
+        "count_field": "StackSummaries[*].StackName",
+        "resource_identifier": "StackName",
+        "arn_format": "arn:aws:cloudformation:{region}:{account_id}:stack/{resource_id}"
+      }
+    }
+  },
+  "ecr": {
+    "check_function": "describe_repositories",
+    "client_type": "ecr",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "compute",
+    "resource_types": {
+      "repository": {
+        "count_field": "repositories[*].repositoryName",
+        "resource_identifier": "repositoryName",
+        "arn_format": "arn:aws:ecr:{region}:{account_id}:repository/{resource_id}"
+      }
+    }
+  },
+  "ecs": {
+    "check_function": "list_clusters",
+    "client_type": "ecs",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "compute",
+    "resource_types": {
+      "cluster": {
+        "count_field": "clusters[*].clusterName",
+        "resource_identifier": "clusterName",
+        "arn_format": "arn:aws:ecs:{region}:{account_id}:cluster/{resource_id}"
+      },
+      "service": {
+        "count_field": "services[*].serviceName",
+        "resource_identifier": "serviceName",
+        "arn_format": "arn:aws:ecs:{region}:{account_id}:service/{resource_id}"
+      },
+      "task_definition": {
+        "count_field": "taskDefinitions[*].taskDefinitionArn",
+        "resource_identifier": "taskDefinitionArn",
+        "arn_format": "arn:aws:ecs:{region}:{account_id}:task-definition/{resource_id}"
+      },
+      "task_set": {
+        "count_field": "taskSets[*].taskSetArn",
+        "resource_identifier": "taskSetArn",
+        "arn_format": "arn:aws:ecs:{region}:{account_id}:task-set/{resource_id}"
+      }
+    }
+  },
+  "efs": {
+    "check_function": "describe_file_systems",
+    "client_type": "efs",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "storage",
+    "resource_types": {
+      "file_system": {
+        "count_field": "FileSystems[*].FileSystemId",
+        "resource_identifier": "FileSystemId",
+        "arn_format": "arn:aws:elasticfilesystem:{region}:{account_id}:file-system/{resource_id}"
+      },
+      "access_point": {
+        "count_field": "AccessPoints[*].AccessPointId",
+        "resource_identifier": "AccessPointId",
+        "arn_format": "arn:aws:elasticfilesystem:{region}:{account_id}:access-point/{resource_id}"
+      }
+    }
+  },
+  "elasticbeanstalk": {
+    "check_function": "describe_environments",
+    "client_type": "elasticbeanstalk",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "compute",
+    "resource_types": {
+      "environment": {
+        "count_field": "Environments[*].EnvironmentId",
+        "resource_identifier": "EnvironmentId",
+        "arn_format": "arn:aws:elasticbeanstalk:{region}:{account_id}:environment/{resource_id}"
+      }
+    }
+  },
+  "elb": {
+    "check_function": "describe_load_balancers",
+    "client_type": "elb",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "network",
+    "resource_types": {
+      "load_balancer": {
+        "count_field": "LoadBalancerDescriptions[*].LoadBalancerName",
+        "resource_identifier": "LoadBalancerName",
+        "arn_format": "arn:aws:elasticloadbalancing:{region}:{account_id}:loadbalancer/{resource_id}"
+      }
+    }
+  },
+  "elbv2": {
+    "check_function": "describe_load_balancers",
+    "client_type": "elbv2",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "network",
+    "resource_types": {
+      "load_balancer": {
+        "count_field": "LoadBalancers[*].LoadBalancerArn",
+        "resource_identifier": "LoadBalancerArn",
+        "arn_format": "arn:aws:elasticloadbalancing:{region}:{account_id}:loadbalancer/{resource_id}"
+      }
+    }
+  },
+  "emr": {
+    "check_function": "list_clusters",
+    "client_type": "emr",
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "analytics",
+    "resource_types": {
+      "cluster": {
+        "count_field": "Clusters[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:emr:{region}:{account_id}:cluster/{resource_id}"
+      }
+    }
+  },
+  "eventbridge": {
+    "check_function": "list_event_buses",
+    "client_type": "events",
+    "regions": [
+      "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1", "ap-southeast-2",
+      "ca-central-1", "eu-central-1", "eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3",
+      "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "application",
+    "resource_types": {
+      "event_bus": {
+        "count_field": "EventBuses[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:events:{region}:{account_id}:event-bus/{resource_id}"
+      },
+      "endpoint": {
+        "count_field": "Endpoints[*].EndpointId",
+        "resource_identifier": "EndpointId",
+        "arn_format": "arn:aws:events:{region}:{account_id}:endpoint/{resource_id}"
+      }
+    }
+  },
+  "firehose": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "analytics",
+    "resource_types": {
+      "delivery_stream": {
+        "count_field": "DeliveryStreamDescriptionList[*].DeliveryStreamName",
+        "resource_identifier": "DeliveryStreamName",
+        "arn_format": "arn:aws:firehose:{region}:{account_id}:deliverystream/{resource_id}"
+      }
+    },
+    "check_function": "list_delivery_streams",
+    "client_type": "firehose"
+  },
+  "fsx": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "storage",
+    "resource_types": {
+      "file_system": {
+        "count_field": "FileSystems[*].FileSystemId",
+        "resource_identifier": "FileSystemId",
+        "arn_format": "arn:aws:fsx:{region}:{account_id}:file-system/{resource_id}"
+      }
+    },
+    "check_function": "describe_file_systems",
+    "client_type": "fsx"
+  },
+  "glacier": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "storage",
+    "resource_types": {
+      "vault": {
+        "count_field": "VaultList[*].VaultName",
+        "resource_identifier": "VaultName",
+        "arn_format": "arn:aws:glacier:{region}:{account_id}:vault/{resource_id}"
+      }
+    },
+    "check_function": "list_vaults",
+    "client_type": "glacier"
+  },
+  "glue": {
+    "resource_types": {
+      "catalog": {
+        "count_field": "Catalogs[*].CatalogId",
+        "resource_identifier": "CatalogId",
+        "arn_format": "arn:aws:glue:{region}:{account_id}:catalog/{resource_id}"
+      },
+      "ml_transform": {
+        "count_field": "MLTransforms[*].TransformId",
+        "resource_identifier": "TransformId",
+        "arn_format": "arn:aws:glue:{region}:{account_id}:mlTransform/{resource_id}"
+      }
+    },
+    "check_function": "list_jobs",
+    "client_type": "glue"
+  },
+  "guardduty": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "security",
+    "resource_types": {
+      "detector": {
+        "count_field": "DetectorIds[*]",
+        "resource_identifier": "DetectorId",
+        "arn_format": "arn:aws:guardduty:{region}:{account_id}:detector/{resource_id}"
+      },
+      "detector_alt": {
+        "count_field": "Detectors[*].DetectorId",
+        "resource_identifier": "DetectorId",
+        "arn_format": "arn:aws:guardduty:{region}:{account_id}/detector/{resource_id}"
+      }
+    },
+    "check_function": "list_detectors",
+    "client_type": "guardduty"
+  },
+  "iam": {
+    "regions": [
+      "global"
+    ],
+    "scope": "global",
+    "category": "security",
+    "resource_types": {
+      "user": {
+        "count_field": "Users[*].UserName",
+        "resource_identifier": "UserName",
+        "arn_format": "arn:aws:iam::{account_id}:user/{resource_id}"
+      },
+      "resource_type": {
+        "count_field": "ResourceTypes[*].ResourceType",
+        "resource_identifier": "ResourceType",
+        "arn_format": "arn:aws:iam::{account_id}:{resource_id}"
+      }
+    },
+    "check_function": "list_users",
+    "client_type": "iam"
+  },
+  "inspector2": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "security",
+    "resource_types": {
+      "detector": {
+        "count_field": "detectors[*].id",
+        "resource_identifier": "id",
+        "arn_format": "arn:aws:inspector2:{region}:{account_id}:detector/{resource_id}"
+      }
+    },
+    "check_function": "list_findings",
+    "client_type": "inspector2"
+  },
+  "kafka": {
+    "resource_types": {
+      "connector": {
+        "count_field": "Connectors[*].ConnectorName",
+        "resource_identifier": "ConnectorName",
+        "arn_format": "arn:aws:kafkaconnect:{region}:{account_id}:connector/{resource_id}"
+      }
+    },
+    "check_function": "list_clusters",
+    "client_type": "kafka"
+  },
+  "kinesis": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "analytics",
+    "resource_types": {
+      "stream": {
+        "count_field": "StreamNames[*]",
+        "resource_identifier": "StreamName",
+        "arn_format": "arn:aws:kinesis:{region}:{account_id}:stream/{resource_id}"
+      }
+    },
+    "check_function": "list_streams",
+    "client_type": "kinesis"
+  },
+  "kms": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "security",
+    "resource_types": {
+      "key": {
+        "count_field": "Keys[*]",
+        "resource_identifier": "KeyId",
+        "arn_format": "arn:aws:kms:{region}:{account_id}:key/{resource_id}"
+      }
+    },
+    "check_function": "list_keys",
+    "client_type": "kms"
+  },
+  "lambda": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "compute",
+    "resource_types": {
+      "function": {
+        "count_field": "Functions[*].FunctionName",
+        "resource_identifier": "FunctionName",
+        "arn_format": "arn:aws:lambda:{region}:{account_id}:function:{resource_id}"
+      }
+    },
+    "check_function": "list_functions",
+    "client_type": "lambda"
+  },
+  "lightsail": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "instance": {
+        "count_field": "instances[*].name",
+        "resource_identifier": "name",
+        "arn_format": "arn:aws:lightsail:{region}:{account_id}:Instance/{resource_id}"
+      },
+      "relational_database": {
+        "count_field": "RelationalDatabases[*].name",
+        "resource_identifier": "name",
+        "arn_format": "arn:aws:lightsail:{region}:{account_id}:RelationalDatabase/{resource_id}"
+      },
+      "static_ip": {
+        "count_field": "StaticIps[*].name",
+        "resource_identifier": "name",
+        "arn_format": "arn:aws:lightsail:{region}:{account_id}:static-ip/{resource_id}"
+      }
+    },
+    "check_function": "get_instances",
+    "client_type": "lightsail"
+  },
+  "memorydb": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "scope": "regional",
+    "category": "database",
+    "resource_types": {
+      "cluster": {
+        "count_field": "Clusters[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:memorydb:{region}:{account_id}:cluster/{resource_id}"
+      }
+    }
+  },
+  "mq": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "broker": {
+        "count_field": "BrokerSummaries[*].BrokerId",
+        "resource_identifier": "BrokerId",
+        "arn_format": "arn:aws:mq:{region}:{account_id}:broker/{resource_id}"
+      }
+    },
+    "check_function": "list_brokers",
+    "client_type": "mq"
+  },
+  "neptune": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "db_cluster": {
+        "count_field": "DBClusters[*].DBClusterIdentifier",
+        "resource_identifier": "DBClusterIdentifier",
+        "arn_format": "arn:aws:rds:{region}:{account_id}:db-cluster/{resource_id}"
+      }
+    },
+    "check_function": "describe_db_clusters",
+    "client_type": "neptune"
+  },
+  "network-firewall": {
+    "resource_types": {
+      "firewall": {
+        "count_field": "Firewalls[*].FirewallName",
+        "resource_identifier": "FirewallName",
+        "arn_format": "arn:aws:network-firewall:{region}:{account_id}:firewall/{resource_id}"
+      }
+    }
+  },
+  "opensearch": {
+    "resource_types": {
+      "domain": {
+        "count_field": "DomainNames[*]",
+        "resource_identifier": "DomainName",
+        "arn_format": "arn:aws:es:{region}:{account_id}:domain/{resource_id}"
+      }
+    }
+  },
+  "organizations": {
+    "resource_types": {
+      "organization": {
+        "count_field": "Organizations[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:organizations::{account_id}:organization/{resource_id}"
+      }
+    },
+    "check_function": "list_accounts",
+    "client_type": "organizations"
+  },
+  "redshift": {
+    "resource_types": {
+      "cluster": {
+        "count_field": "Clusters[*].ClusterIdentifier",
+        "resource_identifier": "ClusterIdentifier",
+        "arn_format": "arn:aws:redshift:{region}:{account_id}:cluster:{resource_id}"
+      }
+    },
+    "check_function": "describe_clusters",
+    "client_type": "redshift"
+  },
+  "resourceexplorer2": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "index": {
+        "count_field": "Indexes[*].IndexId",
+        "resource_identifier": "IndexId",
+        "arn_format": "arn:aws:resource-explorer-2:{region}:{account_id}:index/{resource_id}"
+      }
+    }
+  },
+  "sagemaker": {
+    "resource_types": {
+      "endpoint_config": {
+        "count_field": "EndpointConfigs[*].EndpointConfigName",
+        "resource_identifier": "EndpointConfigName",
+        "arn_format": "arn:aws:sagemaker:{region}:{account_id}:endpoint-config/{resource_id}"
+      },
+      "model": {
+        "count_field": "Models[*].ModelName",
+        "resource_identifier": "ModelName",
+        "arn_format": "arn:aws:sagemaker:{region}:{account_id}:model/{resource_id}"
+      },
+      "training_job": {
+        "count_field": "TrainingJobs[*].TrainingJobName",
+        "resource_identifier": "TrainingJobName",
+        "arn_format": "arn:aws:sagemaker:{region}:{account_id}:training-job/{resource_id}"
+      }
+    },
+    "check_function": "list_notebook_instances",
+    "client_type": "sagemaker"
+  },
+  "secretsmanager": {
+    "resource_types": {
+      "secret": {
+        "count_field": "SecretList[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:secretsmanager:{region}:{account_id}:secret:{resource_id}"
+      }
+    },
+    "check_function": "list_secrets",
+    "client_type": "secretsmanager"
+  },
+  "securityhub": {
+    "resource_types": {
+      "hub": {
+        "count_field": "Hubs[*].HubArn",
+        "resource_identifier": "HubArn",
+        "arn_format": "arn:aws:securityhub:{region}:{account_id}:hub/{resource_id}"
+      }
+    },
+    "check_function": "get_enabled_standards",
+    "client_type": "securityhub"
+  },
+  "servicecatalog": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "portfolio": {
+        "count_field": "PortfolioDetails[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:servicecatalog:{region}:{account_id}:portfolio/{resource_id}"
+      }
+    },
+    "check_function": "list_portfolios",
+    "client_type": "servicecatalog"
+  },
+  "ses": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "identity": {
+        "count_field": "Identities[*]",
+        "resource_identifier": "IdentityName",
+        "arn_format": "arn:aws:ses:{region}:{account_id}:identity/{resource_id}"
+      }
+    },
+    "check_function": "list_identities",
+    "client_type": "ses"
+  },
+  "sns": {
+    "resource_types": {
+      "topic": {
+        "count_field": "Topics[*].TopicArn",
+        "resource_identifier": "TopicArn",
+        "arn_format": "arn:aws:sns:{region}:{account_id}:{resource_id}"
+      }
+    },
+    "check_function": "list_topics",
+    "client_type": "sns"
+  },
+  "sqs": {
+    "resource_types": {
+      "queue": {
+        "count_field": "QueueUrls[*]",
+        "resource_identifier": "QueueUrl",
+        "arn_format": "arn:aws:sqs:{region}:{account_id}:{resource_id}"
+      }
+    },
+    "check_function": "list_queues",
+    "client_type": "sqs"
+  },
+  "ssm": {
+    "resource_types": {
+      "instance": {
+        "count_field": "InstanceInformationList[*].InstanceId",
+        "resource_identifier": "InstanceId",
+        "arn_format": "arn:aws:ec2:{region}:{account_id}:instance/{resource_id}"
+      }
+    },
+    "check_function": "describe_parameters",
+    "client_type": "ssm"
+  },
+  "stepfunctions": {
+    "resource_types": {
+      "state_machine": {
+        "count_field": "stateMachines[*].stateMachineArn",
+        "resource_identifier": "stateMachineArn",
+        "arn_format": "arn:aws:states:{region}:{account_id}:stateMachine:{resource_id}"
+      }
+    },
+    "check_function": "list_state_machines",
+    "client_type": "stepfunctions"
+  },
+  "storagegateway": {
+    "resource_types": {
+      "share": {
+        "count_field": "FileShares[*].FileShareARN",
+        "resource_identifier": "FileShareARN",
+        "arn_format": "arn:aws:storagegateway:{region}:{account_id}:share/{resource_id}"
+      }
+    },
+    "check_function": "list_gateways",
+    "client_type": "storagegateway"
+  },
+  "transfer": {
+    "resource_types": {
+      "server": {
+        "count_field": "Servers[*].ServerId",
+        "resource_identifier": "ServerId",
+        "arn_format": "arn:aws:transfer:{region}:{account_id}:server/{resource_id}"
+      }
+    },
+    "check_function": "list_servers",
+    "client_type": "transfer"
+  },
+  "vpc": {
+    "resource_types": {
+      "vpc": {
+        "count_field": "Vpcs[*].VpcId",
+        "resource_identifier": "VpcId",
+        "arn_format": "arn:aws:ec2:{region}:{account_id}:vpc/{resource_id}"
+      }
+    },
+    "check_function": "describe_vpcs",
+    "client_type": "ec2"
+  },
+  "waf": {
+    "resource_types": {
+      "web_acl": {
+        "count_field": "WebACLs[*].WebACLId",
+        "resource_identifier": "WebACLId",
+        "arn_format": "arn:aws:waf::{account_id}:webacl/{resource_id}"
+      }
+    },
+    "check_function": "list_web_acls",
+    "client_type": "waf"
+  },
+  "wafv2": {
+    "resource_types": {
+      "web_acl": {
+        "count_field": "WebACLs[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:wafv2:{region}:{account_id}:regional/webacl/{resource_id}"
+      }
+    },
+    "check_function": "list_web_acls",
+    "client_type": "wafv2"
+  },
+  "wellarchitected": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "workload": {
+        "count_field": "Workloads[*].WorkloadId",
+        "resource_identifier": "WorkloadId",
+        "arn_format": "arn:aws:wellarchitected:{region}:{account_id}:workload/{resource_id}"
+      }
+    },
+    "check_function": "list_workloads",
+    "client_type": "wellarchitected"
+  },
+  "workspaces": {
+    "resource_types": {
+      "workspace": {
+        "count_field": "Workspaces[*].WorkspaceId",
+        "resource_identifier": "WorkspaceId",
+        "arn_format": "arn:aws:workspaces:{region}:{account_id}:workspace/{resource_id}"
+      }
+    },
+    "check_function": "describe_workspaces",
+    "client_type": "workspaces"
+  },
+  "accessanalyzer": {
+    "resource_types": {
+      "analyzer": {
+        "count_field": "analyzers[*].analyzerName",
+        "resource_identifier": "analyzerName",
+        "arn_format": "arn:aws:access-analyzer:{region}:{account_id}:analyzer/{resource_id}"
+      }
+    }
+  },
+  "account": {
+    "resource_types": {
+      "account": {
+        "count_field": "Accounts[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:organizations::{account_id}:account/{resource_id}"
+      }
+    }
+  },
+  "appstream": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "fleet": {
+        "count_field": "Fleets[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:appstream:{region}:{account_id}:fleet/{resource_id}"
+      }
+    }
+  },
+  "appsync": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "api": {
+        "count_field": "GraphqlApis[*].ApiId",
+        "resource_identifier": "ApiId",
+        "arn_format": "arn:aws:appsync:{region}:{account_id}:apis/{resource_id}"
+      }
+    }
+  },
+  "athena": {
+    "resource_types": {
+      "workgroup": {
+        "count_field": "WorkGroups[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:athena:{region}:{account_id}:workgroup/{resource_id}"
+      }
+    },
+    "check_function": "list_work_groups",
+    "client_type": "athena"
+  },
+  "bedrock": {
+    "resource_types": {
+      "agent": {
+        "count_field": "Agents[*].AgentName",
+        "resource_identifier": "AgentName",
+        "arn_format": "arn:aws:bedrock:{region}:{account_id}:agent/{resource_id}"
+      },
+      "guardrails": {
+        "count_field": "Guardrails[*].GuardrailName",
+        "resource_identifier": "GuardrailName",
+        "arn_format": "arn:aws:bedrock:{region}:{account_id}:guardrails/{resource_id}"
+      },
+      "model": {
+        "count_field": "Models[*].ModelName",
+        "resource_identifier": "ModelName",
+        "arn_format": "arn:aws:bedrock:{region}:{account_id}:model/{resource_id}"
+      }
+    }
+  },
+  "codeartifact": {
+    "resource_types": {
+      "repository": {
+        "count_field": "repositories[*].name",
+        "resource_identifier": "name",
+        "arn_format": "arn:aws:codeartifact:{region}:{account_id}:repository/{resource_id}"
+      }
+    }
+  },
+  "codebuild": {
+    "resource_types": {
+      "project": {
+        "count_field": "projects[*]",
+        "resource_identifier": "name",
+        "arn_format": "arn:aws:codebuild:{region}:{account_id}:project/{resource_id}"
+      }
+    }
+  },
+  "cognito": {
+    "resource_types": {
+      "userpool": {
+        "count_field": "UserPools[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:cognito-idp:{region}:{account_id}:userpool/{resource_id}"
+      },
+      "identitypool": {
+        "count_field": "IdentityPools[*].IdentityPoolId",
+        "resource_identifier": "IdentityPoolId",
+        "arn_format": "arn:aws:cognito-identity:{region}:{account_id}:identitypool/{resource_id}"
+      }
+    }
+  },
+  "config": {
+    "resource_types": {
+      "recorder": {
+        "count_field": "ConfigurationRecorders[*].name",
+        "resource_identifier": "name",
+        "arn_format": "arn:aws:config:{region}:{account_id}:config-recorder/{resource_id}"
+      }
+    },
+    "check_function": "describe_configuration_recorders",
+    "client_type": "config"
+  },
+  "directconnect": {
+    "resource_types": {
+      "connection": {
+        "count_field": "connections[*].connectionId",
+        "resource_identifier": "connectionId",
+        "arn_format": "arn:aws:directconnect:{region}:{account_id}:dx-connection/{resource_id}"
+      }
+    },
+    "check_function": "describe_connections",
+    "client_type": "directconnect"
+  },
+  "directoryservice": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "directory": {
+        "count_field": "DirectoryDescriptions[*].DirectoryId",
+        "resource_identifier": "DirectoryId",
+        "arn_format": "arn:aws:ds:{region}:{account_id}:directory/{resource_id}"
+      }
+    }
+  },
+  "dlm": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "lifecycle_policy": {
+        "count_field": "Policies[*].PolicyId",
+        "resource_identifier": "PolicyId",
+        "arn_format": "arn:aws:dlm:{region}:{account_id}:policy/{resource_id}"
+      }
+    }
+  },
+  "dms": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "endpoint": {
+        "count_field": "Endpoints[*].EndpointIdentifier",
+        "resource_identifier": "EndpointIdentifier",
+        "arn_format": "arn:aws:dms:{region}:{account_id}:endpoint/{resource_id}"
+      },
+      "task": {
+        "count_field": "ReplicationTasks[*].ReplicationTaskIdentifier",
+        "resource_identifier": "ReplicationTaskIdentifier",
+        "arn_format": "arn:aws:dms:{region}:{account_id}:task/{resource_id}"
+      }
+    }
+  },
+  "documentdb": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "db_cluster": {
+        "count_field": "DBClusters[*].DBClusterIdentifier",
+        "resource_identifier": "DBClusterIdentifier",
+        "arn_format": "arn:aws:rds:{region}:{account_id}:db-cluster/{resource_id}"
+      }
+    }
+  },
+  "drs": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "job": {
+        "count_field": "Jobs[*].JobID",
+        "resource_identifier": "JobID",
+        "arn_format": "arn:aws:drs:{region}:{account_id}:job/{resource_id}"
+      }
+    }
+  },
+  "elasticache": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "cluster": {
+        "count_field": "CacheClusters[*].CacheClusterId",
+        "resource_identifier": "CacheClusterId",
+        "arn_format": "arn:aws:elasticache:{region}:{account_id}:cluster/{resource_id}"
+      }
+    },
+    "check_function": "describe_cache_clusters",
+    "client_type": "elasticache"
+  },
+  "fms": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "policy": {
+        "count_field": "PolicyList[*].PolicyId",
+        "resource_identifier": "PolicyId",
+        "arn_format": "arn:aws:fms:{region}:{account_id}:policy/{resource_id}"
+      }
+    }
+  },
+  "macie": {
+    "regions": [
+      "us-east-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "analyzer": {
+        "count_field": "Analyzers[*].AnalyzerName",
+        "resource_identifier": "AnalyzerName",
+        "arn_format": "arn:aws:macie:{region}:{account_id}:analyzer/{resource_id}"
+      }
+    },
+    "check_function": "list_findings",
+    "client_type": "macie"
+  },
+  "support": {
+    "regions": [
+      "global"
+    ],
+    "resource_types": {
+      "case": {
+        "count_field": "Cases[*].CaseId",
+        "resource_identifier": "CaseId",
+        "arn_format": "arn:aws:support::{account_id}:case/{resource_id}"
+      }
+    },
+    "check_function": "describe_cases",
+    "client_type": "support"
+  },
+  "trustedadvisor": {
+    "regions": [
+      "global"
+    ],
+    "resource_types": {
+      "check": {
+        "count_field": "Checks[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:trustedadvisor::{account_id}:check/{resource_id}"
+      }
+    }
+  },
+  "acm": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "certificate": {
+        "count_field": "CertificateSummaryList[*].CertificateArn",
+        "resource_identifier": "CertificateArn",
+        "arn_format": "arn:aws:acm:{region}:{account_id}:certificate/{resource_id}"
+      }
+    },
+    "check_function": "list_certificates",
+    "client_type": "acm"
+  },
+  "apigateway": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "rest_api": {
+        "count_field": "items[*].id",
+        "resource_identifier": "id",
+        "arn_format": "arn:aws:apigateway:{region}:{account_id}:/restapis/{resource_id}"
+      }
+    },
+    "check_function": "get_rest_apis",
+    "client_type": "apigateway"
+  },
+  "apigatewayv2": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "api": {
+        "count_field": "Items[*].ApiId",
+        "resource_identifier": "ApiId",
+        "arn_format": "arn:aws:apigateway:{region}:{account_id}:/apis/{resource_id}"
+      }
+    },
+    "check_function": "get_apis",
+    "client_type": "apigatewayv2"
+  },
+  "awslambda": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "function": {
+        "count_field": "Functions[*].FunctionName",
+        "resource_identifier": "FunctionName",
+        "arn_format": "arn:aws:lambda:{region}:{account_id}:function/{resource_id}"
+      }
+    }
+  },
+  "cloudfront": {
+    "regions": [
+      "global"
+    ],
+    "resource_types": {
+      "distribution": {
+        "count_field": "DistributionList.Items[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:cloudfront::{account_id}:distribution/{resource_id}"
+      }
+    },
+    "check_function": "list_distributions",
+    "client_type": "cloudfront"
+  },
+  "cloudtrail": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "trail": {
+        "count_field": "trailList[*].TrailARN",
+        "resource_identifier": "TrailARN",
+        "arn_format": "arn:aws:cloudtrail:{region}:{account_id}:trail/{resource_id}"
+      }
+    },
+    "check_function": "describe_trails",
+    "client_type": "cloudtrail"
+  },
+  "comprehend": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "document_classifier": {
+        "count_field": "DocumentClassifierPropertiesList[*].DocumentClassifierArn",
+        "resource_identifier": "DocumentClassifierArn",
+        "arn_format": "arn:aws:comprehend:{region}:{account_id}:document-classifier/{resource_id}"
+      }
+    },
+    "check_function": "list_document_classifiers",
+    "client_type": "comprehend"
+  },
+  "connect": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "instance": {
+        "count_field": "InstanceSummaryList[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:connect:{region}:{account_id}:instance/{resource_id}"
+      }
+    }
+  },
+  "datasync": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "task": {
+        "count_field": "Tasks[*].TaskArn",
+        "resource_identifier": "TaskArn",
+        "arn_format": "arn:aws:datasync:{region}:{account_id}:task/{resource_id}"
+      }
+    },
+    "check_function": "list_tasks",
+    "client_type": "datasync"
+  },
+  "eks": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "cluster": {
+        "count_field": "clusters[*]",
+        "resource_identifier": "name",
+        "arn_format": "arn:aws:eks:{region}:{account_id}:cluster/{resource_id}"
+      }
+    }
+  },
+  "globalaccelerator": {
+    "regions": [
+      "global"
+    ],
+    "resource_types": {
+      "accelerator": {
+        "count_field": "Accelerators[*].AcceleratorArn",
+        "resource_identifier": "AcceleratorArn",
+        "arn_format": "arn:aws:globalaccelerator::{account_id}:accelerator/{resource_id}"
+      }
+    },
+    "check_function": "list_accelerators",
+    "client_type": "globalaccelerator"
+  },
+  "logs": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "log_group": {
+        "count_field": "logGroups[*].logGroupName",
+        "resource_identifier": "logGroupName",
+        "arn_format": "arn:aws:logs:{region}:{account_id}:log-group:{resource_id}"
+      }
+    },
+    "check_function": "describe_log_groups",
+    "client_type": "logs"
+  },
+  "networkfirewall": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "firewall": {
+        "count_field": "Firewalls[*].FirewallArn",
+        "resource_identifier": "FirewallArn",
+        "arn_format": "arn:aws:network-firewall:{region}:{account_id}:firewall/{resource_id}"
+      }
+    }
+  },
+  "polly": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "lexicon": {
+        "count_field": "Lexicons[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:polly:{region}:{account_id}:lexicon/{resource_id}"
+      }
+    },
+    "check_function": "describe_voices",
+    "client_type": "polly"
+  },
+  "rekognition": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "collection": {
+        "count_field": "CollectionIds[*]",
+        "resource_identifier": "CollectionId",
+        "arn_format": "arn:aws:rekognition:{region}:{account_id}:collection/{resource_id}"
+      }
+    },
+    "check_function": "list_collections",
+    "client_type": "rekognition"
+  },
+  "shield": {
+    "regions": [
+      "global"
+    ],
+    "resource_types": {
+      "protection": {
+        "count_field": "Protections[*].Id",
+        "resource_identifier": "Id",
+        "arn_format": "arn:aws:shield::{account_id}:protection/{resource_id}"
+      }
+    },
+    "check_function": "list_protections",
+    "client_type": "shield"
+  },
+  "textract": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "document": {
+        "count_field": "DocumentMetadata[*].DocumentId",
+        "resource_identifier": "DocumentId",
+        "arn_format": "arn:aws:textract:{region}:{account_id}:document/{resource_id}"
+      }
+    },
+    "check_function": "list_adapters",
+    "client_type": "textract"
+  },
+  "transcribe": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "vocabulary": {
+        "count_field": "Vocabularies[*].VocabularyName",
+        "resource_identifier": "VocabularyName",
+        "arn_format": "arn:aws:transcribe:{region}:{account_id}:vocabulary/{resource_id}"
+      }
+    },
+    "check_function": "list_transcription_jobs",
+    "client_type": "transcribe"
+  },
+  "translate": {
+    "regions": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-northeast-3",
+      "ap-south-1",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-north-1",
+      "eu-west-1",
+      "eu-west-2",
+      "eu-west-3",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "resource_types": {
+      "terminology": {
+        "count_field": "TerminologyPropertiesList[*].Name",
+        "resource_identifier": "Name",
+        "arn_format": "arn:aws:translate:{region}:{account_id}:terminology/{resource_id}"
+      }
+    },
+    "check_function": "list_text_translation_jobs",
+    "client_type": "translate"
+  }
+}

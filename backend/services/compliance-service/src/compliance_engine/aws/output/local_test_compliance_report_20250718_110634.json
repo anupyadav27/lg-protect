@@ -1,0 +1,16 @@
+{
+  "scan_id": "scan_20250718_110634",
+  "scan_timestamp": "2025-07-18T11:06:34.858937",
+  "account_id": null,
+  "regions": [],
+  "summary": {
+    "checks_run": 0,
+    "checks_passed": 0,
+    "checks_failed": 0,
+    "checks_error": 0,
+    "checks_warning": 0,
+    "checks_skipped": 0,
+    "execution_time_ms": 0
+  },
+  "findings": []
+}

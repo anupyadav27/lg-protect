@@ -1,0 +1,632 @@
+[
+  {
+    "Id": "1.1",
+    "Description": "Restrict access to replication sources",
+    "Checks": ["replication_source_access_restricted"],
+    "function_name": "replication_source_access_restricted",
+    "title": "Restrict access to replication sources",
+    "description": "Ensure replication sources have proper access controls to prevent unauthorized access to sensitive data being replicated.",
+    "capability": "access_governance",
+    "service": "replication",
+    "subservice": "source",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REPLICATION_001",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication sources have proper access controls to prevent unauthorized access to sensitive data being replicated.",
+        "RationaleStatement": "Unrestricted access to replication sources can lead to unauthorized data exposure and potential data breaches during replication processes.",
+        "ImpactStatement": "Without proper access controls, malicious actors could gain unauthorized access to sensitive data at the source, compromising data confidentiality.",
+        "RemediationProcedure": "1. Review IAM policies for replication source resources\n2. Implement least privilege access using AWS CLI:\n```aws iam put-user-policy --user-name <user> --policy-name ReplicationSourceAccess --policy-document file://replication-source-policy.json```\n3. Configure resource-based policies to restrict access\n4. Enable MFA for administrative access to replication sources",
+        "AuditProcedure": "1. List IAM policies for replication resources:\n```aws iam list-attached-user-policies --user-name <user>```\n2. Review resource-based policies:\n```aws s3api get-bucket-policy --bucket <source-bucket>```\n3. Verify access logs for unauthorized attempts",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
+        "DefaultValue": "Open access by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.2",
+    "Description": "Restrict access to replication destinations",
+    "Checks": ["replication_destination_access_restricted"],
+    "function_name": "replication_destination_access_restricted",
+    "title": "Restrict access to replication destinations",
+    "description": "Ensure replication destinations have proper access controls to prevent unauthorized access to replicated sensitive data.",
+    "capability": "access_governance",
+    "service": "replication",
+    "subservice": "destination",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REPLICATION_002",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication destinations have proper access controls to prevent unauthorized access to replicated sensitive data.",
+        "RationaleStatement": "Replicated data at destinations contains the same sensitive information as sources and requires equal protection through access controls.",
+        "ImpactStatement": "Inadequate access controls at destinations can lead to unauthorized access to replicated sensitive data, potentially violating compliance requirements.",
+        "RemediationProcedure": "1. Configure destination access policies using AWS CLI:\n```aws s3api put-bucket-policy --bucket <destination-bucket> --policy file://destination-policy.json```\n2. Implement cross-account access controls for cross-account replication\n3. Enable bucket notifications for access monitoring\n4. Configure VPC endpoints for secure access",
+        "AuditProcedure": "1. Check destination bucket policies:\n```aws s3api get-bucket-policy --bucket <destination-bucket>```\n2. Review cross-account access:\n```aws sts get-caller-identity```\n3. Verify access logging configuration:\n```aws s3api get-bucket-logging --bucket <destination-bucket>```",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-best-practices.html",
+        "DefaultValue": "Inherited from source configuration"
+      }
+    ]
+  },
+  {
+    "Id": "1.3",
+    "Description": "Enforce least privilege for replication IAM roles",
+    "Checks": ["replication_iam_roles_least_privilege"],
+    "function_name": "replication_iam_roles_least_privilege",
+    "title": "Enforce least privilege for replication IAM roles",
+    "description": "Ensure replication processes use IAM roles with least privilege to minimize unauthorized data access during replication.",
+    "capability": "access_governance",
+    "service": "replication",
+    "subservice": "iam",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REPLICATION_003",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication processes use IAM roles with least privilege to minimize unauthorized data access during replication.",
+        "RationaleStatement": "Excessive permissions in replication IAM roles increase the attack surface and potential for privilege escalation during data replication.",
+        "ImpactStatement": "Over-privileged replication roles could be exploited to access data beyond the intended scope, leading to data breaches.",
+        "RemediationProcedure": "1. Review current replication role permissions:\n```aws iam get-role-policy --role-name <replication-role> --policy-name <policy-name>```\n2. Create minimal permission policy for replication\n3. Update role with least privilege policy:\n```aws iam put-role-policy --role-name <replication-role> --policy-name ReplicationMinimal --policy-document file://minimal-replication-policy.json```\n4. Test replication functionality with new permissions",
+        "AuditProcedure": "1. List all policies attached to replication roles:\n```aws iam list-attached-role-policies --role-name <replication-role>```\n2. Analyze policy permissions using Access Analyzer:\n```aws accessanalyzer list-findings --analyzer-arn <analyzer-arn>```\n3. Review CloudTrail logs for replication role usage",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege",
+        "DefaultValue": "May have excessive permissions by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.4",
+    "Description": "Restrict cross-account replication access",
+    "Checks": ["replication_cross_account_access_restricted"],
+    "function_name": "replication_cross_account_access_restricted",
+    "title": "Restrict cross-account replication access",
+    "description": "Ensure cross-account replication is properly restricted to prevent unauthorized access to sensitive data across accounts.",
+    "capability": "access_governance",
+    "service": "replication",
+    "subservice": "cross_account",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REPLICATION_004",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure cross-account replication is properly restricted to prevent unauthorized access to sensitive data across accounts.",
+        "RationaleStatement": "Cross-account replication introduces additional security risks and requires strict access controls to prevent unauthorized data access across account boundaries.",
+        "ImpactStatement": "Unrestricted cross-account replication can lead to unauthorized data exposure in different AWS accounts, potentially violating data governance policies.",
+        "RemediationProcedure": "1. Configure cross-account trust policies:\n```aws iam create-role --role-name CrossAccountReplication --assume-role-policy-document file://cross-account-trust.json```\n2. Implement external ID for additional security\n3. Configure bucket policies for cross-account access:\n```aws s3api put-bucket-policy --bucket <destination-bucket> --policy file://cross-account-policy.json```\n4. Enable SCPs to restrict cross-account replication if needed",
+        "AuditProcedure": "1. List cross-account replication configurations:\n```aws s3api get-bucket-replication --bucket <source-bucket>```\n2. Review cross-account role trust relationships:\n```aws iam get-role --role-name <cross-account-role>```\n3. Check SCP restrictions on cross-account access",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-walkthrough-2.html",
+        "DefaultValue": "No restrictions by default"
+      }
+    ]
+  },
+  {
+    "Id": "1.5",
+    "Description": "Enable monitoring for replication operations",
+    "Checks": ["replication_monitoring_enabled"],
+    "function_name": "replication_monitoring_enabled",
+    "title": "Enable monitoring for replication operations",
+    "description": "Enable comprehensive monitoring for replication operations to detect unauthorized access or data exposure.",
+    "capability": "access_governance",
+    "service": "replication",
+    "subservice": "monitoring",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REPLICATION_005",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable comprehensive monitoring for replication operations to detect unauthorized access or data exposure.",
+        "RationaleStatement": "Monitoring replication operations provides visibility into data movement patterns and helps detect anomalous activities that could indicate security incidents.",
+        "ImpactStatement": "Without proper monitoring, unauthorized replication activities or data exfiltration attempts may go undetected, leading to potential data breaches.",
+        "RemediationProcedure": "1. Enable CloudWatch metrics for replication:\n```aws s3api put-bucket-metrics-configuration --bucket <bucket> --id ReplicationMetrics --metrics-configuration file://replication-metrics.json```\n2. Configure CloudWatch alarms for replication failures\n3. Set up notifications for replication events:\n```aws s3api put-bucket-notification-configuration --bucket <bucket> --notification-configuration file://replication-notifications.json```\n4. Enable AWS Config rules for replication monitoring",
+        "AuditProcedure": "1. Check CloudWatch metrics for replication:\n```aws cloudwatch list-metrics --namespace AWS/S3 --metric-name ReplicationLatency```\n2. Review CloudWatch alarms:\n```aws cloudwatch describe-alarms --alarm-names <replication-alarm>```\n3. Verify notification configurations:\n```aws s3api get-bucket-notification-configuration --bucket <bucket>```",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-metrics.html",
+        "DefaultValue": "Basic monitoring only"
+      }
+    ]
+  },
+  {
+    "Id": "1.6",
+    "Description": "Enable CloudTrail logging for replication",
+    "Checks": ["replication_cloudtrail_logging_enabled"],
+    "function_name": "replication_cloudtrail_logging_enabled",
+    "title": "Enable CloudTrail logging for replication",
+    "description": "Enable CloudTrail logging for replication operations to audit data movement and access patterns.",
+    "capability": "access_governance",
+    "service": "replication",
+    "subservice": "logging",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_AG_REPLICATION_006",
+    "Attributes": [
+      {
+        "Section": "Access Governance",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Enable CloudTrail logging for replication operations to audit data movement and access patterns.",
+        "RationaleStatement": "CloudTrail logging provides an audit trail of replication operations, enabling forensic analysis and compliance reporting for data movement activities.",
+        "ImpactStatement": "Without CloudTrail logging, there is no audit trail for replication operations, making it difficult to investigate security incidents or demonstrate compliance.",
+        "RemediationProcedure": "1. Enable CloudTrail for S3 data events:\n```aws cloudtrail create-trail --name ReplicationAuditTrail --s3-bucket-name <log-bucket>```\n2. Configure data events for replication buckets:\n```aws cloudtrail put-event-selectors --trail-name ReplicationAuditTrail --event-selectors file://replication-events.json```\n3. Enable log file integrity validation\n4. Configure log analysis and alerting",
+        "AuditProcedure": "1. Check CloudTrail configuration:\n```aws cloudtrail describe-trails --trail-name-list ReplicationAuditTrail```\n2. Verify data event logging:\n```aws cloudtrail get-event-selectors --trail-name ReplicationAuditTrail```\n3. Review recent replication events:\n```aws logs filter-log-events --log-group-name CloudTrail/ReplicationEvents```",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html",
+        "DefaultValue": "Management events only"
+      }
+    ]
+  },
+  {
+    "Id": "2.1",
+    "Description": "Enable encryption in transit for replication",
+    "Checks": ["replication_encryption_in_transit_enabled"],
+    "function_name": "replication_encryption_in_transit_enabled",
+    "title": "Enable encryption in transit for replication",
+    "description": "Ensure replication processes use encryption in transit to protect sensitive data during transfer operations.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "tls",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_001",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication processes use encryption in transit to protect sensitive data during transfer operations.",
+        "RationaleStatement": "Encryption in transit protects sensitive data from interception and eavesdropping during replication transfers between sources and destinations.",
+        "ImpactStatement": "Unencrypted data in transit during replication can be intercepted by malicious actors, leading to data exposure and potential compliance violations.",
+        "RemediationProcedure": "1. Configure SSL/TLS for replication connections\n2. Update bucket policies to require HTTPS:\n```aws s3api put-bucket-policy --bucket <bucket> --policy file://https-only-policy.json```\n3. Configure replication with encryption in transit:\n```aws s3api put-bucket-replication --bucket <source-bucket> --replication-configuration file://encrypted-replication.json```\n4. Verify TLS version requirements (minimum TLS 1.2)",
+        "AuditProcedure": "1. Check bucket policy for HTTPS requirements:\n```aws s3api get-bucket-policy --bucket <bucket>```\n2. Review replication configuration:\n```aws s3api get-bucket-replication --bucket <source-bucket>```\n3. Test connectivity with TLS verification:\n```openssl s_client -connect <endpoint>:443 -tls1_2```",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html",
+        "DefaultValue": "HTTPS enabled by default for AWS services"
+      }
+    ]
+  },
+  {
+    "Id": "2.2",
+    "Description": "Enable encryption at rest for replicated data",
+    "Checks": ["replication_encryption_at_rest_enabled"],
+    "function_name": "replication_encryption_at_rest_enabled",
+    "title": "Enable encryption at rest for replicated data",
+    "description": "Ensure replicated data is encrypted at rest at both source and destination to protect sensitive information.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_002",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replicated data is encrypted at rest at both source and destination to protect sensitive information.",
+        "RationaleStatement": "Encryption at rest protects sensitive data from unauthorized access in case of physical storage compromise or unauthorized system access.",
+        "ImpactStatement": "Unencrypted data at rest in replication sources or destinations can be accessed by unauthorized parties, leading to data breaches and compliance violations.",
+        "RemediationProcedure": "1. Enable default encryption for source bucket:\n```aws s3api put-bucket-encryption --bucket <source-bucket> --server-side-encryption-configuration file://encryption-config.json```\n2. Configure destination encryption in replication rule:\n```aws s3api put-bucket-replication --bucket <source-bucket> --replication-configuration file://encrypted-replication-config.json```\n3. Verify KMS key permissions for cross-account replication\n4. Enable bucket key for cost optimization",
+        "AuditProcedure": "1. Check source bucket encryption:\n```aws s3api get-bucket-encryption --bucket <source-bucket>```\n2. Check destination bucket encryption:\n```aws s3api get-bucket-encryption --bucket <destination-bucket>```\n3. Verify replication encryption configuration:\n```aws s3api get-bucket-replication --bucket <source-bucket>```\n4. List encrypted objects:\n```aws s3api list-objects-v2 --bucket <bucket> --query 'Contents[?ServerSideEncryption]'```",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html",
+        "DefaultValue": "No encryption by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.3",
+    "Description": "Validate KMS keys for replication encryption",
+    "Checks": ["replication_kms_key_validation"],
+    "function_name": "replication_kms_key_validation",
+    "title": "Validate KMS keys for replication encryption",
+    "description": "Ensure replication processes use appropriate KMS keys for encryption at source and destination.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "encryption",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_003",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication processes use appropriate KMS keys for encryption at source and destination.",
+        "RationaleStatement": "Proper KMS key management ensures that encryption keys are properly managed, rotated, and access-controlled for replicated data protection.",
+        "ImpactStatement": "Improper KMS key configuration can lead to data accessibility issues, weak encryption, or unauthorized key access affecting replicated data security.",
+        "RemediationProcedure": "1. Create dedicated KMS keys for replication:\n```aws kms create-key --description 'Replication encryption key' --key-usage ENCRYPT_DECRYPT```\n2. Configure key policies for cross-account access:\n```aws kms put-key-policy --key-id <key-id> --policy file://replication-key-policy.json```\n3. Enable automatic key rotation:\n```aws kms enable-key-rotation --key-id <key-id>```\n4. Update replication configuration with KMS key:\n```aws s3api put-bucket-replication --bucket <bucket> --replication-configuration file://kms-replication-config.json```",
+        "AuditProcedure": "1. List KMS keys used for replication:\n```aws kms list-keys --query 'Keys[?KeyUsage==`ENCRYPT_DECRYPT`]'```\n2. Check key rotation status:\n```aws kms get-key-rotation-status --key-id <key-id>```\n3. Review key policies:\n```aws kms get-key-policy --key-id <key-id> --policy-name default```\n4. Verify replication encryption configuration:\n```aws s3api get-bucket-replication --bucket <bucket>```",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html",
+        "DefaultValue": "AWS managed keys used by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.4",
+    "Description": "Validate data integrity during replication",
+    "Checks": ["replication_data_integrity_validation"],
+    "function_name": "replication_data_integrity_validation",
+    "title": "Validate data integrity during replication",
+    "description": "Implement data integrity checks during replication to ensure data is not corrupted or tampered with.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "integrity",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_004",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement data integrity checks during replication to ensure data is not corrupted or tampered with.",
+        "RationaleStatement": "Data integrity validation ensures that replicated data maintains its accuracy and consistency, preventing corruption during transfer operations.",
+        "ImpactStatement": "Without integrity validation, corrupted or tampered data could be replicated, leading to data quality issues and potential security compromises.",
+        "RemediationProcedure": "1. Enable object checksums for integrity validation:\n```aws s3api put-object --bucket <bucket> --key <key> --body <file> --checksum-algorithm SHA256```\n2. Configure replication with integrity checking\n3. Implement custom validation scripts for critical data\n4. Set up monitoring for replication failures due to integrity issues\n5. Configure automated retry mechanisms for failed replications",
+        "AuditProcedure": "1. Check object checksums:\n```aws s3api head-object --bucket <bucket> --key <key>```\n2. Review replication status for integrity failures:\n```aws s3api get-object-attributes --bucket <bucket> --key <key> --object-attributes Checksum```\n3. Monitor CloudWatch metrics for replication failures\n4. Verify custom integrity validation logs",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html",
+        "DefaultValue": "Basic integrity checks enabled"
+      }
+    ]
+  },
+  {
+    "Id": "2.5",
+    "Description": "Enable backup for replication configurations",
+    "Checks": ["replication_backup_enabled"],
+    "function_name": "replication_backup_enabled",
+    "title": "Enable backup for replication configurations",
+    "description": "Ensure replication configurations are backed up to prevent data loss and maintain disaster recovery capabilities.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "backup",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_005",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication configurations are backed up to prevent data loss and maintain disaster recovery capabilities.",
+        "RationaleStatement": "Backing up replication configurations ensures business continuity and rapid recovery in case of configuration loss or corruption.",
+        "ImpactStatement": "Loss of replication configurations without backups can lead to extended downtime and inability to restore critical data replication processes.",
+        "RemediationProcedure": "1. Export current replication configurations:\n```aws s3api get-bucket-replication --bucket <bucket> > replication-backup.json```\n2. Store configurations in version-controlled repository\n3. Implement automated configuration backup scripts\n4. Configure cross-region backup of configuration data\n5. Document configuration restoration procedures",
+        "AuditProcedure": "1. Verify configuration backups exist:\n```ls -la backup/replication-configs/```\n2. Test configuration restoration process\n3. Check backup scheduling and automation\n4. Verify backup integrity and accessibility\n5. Review backup retention policies",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html",
+        "DefaultValue": "No automatic backup of configurations"
+      }
+    ]
+  },
+  {
+    "Id": "2.6",
+    "Description": "Configure failure handling for replication",
+    "Checks": ["replication_failure_handling_configured"],
+    "function_name": "replication_failure_handling_configured",
+    "title": "Configure failure handling for replication",
+    "description": "Implement proper failure handling for replication to prevent data loss and ensure data consistency.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "failure_handling",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_006",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement proper failure handling for replication to prevent data loss and ensure data consistency.",
+        "RationaleStatement": "Proper failure handling ensures that temporary issues don't result in permanent data loss and maintains replication reliability.",
+        "ImpactStatement": "Poor failure handling can lead to data inconsistencies, lost replication events, and compromised disaster recovery capabilities.",
+        "RemediationProcedure": "1. Configure replication retry mechanisms\n2. Set up failure notifications:\n```aws sns create-topic --name ReplicationFailures```\n3. Implement dead letter queues for failed replications\n4. Configure monitoring and alerting for replication failures\n5. Document failure recovery procedures",
+        "AuditProcedure": "1. Check replication failure metrics:\n```aws cloudwatch get-metric-statistics --namespace AWS/S3 --metric-name ReplicationFailures```\n2. Review failure notification configurations\n3. Test failure recovery procedures\n4. Verify dead letter queue configurations\n5. Check failure handling documentation",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-troubleshoot.html",
+        "DefaultValue": "Basic retry mechanisms only"
+      }
+    ]
+  },
+  {
+    "Id": "2.7",
+    "Description": "Maintain data classification during replication",
+    "Checks": ["replication_data_classification_maintained"],
+    "function_name": "replication_data_classification_maintained",
+    "title": "Maintain data classification during replication",
+    "description": "Ensure data classification tags and metadata are maintained during replication processes.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "classification",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_007",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure data classification tags and metadata are maintained during replication processes.",
+        "RationaleStatement": "Maintaining data classification during replication ensures that security controls and access policies remain consistent across replicated data.",
+        "ImpactStatement": "Loss of data classification during replication can lead to inappropriate access controls and potential compliance violations for sensitive data.",
+        "RemediationProcedure": "1. Configure replication to preserve metadata:\n```aws s3api put-bucket-replication --bucket <bucket> --replication-configuration file://metadata-preserving-replication.json```\n2. Implement automated tagging for replicated objects\n3. Set up validation scripts to verify tag preservation\n4. Configure alerts for missing classification tags\n5. Document data classification requirements",
+        "AuditProcedure": "1. Check object tags after replication:\n```aws s3api get-object-tagging --bucket <destination-bucket> --key <key>```\n2. Compare source and destination metadata:\n```aws s3api head-object --bucket <source-bucket> --key <key>```\n3. Verify replication configuration preserves metadata\n4. Review tag validation reports\n5. Check classification tag compliance",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html",
+        "DefaultValue": "Metadata preserved by default"
+      }
+    ]
+  },
+  {
+    "Id": "2.8",
+    "Description": "Enforce retention policies for replicated data",
+    "Checks": ["replication_retention_policy_enforced"],
+    "function_name": "replication_retention_policy_enforced",
+    "title": "Enforce retention policies for replicated data",
+    "description": "Implement retention policies for replicated data to meet compliance requirements and manage storage costs.",
+    "capability": "data_protection",
+    "service": "replication",
+    "subservice": "retention",
+    "risk": "MEDIUM",
+    "existing": false,
+    "unique_key": "DATASEC_DP_REPLICATION_008",
+    "Attributes": [
+      {
+        "Section": "Data Protection",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Implement retention policies for replicated data to meet compliance requirements and manage storage costs.",
+        "RationaleStatement": "Retention policies ensure that replicated data is kept for the required duration while preventing unnecessary data accumulation and associated costs.",
+        "ImpactStatement": "Lack of retention policies can lead to compliance violations, excessive storage costs, and difficulty in data lifecycle management.",
+        "RemediationProcedure": "1. Configure lifecycle policies for destination buckets:\n```aws s3api put-bucket-lifecycle-configuration --bucket <destination-bucket> --lifecycle-configuration file://retention-lifecycle.json```\n2. Implement legal hold mechanisms for compliance\n3. Set up automated deletion for expired data\n4. Configure retention monitoring and reporting\n5. Document retention requirements and procedures",
+        "AuditProcedure": "1. Check lifecycle policies:\n```aws s3api get-bucket-lifecycle-configuration --bucket <destination-bucket>```\n2. Review retention compliance reports\n3. Verify automated deletion processes\n4. Check legal hold configurations\n5. Audit retention policy enforcement",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+        "DefaultValue": "No automatic retention policies"
+      }
+    ]
+  },
+  {
+    "Id": "3.1",
+    "Description": "Ensure replication destinations comply with region restrictions",
+    "Checks": ["replication_destination_region_compliance"],
+    "function_name": "replication_destination_region_compliance",
+    "title": "Ensure replication destinations comply with region restrictions",
+    "description": "Ensure replication destinations are located only in approved regions to meet data residency requirements.",
+    "capability": "data_residency",
+    "service": "replication",
+    "subservice": "destination",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REPLICATION_001",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication destinations are located only in approved regions to meet data residency requirements.",
+        "RationaleStatement": "Data residency compliance requires that sensitive data remains within specific geographic boundaries as mandated by regulations and organizational policies.",
+        "ImpactStatement": "Replicating data to non-approved regions can violate data sovereignty laws and regulatory requirements, leading to legal and financial penalties.",
+        "RemediationProcedure": "1. Review current replication destinations:\n```aws s3api get-bucket-replication --bucket <source-bucket>```\n2. Validate destination regions against approved list\n3. Update replication configuration to use compliant regions:\n```aws s3api put-bucket-replication --bucket <source-bucket> --replication-configuration file://compliant-regions-replication.json```\n4. Implement SCPs to prevent replication to restricted regions\n5. Set up monitoring for region compliance",
+        "AuditProcedure": "1. List all replication destinations and their regions:\n```aws s3api get-bucket-replication --bucket <source-bucket> --query 'ReplicationConfiguration.Rules[].Destination.Bucket'```\n2. Check bucket regions:\n```aws s3api get-bucket-location --bucket <destination-bucket>```\n3. Verify SCP restrictions on region usage\n4. Review compliance reports for region violations\n5. Audit replication configuration changes",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html#replication-requirements",
+        "DefaultValue": "No region restrictions by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.2",
+    "Description": "Ensure replication sources comply with region restrictions",
+    "Checks": ["replication_source_region_compliance"],
+    "function_name": "replication_source_region_compliance",
+    "title": "Ensure replication sources comply with region restrictions",
+    "description": "Ensure replication sources are located only in approved regions to maintain data residency compliance.",
+    "capability": "data_residency",
+    "service": "replication",
+    "subservice": "source",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REPLICATION_002",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication sources are located only in approved regions to maintain data residency compliance.",
+        "RationaleStatement": "Source region compliance ensures that the origin of replicated data meets data residency requirements and regulatory obligations.",
+        "ImpactStatement": "Non-compliant source regions can invalidate the entire replication strategy and create compliance violations for data governance.",
+        "RemediationProcedure": "1. Audit all source bucket regions:\n```aws s3api list-buckets --query 'Buckets[].Name' | xargs -I {} aws s3api get-bucket-location --bucket {}```\n2. Identify non-compliant source buckets\n3. Plan migration for non-compliant sources\n4. Implement SCPs to restrict bucket creation in non-approved regions\n5. Update data governance policies",
+        "AuditProcedure": "1. List all buckets and their regions:\n```aws s3api list-buckets --query 'Buckets[].Name' | xargs -I {} sh -c 'echo -n \"{}: \"; aws s3api get-bucket-location --bucket {}'```\n2. Check replication-enabled buckets:\n```aws s3api list-buckets --query 'Buckets[].Name' | xargs -I {} aws s3api get-bucket-replication --bucket {} 2>/dev/null```\n3. Verify SCP compliance\n4. Review region approval documentation\n5. Audit compliance reports",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/general/latest/gr/rande.html",
+        "DefaultValue": "No region restrictions by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.3",
+    "Description": "Restrict cross-region replication",
+    "Checks": ["replication_cross_region_restricted"],
+    "function_name": "replication_cross_region_restricted",
+    "title": "Restrict cross-region replication",
+    "description": "Ensure cross-region replication is restricted to approved regions that meet data residency and sovereignty requirements.",
+    "capability": "data_residency",
+    "service": "replication",
+    "subservice": "cross_region",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REPLICATION_003",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure cross-region replication is restricted to approved regions that meet data residency and sovereignty requirements.",
+        "RationaleStatement": "Cross-region replication restrictions prevent accidental or unauthorized data movement across geographic boundaries that may violate data sovereignty laws.",
+        "ImpactStatement": "Unrestricted cross-region replication can lead to data being stored in jurisdictions that violate regulatory requirements or organizational data governance policies.",
+        "RemediationProcedure": "1. Review existing cross-region replication rules:\n```aws s3api get-bucket-replication --bucket <source-bucket>```\n2. Implement SCPs to restrict cross-region replication:\n```aws organizations put-policy --policy-id <policy-id> --content file://cross-region-restriction-scp.json```\n3. Configure IAM policies to limit replication permissions\n4. Set up monitoring for cross-region replication attempts\n5. Document approved region pairs for replication",
+        "AuditProcedure": "1. Identify cross-region replication configurations:\n```for bucket in $(aws s3api list-buckets --query 'Buckets[].Name' --output text); do echo \"$bucket:\"; aws s3api get-bucket-replication --bucket $bucket 2>/dev/null; done```\n2. Check SCP restrictions:\n```aws organizations list-policies --filter SERVICE_CONTROL_POLICY```\n3. Review IAM policy restrictions\n4. Monitor CloudTrail for replication configuration changes\n5. Verify region pair approvals",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "DefaultValue": "Cross-region replication allowed by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.4",
+    "Description": "Validate data sovereignty for replication",
+    "Checks": ["replication_data_sovereignty_validation"],
+    "function_name": "replication_data_sovereignty_validation",
+    "title": "Validate data sovereignty for replication",
+    "description": "Ensure replication processes comply with data sovereignty requirements and regulations.",
+    "capability": "data_residency",
+    "service": "replication",
+    "subservice": "sovereignty",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REPLICATION_004",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication processes comply with data sovereignty requirements and regulations.",
+        "RationaleStatement": "Data sovereignty validation ensures that all replication activities comply with national and regional laws governing data storage and processing.",
+        "ImpactStatement": "Non-compliance with data sovereignty requirements can result in severe legal penalties, regulatory sanctions, and loss of business licenses.",
+        "RemediationProcedure": "1. Document data sovereignty requirements for each data type\n2. Map replication flows against sovereignty requirements\n3. Implement automated compliance checking\n4. Configure sovereignty-aware replication policies\n5. Establish regular sovereignty compliance audits",
+        "AuditProcedure": "1. Review data sovereignty documentation\n2. Map current replication configurations against requirements\n3. Check for sovereignty compliance violations\n4. Verify automated compliance monitoring\n5. Review sovereignty audit reports",
+        "AdditionalInformation": "",
+        "References": "https://aws.amazon.com/compliance/data-privacy/",
+        "DefaultValue": "No sovereignty validation by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.5",
+    "Description": "Enforce geo-tagging for replication resources",
+    "Checks": ["replication_geo_tagging_enforced"],
+    "function_name": "replication_geo_tagging_enforced",
+    "title": "Enforce geo-tagging for replication resources",
+    "description": "Ensure replication resources are tagged with geographic information for compliance tracking and auditing.",
+    "capability": "data_residency",
+    "service": "replication",
+    "subservice": "tagging",
+    "risk": "LOW",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REPLICATION_005",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication resources are tagged with geographic information for compliance tracking and auditing.",
+        "RationaleStatement": "Geo-tagging provides clear visibility into the geographic location of replicated data, enabling effective compliance monitoring and audit trails.",
+        "ImpactStatement": "Without geo-tagging, it becomes difficult to track data location for compliance purposes and respond to data residency audit requests.",
+        "RemediationProcedure": "1. Define geo-tagging standards for replication resources\n2. Implement automated tagging for replication buckets:\n```aws s3api put-bucket-tagging --bucket <bucket> --tagging file://geo-tags.json```\n3. Configure tag policies to enforce geo-tagging\n4. Set up monitoring for missing geo-tags\n5. Implement tag compliance reporting",
+        "AuditProcedure": "1. Check bucket tags for geographic information:\n```aws s3api get-bucket-tagging --bucket <bucket>```\n2. Review tag compliance across all replication resources\n3. Verify tag policy enforcement\n4. Check tag monitoring and alerting\n5. Generate geo-tagging compliance reports",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html",
+        "DefaultValue": "No mandatory tagging by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.6",
+    "Description": "Validate replication transit paths",
+    "Checks": ["replication_transit_path_validation"],
+    "function_name": "replication_transit_path_validation",
+    "title": "Validate replication transit paths",
+    "description": "Ensure replication data transit paths do not cross restricted regions or jurisdictions.",
+    "capability": "data_residency",
+    "service": "replication",
+    "subservice": "transit",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REPLICATION_006",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication data transit paths do not cross restricted regions or jurisdictions.",
+        "RationaleStatement": "Transit path validation ensures that data in motion during replication does not pass through jurisdictions that could compromise data sovereignty.",
+        "ImpactStatement": "Data crossing restricted jurisdictions during transit can violate data sovereignty laws even if the source and destination are compliant.",
+        "RemediationProcedure": "1. Map current replication transit paths\n2. Identify potential jurisdiction crossings\n3. Configure VPC endpoints for regional transit:\n```aws ec2 create-vpc-endpoint --vpc-id <vpc-id> --service-name com.amazonaws.<region>.s3```\n4. Implement private connectivity for sensitive replications\n5. Document approved transit paths",
+        "AuditProcedure": "1. Review replication network topology\n2. Check VPC endpoint configurations:\n```aws ec2 describe-vpc-endpoints --filters Name=service-name,Values=com.amazonaws.*.s3```\n3. Verify private connectivity usage\n4. Monitor transit path compliance\n5. Audit network routing for replication traffic",
+        "AdditionalInformation": "",
+        "References": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html",
+        "DefaultValue": "Public internet routing by default"
+      }
+    ]
+  },
+  {
+    "Id": "3.7",
+    "Description": "Enforce same jurisdiction replication",
+    "Checks": ["replication_same_jurisdiction_enforcement"],
+    "function_name": "replication_same_jurisdiction_enforcement",
+    "title": "Enforce same jurisdiction replication",
+    "description": "Ensure replication occurs only within the same legal jurisdiction to maintain data sovereignty compliance.",
+    "capability": "data_residency",
+    "service": "replication",
+    "subservice": "jurisdiction",
+    "risk": "HIGH",
+    "existing": false,
+    "unique_key": "DATASEC_DR_REPLICATION_007",
+    "Attributes": [
+      {
+        "Section": "Data Residency",
+        "SubSection": "",
+        "Profile": "LGTech",
+        "AssessmentStatus": "Manual",
+        "Description": "Ensure replication occurs only within the same legal jurisdiction to maintain data sovereignty compliance.",
+        "RationaleStatement": "Same-jurisdiction replication ensures that data remains under consistent legal framework and regulatory oversight throughout its lifecycle.",
+        "ImpactStatement": "Cross-jurisdiction replication can expose data to different legal systems and regulatory requirements, potentially creating compliance conflicts.",
+        "RemediationProcedure": "1. Map AWS regions to legal jurisdictions\n2. Configure replication rules to enforce jurisdiction boundaries:\n```aws s3api put-bucket-replication --bucket <source-bucket> --replication-configuration file://same-jurisdiction-replication.json```\n3. Implement SCPs for jurisdiction enforcement\n4. Set up monitoring for cross-jurisdiction attempts\n5. Document jurisdiction mapping and policies",
+        "AuditProcedure": "1. Review replication configurations for jurisdiction compliance:\n```aws s3api get-bucket-replication --bucket <source-bucket>```\n2. Verify jurisdiction mapping documentation\n3. Check SCP enforcement for jurisdiction restrictions\n4. Monitor cross-jurisdiction replication attempts\n5. Audit jurisdiction compliance reports",
+        "AdditionalInformation": "",
+        "References": "https://aws.amazon.com/compliance/programs/",
+        "DefaultValue": "No jurisdiction restrictions by default"
+      }
+    ]
+  }
+]
